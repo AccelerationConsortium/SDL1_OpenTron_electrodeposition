@@ -13,6 +13,7 @@
 
 */
 #include <Wire.h>
+#include <EEPROM.h>
 const byte buff_size = 40;
 char input_buffer[buff_size];
 const char start_marker = '<';
@@ -55,13 +56,13 @@ SerLCD lcd; // Initialize the library with default I2C address 0x72
 #define RELAY_ADDR 0x6D // Alternate address 0x6C
 Qwiic_Relay quadRelay(RELAY_ADDR);
 
-// Solid state relays relay 4-5 for 110VAC
+// Solid state relays for 110VAC
 #define RELAY_SOLIDSTATE 0x0A
 Qwiic_Relay solidStateRelay(RELAY_SOLIDSTATE);
 
-// Relay 6-9
+// Relay 4-7
 // Remember this is NOT a standard I2C add - it was coded to the quad relay.
-#define RELAY_ADDR2 0x09
+#define RELAY_ADDR2 0x6C // 0x09
 Qwiic_Relay quadRelay2(RELAY_ADDR2);
 
 
@@ -71,11 +72,18 @@ Qwiic_Relay quadRelay2(RELAY_ADDR2);
 #include <AutoPID.h>
 #define OUTPUT_MIN 0
 #define OUTPUT_MAX 255
-#define KP 1
-#define KI 1
-#define KD 1
-double temperature, setPoint, outputVal;
-AutoPID myPID(&temperature, &setPoint, &outputVal, OUTPUT_MIN, OUTPUT_MAX, KP, KI, KD);
+#define KP0 1
+#define KI0 1
+#define KD0 1
+#define KP1 1
+#define KI1 1
+#define KD1 1
+double temperature0, outputVal0;
+double temperature1, outputVal1;
+double setPoint0;
+double setPoint1;
+AutoPID PID0(&temperature0, &setPoint0, &outputVal0, OUTPUT_MIN, OUTPUT_MAX, KP0, KI0, KD0);
+AutoPID PID1(&temperature1, &setPoint1, &outputVal1, OUTPUT_MIN, OUTPUT_MAX, KP1, KI1, KD1);
 unsigned long lastTempUpdate; //tracks clock time of last temp update
 int dutyCycle0 = 0; //Tracks how much the relay is on at 1Hz. 120 = 100%.
 int dutyCycle1 = 0; //Tracks how much the relay is on at 1Hz. 120 = 100%.
@@ -98,6 +106,25 @@ void setup() {
 
 
   /*
+     Setup relays
+  */
+  if (!quadRelay.begin()) {
+    lcd.setCursor(0, 0);
+    lcd.print("Quad relay not connected");
+    Serial.println("Check connections to Qwiic Relay.");
+  }
+  if (!solidStateRelay.begin()) {
+    lcd.setCursor(0, 0);
+    lcd.print("SolStateRelay not connected");
+    Serial.println("Check connections to solid state relay.");
+  }
+  if (!quadRelay2.begin()) {
+    lcd.setCursor(0, 0);
+    lcd.print("Quad relay not connected");
+    Serial.println("Check connections to Qwiic Relay.");
+  }
+
+/*
      Setup temperature sensor 0
   */
   // Serial.println("Booting temperature sensors");
@@ -122,6 +149,7 @@ void setup() {
     delay(10000);
   }
 
+
   /*
      Setup temperature sensor 1
   */
@@ -144,72 +172,59 @@ void setup() {
   }
 
 
-  /*
-     Setup relays
-  */
-  if (!quadRelay.begin()) {
-    lcd.setCursor(0, 0);
-    lcd.print("Quad relay not connected");
-    Serial.println("Check connections to Qwiic Relay.");
-  }
-  if (!solidStateRelay.begin()) {
-    lcd.setCursor(0, 0);
-    lcd.print("SolStateRelay not connected");
-    Serial.println("Check connections to solid state relay.");
-  }
-  if (!quadRelay2.begin()) {
-    lcd.setCursor(0, 0);
-    lcd.print("Quad relay not connected");
-    Serial.println("Check connections to Qwiic Relay.");
-  }
 
   /*
      Setup PID control
   */
-  setPoint = 25;
+  read_from_eeprom_setPoints();
+
   // if temperature is more than 4 degrees below or above setpoint, OUTPUT will be set to min or max respectively
-  myPID.setBangBang(10);
-  //set PID update interval to 2900ms
-  myPID.setTimeStep(2900);
+  PID0.setBangBang(5);
+  PID1.setBangBang(5);
+  //set PID update interval to 1200ms
+  PID0.setTimeStep(1200);
+  PID1.setTimeStep(1200);
+
+  lcd.clear();
 }
 
 void loop() {
   // Updating the sensor values
-  delay(500);
+  delay(1000);
   sample_temperature0 = read_sample_temperature(0);
-  delay(500);
-  ambient_temperature0 = read_ambient_temperature(0);
-  delay(500);
   sample_temperature1 = read_sample_temperature(1);
-  delay(500);
-  ambient_temperature1 = read_ambient_temperature(1);
-  delay(500);
+ 
+
 
   // Update PID controller 0
-  temperature = sample_temperature0;
-  myPID.run();
-  if (outputVal > 0)
+  temperature0 = sample_temperature0;
+  PID0.run();
+  if (outputVal0 > 0)
   {
-    dutyCycle0 = (outputVal / 255) * 120;
+    dutyCycle0 = (outputVal0 / 255) * 120;
   }
   else
   {
     dutyCycle0 = 0;
   }
   solidStateRelay.setSlowPWM(1, dutyCycle0);
-  //  Serial.print("OutputVal: ");
-  //  Serial.print(outputVal);
-  //  Serial.print(", Dutycycle: ");
-  //  Serial.print(dutyCycle0);
-  //  Serial.print(", P: ");
-  //  Serial.print(KP);
-  //  Serial.print(", I: ");
-  //  Serial.print(KI);
-  //  Serial.print(", D: ");
-  //  Serial.println(KD);
+  
+  // Update PID controller 1
+  temperature1 = sample_temperature1;
+  PID1.run();
+  if (outputVal1 > 0)
+  {
+    dutyCycle1 = (outputVal1 / 255) * 120;
+  }
+  else
+  {
+    dutyCycle1 = 0;
+  }
+  solidStateRelay.setSlowPWM(2, dutyCycle1);
 
   // Write the sensor values to the LCD
-  write_to_lcd(sample_temperature0, sample_temperature1, dutyCycle0);
+  write_to_lcd(sample_temperature0, sample_temperature1, dutyCycle0, dutyCycle1);
+
 
   // Check if there is instructions from the PC
   get_data_from_pc();
@@ -267,31 +282,19 @@ void parse_data()
     str_to_ind = strtok(NULL, ",");
     int time_ms = atoi(str_to_ind);
 
-    if (0 <= relay_num && relay_num <= 3)
+    if (0 <= relay_num && relay_num <= 3) // First quad relay
     {
-      quadRelay.turnRelayOn(relay_num);
+      int relay = relay_num + 1;
+      quadRelay.turnRelayOn(relay);
       delay(time_ms);
-      quadRelay.turnRelayOff(relay_num);
+      quadRelay.turnRelayOff(relay);
     }
-    if (4 <= relay_num && relay_num <= 5)
+    if (4 <= relay_num && relay_num <= 7) // Second quad relay
     {
-      if (relay_num == 4)
-      {
-        relay_num = 1;
-      }
-      if (relay_num == 5)
-      {
-        relay_num = 2;
-      }
-      solidStateRelay.turnRelayOn(relay_num);
+      int relay = relay_num - 3;
+      quadRelay2.turnRelayOn(relay);
       delay(time_ms);
-      solidStateRelay.turnRelayOff(relay_num);
-    }
-    if (6 <= relay_num && relay_num <= 9)
-    {
-      quadRelay2.turnRelayOn(relay_num);
-      delay(time_ms);
-      quadRelay2.turnRelayOff(relay_num);
+      quadRelay2.turnRelayOff(relay);
     }
     Serial.println("#"); // '#' indicates process is done
   }
@@ -313,71 +316,22 @@ void parse_data()
   {
     Serial.println(ambient_temperature1);
   }
-  if (message_from_pc == "setpoint")
+  if (message_from_pc == "setpoint0")
   {
     str_to_ind = strtok(NULL, ","); // this continues where the previous call left off
-    double setPoint = atoi(str_to_ind);
+    setPoint0 = atoi(str_to_ind);
+    setPoint0 = setPoint0/10;
+    write_to_eeprom_setPoint0(setPoint0);
   }
-  //  if (message_from_pc == "set_relay_0_on")
-  //  {
-  //    quadRelay.turnRelayOn(1);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_0_off")
-  //  {
-  //    quadRelay.turnRelayOff(1);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_1_on")
-  //  {
-  //    quadRelay.turnRelayOn(2);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_1_off")
-  //  {
-  //    quadRelay.turnRelayOff(2);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_2_on")
-  //  {
-  //    quadRelay.turnRelayOn(3);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_2_off")
-  //  {
-  //    quadRelay.turnRelayOff(3);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_3_on")
-  //  {
-  //    quadRelay.turnRelayOn(4);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_3_off")
-  //  {
-  //    quadRelay.turnRelayOff(4);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_4_on")
-  //  {
-  //    solidStateRelay.turnRelayOn(1);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_4_off")
-  //  {
-  //    solidStateRelay.turnRelayOff(1);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_5_on")
-  //  {
-  //    solidStateRelay.turnRelayOn(2);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
-  //  if (message_from_pc == "set_relay_5_off")
-  //  {
-  //    solidStateRelay.turnRelayOff(2);
-  //    Serial.println("#"); // '#' indicates process is done
-  //  }
+  if (message_from_pc == "setpoint1")
+  {
+    str_to_ind = strtok(NULL, ","); // this continues where the previous call left off
+    setPoint1 = atoi(str_to_ind);
+    setPoint1 = setPoint1/10;
+    write_to_eeprom_setPoint1(setPoint1);
+  }
+  // ... in the future
+
   if (message_from_pc == "get_relay_0_state")
   {
     int state = quadRelay.getState(1);
@@ -400,32 +354,32 @@ void parse_data()
   }
   if (message_from_pc == "get_relay_4_state")
   {
-    int state = solidStateRelay.getState(1);
+    int state = quadRelay2.getState(1);
     Serial.println(state); // 0 = off, 1 = on
   }
   if (message_from_pc == "get_relay_5_state")
   {
-    int state = solidStateRelay.getState(2);
+    int state = quadRelay2.getState(2);
     Serial.println(state); // 0 = off, 1 = on
   }
   if (message_from_pc == "get_relay_6_state")
   {
-    int state = quadRelay2.getState(1);
+    int state = quadRelay2.getState(3);
     Serial.println(state); // 0 = off, 1 = on
   }
   if (message_from_pc == "get_relay_7_state")
   {
-    int state = quadRelay2.getState(2);
+    int state = quadRelay2.getState(4);
     Serial.println(state); // 0 = off, 1 = on
   }
   if (message_from_pc == "get_relay_8_state")
   {
-    int state = quadRelay2.getState(3);
+    int state = solidStateRelay.getState(1);
     Serial.println(state); // 0 = off, 1 = on
   }
   if (message_from_pc == "get_relay_9_state")
   {
-    int state = quadRelay2.getState(4);
+    int state = solidStateRelay.getState(2);
     Serial.println(state); // 0 = off, 1 = on
   }
 
@@ -494,7 +448,7 @@ float read_ambient_temperature(int sensor)
   return ambient_temp;
 }
 
-void write_to_lcd(float sample_temp0, float sample_temp1, double PIDoutput)
+void write_to_lcd(float sample_temp0, float sample_temp1, double PIDoutput0, double PIDoutput1)
 {
   lcd.setCursor(0, 0);
   lcd.print("0:");
@@ -503,7 +457,66 @@ void write_to_lcd(float sample_temp0, float sample_temp1, double PIDoutput)
   lcd.setCursor(9, 0);
   lcd.print("1:");
   lcd.print(sample_temp1);
+  lcd.print(" ");
   lcd.setCursor(0, 1);
+  lcd.print("P0:");
+  lcd.print(round(PIDoutput0));
+  lcd.print(" ");
+  lcd.setCursor(8, 1);
   lcd.print("P1:");
-  lcd.print(round(PIDoutput));
+  lcd.print(round(PIDoutput1));
+  lcd.print(" ");
 }
+
+void read_from_eeprom_setPoints()
+{
+  // Read setpoints from EEPROM
+  int setPoint0_int;
+  int setPoint1_int;
+  EEPROM.get(0, setPoint0_int);
+  EEPROM.get(4, setPoint1_int);
+
+  // Divide setPoint0 and setPoint1 by 10 to get the decimal point back
+  setPoint0 = setPoint0_int / 10;
+  setPoint1 = setPoint1_int / 10;
+}
+
+void write_to_eeprom_setPoint0(float setPoint0_tmp)
+{
+  // Multiply setPoint0 by 10 to get rid of the decimal point
+  int setPoint0_int = int(setPoint0_tmp * 10);
+
+  // Check that number is between 0-255 to fill only one byte
+  if (setPoint0_int > 255)
+  {
+    setPoint0_int = 255;
+  }
+  if (setPoint0_int < 0)
+  {
+    setPoint0_int = 0;
+  }
+
+  // Write setpoints to EEPROM
+  EEPROM.put(0, setPoint0_int);
+}
+
+void write_to_eeprom_setPoint1(float setPoint1_tmp)
+{
+  // Multiply setPoint1 by 10 to get rid of the decimal point
+  int setPoint1_int = int(setPoint1_tmp * 10);
+
+  // Check that number is between 0-255 to fill only one byte
+  if (setPoint1_int > 255)
+  {
+    setPoint1_int = 255;
+  }
+  if (setPoint1_int < 0)
+  {
+    setPoint1_int = 0;
+  }
+
+  // Write setpoints to EEPROM
+  EEPROM.put(4, setPoint1_int);
+}
+ 
+

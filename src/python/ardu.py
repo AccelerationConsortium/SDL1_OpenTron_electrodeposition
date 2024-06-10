@@ -2,19 +2,69 @@ import logging
 import time
 import serial
 import serial.tools.list_ports
-import pandas as pd
-from pathlib import Path
 
 LOGGER = logging.getLogger(__name__)
 
 
 class Arduino:
-    """Class for the robot relate activities."""
+    """Class for the arduino robot relate activities for the openTron setup."""
 
-    def __init__(self, arduino_search_string: str = "CH340"):
+    def __init__(
+        self,
+        arduino_search_string: str = "CH340",
+        list_of_cartridges: list = [0, 1],
+        list_of_pump_relays: list = [0, 1, 2, 3, 4, 5],
+        list_of_ultrasonic_relays: list = [6, 7],
+        pump_slope: dict = {0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0, 5: 1.0},
+        pump_intercept: dict = {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0},
+    ):
+        """Initialize the arduino robotic parts. The robot consist of
+        cartridges that are inserted into the openTron robot. Each cartridge
+        has a temperature sensor, heating elements that are PID controlled
+        through a setpoint and an ultrasonic transducer.
+        Pumps and ultrasonic drivers that are all connected to relays.
+
+        The robot assumes that cartridges are numbered from 0 and up.
+        The robot assumes that relays are used both for pumps and ultrasonic
+        sensors.
+        The robot assumes that cartridge 0 is connected to the first ultrasound
+        relay and so on; eg. cartridge 0 is connected to ultrasonic relay 6,
+        while cartridge 1 is connected to ultrasonic relay 7.
+
+        The pump calibration is done by a linear calibration, by the following
+        equation: volume = pump_slope * relay_time_on + pump_intercept
+        It can be measured by running the pump while measuring the weight
+        dispensed, at eg. 0.5 seconds, 1 seconds, 2 seconds, 5 seconds,
+        10 seconds, 20 seconds.
+
+        Args:
+            arduino_search_string (str, optional): _description_. Defaults to
+                "CH340".
+            list_of_cartridges (list, optional): List of cartridge numbers.
+                Defaults to [0, 1].
+            list_of_pump_relays (list, optional): List of pump relay numbers.
+                Must correspond with wirering.  Defaults to [0, 1, 2, 3, 4, 5].
+            list_of_ultrasonic_relays (list, optional): List of ultrasonic
+                relay numbers. Must correspond with wirering.
+                Defaults to [6, 7].
+            pump_slope (dict, optional): Dictionary with pump number as key and
+                slope as value.
+                Defaults to {0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0, 5: 1.0}.
+            pump_intercept (dict, optional): Dictionary with pump number as
+                key and intercept as value.
+                Defaults to {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0}.
+        """
         self.SERIAL_PORT = self.define_arduino_port(arduino_search_string)
         self.BAUD_RATE = 115200
         self.CONNECTION_TIMEOUT = 30  # seconds
+        self.list_of_cartridges = list_of_cartridges
+        self.list_of_pump_relays = list_of_pump_relays
+        self.list_of_ultrasonic_relays = list_of_ultrasonic_relays
+        self.pump_slope = pump_slope
+        self.pump_intercept = pump_intercept
+        self._check_pump_coefficients()
+        self._check_catridges_vs_ultrasonic()
+        self._check_ultrasound_pump_relays_dont_overlap()
         self.connect()
 
     def connect(
@@ -97,55 +147,144 @@ class Arduino:
         LOGGER.info(f"Temperature sensor: {temperature} C")
         return temperature
 
-    def set_temperature(self, temp: float) -> None:
-        """Set the temperature setpoint for PID controller.
+    def set_temperature(self, cartridge: int, temperature: float) -> None:
+        """Set the temperature setpoint for a specific cartridge for the PID
+        controller.
 
         Args:
-            temp (float): Temperature of the liquid to be measured.
+            cartridge (int): Cartridge number
+            temperature (float): Setpoint of the temperature in degree celsius.
         """
-        temp = round(temp, 1)  # PID only take temperature upto 1 decimal place.
+        temperature = round(
+            temperature, 1
+        )  # PID only take temperature upto 1 decimal place.
         # The input for PID controllers should be rid of decimals.
         # However the last digit is read as a decimal point.
-        temp_pid = temp * 10
 
-        self.conn_pid.write(f"<set_temp,{temp_pid}>".encode())
-        self.conn_pid.readline().decode()
-        LOGGER.info(f"Set temperature to {temp} C")
-        time.sleep(2)
+        temp = temperature * 10
 
-    def ultrasound(self, time_on: float):
+        self.connection.write(f"<setpoint{cartridge},{temp}>".encode())
+        self.connection.readline().decode()
+        LOGGER.info(f"Set temperature to {temperature} C")
+
+    def _check_number_of_cartridges(self, cartridge: int) -> None:
+        """Check if the cartridge number is within the range.
+
+        Args:
+            cartridge (int): Cartridge number
+        """
+        if cartridge not in self.list_of_cartridges:
+            raise ValueError(
+                f"Cartridge number {cartridge} is out of range. "
+                f"Available cartridges: {self.list_of_cartridges}"
+            )
+
+    def _check_pump_number(self, pump: int) -> None:
+        """Check if the pump number is within the range.
+
+        Args:
+            pump (int): Pump number
+        """
+        if pump not in self.list_of_pump_relays:
+            raise ValueError(
+                f"Pump number {pump} is out of range. "
+                f"Available pumps: {self.list_of_pump_relays}"
+            )
+
+    def _check_ultrasonic_number(self, ultrasonic: int) -> None:
+        """Check if the ultrasonic number is within the range.
+
+        Args:
+            ultrasonic (int): Ultrasonic number
+        """
+        if ultrasonic not in self.list_of_ultrasonic_relays:
+            raise ValueError(
+                f"Ultrasonic number {ultrasonic} is out of range. "
+                f"Available ultrasonics: {self.list_of_ultrasonic_relays}"
+            )
+
+    def _check_catridges_vs_ultrasonic(self) -> None:
+        """Check if the number of cartridges and ultrasonics match."""
+        if len(self.list_of_cartridges) != len(self.list_of_ultrasonic_relays):
+            raise ValueError("Number of cartridges and ultrasonics should be same.")
+
+    def _check_ultrasound_pump_relays_dont_overlap(self) -> None:
+        """Check if the ultrasonic and pump relays don't overlap."""
+        if any(
+            relay in self.list_of_ultrasonic_relays
+            for relay in self.list_of_pump_relays
+        ):
+            raise ValueError("Ultrasonic and pump relays should not overlap.")
+
+    def _check_pump_coefficients(self) -> None:
+        """Check if the pump coefficients are valid."""
+        # Check that the length of the coefficients match the number of pumps
+        if len(self.pump_slope) != len(self.list_of_pump_relays) or len(
+            self.pump_intercept
+        ) != len(self.list_of_pump_relays):
+            raise ValueError("Number of pumps and coefficients should be same.")
+
+        # Check that the index (pump number) are integers
+        if not all(isinstance(pump, int) for pump in self.pump_slope.keys()):
+            raise ValueError("Pump numbers should be integers.")
+
+        # Check that self.pumps_slope values are all floats
+        if not all(isinstance(slope, float) for slope in self.pump_slope.values()):
+            raise ValueError("Pump slopes should be floats.")
+
+        # Check that self.pumps_intercept values are all floats
+        if not all(
+            isinstance(intercept, float) for intercept in self.pump_intercept.values()
+        ):
+            raise ValueError("Pump intercepts should be floats.")
+
+    def set_ultrasound_on(self, cartridge: int, time: float):
         """Turns on the ultrasound for the given time.
 
         Args:
+            cartridge (int): Cartridge number
             time (float): Time in seconds which ultrasound should turned on.
         """
-        time_ms = time_on * 1000  # arduino take time in milli seconds
-        self.connection.write(f"<Ultrasound,{time_ms}>".encode())
-        self.wait_for_arduino()
+        self._check_number_of_cartridges(cartridge)
 
-    def drain_cell(self, drain_time: float):
-        """Turns on the drain pump for the given time.
+        # Find the index number of the cartridge
+        cartridge_index = self.list_of_cartridges.index(cartridge)
+        ultrasound_relay = self.list_of_ultrasonic_relays[cartridge_index]
 
-        Args:
-            time (float): Time in seconds which drain pump should turned on.
-        """
-        LOGGER.info(f"Draining cell for {drain_time} seconds")
-        time_ms = drain_time * 1000  # arduino take time in milli seconds
-        self.connection.write(f"<Drain,{time_ms}>".encode())
-        self.wait_for_arduino()
-        LOGGER.info("Draining completed")
+        LOGGER.info(
+            f"Turning on ultrasound for {time} seconds on cartridge {cartridge}."
+        )
 
-    def transfer_liquid(self, transfer_time: float):
-        """Turns on the transfer pump for the given time.
+        self.set_relay_on_time(ultrasound_relay, time)
+
+    def set_pump_on(self, pump: int, time: float):
+        """Turns on the pump for the given time.
 
         Args:
-            time (float): Time in seconds which drain pump should turned on.
+            pump (int): Pump number
+            time (float): Time in seconds which pump should turned on.
         """
-        LOGGER.info(f"Transfering liquid to cell for {transfer_time} seconds")
-        time_ms = transfer_time * 1000  # arduino take time in milli seconds
-        self.connection.write(f"<transfer,{time_ms}>".encode())
-        self.wait_for_arduino()
-        LOGGER.info("transfer liquid completed")
+        self._check_pump_number(pump)
+
+        LOGGER.info(f"Turning on pump {pump} for {time} seconds.")
+
+        self.set_relay_on_time(pump, time)
+
+    def dispense_ml(self, pump: int, volume: float):
+        """Dispense the given volume in ml.
+
+        Args:
+            pump (int): Pump number
+            volume (float): Volume in ml to be dispensed.
+        """
+        self._check_pump_number(pump)
+
+        # Calculate the time to turn on the pump
+        time_on = self.pump_slope[pump] * volume + self.pump_intercept[pump]
+
+        LOGGER.info(f"Dispensing {volume} ml from pump {pump}.")
+
+        self.set_pump_on(pump, time_on)
 
     def wait_for_arduino(self, max_wait_time: int = 2000):
         """To make sure arduino completed the particular task.
@@ -171,326 +310,6 @@ class Arduino:
                 "Arduino did not finish the job.",
                 "Check arduino IDE or increase the value of max_wait_time.",
             )
-
-    def vol_syringe_to_csv(
-        self,
-        pump_num: int,
-        vol: float,
-        max_volume: float = 6.0,
-        fname: str = "syringe_volume.csv",
-    ):
-        """Check whether there is sufficient amount of liquid in syringe and
-            update remaining volume to csv file.
-
-        Args:
-            pump_num (int): Pump number
-            vol (float): volume to be dispensed
-            fname (str, optional): Name of the csv file. Defaults to "syringe_volume.csv".
-        """
-
-        pump_df = self.read_vol_file(fname)
-        vol_old = pump_df.query(f"Pump=={pump_num}")["Volume"].values[0]
-        vol_new = vol_old - vol
-        if vol_new < 0:
-            raise ValueError("Amount of liquid in pump is not suffcient.")
-        if vol_new > max_volume:
-            raise ValueError(
-                "Requested amount of liquid is larger than syringe capacity."
-            )
-
-        indx = pump_df.index[pump_df["Pump"] == pump_num]
-        pump_df["Volume"].iloc[indx] = vol_new
-        pump_df.to_csv(fname, index=False)
-
-    def read_vol_file(self, fname):
-        """Read the file with volume of liquid in each pump and return the dataframe
-
-        Args:
-            fname (str, optional): File in which volumes are saved.
-
-        Returns:
-            dátaframe: dataframe with pump number and remaining liquid in each pump
-        """
-        vol_file = Path(fname)
-        if vol_file.is_file():
-            df = pd.read_csv(vol_file)
-        else:
-            pump_list = list(range(0, self.PUMP_COUNT))
-            vol_list = [0] * self.PUMP_COUNT
-            df = pd.DataFrame({"Pump": pump_list, "Volume": vol_list})
-        return df
-
-    def atm_sensor_readings(self):
-        """Humidity, pressure and temperature readings from sensor
-
-        Returns:
-            humidity, pressure, temperature: Humidity, pressure and temperature readings from sensor
-        """
-        self.connection.write("<get_sensor_readings>".encode())
-        humidity = self.connection.readline().decode()
-        pressure = self.connection.readline().decode()
-        temperature = self.connection.readline().decode()
-        time.sleep(2)
-        return humidity, pressure, temperature
-
-    def write_dif_pid(self, value: float) -> None:
-        """Write parameter to given address of the PID
-        Args:
-            value (float): Value to be written
-        """
-
-        # The input for PID controllers should be rid of decimals.
-        # However the last digit is read as a decimal point.
-        value = round(value, 1)
-        LOGGER.info(f"Writing {value} to PID")
-        value_pid = value * 10
-        self.conn_pid.write(f"<write_param,{value_pid}>".encode())
-        self.conn_pid.readline().decode()
-
-    def get_temp_pb2(self) -> float:
-        """Ream parameter from the PID
-
-        Returns:
-            float: Parameter value from PID
-        """
-
-        self.conn_pid.write("<read_pb2>".encode())
-        try:
-            temp_value_pid = float(self.conn_pid.readline().decode())
-            temp_value = temp_value_pid / 10  # last digit from PID is decimal
-        except Exception:
-            LOGGER.info("Waiting for PID to respond")
-            time.sleep(1)
-            LOGGER.info(self.conn_pid.readline().decode())
-            self.conn_pid.readline().decode()
-            temp_value = 0
-        time.sleep(1)
-        LOGGER.info(f"Probe2 temperature: {temp_value}")
-        return temp_value
-
-    def wait_for_temp(self, target, temp_tol, max_wait_time=600):
-        """Wait for the temperature to reach the target temperature
-
-        Args: target (float): Target temperature in C
-        temp_tol (float): Temperature tolerance in C
-        max_wait_time (float): Maximum wait time in seconds. Defaulst to 600 seconds
-        """
-        LOGGER.info(f"Waiting for temperature to reach {target} C")
-        self.get_temp_pb2()
-        tmp_temp = self.get_temp_pb1()
-        start = time.perf_counter()
-        counter = 0
-        chamber_count = 0
-        while (target + temp_tol) < tmp_temp or (target - temp_tol) > tmp_temp:
-            time.sleep(1)
-            chamber_temp = self.get_temp_pb2()
-            tmp_temp = self.get_temp_pb1()
-            elapsed_time = time.perf_counter() - start
-            self.temp_to_csv(target, elapsed_time, chamber_temp, tmp_temp)
-            if counter > max_wait_time:
-                # self.set_temperature(20)
-                RuntimeError(
-                    f"Temperature did not reach the target temperature in {max_wait_time} seconds"
-                )
-            if chamber_temp > target + 5 and chamber_count < 1 and tmp_temp < target:
-                self.set_temperature(15)
-                time.sleep(2)
-                self.pid_off()
-                chamber_count = chamber_count + 1
-            counter = counter + 1
-        duration = time.perf_counter() - start
-        LOGGER.info(f"Temperature reached in {duration} seconds")
-
-    def temp_to_csv(self, target, elapsed_time, chamber_temperature, cell_temperature):
-        """Save temperature readings to csv file
-
-        Args:
-            target (float): Target temperature in C
-            chamber_temperature (float): Chamber temperature in C
-            cell_temperature (float): Cell temperature in C
-            elapsed_time (float): Elapsed time in seconds
-        """
-        t = time.localtime()
-        temperatures = pd.DataFrame(
-            [
-                [
-                    time.strftime("%H:%M:%S", t),
-                    elapsed_time,
-                    target,
-                    chamber_temperature,
-                    cell_temperature,
-                ]
-            ],
-        )
-        temperatures.to_csv(
-            "temperatures_cell_constant_probe2.csv", mode="a", header=False, index=False
-        )
-
-    def pid_on(self):
-        """Turn on the PID controller"""
-        self.conn_pid.write("<pid_on>".encode())
-        self.conn_pid.readline().decode()
-
-    def pid_off(self):
-        """Turn off the PID controller"""
-        self.conn_pid.write("<pid_off>".encode())
-        r = self.conn_pid.readline().decode()
-        LOGGER.info(r)
-
-    def clean_cell(
-        self, cleaning_pump: int, vol: float, syringe_max_volume: float = 6.0
-    ):
-        """Clean the test cell from the liquid speciifed by cleaning pump
-
-        Args:
-            cleaning_pump (int): pump which have the liquid
-            vol (float): volume of the cleaning liquid
-            syringe_max_volume (float, optional): Maximum volume of the syringe in ml.
-            Defaults to 6 ml.
-        """
-        self.drain_cell(20)
-        time.sleep(2)
-        self.transfer_liquid(20)
-        time.sleep(2)
-        self.drain_cell(20)
-        self.pump(
-            cleaning_pump, vol, "dispense", 3, syringe_max_volume=syringe_max_volume
-        )
-        time.sleep(2)
-        self.transfer_liquid(30)
-        time.sleep(2)
-        self.transfer_liquid(30)
-        time.sleep(2)
-        self.drain_cell(30)
-        time.sleep(2)
-        self.drain_cell(30)
-
-    def set_temperature_peltier(self, temp: float) -> None:
-        """Set the temperature setpoint for PID controller.
-
-        Args:
-            temp (float): Temperature of the liquid to be measured.
-        """
-
-        self.conn_pid.write(f"<set_temp,{temp}>".encode())
-
-        # self.conn_pid.readline().decode()
-        LOGGER.info(f"Set temperature to {temp} C")
-        time.sleep(2)
-
-    def get_temp_peltier(self) -> float:
-        """Measure the temeprature of the probe 1
-
-        Returns:
-            float: The measured temperature of the system in degree celsius.
-        """
-
-        self.conn_pid.write("<get_temp>".encode())
-        try:
-            probe_temp_pid = self.conn_pid.readline().decode()
-            probe_temp_pid = float(probe_temp_pid)
-            LOGGER.info(f"Probe1 Temperature: {probe_temp_pid} C")
-            time.sleep(1)
-        except Exception:
-            probe_temp_pid = 0  # TODO find smart way to convert to float
-            time.sleep(1)
-            LOGGER.info("Waiting for PID to respond")
-        return probe_temp_pid
-
-    def get_output_peltier(self) -> float:
-        """Get the output from PID controller for the peltier.
-
-        Returns:
-            float: The MOSFET output in the scale of 255.
-        """
-
-        self.conn_pid.write("<get_output>".encode())
-        try:
-            pid_output = float(self.conn_pid.readline().decode())
-        except Exception:
-            LOGGER.info("Waiting for PID to respond")
-            LOGGER.info(self.conn_pid.readline().decode())
-            pid_output = self.conn_pid.readline().decode()
-        time.sleep(1)
-        LOGGER.info(f"Output from PID: {pid_output} ")
-        return pid_output
-
-    def get_setpoint(self) -> float:
-        """Get the output from PID controller for the peltier.
-
-        Returns:
-            float: The MOSFET output in the scale of 255.
-        """
-
-        self.conn_pid.write("<get_setpoint>".encode())
-        try:
-            pid_output = float(self.conn_pid.readline().decode())
-        except Exception:
-            LOGGER.info("Waiting for PID to respond")
-            LOGGER.info(self.conn_pid.readline().decode())
-            pid_output = self.conn_pid.readline().decode()
-        time.sleep(1)
-        LOGGER.info(f"Setpoint from PID: {pid_output}C")
-        return pid_output
-
-    def peltier_off(self):
-        """Turn off the PID controller"""
-        self.conn_pid.write("<peltier_off>".encode())
-        r = self.conn_pid.readline().decode()
-        LOGGER.info(r)
-
-    def mix_ionic_liquids(self, vol_dict: dict) -> None:
-        """Mix the liquids based on the given volumes. Not that only dispense here.
-        Use the mix_liquids function if you need aspiration as well.
-          TODO : Make the wait time and speed userdefined
-
-        Args:
-            vol_dict (dict): Dictionary with keys as pump num and value as volumes.
-        """
-        for pump_num, volume in vol_dict.items():
-            if volume != 0.0:
-                # self.pump(pump_num, volume, "aspirate", 5)
-                # time.sleep(30)
-                self.pump(pump_num, volume, "dispense", 10)
-        time.sleep(2)
-
-    def mix_cleaning_ionic_liquids(self, vol_dict: dict) -> None:
-        """Mix the liquids based on the half of the given volumes for cleaning.
-          TODO : Volumes should be normalized based on user input
-
-        Args:
-            vol_dict (dict): Dictionary with keys as pump num and value as volumes.
-        """
-        for pump_num, volume in vol_dict.items():
-            if volume != 0.0:
-                # self.pump(pump_num, volume, "aspirate", 5)
-                # time.sleep(30)
-                self.pump(pump_num, volume / 2, "dispense", 10)
-        time.sleep(2)
-
-    def wait_for_temp_peltier(self, target, temp_tol, max_wait_time=900):
-        """Wait for the temperature to reach the target temperature
-
-        Args: target (float): Target temperature in C
-        temp_tol (float): Temperature tolerance in C
-        max_wait_time (float): Maximum wait time in seconds. Defaulst to 600 seconds
-        """
-        LOGGER.info(f"Waiting for temperature to reach {target} C")
-        tmp_temp = self.get_temp_peltier()
-        start = time.perf_counter()
-        counter = 0
-        while (target + temp_tol) < tmp_temp or (target - temp_tol) > tmp_temp:
-            time.sleep(1)
-            tmp_temp = self.get_temp_peltier()
-            # elapsed_time = time.perf_counter() - start
-            if counter > max_wait_time:
-                # self.set_temperature(20)
-                RuntimeError(
-                    f"Temperature did not reach the target temperature in {max_wait_time} seconds"
-                )
-            counter = counter + 1
-        duration = time.perf_counter() - start
-        LOGGER.info(f"Temperature reached in {duration} seconds")
 
     def define_arduino_port(self, search_string: str) -> str:
         """Find the port of the Arduino.
@@ -531,28 +350,6 @@ class Arduino:
         self.connection.write(f"<set_relay_on_time,{relay_num},{time_ms}>".encode())
         self.wait_for_arduino()
 
-    # def set_relay_on(self, relay_num: int) -> None:
-    #     """Set the relay on.
-
-    #     Args:
-    #         relay_num (int): Number of the relay.
-    #     """
-    #     LOGGER.info(f"Switching relay {relay_num} on")
-    #     self.connection.write(f"<set_relay_{relay_num}_on>".encode())
-    #     self.wait_for_arduino()
-    #     LOGGER.debug(f"Switched relay {relay_num} on successfully")
-
-    # def set_relay_off(self, relay_num: int) -> None:
-    #     """Set the relay off.
-
-    #     Args:
-    #         relay_num (int): Number of the relay.
-    #     """
-    #     LOGGER.info(f"Switching relay {relay_num} off")
-    #     self.connection.write(f"<set_relay_{relay_num}_off>".encode())
-    #     self.wait_for_arduino()
-    #     LOGGER.debug(f"Switched relay {relay_num} off successfully")
-
     def get_relay_status(self, relay_num: int) -> bool:
         """Get the status of the relay.
 
@@ -568,7 +365,7 @@ class Arduino:
         status = self.connection.readline().decode()
         if status == "True":
             LOGGER.info(f"Status of relay {relay_num}: High / On")
+            return True
         else:
             LOGGER.info(f"Status of relay {relay_num}: Low / Off")
-
-        return status == "True"
+            return False
