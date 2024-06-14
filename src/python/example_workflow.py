@@ -20,7 +20,7 @@ time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 # Initiate the robot
 robot = Arduino(
-    arduino_search_string="USB Serial",  # Change string to match arduino name
+    arduino_search_string="CH340",  # Change string to match arduino name
     list_of_cartridges=[
         0,
         1,
