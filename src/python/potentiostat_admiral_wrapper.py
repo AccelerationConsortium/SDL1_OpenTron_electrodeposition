@@ -43,7 +43,7 @@ class PotentiostatAdmiralWrapper():
             channel_to_use (int): The channel on the potentiostat
 
         """
-        LOGGER.debug("Initializing Potentiostat Admiral Wrapper")
+        LOGGER.debug("__init__: Initializing Potentiostat Admiral Wrapper")
 
         self.app = QApplication()  # Initialize the Qt application
         self.tracker = AisDeviceTracker.Instance()  # Initialize the device tracker
@@ -51,7 +51,7 @@ class PotentiostatAdmiralWrapper():
 
         # find device and report name
         self.tracker.newDeviceConnected.connect(
-            lambda deviceName: print("Device is Connected: %s" % deviceName)
+            lambda deviceName: LOGGER.info("Device is Connected: %s" % deviceName)
         )
         self.tracker.connectToDeviceOnComPort(port)
         self.experiment = AisExperiment()
@@ -64,35 +64,35 @@ class PotentiostatAdmiralWrapper():
         Args:
             channel (int): The channel to quit the application on potentiostat
         """
-        LOGGER.debug("Quitting the Qt application")
+        LOGGER.debug("_quitapp: Quitting the Qt application")
         self.app.quit()
-        LOGGER.info("Experiment Completed: %d" % channel)
+        LOGGER.info("_quitapp: Measurement Completed: %d" % channel)
 
     def _release_terminal(self):
-        LOGGER.debug("Releasing terminal")
+        LOGGER.debug("_release_terminal: Releasing terminal")
         self.handler.experimentStopped.connect(self._quitapp)
 
     def __del__(self):
-        LOGGER.debug("Deleting Potentiostat Admiral Wrapper")
+        LOGGER.debug("__del__: Deleting Potentiostat Admiral Wrapper")
         self._release_terminal()
 
     # send experiment to queue
     def _send_experiment(self, channelInUse: int):
-        LOGGER.debug("Sending experiment to queue")
+        LOGGER.debug("_send_experiment: Sending experiment to queue")
         self.handler.uploadExperimentToChannel(channelInUse, self.experiment)
 
     # run experiment
     def _run_experiment(self, channelInUse: int):
-        LOGGER.debug("Running experiment")
+        LOGGER.debug("_run_experiment: Running experiment")
         self.handler.startUploadedExperiment(channelInUse)
 
     # function to add element to experiment
     def _add_experiment_element(self, element):
-        LOGGER.debug("Appending element to experiment object")
+        LOGGER.debug("_add_experiment_element: Appending element to experiment object")
         self.experiment.appendElement(element)
 
     def get_data(self):
-        LOGGER.debug("Receiving AC data")
+        LOGGER.debug("get_data: Receiving AC data")
         self.handler.activeACDataReady.connect(
             lambda channel, data: print(
                 "timestamp: ,",
@@ -106,7 +106,7 @@ class PotentiostatAdmiralWrapper():
             )
         )
 
-        LOGGER.debug("Receiving DC data")
+        LOGGER.debug("get_data: Receiving DC data")
         self.handler.activeDCDataReady.connect(
             lambda channel, data: print(
                 "timestamp: ,",
