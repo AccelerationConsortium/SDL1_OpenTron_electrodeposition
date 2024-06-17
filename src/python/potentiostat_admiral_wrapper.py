@@ -1,4 +1,5 @@
 import sys
+import os
 import logging
 import SquidstatPyLibrary as SquidLib
 from SquidstatPyLibrary import AisCyclicVoltammetryElement
@@ -56,7 +57,7 @@ class PotentiostatAdmiralWrapper():
         self.handler = self.tracker.getInstrumentHandler(instrument_name)
 
         self.handler.activeDCDataReady.connect(
-            lambda channel, data: LOGGER.info(
+            lambda channel, data: print(
                 "timestamp:",
                 "{:.9f}".format(data.timestamp),
                 "workingElectrodeVoltage: ",
@@ -64,7 +65,7 @@ class PotentiostatAdmiralWrapper():
             )
         )
         self.handler.activeACDataReady.connect(
-            lambda channel, data: LOGGER.info(
+            lambda channel, data: print(
                 "frequency:",
                 "{:.9f}".format(data.frequency),
                 "absoluteImpedance: ",
@@ -74,7 +75,7 @@ class PotentiostatAdmiralWrapper():
             )
         )
         self.handler.experimentNewElementStarting.connect(
-            lambda channel, data: LOGGER.debug(
+            lambda channel, data: print(
                 "New Node beginning:",
                 data.stepName,
                 "step number: ",
@@ -126,7 +127,7 @@ class PotentiostatAdmiralWrapper():
     def get_data(self):
         LOGGER.debug("get_data: Receiving AC data")
         self.handler.activeACDataReady.connect(
-            lambda channel, data: LOGGER.debug(
+            lambda channel, data: print(
                 "Timestamp: ,",
                 "{:.9f}".format(data.timestamp),
                 "Frequency [Hz]:",
@@ -168,20 +169,6 @@ class PotentiostatAdmiralWrapper():
             )
         )
 
-        self.handler.activeDCDataReady.connect(
-            lambda channel, data: print(
-                "timestamp",
-                "{:.9f}".format(data.timestamp),
-                "workingElectrodeVoltage",
-                "{:.9f}".format(data.workingElectrodeVoltage),
-                "workingElectrodeCurrent:",
-                "{:.9f}".format(data.current),
-                "Temperature",
-                "{:.2f}".format(data.temperature),
-            )
-        )
-        print("Data Received")
-
     # function to return eisPotentiostatic element
     def runEISPotentiostatic(
         self,
@@ -202,6 +189,7 @@ class PotentiostatAdmiralWrapper():
             voltageAmplitude (float): The voltage amplitude
         """
         LOGGER.info("Running EIS Potiontiostatic")
+        self.get_data()
         eisElement = AisEISPotentiostaticElement(
             startFrequency, endFrequency, stepsPerDecade, voltageBias, voltageAmplitude
         )
@@ -223,4 +211,5 @@ class PotentiostatAdmiralWrapper():
             print(error.message())
 
         # Release the terminal and quit the Qt application
-        self._quitapp(self.channel_in_use)
+        self.app.quit()
+        os._exit(1)
