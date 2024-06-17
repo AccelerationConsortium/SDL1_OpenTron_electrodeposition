@@ -31,7 +31,7 @@ LOGGER = logging.getLogger(__name__)
 class PotentiostatAdmiralWrapper():
     def __init__(
         self,
-        instrument_name: str = "Puls1894",
+        instrument_name: str = "Plus1894",
         port: str = "COM5",
         channel_to_use: int = 0,
     ):

@@ -122,7 +122,7 @@ tracker.newDeviceConnected.connect(lambda deviceName: print("Device is Connected
 experiment = AisExperiment()
 
 tracker.connectToDeviceOnComPort("COM5")
-handler = tracker.getInstrumentHandler("Plus1984")
+handler = tracker.getInstrumentHandler("Plus1894")
 
 eisPotentiostatic = setEISPotentiostatic(
     startFrequency, endFrequency, stepsPerDecade, voltageBias, voltageAmplitude

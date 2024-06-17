@@ -1,8 +1,7 @@
 import SquidstatPyLibrary as SquidLib
 import os
 import sys
-import ExperimentList as AiAPIExperimentList
-
+import experimentList as AiAPIExperimentList
 from PySide2.QtWidgets import QApplication
 from SquidstatPyLibrary import AisDeviceTracker
 from SquidstatPyLibrary import AisCompRange
@@ -96,9 +95,9 @@ class FileWriter:
 
 # Create an instance of the FileWriter class
 # get file name from user input when starting script
-file_writer = FileWriter(sys.argv[1])
+# file_writer = FileWriter(sys.argv[1])
 # set up headers
-file_writer.write(str("Timestamp, WorkingElectrodePotential, WorkingElectrodeCurrent, Temperature"))
+# file_writer.write(str("Timestamp, WorkingElectrodePotential, WorkingElectrodeCurrent, Temperature"))
 
 # TODO put somewhere else!
 # tell me it is starting
@@ -117,8 +116,8 @@ subExperiment = AisExperiment()
 subExperiment2 = AisExperiment()
 
 
-tracker.connectToDeviceOnComPort("COM15")
-handler = tracker.getInstrumentHandler("Cycler1409")
+tracker.connectToDeviceOnComPort("COM5")
+handler = tracker.getInstrumentHandler("Puls1894")
 
 # quit app needed to write to file via pipe
 def quitapp(channel):
@@ -169,7 +168,7 @@ def writeData(channel, data):
 
 
 # write data when it comes in
-handler.activeDCDataReady.connect(writeData)
+# handler.activeDCDataReady.connect(writeData)
 
 # region
 # Setup experiments
@@ -196,15 +195,18 @@ openCircuit = AiAPIExperimentList.setOpenCircuit(duration, samplingInterval)
 
 # append element to experiment with 1 repeat
 # open circuit is basically a pause step
-experiment.appendElement(openCircuit, 1)
-experiment.appendElement(dcCurrentSweep, 1)
+#experiment.appendElement(openCircuit, 1)
+#experiment.appendElement(dcCurrentSweep, 1)
 
 # open circuit is basically a pause step
-subExperiment.appendElement(openCircuit, 1)
-subExperiment.appendElement(constantCurrent, 1)
+#subExperiment.appendElement(openCircuit, 1)
+#subExperiment.appendElement(constantCurrent, 1)
 
 # open circuit is basically a pause step
-experiment.appendElement(constantPotential, 1)
+#experiment.appendElement(constantPotential, 1)
+
+#eis
+experiment.appendElement(eisPotentiostatic, 1)
 
 # send experiment to queue
 handler.uploadExperimentToChannel(channelInUse, experiment)
