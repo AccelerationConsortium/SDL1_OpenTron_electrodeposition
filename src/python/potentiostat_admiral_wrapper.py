@@ -13,11 +13,19 @@ from SquidstatPyLibrary import AisNormalPulseVoltammetryElement
 from SquidstatPyLibrary import AisEISGalvanostaticElement
 from SquidstatPyLibrary import AisEISPotentiostaticElement
 from SquidstatPyLibrary import AisOpenCircuitElement
+from SquidstatPyLibrary import AisDeviceTracker
+from SquidstatPyLibrary import AisCompRange
+from SquidstatPyLibrary import AisDCData
+from SquidstatPyLibrary import AisACData
+from SquidstatPyLibrary import AisExperimentNode
+from SquidstatPyLibrary import AisErrorCode
+from SquidstatPyLibrary import AisExperiment
+from SquidstatPyLibrary import AisInstrumentHandler
 from PySide2.QtWidgets import QApplication
 # import pandas as pd
 
 
-class PotentiostatAdmiralWrapper(SquidLib, QApplication):
+class PotentiostatAdmiralWrapper():
     def __init__(
         self,
         instrument_name: str = "Puls1894",
@@ -35,7 +43,7 @@ class PotentiostatAdmiralWrapper(SquidLib, QApplication):
 
         self.app = QApplication()  # Initialize the Qt application
         self.tracker = AisDeviceTracker.Instance()  # Initialize the device tracker
-        self.data = pd.DataFrame(columns=["Timestamp", "Voltage [V]", "Current [A]"])
+        # self.data = pd.DataFrame(columns=["Timestamp", "Voltage [V]", "Current [A]"])
 
         # find device and report name
         self.tracker.newDeviceConnected.connect(
