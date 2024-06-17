@@ -102,6 +102,13 @@ class DataCollector:
         self.voltages.append(voltage)
         self.currents.append(current)
 
+
+# quit app needed to write to file via pipe
+def quitapp(channel):
+    print("Experiment Completed: %d" % channel)
+    app.quit()
+
+
 data_collector = DataCollector()
 
 # define application
@@ -117,23 +124,19 @@ experiment = AisExperiment()
 tracker.connectToDeviceOnComPort("COM5")
 handler = tracker.getInstrumentHandler("Plus1984")
 
-# quit app needed to write to file via pipe
-def quitapp(channel):
-    print("Experiment Completed: %d" % channel)
-    app.quit()
-
-# where data is actually handled, prints to console
-handler.activeACDataReady.connect(lambda channel, data: print("timestamp: ,", "{:.9f}".format(data.timestamp), "frequency:", "{:.9f}".format(data.frequency), "absoluteImpedance: ", "{:.9f}".format(data.absoluteImpedance), "phaseAngle: ", "{:.9f}".format(data.phaseAngle)))
-handler.activeDCDataReady.connect(lambda channel, data: print("timestamp: ,", "{:.9f}".format(data.timestamp), ", workingElectrodeVoltage: ,", "{:.9f}".format(data.workingElectrodeVoltage), ", workingElectrodeCurrent: ,", "{:.9f}".format(data.current), ", Temperature, ", "{:.2f}".format(data.temperature)))
-
-# stop the experiment and give the terminal back
-handler.experimentStopped.connect(quitapp)
-eisPotentiostatic = setEISPotentiostatic(startFrequency, endFrequency, stepsPerDecade, voltageBias, voltageAmplitude)
+eisPotentiostatic = setEISPotentiostatic(
+    startFrequency, endFrequency, stepsPerDecade, voltageBias, voltageAmplitude
+)
 experiment.appendElement(eisPotentiostatic, 1)
 # send experiment to queue
 handler.uploadExperimentToChannel(channelInUse, experiment)
 # start experiment
 handler.startUploadedExperiment(channelInUse)
 
-# run program, starts qt
-sys.exit(app.exec_())
+# where data is actually handled, prints to console
+handler.activeACDataReady.connect(lambda channel, data: print("timestamp: ,", "{:.9f}".format(data.timestamp), "frequency:", "{:.9f}".format(data.frequency), "absoluteImpedance: ", "{:.9f}".format(data.absoluteImpedance), "phaseAngle: ", "{:.9f}".format(data.phaseAngle)))
+handler.activeDCDataReady.connect(lambda channel, data: print("timestamp: ,", "{:.9f}".format(data.timestamp), ", workingElectrodeVoltage: ,", "{:.9f}".format(data.workingElectrodeVoltage), ", workingElectrodeCurrent: ,", "{:.9f}".format(data.current), ", Temperature, ", "{:.2f}".format(data.temperature)))
+
+
+# stop the experiment and give the terminal back
+handler.experimentStopped.connect(quitapp)
