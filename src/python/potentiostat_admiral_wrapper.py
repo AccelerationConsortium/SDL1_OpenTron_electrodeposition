@@ -56,7 +56,7 @@ class PotentiostatAdmiralWrapper():
         self.handler = self.tracker.getInstrumentHandler(instrument_name)
 
         self.handler.activeDCDataReady.connect(
-            lambda channel, data: print(
+            lambda channel, data: LOGGER.info(
                 "timestamp:",
                 "{:.9f}".format(data.timestamp),
                 "workingElectrodeVoltage: ",
@@ -64,7 +64,7 @@ class PotentiostatAdmiralWrapper():
             )
         )
         self.handler.activeACDataReady.connect(
-            lambda channel, data: print(
+            lambda channel, data: LOGGER.info(
                 "frequency:",
                 "{:.9f}".format(data.frequency),
                 "absoluteImpedance: ",
@@ -74,7 +74,7 @@ class PotentiostatAdmiralWrapper():
             )
         )
         self.handler.experimentNewElementStarting.connect(
-            lambda channel, data: print(
+            lambda channel, data: LOGGER.debug(
                 "New Node beginning:",
                 data.stepName,
                 "step number: ",
@@ -221,9 +221,6 @@ class PotentiostatAdmiralWrapper():
         error = self.handler.startUploadedExperiment(self.channel_in_use)
         if error != 0:
             print(error.message())
-
-        self.app.quit()
-        sys.exit(self.app.exec_())
 
         # Release the terminal and quit the Qt application
         self._quitapp(self.channel_in_use)
