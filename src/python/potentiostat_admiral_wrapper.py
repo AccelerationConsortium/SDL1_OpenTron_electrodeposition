@@ -57,6 +57,7 @@ class PotentiostatAdmiralWrapper():
         self.experiment = AisExperiment()
         self.channel_in_use = channel_to_use
         self.handler = self.tracker.getInstrumentHandler(instrument_name)
+        LOGGER.debug(f"__init__: handler: {self.handler}")
 
     def _quitapp(self, channel: int):
         """Quit Qt the application and release the terminal
