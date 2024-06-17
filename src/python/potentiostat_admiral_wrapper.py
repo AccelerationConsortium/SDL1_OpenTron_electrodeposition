@@ -1,4 +1,5 @@
 import sys
+import logging
 import SquidstatPyLibrary as SquidLib
 from SquidstatPyLibrary import AisCyclicVoltammetryElement
 from SquidstatPyLibrary import AisSquareWaveVoltammetryElement
@@ -23,6 +24,8 @@ from SquidstatPyLibrary import AisExperiment
 from SquidstatPyLibrary import AisInstrumentHandler
 from PySide2.QtWidgets import QApplication
 # import pandas as pd
+
+LOGGER = logging.getLogger(__name__)
 
 
 class PotentiostatAdmiralWrapper():
@@ -85,7 +88,7 @@ class PotentiostatAdmiralWrapper():
 
     # function to add element to experiment
     def _add_experiment_element(self, element):
-        self.experiment.addElement(element)
+        self.experiment.appendElement(element)
 
     def get_data(self):
         self.handler.activeACDataReady.connect(
