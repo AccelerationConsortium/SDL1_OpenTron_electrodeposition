@@ -19,4 +19,4 @@ time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 
 my_experiment = PotentiostatAdmiralWrapper()
-my_experiment.runEISPotentiostatic(100000, 1000, 10, 0.0, 0.1)
+my_experiment.runEISPotentiostatic(100000, 1000, 10, 0.001, 0.1)

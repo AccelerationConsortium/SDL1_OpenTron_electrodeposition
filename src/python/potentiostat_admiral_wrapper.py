@@ -124,7 +124,7 @@ class PotentiostatAdmiralWrapper():
 
         LOGGER.debug("get_data: Receiving DC data")
         self.handler.activeDCDataReady.connect(
-            lambda channel, data: LOGGER.debug(
+            lambda channel, data: print(
                 "timestamp: ,",
                 "{:.9f}".format(data.timestamp),
                 ", workingElectrodeVoltage: ,",
@@ -135,6 +135,25 @@ class PotentiostatAdmiralWrapper():
                 "{:.2f}".format(data.temperature),
             )
         )
+
+        global data
+        self.handler.activeDCDataReady.connect(
+            lambda channel, data: print(dict(
+                "timestamp",
+                "{:.9f}".format(data.timestamp),
+                "workingElectrodeVoltage",
+                "{:.9f}".format(data.workingElectrodeVoltage),
+                "workingElectrodeCurrent:",
+                "{:.9f}".format(data.current),
+                "Temperature",
+                "{:.2f}".format(data.temperature),
+            ))
+
+
+        )
+        print("Data Received")
+    
+
 
     # function to return constantCurrent element
     def setConstantCurrent(self, holdAtCurrent, samplingInterval, duration):
