@@ -119,9 +119,9 @@ class PotentiostatAdmiralWrapper():
         self.handler.startUploadedExperiment(channelInUse)
 
     # function to add element to experiment
-    def _add_experiment_element(self, element):
+    def _add_experiment_element(self, element, repeat: int = 1):
         LOGGER.debug("_add_experiment_element: Appending element to experiment object")
-        self.experiment.appendElement(element)
+        self.experiment.appendElement(element, repeat)
 
     def get_data(self):
         LOGGER.debug("get_data: Receiving AC data")
