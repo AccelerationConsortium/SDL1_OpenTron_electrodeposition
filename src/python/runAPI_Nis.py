@@ -1,7 +1,7 @@
 import SquidstatPyLibrary as SquidLib
 import os
 import sys
-import experimentList as AiAPIExperimentList
+import ExperimentList as AiAPIExperimentList
 
 from PySide2.QtWidgets import QApplication
 from SquidstatPyLibrary import AisDeviceTracker
@@ -14,7 +14,7 @@ from SquidstatPyLibrary import AisExperiment
 from SquidstatPyLibrary import AisInstrumentHandler
 
 
-#region
+# region
 steps = 0
 
 # PARAMETERS
@@ -63,7 +63,7 @@ powerVal = 0.0
 
 # channelToUse
 channelInUse = 0
-#endregion
+# endregion
 
 class DataCollector:
     def __init__(self):
@@ -102,7 +102,7 @@ file_writer.write(str("Timestamp, WorkingElectrodePotential, WorkingElectrodeCur
 
 # TODO put somewhere else!
 # tell me it is starting
-#print("starting cyclic voltammetry experiment via API")
+# print("starting cyclic voltammetry experiment via API")
 
 # define application
 app = QApplication()
@@ -171,7 +171,7 @@ def writeData(channel, data):
 # write data when it comes in
 handler.activeDCDataReady.connect(writeData)
 
-#region
+# region
 # Setup experiments
 constantCurrent = AiAPIExperimentList.setConstantCurrent(holdAtCurrent, samplingInterval, duration)
 constantPotential = AiAPIExperimentList.setConstantPotential(holdAtVoltage, samplingInterval, duration)
@@ -191,7 +191,7 @@ eisGalvanostatic = AiAPIExperimentList.setEISGalvanostatic(startFrequency, endFr
 eisPotentiostatic = AiAPIExperimentList.setEISPotentiostatic(startFrequency, endFrequency, stepsPerDecade, voltageBias, voltageAmplitude)
 
 openCircuit = AiAPIExperimentList.setOpenCircuit(duration, samplingInterval)
-#endregion
+# endregion
 
 
 # append element to experiment with 1 repeat

@@ -43,6 +43,7 @@ class PotentiostatAdmiralWrapper():
             channel_to_use (int): The channel on the potentiostat
 
         """
+        LOGGER.debug("Initializing Potentiostat Admiral Wrapper")
 
         self.app = QApplication()  # Initialize the Qt application
         self.tracker = AisDeviceTracker.Instance()  # Initialize the device tracker
@@ -63,34 +64,35 @@ class PotentiostatAdmiralWrapper():
         Args:
             channel (int): The channel to quit the application on potentiostat
         """
-        print("Experiment Completed: %d" % channel)
+        LOGGER.debug("Quitting the Qt application")
         self.app.quit()
+        LOGGER.info("Experiment Completed: %d" % channel)
 
     def _release_terminal(self):
+        LOGGER.debug("Releasing terminal")
         self.handler.experimentStopped.connect(self._quitapp)
 
     def __del__(self):
+        LOGGER.debug("Deleting Potentiostat Admiral Wrapper")
         self._release_terminal()
-
-    # def get_data(self, timestamp, voltage, current):
-    #     self.data = self.data.append(
-    #         {"Timestamp": timestamp, "Voltage [V]": voltage, "Current [A]": current},
-    #         ignore_index=True,
-    #     )
 
     # send experiment to queue
     def _send_experiment(self, channelInUse: int):
+        LOGGER.debug("Sending experiment to queue")
         self.handler.uploadExperimentToChannel(channelInUse, self.experiment)
 
     # run experiment
     def _run_experiment(self, channelInUse: int):
+        LOGGER.debug("Running experiment")
         self.handler.startUploadedExperiment(channelInUse)
 
     # function to add element to experiment
     def _add_experiment_element(self, element):
+        LOGGER.debug("Appending element to experiment object")
         self.experiment.appendElement(element)
 
     def get_data(self):
+        LOGGER.debug("Receiving AC data")
         self.handler.activeACDataReady.connect(
             lambda channel, data: print(
                 "timestamp: ,",
@@ -103,6 +105,8 @@ class PotentiostatAdmiralWrapper():
                 "{:.9f}".format(data.phaseAngle),
             )
         )
+
+        LOGGER.debug("Receiving DC data")
         self.handler.activeDCDataReady.connect(
             lambda channel, data: print(
                 "timestamp: ,",
@@ -154,6 +158,7 @@ class PotentiostatAdmiralWrapper():
         scanRate: float = 0.1,  # V/s
         samplingInterval: float = 0.1,  # s
     ):
+        LOGGER.info("Running Cyclic Voltammetry")
         cyclicVoltammetry = AisCyclicVoltammetryElement(
             startPotential,
             firstVoltageLimit,
@@ -225,6 +230,7 @@ class PotentiostatAdmiralWrapper():
             voltageBias (float): The voltage bias
             voltageAmplitude (float): The voltage amplitude
         """
+        LOGGER.info("Running EIS Potiontiostatic")
         eisPotentiostatic = AisEISPotentiostaticElement(
             startFrequency, endFrequency, stepsPerDecade, voltageBias, voltageAmplitude
         )
