@@ -46,21 +46,17 @@ class PotentiostatAdmiralWrapper():
         LOGGER.debug("__init__: Initializing Potentiostat Admiral Wrapper")
 
         self.app = QApplication()  # Initialize the Qt application
-        self.tracker = (
-            SquidLib.AisDeviceTracker.Instance()
-        )  # Initialize the device tracker
-        # self.data = pd.DataFrame(columns=["Timestamp", "Voltage [V]", "Current [A]"])
+        self.tracker = AisDeviceTracker.Instance()  # Initialize the device tracker
 
         # find device and report name
         self.tracker.newDeviceConnected.connect(
             lambda deviceName: LOGGER.info("Device is Connected: %s" % deviceName)
         )
         self.tracker.connectToDeviceOnComPort(port)
+        self.handler = self.tracker.getInstrumentHandler(instrument_name)
+
         self.experiment = SquidLib.AisExperiment()
         self.channel_in_use = channel_to_use
-        self.handler = self.tracker.getInstrumentHandler(instrument_name)
-        LOGGER.debug(f"__init__: handler: {self.handler}")
-        LOGGER.debug(f"__init__: experiment: {self.experiment}")
 
     def _quitapp(self, channel: int):
         """Quit Qt the application and release the terminal
