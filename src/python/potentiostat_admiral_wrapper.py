@@ -56,24 +56,25 @@ class PotentiostatAdmiralWrapper():
         self.tracker.connectToDeviceOnComPort(port)
         self.handler = self.tracker.getInstrumentHandler(instrument_name)
 
-        self.handler.activeDCDataReady.connect(
-            lambda channel, data: print(
-                "timestamp:",
-                "{:.9f}".format(data.timestamp),
-                "workingElectrodeVoltage: ",
-                "{:.9f}".format(data.workingElectrodeVoltage),
-            )
-        )
-        self.handler.activeACDataReady.connect(
-            lambda channel, data: print(
-                "frequency:",
-                "{:.9f}".format(data.frequency),
-                "absoluteImpedance: ",
-                "{:.9f}".format(data.absoluteImpedance),
-                "phaseAngle: ",
-                "{:.9f}".format(data.phaseAngle),
-            )
-        )
+        self.get_data()
+        # self.handler.activeDCDataReady.connect(
+        #     lambda channel, data: print(
+        #         "timestamp:",
+        #         "{:.9f}".format(data.timestamp),
+        #         "workingElectrodeVoltage: ",
+        #         "{:.9f}".format(data.workingElectrodeVoltage),
+        #     )
+        # )
+        # self.handler.activeACDataReady.connect(
+        #     lambda channel, data: print(
+        #         "frequency:",
+        #         "{:.9f}".format(data.frequency),
+        #         "absoluteImpedance: ",
+        #         "{:.9f}".format(data.absoluteImpedance),
+        #         "phaseAngle: ",
+        #         "{:.9f}".format(data.phaseAngle),
+        #     )
+        # )
         self.handler.experimentNewElementStarting.connect(
             lambda channel, data: print(
                 "New Node beginning:",
@@ -211,4 +212,3 @@ class PotentiostatAdmiralWrapper():
 
         # Release the terminal and quit the Qt application
         self.app.quit()
-        os._exit(1)
