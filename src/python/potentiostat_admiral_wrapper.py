@@ -13,10 +13,11 @@ from SquidstatPyLibrary import AisNormalPulseVoltammetryElement
 from SquidstatPyLibrary import AisEISGalvanostaticElement
 from SquidstatPyLibrary import AisEISPotentiostaticElement
 from SquidstatPyLibrary import AisOpenCircuitElement
-import pandas as pd
+from PySide2.QtWidgets import QApplication
+# import pandas as pd
 
 
-class PotentiostatAdmiralWrapper(SquidstatPyLibrary):
+class PotentiostatAdmiralWrapper(SquidLib, QApplication):
     def __init__(
         self,
         instrument_name: str = "Puls1894",
@@ -31,6 +32,7 @@ class PotentiostatAdmiralWrapper(SquidstatPyLibrary):
             channel_to_use (int): The channel on the potentiostat
 
         """
+
         self.app = QApplication()  # Initialize the Qt application
         self.tracker = AisDeviceTracker.Instance()  # Initialize the device tracker
         self.data = pd.DataFrame(columns=["Timestamp", "Voltage [V]", "Current [A]"])
