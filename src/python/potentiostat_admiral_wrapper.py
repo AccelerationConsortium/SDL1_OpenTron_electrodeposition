@@ -94,21 +94,37 @@ class PotentiostatAdmiralWrapper():
     def get_data(self):
         LOGGER.debug("get_data: Receiving AC data")
         self.handler.activeACDataReady.connect(
-            lambda channel, data: print(
-                "timestamp: ,",
+            lambda channel, data: LOGGER.debug(
+                "Timestamp: ,",
                 "{:.9f}".format(data.timestamp),
-                "frequency:",
+                "Frequency [Hz]:",
                 "{:.9f}".format(data.frequency),
-                "absoluteImpedance: ",
+                "Absolute Impedance: ",
                 "{:.9f}".format(data.absoluteImpedance),
-                "phaseAngle: ",
+                "Phase Angle: ",
                 "{:.9f}".format(data.phaseAngle),
+                "Real Impedance: ",
+                "{:.9f}".format(data.realImpedance),
+                "Imaginary Impedance: ",
+                "{:.9f}".format(data.imagImpedance),
+                "Total Harmonic Distortion: ",
+                "{:.9f}".format(data.totalHarmonicDistortion),
+                "Number of Cycles: ",
+                "{:.9f}".format(data.numberOfCycles),
+                "Working electrode DC Voltage: ",
+                "{:.9f}".format(data.workingElectrodeDCVoltage),
+                "DC Current: ",
+                "{:.9f}".format(data.DCCurrent),
+                "Current Amplitude: ",
+                "{:.9f}".format(data.currentAmplitude),
+                "Voltage Amplitude: ",
+                "{:.9f}".format(data.voltageAmplitude),
             )
         )
 
         LOGGER.debug("get_data: Receiving DC data")
         self.handler.activeDCDataReady.connect(
-            lambda channel, data: print(
+            lambda channel, data: LOGGER.debug(
                 "timestamp: ,",
                 "{:.9f}".format(data.timestamp),
                 ", workingElectrodeVoltage: ,",
