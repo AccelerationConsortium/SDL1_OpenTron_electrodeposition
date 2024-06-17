@@ -189,12 +189,11 @@ class PotentiostatAdmiralWrapper():
             voltageAmplitude (float): The voltage amplitude
         """
         LOGGER.info("Running EIS Potiontiostatic")
-        self.get_data()
+        # self.get_data()
         eisElement = AisEISPotentiostaticElement(
             startFrequency, endFrequency, stepsPerDecade, voltageBias, voltageAmplitude
         )
 
-        eisElement = AisEISPotentiostaticElement(10000, 1000, 10, 0.0, 0.1)
         self.experiment.appendElement(eisElement, repeat_experiment)
 
         # upload experiment to channel 1
@@ -202,13 +201,13 @@ class PotentiostatAdmiralWrapper():
             self.channel_in_use, self.experiment
         )
         if error != 0:
-            print(error.message())
+            LOGGER.info(error.message())
             # return
 
         # start experiment on channel 1
         error = self.handler.startUploadedExperiment(self.channel_in_use)
         if error != 0:
-            print(error.message())
+            LOGGER.info(error.message())
 
         # Release the terminal and quit the Qt application
         self.app.quit()
