@@ -50,10 +50,42 @@ class PotentiostatAdmiralWrapper():
 
         # find device and report name
         self.tracker.newDeviceConnected.connect(
-            lambda deviceName: LOGGER.info("Device is Connected: %s" % deviceName)
+            lambda deviceName: print("Device is Connected: %s" % deviceName)
         )
         self.tracker.connectToDeviceOnComPort(port)
         self.handler = self.tracker.getInstrumentHandler(instrument_name)
+
+        self.handler.activeDCDataReady.connect(
+            lambda channel, data: print(
+                "timestamp:",
+                "{:.9f}".format(data.timestamp),
+                "workingElectrodeVoltage: ",
+                "{:.9f}".format(data.workingElectrodeVoltage),
+            )
+        )
+        self.handler.activeACDataReady.connect(
+            lambda channel, data: print(
+                "frequency:",
+                "{:.9f}".format(data.frequency),
+                "absoluteImpedance: ",
+                "{:.9f}".format(data.absoluteImpedance),
+                "phaseAngle: ",
+                "{:.9f}".format(data.phaseAngle),
+            )
+        )
+        self.handler.experimentNewElementStarting.connect(
+            lambda channel, data: print(
+                "New Node beginning:",
+                data.stepName,
+                "step number: ",
+                data.stepNumber,
+                " step sub : ",
+                data.substepNumber,
+            )
+        )
+        self.handler.experimentStopped.connect(
+            lambda channel: print("Experiment Completed: %d" % channel)
+        )
 
         self.experiment = AisExperiment()
         self.channel_in_use = channel_to_use
