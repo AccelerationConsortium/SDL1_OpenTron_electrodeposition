@@ -136,9 +136,8 @@ class PotentiostatAdmiralWrapper():
             )
         )
 
-        global data
         self.handler.activeDCDataReady.connect(
-            lambda channel, data: print(dict(
+            lambda channel, data: print(
                 "timestamp",
                 "{:.9f}".format(data.timestamp),
                 "workingElectrodeVoltage",
@@ -147,9 +146,7 @@ class PotentiostatAdmiralWrapper():
                 "{:.9f}".format(data.current),
                 "Temperature",
                 "{:.2f}".format(data.temperature),
-            ))
-
-
+            )
         )
         print("Data Received")
     
