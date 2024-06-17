@@ -55,7 +55,7 @@ class PotentiostatAdmiralWrapper():
         self.tracker.connectToDeviceOnComPort(port)
         self.handler = self.tracker.getInstrumentHandler(instrument_name)
 
-        self.experiment = SquidLib.AisExperiment()
+        self.experiment = AisExperiment()
         self.channel_in_use = channel_to_use
 
     def _quitapp(self, channel: int):
