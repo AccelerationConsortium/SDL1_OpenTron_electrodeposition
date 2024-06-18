@@ -44,43 +44,60 @@ class AdmiralWrapper:
         )
 
     def handle_dc_data(self, channel, data):
-        self.dc_data_list = self.dc_data_list.append(
-            {
-                "Timestamp": data.timestamp,
-                "Working Electrode Voltage [V]": data.workingElectrodeVoltage,
-                "Working Electrode Current [A]": data.current,
-                "Temperature [C]": data.temperature,
-            },
-            ignore_index=True,
+        # Use concat to append the data to the dataframe
+        self.dc_data_list = pd.concat(
+            [
+                self.dc_data_list,
+                pd.DataFrame(
+                    {
+                        "Timestamp": [data.timestamp],
+                        "Working Electrode Voltage [V]": [data.workingElectrodeVoltage],
+                        "Working Electrode Current [A]": [data.current],
+                        "Temperature [C]": [data.temperature],
+                    }
+                ),
+            ]
         )
 
     def handle_ac_data(self, channel, data):
-        self.ac_data_list = self.ac_data_list.append(
-            {
-                "Timestamp": data.timestamp,
-                "Frequency [Hz]": data.frequency,
-                "Absolute Impedance": data.absoluteImpedance,
-                "Phase Angle": data.phaseAngle,
-                "Real Impedance": data.realImpedance,
-                "Imaginary Impedance": data.imagImpedance,
-                "Total Harmonic Distortion": data.totalHarmonicDistortion,
-                "Number of Cycles": data.numberOfCycles,
-                "Working electrode DC Voltage [V]": data.workingElectrodeDCVoltage,
-                "DC Current [A]": data.DCCurrent,
-                "Current Amplitude": data.currentAmplitude,
-                "Voltage Amplitude": data.voltageAmplitude,
-            },
-            ignore_index=True,
+        # Use concat to append the data to the dataframe
+        self.ac_data_list = pd.concat(
+            [
+                self.ac_data_list,
+                pd.DataFrame(
+                    {
+                        "Timestamp": [data.timestamp],
+                        "Frequency [Hz]": [data.frequency],
+                        "Absolute Impedance": [data.absoluteImpedance],
+                        "Phase Angle": [data.phaseAngle],
+                        "Real Impedance": [data.realImpedance],
+                        "Imaginary Impedance": [data.imagImpedance],
+                        "Total Harmonic Distortion": [data.totalHarmonicDistortion],
+                        "Number of Cycles": [data.numberOfCycles],
+                        "Working electrode DC Voltage [V]": [
+                            data.workingElectrodeDCVoltage
+                        ],
+                        "DC Current [A]": [data.DCCurrent],
+                        "Current Amplitude": [data.currentAmplitude],
+                        "Voltage Amplitude": [data.voltageAmplitude],
+                    }
+                ),
+            ]
         )
 
     def handle_new_element(self, channel, data):
-        self.new_element_list = self.new_element_list.append(
-            {
-                "Step Name": data.stepName,
-                "Step Number": data.stepNumber,
-                "Substep Number": data.substepNumber,
-            },
-            ignore_index=True,
+        # Use concat instead of append to append the data to the dataframe
+        self.new_element_list = pd.concat(
+            [
+                self.new_element_list,
+                pd.DataFrame(
+                    {
+                        "Step Name": [data.stepName],
+                        "Step Number": [data.stepNumber],
+                        "Substep Number": [data.substepNumber],
+                    }
+                ),
+            ]
         )
 
     def on_device_connected(self, device_name):
@@ -186,8 +203,7 @@ class AdmiralWrapper:
 eis_measurement = AdmiralWrapper()
 eis_measurement.connect_to_device("COM5")
 eis_measurement.setup_data_handlers()
-eis_measurement.potentiostaticEIS()
-
+eis_measurement.run_potentiostaticEIS()
 eis_measurement.app.exec_()
 
 print("DC Data:")
