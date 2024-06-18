@@ -1,7 +1,8 @@
 import logging
 from datetime import datetime
-from potentiostat_admiral_wrapper import PotentiostatAdmiralWrapper
 import sys
+import admiral 
+from admiral import AdmiralSquidstatWrapper
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
@@ -18,5 +19,12 @@ logging.basicConfig(
 time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 
-my_experiment = PotentiostatAdmiralWrapper()
-my_experiment.runEISPotentiostatic(100000, 1000, 10, 0.001, 0.1)
+my_experiment = AdmiralSquidstatWrapper(port="COM5", instrument_name="Plus1894")
+my_experiment.setup_EIS_potentiostatic(10000, 1000, 10, 0, 0.1, 1)
+ac_data, dc_data = my_experiment.get_data()
+my_experiment.close_experiment()
+
+print("AC data:")
+print(ac_data)
+print("DC data:")
+print(dc_data)
