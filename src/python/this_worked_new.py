@@ -13,36 +13,53 @@ class EISMeasurement:
         self.tracker = AisDeviceTracker.Instance()
         self.handler = None
 
-    def on_device_connected(self, device_name):
-        print("Device is Connected: %s" % device_name)
+        self.dc_data_list = []
+        self.ac_data_list = []
+        self.new_element_list = []
 
     def handle_dc_data(self, channel, data):
-        print(
-            "timestamp:",
-            "{:.9f}".format(data.timestamp),
-            "workingElectrodeVoltage: ",
-            "{:.9f}".format(data.workingElectrodeVoltage),
-        )
+        self.dc_data_list.append((data.timestamp, data.workingElectrodeVoltage))
 
     def handle_ac_data(self, channel, data):
-        print(
-            "frequency:",
-            "{:.9f}".format(data.frequency),
-            "absoluteImpedance: ",
-            "{:.9f}".format(data.absoluteImpedance),
-            "phaseAngle: ",
-            "{:.9f}".format(data.phaseAngle),
+        self.ac_data_list.append(
+            (data.frequency, data.absoluteImpedance, data.phaseAngle)
         )
 
     def handle_new_element(self, channel, data):
-        print(
-            "New Node beginning:",
-            data.stepName,
-            "step number: ",
-            data.stepNumber,
-            " step sub : ",
-            data.substepNumber,
+        self.new_element_list.append(
+            (data.stepName, data.stepNumber, data.substepNumber)
         )
+
+    def on_device_connected(self, device_name):
+        print("Device is Connected: %s" % device_name)
+
+    # def handle_dc_data(self, channel, data):
+    #     print(
+    #         "timestamp:",
+    #         "{:.9f}".format(data.timestamp),
+    #         "workingElectrodeVoltage: ",
+    #         "{:.9f}".format(data.workingElectrodeVoltage),
+    #     )
+
+    # def handle_ac_data(self, channel, data):
+    #     print(
+    #         "frequency:",
+    #         "{:.9f}".format(data.frequency),
+    #         "absoluteImpedance: ",
+    #         "{:.9f}".format(data.absoluteImpedance),
+    #         "phaseAngle: ",
+    #         "{:.9f}".format(data.phaseAngle),
+    #     )
+
+    # def handle_new_element(self, channel, data):
+    #     print(
+    #         "New experiment/node beginning:",
+    #         data.stepName,
+    #         "step number: ",
+    #         data.stepNumber,
+    #         " step sub : ",
+    #         data.substepNumber,
+    #     )
 
     def handle_experiment_stopped(self, channel):
         print("Experiment Completed: %d" % channel)
@@ -80,3 +97,7 @@ eis_measurement = EISMeasurement()
 eis_measurement.connect_to_device("COM5")
 eis_measurement.setup_data_handlers()
 eis_measurement.run_experiment()
+print("DC Data:")
+print(eis_measurement.dc_data_list)
+print("AC Data:")
+print(eis_measurement.ac_data_list)
