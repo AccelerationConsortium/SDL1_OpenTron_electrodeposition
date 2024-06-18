@@ -1,23 +1,21 @@
 import sys
+import struct
 from PySide2.QtWidgets import QApplication
-from typing import List
 import SquidstatPyLibrary as SquidLib
-from SquidstatPyLibrary import (
-    AisDeviceTracker,
-    AisCompRange,
-    AisDCData,
-    AisACData,
-    AisExperimentNode,
-    AisErrorCode,
-    AisExperiment,
-    AisInstrumentHandler,
-    AisConstantPotElement,
-    AisEISPotentiostaticElement,
-    AisConstantCurrentElement,
-    AisEISGalvanostaticElement,
-)
+from SquidstatPyLibrary import AisDeviceTracker
+from SquidstatPyLibrary import AisCompRange
+from SquidstatPyLibrary import AisDCData
+from SquidstatPyLibrary import AisACData
+from SquidstatPyLibrary import AisExperimentNode
+from SquidstatPyLibrary import AisErrorCode
+from SquidstatPyLibrary import AisExperiment
+from SquidstatPyLibrary import AisInstrumentHandler
+from SquidstatPyLibrary import AisConstantPotElement
+from SquidstatPyLibrary import AisEISPotentiostaticElement
+from SquidstatPyLibrary import AisConstantCurrentElement
+from SquidstatPyLibrary import AisEISGalvanostaticElement
 
-AC_DATA_ARRAY: List[str] = []
+VARIABEL = []
 
 def onDeviceConnected(deviceName):
     global DEVICE_NAME
@@ -35,12 +33,15 @@ def handleDCData(channel, data):
 
 
 def handleACData(channel, data):
-    ac_data_str = (
-        "frequency: {:.9f}, absoluteImpedance: {:.9f}, phaseAngle: {:.9f}".format(
-            data.frequency, data.absoluteImpedance, data.phaseAngle
-        )
+    print(
+        "frequency:",
+        "{:.9f}".format(data.frequency),
+        "absoluteImpedance: ",
+        "{:.9f}".format(data.absoluteImpedance),
+        "phaseAngle: ",
+        "{:.9f}".format(data.phaseAngle),
     )
-    AC_DATA_ARRAY.append(ac_data_str)
+    VARIABEL.append(data.frequency)
 
 
 def handleNewElement(channel, data):
@@ -92,6 +93,7 @@ def runExperiment(port):
 
     app.quit()
 
+
 DEVICE_NAME = ""
 runExperiment("COM5")
-print(AC_DATA_ARRAY)
+print(VARIABEL)
