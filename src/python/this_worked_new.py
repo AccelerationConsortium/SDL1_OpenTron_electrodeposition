@@ -90,13 +90,16 @@ class EISMeasurement:
             print(error.message())
 
         # self.app.exec_()  # Execute the code above, in particular the signal handlers
-        sys.exit(self.app.exec_())
+        # sys.exit(self.app.exec_())
 
 
 eis_measurement = EISMeasurement()
 eis_measurement.connect_to_device("COM5")
 eis_measurement.setup_data_handlers()
 eis_measurement.run_experiment()
+
+eis_measurement.app.exec_()
+
 print("DC Data:")
 print(eis_measurement.dc_data_list)
 print("AC Data:")
