@@ -70,8 +70,10 @@ class EISMeasurement:
         if error != 0:
             print(error.message())
 
-        self.app.exec_()
-        self.app.quit()
+        self.app.aboutToQuit.connect(
+            self.handler.stopAllExperiments
+        )  # Stop all experiments when the application is about to quit
+        self.app.exec_()  # Execute the code above, in particular the signal handlers
 
 
 eis_measurement = EISMeasurement()
