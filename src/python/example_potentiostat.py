@@ -1,7 +1,7 @@
 import logging
 from datetime import datetime
 import sys
-from ....AdmiralSquidstatWrapper import admiral as AdmiralSquidstatWrapper
+from admiral import AdmiralSquidstatWrapper
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
