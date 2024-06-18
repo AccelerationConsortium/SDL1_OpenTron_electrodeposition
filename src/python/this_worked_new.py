@@ -4,7 +4,6 @@ from SquidstatPyLibrary import (
     AisExperiment,
     AisEISPotentiostaticElement,
 )
-import os
 import sys
 
 
