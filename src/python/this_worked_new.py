@@ -4,6 +4,8 @@ from SquidstatPyLibrary import (
     AisExperiment,
     AisEISPotentiostaticElement,
 )
+import os
+import sys
 
 
 class EISMeasurement:
@@ -45,6 +47,7 @@ class EISMeasurement:
 
     def handle_experiment_stopped(self, channel):
         print("Experiment Completed: %d" % channel)
+        self.app.quit()
 
     def connect_to_device(self, port):
         self.tracker.newDeviceConnected.connect(self.on_device_connected)
@@ -70,10 +73,8 @@ class EISMeasurement:
         if error != 0:
             print(error.message())
 
-        self.app.aboutToQuit.connect(
-            self.handler.stopAllExperiments
-        )  # Stop all experiments when the application is about to quit
-        self.app.exec_()  # Execute the code above, in particular the signal handlers
+        # self.app.exec_()  # Execute the code above, in particular the signal handlers
+        sys.exit(self.app.exec_())
 
 
 eis_measurement = EISMeasurement()
