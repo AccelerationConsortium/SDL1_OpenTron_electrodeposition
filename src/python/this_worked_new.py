@@ -15,7 +15,6 @@ from SquidstatPyLibrary import AisEISPotentiostaticElement
 from SquidstatPyLibrary import AisConstantCurrentElement
 from SquidstatPyLibrary import AisEISGalvanostaticElement
 
-VARIABEL = []
 
 def onDeviceConnected(deviceName):
     global DEVICE_NAME
@@ -41,7 +40,6 @@ def handleACData(channel, data):
         "phaseAngle: ",
         "{:.9f}".format(data.phaseAngle),
     )
-    VARIABEL.append(data.frequency)
 
 
 def handleNewElement(channel, data):
@@ -96,4 +94,3 @@ def runExperiment(port):
 
 DEVICE_NAME = ""
 runExperiment("COM5")
-print(VARIABEL)
