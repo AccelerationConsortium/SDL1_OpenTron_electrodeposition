@@ -70,6 +70,7 @@ class EISMeasurement:
         if error != 0:
             print(error.message())
 
+        self.app.exec_()
         self.app.quit()
 
 
