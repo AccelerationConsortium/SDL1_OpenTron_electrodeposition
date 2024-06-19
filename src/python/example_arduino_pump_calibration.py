@@ -12,7 +12,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(DATA_PATH + "main.log", mode="a"),
+        logging.FileHandler(DATA_PATH + "example_arduino_pump_calibration.log", mode="a"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -20,7 +20,7 @@ time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 # Initiate the robot
 robot = Arduino(
-    arduino_search_string="USB Serial",  # Change string to match arduino name
+    arduino_search_string="CH340",  # Change string to match arduino name
     list_of_cartridges=[
         0,
         1,
@@ -38,14 +38,12 @@ robot = Arduino(
 # This can, combined with temparature, be used to calibrate the pumps by
 # converting to flow and then making a linear regression to find
 # the slope and intercept for each pump.
-robot.set_pump_on(1, 0.5)
-time.sleep(10)
-robot.set_pump_on(1, 1)
-time.sleep(10)
-robot.set_pump_on(1, 2)
-time.sleep(10)
-robot.set_pump_on(1, 5)
-time.sleep(10)
-robot.set_pump_on(1, 10)
-time.sleep(10)
-robot.set_pump_on(1, 15)
+
+list_of_times = [0.5, 1, 2, 5, 10, 15]
+# Ask for user input
+pump_number = int(input("Enter pump number to calibrate: "))
+for seconds in list_of_times:
+    input(f"Press enter to dispense {seconds} seconds: ")
+    robot.set_pump_on(pump_number, seconds)
+
+print("Calibration done")
