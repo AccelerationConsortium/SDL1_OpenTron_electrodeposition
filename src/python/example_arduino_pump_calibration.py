@@ -33,6 +33,8 @@ robot = Arduino(
 ###############################################################################
 # Workflow
 ###############################################################################
+
+robot.set_temperature(1, 35)
 # Write down the weight of dispensed water and tare in between dispensing.
 # Repeat for each pump 3 times.
 # This can, combined with temparature, be used to calibrate the pumps by
