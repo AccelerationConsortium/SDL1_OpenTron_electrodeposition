@@ -190,7 +190,7 @@ void setup() {
 
 void loop() {
   // Updating the sensor values
-  delay(2000);
+  delay(1000);
   sample_temperature0 = read_sample_temperature(0);
   sample_temperature1 = read_sample_temperature(1);
  

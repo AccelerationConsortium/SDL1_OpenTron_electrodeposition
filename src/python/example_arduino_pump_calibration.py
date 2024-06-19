@@ -6,8 +6,8 @@ import time
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
-ARDUINO_NAME = "CH340"  # Arduino name on Windows
-# ARDUINO_NAME = "USB Serial"  # Arduino name on Mac
+# ARDUINO_NAME = "CH340"  # Arduino name on Windows
+ARDUINO_NAME = "USB Serial"  # Arduino name on Mac
 
 # Initialize logging
 logging.basicConfig(

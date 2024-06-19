@@ -1,20 +1,27 @@
-from ardu import Arduino
+from .ardu import Arduino
 import logging
 from datetime import datetime
 import sys
 import time
 from admiral import AdmiralSquidstatWrapper
+from .parameters import (
+    list_of_pump_relays,
+    list_of_ultrasonic_relays,
+    pump_slope,
+    pump_intercept,
+    sample_surface_area,
+    current_at_sample,
+    volume_of_well,
+    volume_of_pipette,
+    peristaltic_pump_content,
+)
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
 NAME_OF_ARDUINO = "CH340"
 
 # Surface area of sample in cm^2
-sample_surface_area = 0.2827
-current_density = 0.020  # A/cm^2
-current_at_sample = sample_surface_area * current_density
-volume_of_well = 3.9  # mL
-volume_of_pipette = 1  # mL
+
 
 # Initialize logging
 logging.basicConfig(
@@ -34,44 +41,16 @@ robot = Arduino(
         0,
         1,
     ],  # List of cartridges, where len(list) = number of cartridges
-    list_of_pump_relays=[0, 1, 2, 3, 4, 5],  # Pumps connected to which relays
-    list_of_ultrasonic_relays=[6, 7],  # Ultrasonic connected to which relays
-    pump_slope={0: 2.0369, 1: 2.0263, 2: 2.0263, 3: 2.0263, 4: 2.0263, 5: 2.0263},
-    pump_intercept={0: 0.1407, 1: 0.0607, 2: 0.0607, 3: 0.0607, 4: 0.0607, 5: 0.0607},
+    list_of_pump_relays=list_of_pump_relays,
+    list_of_ultrasonic_relays=list_of_ultrasonic_relays,
+    pump_slope=pump_slope,
+    pump_intercept=pump_intercept,
 )
 
 # Initialize the Admiral Squidstat Plus potentiostat
 measurement = AdmiralSquidstatWrapper(port="COM5", instrument_name="Plus1894")
 
-wells = {
-    0: "A1",
-    1: "A2",
-    2: "A3",
-    3: "A4",
-    4: "A5",
-    5: "B1",
-    6: "B2",
-    7: "B3",
-    8: "B4",
-    9: "B5",
-    10: "C1",
-    11: "C2",
-    12: "C3",
-    13: "C4",
-}
 
-pipetteable_chemicals = {
-    "NH4OH": "A1",
-    "KCHO": "A2",
-    "KOH": "A3",
-    "Ni": "A4",
-    "Fe": "B1",
-    "Cr": "B2",
-    "Mn": "B3",
-    "Co": "B4",
-    "Zn": "B5",
-    "Cu": "C1",
-}
 ###############################################################################
 # Workflow
 ###############################################################################
@@ -89,21 +68,32 @@ volumes = {
     "Cu": 1,
 }
 # Set temperature to 35 degrees for cartridge 0
-robot.set_temperature(0, 0)
+robot.set_temperature(0, 25)
 # Set temperature to 35 degrees for cartridge 1
-robot.set_temperature(1, 0)
+robot.set_temperature(1, 35)
 
 # Pick up flush tool
 # Go to well
+
 # Flush well with water
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_H2O"], 1.0)
 # Drain well
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 2.0)
 # Flush well with HCl
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_HCl"], 1.0)
+
 # Apply ultrasound for 30 seconds
+robot.set_ultrasound_on(1, 30)
 # Drain well
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 2.0)
 # Flush well with water
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_H2O"], 1.0)
 # Drain well
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 2.0)
 # Flush well with water
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_H2O"], 1.0)
 # Drain well
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 2.0)
 
 # Put back flush tool
 
@@ -133,18 +123,26 @@ measurement.clear_data()
 
 # Pick up the flush tool
 # Go to well
+
 # Flush well with water
-# Apply ultrasound
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_H2O"], 1.0)
 # Drain well
-# Stop ultrasound
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 2.0)
 # Flush well with HCl
-# Apply ultrasound
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_HCl"], 1.0)
+# Apply ultrasound for 10 seconds
+robot.set_ultrasound_on(1, 10)
 # Drain well
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 2.0)
 # Flush well with water
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_H2O"], 1.0)
 # Drain well
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 2.0)
 # Flush well with water
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_H2O"], 1.0)
 # Drain well
-# Stop ultrasound
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 2.0)
+
 
 # Put back the flush tool
 
@@ -152,7 +150,7 @@ measurement.clear_data()
 
 # Pick up electrochemical testing electrode
 
-# Electrochemical testing
+###### Electrochemical testing
 # 0 - Electrochemical Activation
 measurement.setup_constant_current(
     holdAtCurrent=0.2 * sample_surface_area, samplingInterval=0.05, duration=60
@@ -278,15 +276,21 @@ measurement.setup_cyclic_voltammetry(
 
 # Pick up the flush tool
 # Go to well
-# Flush well with water
-# Apply ultrasound
+
 # Drain well
-# Stop ultrasound
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 4.0)
 # Flush well with water
-# Apply ultrasound
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_H2O"], 1.0)
 # Drain well
-# Stop ultrasound
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 2.0)
+# Flush well with water
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_H2O"], 1.0)
+# Apply ultrasound
+robot.set_ultrasound_on(1, 10)
+# Drain well
+robot.dispense_ml(peristaltic_pump_content["Flush_tool_Drain"], 2.0)
 
 # Put back the flush tool
 
 # Return potential at 10 mA/cm^2s
+print("Done\n")
