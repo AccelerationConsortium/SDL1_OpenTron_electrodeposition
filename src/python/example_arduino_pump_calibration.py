@@ -33,19 +33,21 @@ robot = Arduino(
 ###############################################################################
 # Workflow
 ###############################################################################
+
+robot.set_temperature(1, 35)
 # Write down the weight of dispensed water and tare in between dispensing.
 # Repeat for each pump 3 times.
 # This can, combined with temparature, be used to calibrate the pumps by
 # converting to flow and then making a linear regression to find
 # the slope and intercept for each pump.
-robot.set_pump_on(1, 0.5)
-time.sleep(10)
-robot.set_pump_on(1, 1)
-time.sleep(10)
-robot.set_pump_on(1, 2)
-time.sleep(10)
-robot.set_pump_on(1, 5)
-time.sleep(10)
-robot.set_pump_on(1, 10)
-time.sleep(10)
-robot.set_pump_on(1, 15)
+# robot.set_pump_on(1, 0.5)
+# time.sleep(10)
+# robot.set_pump_on(1, 1)
+# time.sleep(10)
+# robot.set_pump_on(1, 2)
+# time.sleep(10)
+# robot.set_pump_on(1, 5)
+# time.sleep(10)
+# robot.set_pump_on(1, 10)
+# time.sleep(10)
+# robot.set_pump_on(1, 15)
