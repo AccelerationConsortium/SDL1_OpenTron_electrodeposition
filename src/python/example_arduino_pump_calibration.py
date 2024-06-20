@@ -1,4 +1,4 @@
-from ardu import Arduino
+from .ardu import Arduino
 import logging
 from datetime import datetime
 import sys
