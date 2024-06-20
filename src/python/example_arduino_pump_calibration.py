@@ -6,6 +6,8 @@ import time
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
+# ARDUINO_NAME = "CH340"  # Arduino name on Windows
+ARDUINO_NAME = "USB Serial"  # Arduino name on Mac
 
 # Initialize logging
 logging.basicConfig(
@@ -20,7 +22,7 @@ time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 # Initiate the robot
 robot = Arduino(
-    arduino_search_string="CH340",  # Change string to match arduino name
+    arduino_search_string=ARDUINO_NAME,
     list_of_cartridges=[
         0,
         1,

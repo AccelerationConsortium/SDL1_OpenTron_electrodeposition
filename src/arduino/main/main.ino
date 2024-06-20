@@ -179,8 +179,8 @@ void setup() {
   read_from_eeprom_setPoints();
 
   // if temperature is more than 4 degrees below or above setpoint, OUTPUT will be set to min or max respectively
-  PID0.setBangBang(5);
-  PID1.setBangBang(5);
+  PID0.setBangBang(2);
+  PID1.setBangBang(2);
   //set PID update interval to 1200ms
   PID0.setTimeStep(1200);
   PID1.setTimeStep(1200);
@@ -190,7 +190,7 @@ void setup() {
 
 void loop() {
   // Updating the sensor values
-  delay(2000);
+  delay(1000);
   sample_temperature0 = read_sample_temperature(0);
   sample_temperature1 = read_sample_temperature(1);
  
