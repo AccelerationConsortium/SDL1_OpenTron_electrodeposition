@@ -7,7 +7,7 @@ from opentronsHTTPAPI_clientBuilder import opentronsClient
 # Folder where data and log-file will be saved
 DATA_PATH = ""
 NAME_OF_ARDUINO = "CH340"
-OPENTRON_PIPETTE = "p1000_single"
+OPENTRON_PIPETTE = "p1000_single_gen2"
 
 # Surface area of sample in cm^2
 sample_surface_area = 0.2827
@@ -44,7 +44,7 @@ OT_well_plate = "nis_15_wellplate_3895ul"
 # Cleaning cell for the openTron tools
 openTron.loadLabware(9, "../opentron_labware/nis_2_wellplate_30000ul.json")
 # Load pipette tip rack
-openTron.loadLabware(1, "../opentron_labware/nis_96_tip_rack_1000ul.json")
+openTron.loadLabware(1, "../opentron_labware/opentrons_96_tiprack_1000ul.json")
 
 ###############################################################################
 # Workflow
