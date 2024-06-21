@@ -2,12 +2,13 @@ from ardu import Arduino
 import logging
 from datetime import datetime
 import sys
-from opentronsHTTPAPI_clientBuilder import opentronsClient
+from opentronwrapper import opentronsClient
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
 NAME_OF_ARDUINO = "CH340"
 OPENTRON_PIPETTE = "p1000_single_gen2"
+
 
 # Surface area of sample in cm^2
 sample_surface_area = 0.2827

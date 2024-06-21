@@ -1,7 +1,7 @@
 #%%
 import time
 import pandas as pd
-from biologic import connect, BANDWIDTH
+from biologic import connect, BANDWIDTH, I_RANGE
 from biologic.techniques.cv import CVTechnique, CVParams, CVStep
 from biologic.techniques.ocv import OCVTechnique, OCVParams
 from biologic.techniques.peis import PEISTechnique, PEISParams, SweepMode
@@ -13,8 +13,9 @@ print("CP technique")
 params = CPParams(record_every_dE=0.01,
                   record_every_dT=1,
                   n_cycles=1,
-                  steps=[CPStep(current=0.1, duration=10, vs_initial=False)],
+                  steps=[CPStep(current=0.01, duration=10, vs_initial=False)],
                   bandwidth=BANDWIDTH.BW_5,
+                  I_range=I_RANGE.I_RANGE_100mA,
                   )
 
 tech = CPTechnique(params)
