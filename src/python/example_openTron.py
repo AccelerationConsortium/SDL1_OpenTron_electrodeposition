@@ -29,7 +29,7 @@ logging.basicConfig(
 time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 # Initiate the openTron
-openTron = opentronsClient("100.64.78.193")
+openTron = opentronsClient("100.67.86.197")
 
 ##### Load labware for the openTron
 # Tools
@@ -139,152 +139,152 @@ openTron.pickUpTip(
 # Go to well and park with the tip dipped in the well
 
 # Apply constant current for X seconds
-measurement.setup_constant_current(
-    holdAtCurrent=current_at_sample, samplingInterval=0.1, duration=10
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# measurement.setup_constant_current(
+#     holdAtCurrent=current_at_sample, samplingInterval=0.1, duration=10
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# Put back the Ni deposition tool
+# # Put back the Ni deposition tool
 
-# Pick up the flush tool
-# Go to well
-# Flush well with water
-# Apply ultrasound
-# Drain well
-# Stop ultrasound
-# Flush well with HCl
-# Apply ultrasound
-# Drain well
-# Flush well with water
-# Drain well
-# Flush well with water
-# Drain well
-# Stop ultrasound
+# # Pick up the flush tool
+# # Go to well
+# # Flush well with water
+# # Apply ultrasound
+# # Drain well
+# # Stop ultrasound
+# # Flush well with HCl
+# # Apply ultrasound
+# # Drain well
+# # Flush well with water
+# # Drain well
+# # Flush well with water
+# # Drain well
+# # Stop ultrasound
 
-# Put back the flush tool
+# # Put back the flush tool
 
-# Pipette 80% of the volume of KOH into the well
+# # Pipette 80% of the volume of KOH into the well
 
-# Pick up electrochemical testing electrode
+# # Pick up electrochemical testing electrode
 
-# Electrochemical testing
-# 0 - Electrochemical Activation
-measurement.setup_constant_current(
-    holdAtCurrent=0.2 * sample_surface_area, samplingInterval=0.05, duration=60
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # Electrochemical testing
+# # 0 - Electrochemical Activation
+# measurement.setup_constant_current(
+#     holdAtCurrent=0.2 * sample_surface_area, samplingInterval=0.05, duration=60
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 1 - Perform CV
-measurement.setup_cyclic_voltammetry(
-    startVoltage=1.6,
-    firstVoltageLimit=0.8,
-    secondVoltageLimit=1.6,
-    endVoltage=1.6,
-    scanRate=0.2,
-    samplingInterval=0.05,
-    cycles=25,
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # 1 - Perform CV
+# measurement.setup_cyclic_voltammetry(
+#     startVoltage=1.6,
+#     firstVoltageLimit=0.8,
+#     secondVoltageLimit=1.6,
+#     endVoltage=1.6,
+#     scanRate=0.2,
+#     samplingInterval=0.05,
+#     cycles=25,
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 2 - Perform CV
-measurement.setup_cyclic_voltammetry(
-    startVoltage=1.6,
-    firstVoltageLimit=0.8,
-    secondVoltageLimit=1.6,
-    endVoltage=0.8,
-    scanRate=0.01,
-    samplingInterval=0.2,
-    cycles=2,
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # 2 - Perform CV
+# measurement.setup_cyclic_voltammetry(
+#     startVoltage=1.6,
+#     firstVoltageLimit=0.8,
+#     secondVoltageLimit=1.6,
+#     endVoltage=0.8,
+#     scanRate=0.01,
+#     samplingInterval=0.2,
+#     cycles=2,
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 3 - Perform EIS
-measurement.setup_EIS_potentiostatic(
-    start_frequency=500000,
-    end_frequency=1,
-    points_per_decade=10,
-    voltage_bias=1.5,
-    voltage_amplitude=0.01,
-    number_of_runs=1,
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # 3 - Perform EIS
+# measurement.setup_EIS_potentiostatic(
+#     start_frequency=500000,
+#     end_frequency=1,
+#     points_per_decade=10,
+#     voltage_bias=1.5,
+#     voltage_amplitude=0.01,
+#     number_of_runs=1,
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 4 - Perform CP at 100 mA/cm^2
-measurement.setup_constant_current(
-    holdAtCurrent=0.1 * sample_surface_area, samplingInterval=0.05, duration=70
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # 4 - Perform CP at 100 mA/cm^2
+# measurement.setup_constant_current(
+#     holdAtCurrent=0.1 * sample_surface_area, samplingInterval=0.05, duration=70
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 5 - Perform CP at 50 mA/cm^2
-measurement.setup_constant_current(
-    holdAtCurrent=0.05 * sample_surface_area, samplingInterval=0.05, duration=70
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # 5 - Perform CP at 50 mA/cm^2
+# measurement.setup_constant_current(
+#     holdAtCurrent=0.05 * sample_surface_area, samplingInterval=0.05, duration=70
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 6 - Perform CP at 20 mA/cm^2
-measurement.setup_constant_current(
-    holdAtCurrent=0.02 * sample_surface_area, samplingInterval=0.05, duration=70
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # 6 - Perform CP at 20 mA/cm^2
+# measurement.setup_constant_current(
+#     holdAtCurrent=0.02 * sample_surface_area, samplingInterval=0.05, duration=70
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 7 - Perform CP at 10 mA/cm^2
-measurement.setup_constant_current(
-    holdAtCurrent=0.01 * sample_surface_area, samplingInterval=0.05, duration=70
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # 7 - Perform CP at 10 mA/cm^2
+# measurement.setup_constant_current(
+#     holdAtCurrent=0.01 * sample_surface_area, samplingInterval=0.05, duration=70
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 8 - Perform CP at 5 mA/cm^2
-measurement.setup_constant_current(
-    holdAtCurrent=0.005 * sample_surface_area, samplingInterval=0.05, duration=70
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # 8 - Perform CP at 5 mA/cm^2
+# measurement.setup_constant_current(
+#     holdAtCurrent=0.005 * sample_surface_area, samplingInterval=0.05, duration=70
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 9 - Perform CP at 2 mA/cm^2
-measurement.setup_constant_current(
-    holdAtCurrent=0.002 * sample_surface_area, samplingInterval=0.05, duration=70
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # 9 - Perform CP at 2 mA/cm^2
+# measurement.setup_constant_current(
+#     holdAtCurrent=0.002 * sample_surface_area, samplingInterval=0.05, duration=70
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 10 - Perform CP at 1 mA/cm^2
-measurement.setup_constant_current(
-    holdAtCurrent=0.001 * sample_surface_area, samplingInterval=0.05, duration=70
-)
-measurement.run_experiment()
-ac_data, dc_data = measurement.get_data()
-measurement.clear_data()
+# # 10 - Perform CP at 1 mA/cm^2
+# measurement.setup_constant_current(
+#     holdAtCurrent=0.001 * sample_surface_area, samplingInterval=0.05, duration=70
+# )
+# measurement.run_experiment()
+# ac_data, dc_data = measurement.get_data()
+# measurement.clear_data()
 
-# 11 - Perform CV
-measurement.setup_cyclic_voltammetry(
-    startVoltage=1.6,
-    firstVoltageLimit=0.8,
-    secondVoltageLimit=1.6,
-    endVoltage=0.8,
-    scanRate=0.01,
-    samplingInterval=0.2,
-    cycles=2,
-)
+# # 11 - Perform CV
+# measurement.setup_cyclic_voltammetry(
+#     startVoltage=1.6,
+#     firstVoltageLimit=0.8,
+#     secondVoltageLimit=1.6,
+#     endVoltage=0.8,
+#     scanRate=0.01,
+#     samplingInterval=0.2,
+#     cycles=2,
+# )
 
 
 # Save all data
