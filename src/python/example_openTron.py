@@ -1,7 +1,15 @@
 import logging
 from datetime import datetime
 import sys
+import json
 from opentronwrapper import opentronsClient
+from parameters import (
+    labware_paths,
+    wells,
+    pipetteable_chemicals,
+    labware_tools,
+    pipette_tips,
+)
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
@@ -22,50 +30,70 @@ time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 # Initiate the openTron
 openTron = opentronsClient("100.67.86.197")
 
+
+# Read JSON
+def read_json(path: str) -> dict:
+    with open(path) as f:
+        return json.load(f)
+
+
 ##### Load labware for the openTron
 # Tools
-openTron.loadLabware(3, "../opentron_labware/nis_4_tip_rack_1ul.json")
-OT_tool_rack = "nis_4_tip_rack_1ul"
+labware_tool_rack = read_json(labware_paths["nis_4_tip_rack_1ul"])
+labware_tool_rack = openTron.loadCustomLabware(dicLabware=labware_tool_rack, inSlot=10)
+
 # Vials with solutions
-openTron.loadLabware(7, "../opentron_labware/nis_8_reservoir_25000ul.json")
+labware_stock_solutions1 = read_json(labware_paths["nis_8_reservoir_25000ul"])
+labware_stock_solutions1 = openTron.loadCustomLabware(
+    dicLabware=labware_stock_solutions1, inSlot=4
+)
 # Vials with solutions
-openTron.loadLabware(11, "../opentron_labware/nis_8_reservoir_25000ul.json")
+labware_stock_solutions2 = read_json(labware_paths["nis_8_reservoir_25000ul"])
+labware_stock_solutions2 = openTron.loadCustomLabware(
+    dicLabware=labware_stock_solutions2, inSlot=5
+)
 # Well plate where the testing takes place
-openTron.loadLabware(8, "../opentron_labware/nis_15_wellplate_3895ul.json")
-OT_well_plate = "nis_15_wellplate_3895ul"
+labware_well_plate = read_json(labware_paths["nis_15_wellplate_3895ul"])
+labware_well_plate = openTron.loadCustomLabware(dicLabware=labware_well_plate, inSlot=6)
 # Cleaning cell for the openTron tools
-openTron.loadLabware(9, "../opentron_labware/nis_2_wellplate_30000ul.json")
+labware_cleaning_cartridge = read_json(labware_paths["nis_2_wellplate_30000ul"])
+labware_cleaning_cartridge = openTron.loadCustomLabware(
+    dicLabware=labware_cleaning_cartridge, inSlot=7
+)
 # Load pipette tip rack
-openTron.loadLabware(1, "../opentron_labware/opentrons_96_tiprack_1000ul.json")
+labware_pipette_tips = openTron.loadLabware(1, "opentrons_96_tiprack_1000ul")
 
 ###############################################################################
 # Workflow
 ###############################################################################
+# Home robot
+openTron.homeRobot()
 
-# Pick up flush tool
+# Go to flush tool rack
 openTron.moveToWell(
-    strLabwareName=OT_tool_rack,
-    strWellName="A1",
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
     strPipetteName=OPENTRON_PIPETTE,
     strOffsetStart="top",
     intOffsetX=0,
     intOffsetY=0,
     intOffsetZ=0,
 )
+# Pick up flush tool
 openTron.pickUpTip(
-    strLabwareName=OT_tool_rack,
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
     strPipetteName=OPENTRON_PIPETTE,
     strOffsetStart="top",
     strOffsetX=0,
     strOffsetY=0,
     strOffsetZ=0,
-    strWellName="A1",
 )
 
 # Go to well
 openTron.moveToWell(
-    strLabwareName=OT_well_plate,
-    strWellName="A1",
+    strLabwareName=labware_well_plate,
+    strWellName=wells[0],
     strPipetteName=OPENTRON_PIPETTE,
     strOffsetStart="top",
     intOffsetX=0,
@@ -83,37 +111,114 @@ openTron.moveToWell(
 # Flush well with water
 # Drain well
 
-# Put back flush tool
+# Go to tool rack
 openTron.moveToWell(
-    strLabwareName=OT_well_plate,
-    strWellName="A1",
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
     strPipetteName=OPENTRON_PIPETTE,
     strOffsetStart="top",
     intOffsetX=0,
     intOffsetY=0,
     intOffsetZ=0,
 )
+# Drop tip
 openTron.dropTip(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
     strPipetteName=OPENTRON_PIPETTE,
-    strLabwareName=OT_tool_rack,
-    strWellName="A1",
-    strOffsetStart="center",
+    strOffsetStart="bottom",
     strOffsetX=0,
     strOffsetY=0,
-    strOffsetZ=0,
+    strOffsetZ=5,
     boolHomeAfter=False,
     boolAlternateDropLocation=False,
 )
 
-# Pipette NH4OH into well
+# Move to pipette rack
+openTron.moveToWell(
+    strLabwareName=labware_pipette_tips,
+    strWellName=pipette_tips["NH4OH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Pick up tip
 openTron.pickUpTip(
-    strLabwareName=OT_tool_rack,
+    strLabwareName=labware_pipette_tips,
+    strWellName=pipette_tips["NH4OH"],
     strPipetteName=OPENTRON_PIPETTE,
     strOffsetStart="top",
     strOffsetX=0,
     strOffsetY=0,
     strOffsetZ=0,
-    strWellName="A1",
+)
+# Move to stock solution
+openTron.moveToWell(
+    strLabwareName=labware_stock_solutions1,
+    strWellName=pipetteable_chemicals["NH4OH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Aspirate
+openTron.aspirate(
+    strLabwareName=labware_stock_solutions1,
+    strWellName=pipetteable_chemicals["NH4OH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    intVolume=1000,  # uL
+    strOffsetStart="top",
+    strOffsetX=0,
+    strOffsetY=0,
+    strOffsetZ=0,
+)
+# Go to well
+openTron.moveToWell(
+    strLabwareName=labware_well_plate,
+    strWellName=wells[0],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Dispense
+openTron.dispense(
+    strLabwareName=labware_well_plate,
+    strWellName=wells[0],
+    strPipetteName=OPENTRON_PIPETTE,
+    intVolume=1000,  # uL
+    strOffsetStart="top",
+    strOffsetX=0,
+    strOffsetY=0,
+    strOffsetZ=0,
+)
+
+# Go to pipette tip rack
+openTron.moveToWell(
+    strLabwareName=labware_pipette_tips,
+    strWellName=pipette_tips["NH4OH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+
+# Drop tip
+openTron.dropTip(
+    strLabwareName=labware_pipette_tips,
+    strWellName=pipette_tips["NH4OH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="bottom",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=5,
+    boolHomeAfter=False,
+    boolAlternateDropLocation=False,
 )
 
 # Pipette KCHO into well
@@ -132,26 +237,188 @@ openTron.pickUpTip(
 # Apply constant current for X seconds
 # Put back the Ni deposition tool
 
-# # Pick up the flush tool
-# # Go to well
-# # Flush well with water
-# # Apply ultrasound
-# # Drain well
-# # Stop ultrasound
-# # Flush well with HCl
-# # Apply ultrasound
-# # Drain well
-# # Flush well with water
-# # Drain well
-# # Flush well with water
-# # Drain well
-# # Stop ultrasound
+# Go to tool rack flush tool
+openTron.moveToWell(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Pick up flush tool
+openTron.pickUpTip(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    strOffsetX=0,
+    strOffsetY=0,
+    strOffsetZ=0,
+)
+# Go to well
+openTron.moveToWell(
+    strLabwareName=labware_well_plate,
+    strWellName=wells[0],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Flush well with water
+# Apply ultrasound
+# Drain well
+# Stop ultrasound
+# Flush well with HCl
+# Apply ultrasound
+# Drain well
+# Flush well with water
+# Drain well
+# Flush well with water
+# Drain well
+# Stop ultrasound
 
-# # Put back the flush tool
+# Put back the flush tool
+openTron.moveToWell(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Drop tip
+openTron.dropTip(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="bottom",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=5,
+    boolHomeAfter=False,
+    boolAlternateDropLocation=False,
+)
 
-# # Pipette 80% of the volume of KOH into the well
+# Pipette 80% of the volume of KOH into the well
+openTron.moveToWell(
+    strLabwareName=labware_pipette_tips,
+    strWellName=pipette_tips["KOH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Pick up tip
+openTron.pickUpTip(
+    strLabwareName=labware_pipette_tips,
+    strWellName=pipette_tips["KOH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    strOffsetX=0,
+    strOffsetY=0,
+    strOffsetZ=0,
+)
+# Move to stock solution
+openTron.moveToWell(
+    strLabwareName=labware_stock_solutions1,
+    strWellName=pipetteable_chemicals["KOH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Aspirate
+openTron.aspirate(
+    strLabwareName=labware_stock_solutions1,
+    strWellName=pipetteable_chemicals["KOH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    intVolume=1000,  # uL
+    strOffsetStart="top",
+    strOffsetX=0,
+    strOffsetY=0,
+    strOffsetZ=0,
+)
+# Go to well
+openTron.moveToWell(
+    strLabwareName=labware_well_plate,
+    strWellName=wells[0],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Dispense
+openTron.dispense(
+    strLabwareName=labware_well_plate,
+    strWellName=wells[0],
+    strPipetteName=OPENTRON_PIPETTE,
+    intVolume=1000,  # uL
+    strOffsetStart="top",
+    strOffsetX=0,
+    strOffsetY=0,
+    strOffsetZ=0,
+)
 
-# # Pick up electrochemical testing electrode
+# Go to pipette tip rack
+openTron.moveToWell(
+    strLabwareName=labware_pipette_tips,
+    strWellName=pipette_tips["KOH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Drop tip
+openTron.dropTip(
+    strLabwareName=labware_pipette_tips,
+    strWellName=pipette_tips["KOH"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="bottom",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=5,
+    boolHomeAfter=False,
+    boolAlternateDropLocation=False,
+)
+
+# Go to tool rack OER_electrode
+openTron.moveToWell(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["OER_electrode"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Pick up OER electrode
+openTron.pickUpTip(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["OER_electrode"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    strOffsetX=0,
+    strOffsetY=0,
+    strOffsetZ=0,
+)
+# Go to well
+openTron.moveToWell(
+    strLabwareName=labware_well_plate,
+    strWellName=wells[0],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
 
 # Electrochemical testing
 # 0 - Electrochemical Activation
@@ -175,10 +442,72 @@ openTron.pickUpTip(
 # Plot all data
 # Find potential at 10 mA/cm^2
 
-# Put back the electrochemical testing electrode
+# Clean OER electrode in cleaning cartridge
+# Go to cleaning cartridge
+openTron.moveToWell(
+    strLabwareName=labware_cleaning_cartridge,
+    strWellName=wells[0],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Hold it a bit
+time.sleep(5)
+# Go to rack tool to replace OER electrode
+openTron.moveToWell(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["OER_electrode"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Drop OER electrode
+openTron.dropTip(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["OER_electrode"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="bottom",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=5,
+    boolHomeAfter=False,
+    boolAlternateDropLocation=False,
+)
 
-# Pick up the flush tool
+# Go to flush tool
+openTron.moveToWell(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Pick up flush tool
+openTron.pickUpTip(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    strOffsetX=0,
+    strOffsetY=0,
+    strOffsetZ=0,
+)
 # Go to well
+openTron.moveToWell(
+    strLabwareName=labware_well_plate,
+    strWellName=wells[0],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
 # Flush well with water
 # Apply ultrasound
 # Drain well
@@ -189,5 +518,26 @@ openTron.pickUpTip(
 # Stop ultrasound
 
 # Put back the flush tool
+openTron.moveToWell(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="top",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=0,
+)
+# Drop tip
+openTron.dropTip(
+    strLabwareName=labware_tool_rack,
+    strWellName=labware_tools["Flush_tool"],
+    strPipetteName=OPENTRON_PIPETTE,
+    strOffsetStart="bottom",
+    intOffsetX=0,
+    intOffsetY=0,
+    intOffsetZ=5,
+    boolHomeAfter=False,
+    boolAlternateDropLocation=False,
+)
 
 # Return potential at 10 mA/cm^2s
