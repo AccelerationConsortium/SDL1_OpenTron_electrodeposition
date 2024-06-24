@@ -47,9 +47,9 @@ list_of_times = [0.5, 1, 2, 5, 10, 15]
 # Ask for user input
 pump_number = int(input("Enter pump number to calibrate: "))
 for seconds in list_of_times:
-    secondss = input("Enter seconds to drain: ")
-    robot.set_pump_on(3, secondss)
     input(f"Press enter to start dispensing {seconds} seconds")
     robot.set_pump_on(pump_number, seconds)
+    secondss = int(input("Enter seconds to drain: "))
+    robot.set_pump_on(3, secondss)
 
 print("Calibration done")
