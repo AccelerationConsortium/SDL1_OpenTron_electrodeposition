@@ -233,12 +233,13 @@ class opentronsClient:
             # LOG - info
             LOGGER.info(f"Custome labware {dicLabware['parameters']['loadName']} loaded in slot: {intSlot} successfully.")
             # load the labware
-            self.loadLabware(intSlot = intSlot,
-                             strLabwareName = dicLabware['parameters']['loadName'],
-                             strNamespace = dicLabware['namespace'],
-                             intVersion = dicLabware['version'],
-                             strIntent = "setup"
-                             )
+            strLabwareIdentifier_temp = self.loadLabware(intSlot = intSlot,
+                                                         strLabwareName = dicLabware['parameters']['loadName'],
+                                                         strNamespace = dicLabware['namespace'],
+                                                         intVersion = dicLabware['version'],
+                                                         strIntent = "setup"
+                                                         )
+            return strLabwareIdentifier_temp
         else:
             raise Exception(
                 f"Failed to load custom labware.\nError code: {response.status_code}\n Error message: {response.text}"
@@ -958,9 +959,4 @@ class opentronsClient:
 
     FIGURE OUT FIXED TRASH
 
-    
-
-  
-    
-
-    """
+    '''

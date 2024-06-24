@@ -20,17 +20,17 @@ peristaltic_pump_content = {
 }
 
 labware_paths = {
-    "nis_4_tip_rack_1ul": "../opentron_labware/nis_4_tip_rack_1ul.json",
-    "nis_15_wellplate_3895ul":"../opentron_labware/nis_15_wellplate_3895ul.json"
-    "nis_2_wellplate_30000ul": "../opentron_labware/nis_2_wellplate_30000ul.json",
-    "nis_8_reservoir_25000ul": "../opentron_labware/nis_8_reservoir_25000ul.json",
+    "nistall_4_tiprack_1ul": "src/opentron_labware/nistall_4_tiprack_1ul.json",
+    "nis_15_wellplate_3895ul":"src/opentron_labware/nis_15_wellplate_3895ul.json",
+    "nis_2_wellplate_30000ul": "src/opentron_labware/nis_2_wellplate_30000ul.json",
+    "nis_8_reservoir_25000ul": "src/opentron_labware/nis_8_reservoir_25000ul.json",
 }
 
 labware_tools = {
-    "Ni_electrode": "A1",
+    "Ni_electrode": "A2",
     "Flush_tool": "A2",
-    "Ag_electrode": "B1",
-    "OER_electrode": "B2",
+    "Ag_electrode": "A2",
+    "OER_electrode": "A2",
 }
 
 wells = {

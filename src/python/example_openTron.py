@@ -2,6 +2,8 @@ import logging
 from datetime import datetime
 import sys
 import json
+import os
+
 from opentronwrapper import opentronsClient
 from parameters import (
     labware_paths,
@@ -10,11 +12,10 @@ from parameters import (
     labware_tools,
     pipette_tips,
 )
-
-# Folder where data and log-file will be saved
-DATA_PATH = ""
+DATA_PATH=os.getcwd()
 OPENTRON_PIPETTE = "p1000_single_gen2"
-
+path = os.path.join(DATA_PATH, "src", "opentron_labware", "nis_4_tiprack_1ul.json")
+print(path)
 
 # Initialize logging
 logging.basicConfig(
@@ -33,32 +34,39 @@ openTron = opentronsClient("100.67.86.197")
 
 # Read JSON
 def read_json(path: str) -> dict:
-    with open(path) as f:
+    with open(path, encoding="utf8") as f:
         return json.load(f)
-
 
 ##### Load labware for the openTron
 # Tools
-labware_tool_rack = read_json(labware_paths["nis_4_tip_rack_1ul"])
-labware_tool_rack = openTron.loadCustomLabware(dicLabware=labware_tool_rack, inSlot=10)
+path = os.path.join(DATA_PATH, labware_paths["nistall_4_tiprack_1ul"])
+labware_tool_rack = read_json(path)
+labware_tool_rack = openTron.loadCustomLabware(dicLabware=labware_tool_rack, intSlot=10)
 
 # Vials with solutions
-labware_stock_solutions1 = read_json(labware_paths["nis_8_reservoir_25000ul"])
+path = os.path.join(DATA_PATH, labware_paths["nis_8_reservoir_25000ul"])
+labware_stock_solutions1 = read_json(path)
 labware_stock_solutions1 = openTron.loadCustomLabware(
-    dicLabware=labware_stock_solutions1, inSlot=4
+    dicLabware=labware_stock_solutions1, intSlot=4
 )
+
 # Vials with solutions
-labware_stock_solutions2 = read_json(labware_paths["nis_8_reservoir_25000ul"])
+path = os.path.join(DATA_PATH, labware_paths["nis_8_reservoir_25000ul"])
+labware_stock_solutions2 = read_json(path)
 labware_stock_solutions2 = openTron.loadCustomLabware(
-    dicLabware=labware_stock_solutions2, inSlot=5
+    dicLabware=labware_stock_solutions2, intSlot=5
 )
+
 # Well plate where the testing takes place
-labware_well_plate = read_json(labware_paths["nis_15_wellplate_3895ul"])
-labware_well_plate = openTron.loadCustomLabware(dicLabware=labware_well_plate, inSlot=6)
+path = os.path.join(DATA_PATH, labware_paths["nis_15_wellplate_3895ul"])
+labware_well_plate = read_json(path)
+labware_well_plate = openTron.loadCustomLabware(dicLabware=labware_well_plate, intSlot=9)
+
 # Cleaning cell for the openTron tools
-labware_cleaning_cartridge = read_json(labware_paths["nis_2_wellplate_30000ul"])
+path = os.path.join(DATA_PATH, labware_paths["nis_2_wellplate_30000ul"])
+labware_cleaning_cartridge = read_json(path)
 labware_cleaning_cartridge = openTron.loadCustomLabware(
-    dicLabware=labware_cleaning_cartridge, inSlot=7
+    dicLabware=labware_cleaning_cartridge, intSlot=3
 )
 # Load pipette tip rack
 labware_pipette_tips = openTron.loadLabware(1, "opentrons_96_tiprack_1000ul")
@@ -78,6 +86,7 @@ openTron.moveToWell(
     intOffsetX=0,
     intOffsetY=0,
     intOffsetZ=0,
+    intSpeed=10, # mm/s
 )
 # Pick up flush tool
 openTron.pickUpTip(
