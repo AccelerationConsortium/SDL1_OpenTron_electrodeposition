@@ -70,7 +70,43 @@ class opentronsClient:
 
         else:
             raise Exception(f"Failed to create a new run.\nError code: {response.status_code}\n Error message: {response.text}")
+        
+    def getRunInfo(self):
+        '''
+        gets the information for the current run
 
+        arguments
+        ----------
+        None
+
+        returns
+        ----------
+        dicRunInfo: dict
+            the information for the current run
+        '''
+
+        # LOG - info
+        LOGGER.info(f"Getting information for run: {self.runID}")
+
+        response = requests.get(
+            url = f"http://{self.robotIP}:31950/runs/{self.runID}",
+            headers = self.headers
+        )
+
+        # LOG - debug
+        LOGGER.debug(f"Response: {response.text}")
+
+        if response.status_code == 200:
+            dicRunInfo = json.loads(response.text)
+            # LOG - info
+            LOGGER.info(f"Run information retrieved.")
+
+        else:
+            raise Exception(f"Failed to get run information.\nError code: {response.status_code}\n Error message: {response.text}")
+        
+        return dicRunInfo
+        
+        
     def loadLabware(self,
                     intSlot: int,
                     strLabwareName: str,
@@ -102,7 +138,9 @@ class opentronsClient:
 
         returns
         ----------
-        None
+        strLabwareIdentifier_temp: str
+            the identifier of the labware that was loaded
+
         '''
 
         dicCommand = {
@@ -138,13 +176,17 @@ class opentronsClient:
         if response.status_code == 201:
             dicResponse = json.loads(response.text)
             strLabwareID = dicResponse['data']['result']['labwareId']
+            #strLabwareURi = dicResponse['data']['result']['labwareUri']
             strLabwareIdentifier_temp = strLabwareName + "_" + str(intSlot)
             self.labware[strLabwareIdentifier_temp] = {"id": strLabwareID, "slot": intSlot}
             # LOG - info
             LOGGER.info(f"Labware loaded with name: {strLabwareName} and ID: {strLabwareID}")
         else:
             raise Exception(f"Failed to load labware.\nError code: {response.status_code}\n Error message: {response.text}")
-
+        
+        return strLabwareIdentifier_temp
+        
+        
     def loadCustomLabware(self,
                           dicLabware: dict,
                           intSlot: int,
@@ -478,8 +520,8 @@ class opentronsClient:
                  strWellName: str,
                  strPipetteName: str,
                  intVolume: int,                        # uL
-                 fltFlowRate: float = 818.343,          # uL/s -- need to check this
-                 strOffsetStart: str = "top",
+                 fltFlowRate: float = 200,              # uL/s -- need to check this
+                 strOffsetStart: str = "center",
                  strOffsetX: int = 0,
                  strOffsetY: int = 0,
                  strOffsetZ: int = 0,
@@ -584,7 +626,7 @@ class opentronsClient:
                  strWellName: str,
                  strPipetteName: str,
                  intVolume: int,                        # uL
-                 fltFlowRate: float = 818.343,          # uL/s -- need to check this
+                 fltFlowRate: float = 600,              # uL/s -- need to check this
                  strOffsetStart: str = "top",
                  strOffsetX: int = 0,
                  strOffsetY: int = 0,
@@ -691,7 +733,8 @@ class opentronsClient:
                    intOffsetX: int = 0,
                    intOffsetY: int = 0,
                    intOffsetZ: int = 0,
-                   strIntent: str = "setup"
+                   strIntent: str = "setup",
+                   intSpeed: int = 10   # mm/s
                    ):
         '''
         moves the pipette to a well
@@ -737,6 +780,7 @@ class opentronsClient:
             "data": {
                 "commandType": "moveToWell",
                 "params": {
+                    "speed": intSpeed,
                     "labwareId": self.labware[strLabwareName]["id"],
                     "wellName": strWellName,
                     "wellLocation": {
@@ -777,16 +821,133 @@ class opentronsClient:
             )
 
     def addLabwareOffsets(self,
+                          strLabwareName : str,
+                          fltXOffset: float,
+                          fltYOffset: float,
+                          fltZOffset: float
                           ):
-        pass
+        '''
+        adds offsets to the labware
 
-    def turnLightsOn(self):
-        pass
+        arguments
+        ----------
+        strLabwareName: str
+            the name of the labware to which the offsets are to be added
 
-    def turnLightsOff(self):
-        pass
+        fltXOffset: float
+            the x offset to be added
 
-    """
+        fltYOffset: float
+            the y offset to be added
+
+        fltZOffset: float
+            the z offset to be added
+
+        returns
+        ----------
+        None
+        '''
+
+        # from the self.labware dictionary, get the labware ID
+        strLabwareID = self.labware[strLabwareName]["id"]
+
+        dicRunInfo = self.getRunInfo()
+
+        # find the list of labware from the run info
+        lstLabware = dicRunInfo['data']['labware']
+
+        strDefinitionUri = None
+
+        # for every dictionary in the list of labware
+        for dicLabware_temp in lstLabware:
+            # if the labware ID matches the labware ID of the labware we are looking for
+            if dicLabware_temp['id'] == strLabwareID:
+                # get the definitionUri
+                strDefinitionUri = dicLabware_temp['definitionUri']
+                # get the slot
+                strSlot = dicLabware_temp['location']['slotName']
+
+        # if the definitionUri is not found
+        if strDefinitionUri == None:
+            raise Exception(f"Labware not found in run information.")
+
+        # make the command dictionary
+        dicCommand = {
+            "data": {
+                "definitionUri": strDefinitionUri,
+                "location":{"slot": strSlot},
+                'vector': {'x': fltXOffset,
+                           'y': fltYOffset,
+                           'z': fltZOffset}
+            }
+        }
+
+        strCommand = json.dumps(dicCommand)
+
+        # LOG - info
+        LOGGER.info(f"Adding offsets to labware: {strLabwareName}")
+        # LOG - debug
+        LOGGER.debug(f"Command: {strCommand}")
+
+        # make request
+        response = requests.post(
+            url = f"http://{self.robotIP}:31950/runs/{self.runID}/labware_definitions",
+            headers = self.headers,
+            data = strCommand
+        )
+
+        # LOG - debug
+        LOGGER.debug(f"Response: {response.text}")
+
+        if response.status_code == 201:
+            # LOG - info
+            LOGGER.info(f"Offsets added to labware: {strLabwareName}")
+        else:
+            raise Exception(f"Failed to add offsets to labware.\nError code: {response.status_code}\n Error message: {response.text}")
+
+    def lights(self,
+               strState: str = 'true',):
+        '''
+        turns the lights on or off
+
+        arguments
+        ----------
+        strState: string
+            whether the lights should be turned on or off
+            default: true   
+
+        returns
+        ----------
+        None
+        '''
+
+        dicCommand = {
+            "on": strState
+        }
+
+        strCommand = json.dumps(dicCommand)
+
+        # LOG - info
+        LOGGER.info(f"Turning lights {strState}")
+        # LOG - debug
+        LOGGER.debug(f"Command: {strCommand}")
+
+        response = requests.post(
+            url = f"http://{self.robotIP}:31950/robot/lights",
+            headers = self.headers,
+            data = strCommand
+        )
+
+        # LOG - debug
+        LOGGER.debug(f"Response: {response.text}")
+
+        if response.status_code == 200:
+            # LOG - info
+            LOGGER.info(f"Lights turned {strState}")
+
+
+            
+    '''
     TODO LIST 
     -----------
 
@@ -797,6 +958,9 @@ class opentronsClient:
 
     FIGURE OUT FIXED TRASH
 
-    LOAD LIQUID
+    
+
+  
+    
 
     """
