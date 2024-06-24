@@ -19,6 +19,20 @@ peristaltic_pump_content = {
     "Cartridge_HCl": 5,
 }
 
+labware_paths = {
+    "nis_4_tip_rack_1ul": "../opentron_labware/nis_4_tip_rack_1ul.json",
+    "nis_15_wellplate_3895ul":"../opentron_labware/nis_15_wellplate_3895ul.json"
+    "nis_2_wellplate_30000ul": "../opentron_labware/nis_2_wellplate_30000ul.json",
+    "nis_8_reservoir_25000ul": "../opentron_labware/nis_8_reservoir_25000ul.json",
+}
+
+labware_tools = {
+    "Ni_electrode": "A1",
+    "Flush_tool": "A2",
+    "Ag_electrode": "B1",
+    "OER_electrode": "B2",
+}
+
 wells = {
     0: "A1",
     1: "A2",
@@ -45,6 +59,20 @@ pipetteable_chemicals = {
     "Cr": "B2",
     "Mn": "B3",
     "Co": "B4",
-    "Zn": "B5",
-    "Cu": "C1",
+    "Zn": "A1",
+    "Cu": "A2",
+}
+
+
+pipette_tips = {
+    "NH4OH": "A1",
+    "KCHO": "A2",
+    "KOH": "A3",
+    "Ni": "A4",
+    "Fe": "A5",
+    "Cr": "A6",
+    "Mn": "A7",
+    "Co": "A9",
+    "Zn": "A10",
+    "Cu": "A11",
 }
