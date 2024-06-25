@@ -27,12 +27,35 @@ labware_paths = {
 }
 
 labware_tools = {
-    "Ni_electrode": "A2",
-    "Flush_tool": "A2",
+    "Ni_electrode": "A1",
+    "Flush_tool": "B1",
     "Ag_electrode": "A2",
     "OER_electrode": "A2",
 }
-
+tool_x_offset = {
+    "Ni_electrode": 0.75,
+    "Flush_tool": 0.5,
+    "Ag_electrode": 1,
+    "OER_electrode": 0,
+}
+tool_y_offset = {
+    "Ni_electrode": 0.75,
+    "Flush_tool": 0.5,
+    "Ag_electrode": 0,
+    "OER_electrode": 0,
+}
+tool_z_offset = {
+    "Ni_electrode": 5,
+    "Flush_tool": 10,
+    "Ag_electrode": 2,
+    "OER_electrode": 2,
+}
+tool_z_dropoff = {
+    "Ni_electrode": 11,
+    "Flush_tool": 11,
+    "Ag_electrode": 8,
+    "OER_electrode": 8,
+}
 wells = {
     0: "A1",
     1: "A2",
@@ -51,28 +74,43 @@ wells = {
 }
 
 pipetteable_chemicals = {
-    "NH4OH": "A1",
-    "KCHO": "A2",
-    "KOH": "A3",
-    "Ni": "A4",
-    "Fe": "B1",
-    "Cr": "B2",
-    "Mn": "B3",
-    "Co": "B4",
-    "Zn": "A1",
-    "Cu": "A2",
+    "NH4OH": "A4",
+    "KCHO": "B4",
+    "KOH": "B4",
+    "Ni": "A1",
+    "Fe": "A2",
+    "Cr": "A3",
+    "Mn": "A4",
+    "Co": "B1",
+    "Zn": "B2",
+    "Cu": "B3",
+}
+pipetteable_chemical_racks = {
+    "NH4OH": "nis_8_reservoir_25000ul_7",
+    "KCHO": "nis_8_reservoir_25000ul_7",
+    "KOH": "nis_8_reservoir_25000ul_11",
+    "Ni": "nis_8_reservoir_25000ul_11",
+    "Fe": "nis_8_reservoir_25000ul_11",
+    "Cr": "nis_8_reservoir_25000ul_11",
+    "Mn": "nis_8_reservoir_25000ul_11",
+    "Co": "nis_8_reservoir_25000ul_11",
+    "Zn": "nis_8_reservoir_25000ul_11",
+    "Cu": "nis_8_reservoir_25000ul_11",
 }
 
 
 pipette_tips = {
-    "NH4OH": "A1",
-    "KCHO": "A2",
-    "KOH": "A3",
-    "Ni": "A4",
-    "Fe": "A5",
-    "Cr": "A6",
-    "Mn": "A7",
-    "Co": "A9",
-    "Zn": "A10",
-    "Cu": "A11",
+    "NH4OH": "H1",
+    "KCHO": "H2",
+    "KOH": "H3",
+    "Ni": "H4",
+    "Fe": "H5",
+    "Cr": "H6",
+    "Mn": "H7",
+    "Co": "H9",
+    "Zn": "H10",
+    "Cu": "H11",
 }
+
+pump_slope={0: 2.05, 1: 2.13, 2: 1.93, 3: 2.24, 4: 1.86, 5: 1.85},
+pump_intercept={0: 0.082, 1: 0.058, 2: 0.0686, 3: 0.0362, 4: 0.0356, 5: 0.0186},
