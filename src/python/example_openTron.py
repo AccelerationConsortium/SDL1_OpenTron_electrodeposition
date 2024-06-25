@@ -183,10 +183,9 @@ def cleaning():
         intSpeed=50,  # mm/s
     )
 
-    time.sleep(5)
-    robot.dispense_ml(pump=1, volume=1)  # ml to dispense
+    robot.dispense_ml(pump=1, volume=0.5)  # ml to dispense
     robot.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
-    robot.dispense_ml(pump=2, volume=1)  # ml to dispense
+    robot.dispense_ml(pump=2, volume=0.5)  # ml to dispense
     robot.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
 
     # Go to tool rack
@@ -658,11 +657,15 @@ def perform_electrochemical_testing():
 
 
 cleaning()
-# dose_chemicals()
-# perform_electrodeposition()
-# cleaning()
-# dispense_electrolyte(1200, "KOH", 0)
-# perform_electrochemical_testing()
+dose_chemicals()
+perform_electrodeposition()
+cleaning()
+dispense_electrolyte(1200, "KOH", 0)
+perform_electrochemical_testing()
+
+robot.set_temperature(0, 0)
+robot.set_temperature(1, 0)
+robot.set_ultrasound_on(cartridge=0, time=10)
 openTron.homeRobot()
 openTron.lights(False)
 exit()
