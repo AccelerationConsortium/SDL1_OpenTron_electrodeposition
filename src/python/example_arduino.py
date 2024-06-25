@@ -33,8 +33,8 @@ robot = Arduino(
     ],  # List of cartridges, where len(list) = number of cartridges
     list_of_pump_relays=[0, 1, 2, 3, 4, 5],  # Pumps connected to which relays
     list_of_ultrasonic_relays=[6, 7],  # Ultrasonic connected to which relays
-    pump_slope=pump_slope, #dict of pump slopes: a in y = ax + b
-    pump_intercept=pump_intercept, #dict of pump intercepts: b in y = ax + b
+    pump_slope=pump_slope,  # dict of pump slopes: a in y = ax + b
+    pump_intercept=pump_intercept,  # dict of pump intercepts: b in y = ax + b
 )
 
 

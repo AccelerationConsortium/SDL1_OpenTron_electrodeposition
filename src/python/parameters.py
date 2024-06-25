@@ -30,13 +30,13 @@ labware_tools = {
     "Ni_electrode": "A1",
     "Flush_tool": "B1",
     "Ag_electrode": "A2",
-    "OER_electrode": "A2",
+    "OER_electrode": "B2",
 }
 tool_x_offset = {
     "Ni_electrode": 0.75,
     "Flush_tool": 0.5,
     "Ag_electrode": 1,
-    "OER_electrode": 0,
+    "OER_electrode": 0.75,
 }
 tool_y_offset = {
     "Ni_electrode": 0.75,
@@ -48,13 +48,13 @@ tool_z_offset = {
     "Ni_electrode": 5,
     "Flush_tool": 10,
     "Ag_electrode": 2,
-    "OER_electrode": 2,
+    "OER_electrode": 5,
 }
 tool_z_dropoff = {
     "Ni_electrode": 11,
     "Flush_tool": 11,
     "Ag_electrode": 8,
-    "OER_electrode": 8,
+    "OER_electrode": 11,
 }
 wells = {
     0: "A1",
@@ -112,5 +112,5 @@ pipette_tips = {
     "Cu": "H11",
 }
 
-pump_slope={0: 2.05, 1: 2.13, 2: 1.93, 3: 2.24, 4: 1.86, 5: 1.85},
-pump_intercept={0: 0.082, 1: 0.058, 2: 0.0686, 3: 0.0362, 4: 0.0356, 5: 0.0186},
+pump_slope={0: 2.05, 1: 2.13, 2: 1.93, 3: 2.24, 4: 1.86, 5: 1.85}
+pump_intercept={0: 0.082, 1: 0.058, 2: 0.0686, 3: 0.0362, 4: 0.0356, 5: 0.0186}
