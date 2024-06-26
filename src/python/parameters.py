@@ -2,7 +2,7 @@ list_of_pump_relays = ([0, 1, 2, 3, 4, 5],)  # Pumps connected to which relays
 list_of_ultrasonic_relays = ([6, 7],)  # Ultrasonic connected to which relays
 pump_slope = ({0: 2.0369, 1: 2.0263, 2: 2.0263, 3: 2.0263, 4: 2.0263, 5: 2.0263},)
 pump_intercept = {0: 0.1407, 1: 0.0607, 2: 0.0607, 3: 0.0607, 4: 0.0607, 5: 0.0607}
-
+OHMIC_CORRECTION_FACTOR = 0.9
 sample_surface_area = 0.2827
 current_density = 0.020  # A/cm^2
 current_at_sample = sample_surface_area * current_density

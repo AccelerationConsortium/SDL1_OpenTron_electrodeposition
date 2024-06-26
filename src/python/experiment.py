@@ -1,21 +1,38 @@
-from ardu import Arduino
 import logging
+import time
 from datetime import datetime
 import sys
 import json
 import os
-from opentronwrapper import opentronsClient
-from parameters import (
+import pandas as pd
+from biologic import connect, BANDWIDTH, I_RANGE
+from biologic.techniques.cv import CVTechnique, CVParams, CVStep
+from biologic.techniques.ocv import OCVTechnique, OCVParams
+from biologic.techniques.peis import PEISTechnique, PEISParams, SweepMode
+from biologic.techniques.cp import CPTechnique, CPParams, CPStep, Parameter
+from .ardu import Arduino
+from .admiral import AdmiralSquidstatWrapper
+from .opentronsHTTPAPI_clientBuilder import opentronsClient
+from .parameters import (
     labware_paths,
     wells,
     pipetteable_chemicals,
     labware_tools,
     pipette_tips,
+    pump_slope,
+    pump_intercept,
+    tool_x_offset,
+    tool_y_offset,
+    tool_z_offset,
+    tool_z_dropoff,
+    pipetteable_chemical_racks,
+    sample_surface_area,
+    current_at_sample,
+    OHMIC_CORRECTION_FACTOR,
 )
 
 LOGGER = logging.getLogger(__name__)
 DATA_PATH = os.getcwd()
-OPENTRON_PIPETTE = "p1000_single_gen2"
 path = os.path.join(DATA_PATH, "src", "opentron_labware", "nis_4_tiprack_1ul.json")
 
 
@@ -23,39 +40,119 @@ class Experiment:
 
     def __init__(
         self,
-        vial_volume: float = 2.0,
+        well_volume: float = 3.0,
         cleaning_station_volume: float = 5,
         openTron_IP: str = "100.67.86.197",
         openTron_pipette_name: str = "p1000_single_gen2",
+        arduino_usb_name: str = "CH340",
     ):
         self.cleaning_station_volume = cleaning_station_volume
-        self.vial_volume = vial_volume
+        self.well_volume = well_volume
+        self.openTron_pipette_name = openTron_pipette_name
+        self.openTron_IP = openTron_IP
+        self.arduino_usb_name = arduino_usb_name
+        self.sample_surface_area = sample_surface_area
+        self.deposition_current = current_at_sample
 
         # Initiate the arduino
-        self.arduino = Arduino()
+        self.initiate_arduino()
         # Initiate the openTron
-        self.openTron = opentronsClient(openTron_IP)
+        self.initiate_openTron()
+
+        # Read unique id from uid_run_number.txt
+        with open("uid_run_number.txt", "r") as f:
+            self.unique_id = int(f.read())
+
+        # Increase the unique id by 1
+        self.unique_id = self.unique_id + 1
+
+        # Update the unique id in the file
+        with open("uid_run_number.txt", "w") as f:
+            f.write(str(self.unique_id))
+
+        # Make a pandas dataframe to store metadata with the columns
+        self.metadata = pd.DataFrame(
+            columns=[
+                "unique_id",
+                "well_number",
+                "chemicals_to_mix",
+                "total_volume",
+                "deposition_current",
+                "sample_surface_area",
+                "ohmic_resistance",
+                "well_temperature_during_deposition",
+                "well_temperature_during_electrochemical_measurements",
+                "potential_at_10mAcm2" "corrected_potential_at_10mAcm2",
+            ]
+        )
+        # Update the metadata with the unique id
+        self.metadata.loc[0, "unique_id"] = self.unique_id
+
+    def initiate_arduino(
+        self,
+        ARDUINO_NAME: str = "CH340",
+        pump_intercept: dict = pump_intercept,
+        pump_slope: dict = pump_slope,
+        list_of_cartridges: list = [0, 1],
+        list_of_pump_relays=[0, 1, 2, 3, 4, 5],  # Pumps connected to which relays
+        list_of_ultrasonic_relays=[6, 7],  # Ultrasonic connected to which relays
+    ) -> None:
+        """Initiate the arduino
+
+        Args:
+            ARDUINO_NAME (str, optional): Name of the arduino. Defaults to "CH340".
+            pump_intercept (dict, optional): Intercept for the pumps. Defaults to pump_intercept.
+            pump_slope (dict, optional): Slope for the pumps. Defaults to pump_slope.
+            list_of_cartridges (list, optional): List of cartridges. Defaults to [0, 1].
+            list_of_pump_relays (list, optional): Pumps connected to which relays. Defaults to [0, 1, 2, 3, 4, 5].
+            list_of_ultrasonic_relays (list, optional): Ultrasonic connected to which relays. Defaults to [6, 7].
+        """
+        LOGGER.info(f"Initiating arduino with usb nam: {ARDUINO_NAME}")
+        self.arduino = Arduino(
+            arduino_search_string=ARDUINO_NAME,  # Change string to match arduino name
+            list_of_cartridges=list_of_cartridges,  # List of cartridges, where len(list) = number of cartridges
+            list_of_pump_relays=list_of_pump_relays,  # Pumps connected to which relays
+            list_of_ultrasonic_relays=list_of_ultrasonic_relays,  # Ultrasonic connected to which relays
+            pump_slope=pump_slope,  # dict of pump slopes: a in y = ax + b
+            pump_intercept=pump_intercept,  # dict of pump intercepts: b in y = ax + b
+        )
 
     def initiate_openTron(self):
+        self.openTron = opentronsClient(self.openTron_IP)
+
+        # add pipette
+        self.openTron.loadPipette(
+            strPipetteName=self.openTron_pipette_name, strMount="right"
+        )
+
         # Tools
         path = os.path.join(DATA_PATH, labware_paths["nistall_4_tiprack_1ul"])
         self.labware_tool_rack = self.read_json(path)
         self.labware_tool_rack = self.openTron.loadCustomLabware(
-            dicLabware=self.labware_tool_rack, intSlot=10
+            dicLabware=self.labware_tool_rack,
+            intSlot=10,
+        )
+        self.openTron.addLabwareOffsets(
+            strLabwareName=self.labware_tool_rack,
+            fltXOffset=0.7,
+            fltYOffset=0.5,
+            fltZOffset=5.2,
         )
 
         # Vials with solutions
         path = os.path.join(DATA_PATH, labware_paths["nis_8_reservoir_25000ul"])
         self.labware_stock_solutions1 = self.read_json(path)
         self.labware_stock_solutions1 = self.openTron.loadCustomLabware(
-            dicLabware=self.labware_stock_solutions1, intSlot=4
+            dicLabware=self.labware_stock_solutions1,
+            intSlot=11,  # Remember to change in the parameters.py if slot is changed
         )
 
         # Vials with solutions
         path = os.path.join(DATA_PATH, labware_paths["nis_8_reservoir_25000ul"])
         self.labware_stock_solutions2 = self.read_json(path)
         self.labware_stock_solutions2 = self.openTron.loadCustomLabware(
-            dicLabware=self.labware_stock_solutions2, intSlot=5
+            dicLabware=self.labware_stock_solutions2,
+            intSlot=7,  # Remember to change in the parameters.py if slot is changed
         )
 
         # Well plate where the testing takes place
@@ -73,53 +170,1180 @@ class Experiment:
         )
         # Load pipette tip rack
         self.labware_pipette_tips = self.openTron.loadLabware(
-            1, "opentrons_96_tiprack_1000ul"
+            intSlot=1, strLabwareName="opentrons_96_tiprack_1000ul"
+        )
+        self.openTron.addLabwareOffsets(
+            strLabwareName=self.labware_pipette_tips,
+            fltXOffset=0.5,
+            fltYOffset=0.9,
+            fltZOffset=-0.1,
         )
 
-    # Read JSON
     def read_json(path: str) -> dict:
         with open(path, encoding="utf8") as f:
             return json.load(f)
 
-    def get_temperature(self, cartridge_number: float):
-        pass
+    def initiate_potentiostat_admiral(
+        self, port: str = "COM5", instrument_name: str = "Plus1894"
+    ):
+        """Initiate the potentiostat
 
-    def set_temperature(self, temperature: float, cartridge_number: int):
-        # Check that temperature is a positive number
-        if temperature < 0:
-            raise ValueError("Temperature should be a positive number")
+        Args:
+            port (str, optional): Port of the potentiostat. Defaults to "COM5".
+            instrument_name (str, optional): Name of the potentiostat. Defaults to "Plus1894".
+        """
+        LOGGER.info(
+            f"Initiating potentiostat on port {port} with name {instrument_name}"
+        )
+        self.admiral = AdmiralSquidstatWrapper(
+            port=port, instrument_name=instrument_name
+        )
 
-        # Check that cartridge_number is a positive number
-        if cartridge_number < 0:
-            raise ValueError("Cartridge number should be a positive number")
+    def correct_for_ohmic_resistance(
+        df: pd.DataFrame,
+        ohmic_resistance: float,
+        ohmic_correction_factor: float = OHMIC_CORRECTION_FACTOR,
+    ) -> pd.DataFrame:
+        """Correct potential for ohmic resistance
 
-        pass
+        Args:
+            df (pd.DataFrame): Dataframe containing the data to correct. Must contain a
+            column named "Working Electrode Current [A]" and a column named "Working Electrode Voltage [V]".
+            ohmic_resistance (float): Ohmic resistance in ohm
 
-    def clean_cell(self, vial_number: int, volume: float):
-        pass
+        Returns:
+            pd.DataFrame: Dataframe with corrected potential
+        """
+        LOGGER.info("Correcting for ohmic resistance")
+        df["Corrected Working Electrode Voltage [V]"] = (
+            df["Working Electrode Voltage [V]"]
+            - ohmic_correction_factor
+            * ohmic_resistance
+            * df["Working Electrode Current [A]]"]
+        )
+        return df
 
-    def dispense_to_vial(self, vial_number: int, volume: float):
-        # Check if the vial_number is between 0 and 1000
-        if vial_number < 0 or vial_number > 1000:
-            raise ValueError("Vial number should be between 0 and 1000")
+    def store_data_admiral(
+        self, dc_data: pd.DataFrame, ac_data: pd.DataFrame, file_name: str
+    ):
+        """Store data from the potentiostat in a csv file
 
-        # Check if the volume is between 0 and 100
-        if volume < 0 or volume > 100:
-            raise ValueError("Volume should be between 0 and 100")
+        Args:
+            dc_data (pd.DataFrame): Data from the potentiostat
+            ac_data (pd.DataFrame): Data from the potentiostat
+            file_name (str): Name of the file to store the data in without the file extension
+        """
 
-        pass
+        if dc_data is not None:
+            LOGGER.debug(f"Storing DC data in {file_name} dc_data.csv")
+            dc_data.to_csv(file_name + " dc_data.csv", sep=",")
+        if ac_data is not None:
+            LOGGER.debug(f"Storing AC data in {file_name} ac_data.csv")
+            ac_data.to_csv(file_name + " ac_data.csv", sep=",")
 
-    def dispense_peristaltic(self, pump_number: int, volume: float):
-        # Check if the pump_number is between 0 and 7
-        if pump_number < 0 or pump_number > 7:
-            raise ValueError("Pump number should be between 0 and 7")
+    def close_potentiostat_admiral(self):
+        """Close the potentiostat"""
+        LOGGER.info("Closing admiral potentiostat connection")
+        self.admiral.close_experiment()
 
-        # Check if the volume is between 0 and 100
-        if volume < 0 or volume > 100:
-            raise ValueError("Volume should be between 0 and 100")
+    def perform_potentiostat_measurements(self):
+        ### 0 - Electrochemical Activation
+        LOGGER.info("Performing electrochemical test: 0 - Electrochemical activation")
+        self.admiral.setup_constant_current(
+            holdAtCurrent=0.2 * self.sample_surface_area,
+            samplingInterval=0.05,
+            duration=60,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "0 CP 200 mA cm-2"
+        )
 
-        pass
+        ### 1 - Perform CV
+        LOGGER.info("Performing electrochemical test: 1 - Cyclic voltammetry")
+        self.admiral.setup_cyclic_voltammetry(
+            startVoltage=1.6,
+            firstVoltageLimit=0.8,
+            secondVoltageLimit=1.6,
+            endVoltage=1.6,
+            scanRate=0.2,
+            samplingInterval=0.05,
+            cycles=25,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "1 CV 25x 200mV s-1"
+        )
 
-    def run_experiment(self):
+        ### 2 - Perform CV
+        LOGGER.info("Performing electrochemical test: 2 - Cyclic voltammetry")
+        self.admiral.setup_cyclic_voltammetry(
+            startVoltage=1.6,
+            firstVoltageLimit=0.8,
+            secondVoltageLimit=1.6,
+            endVoltage=0.8,
+            scanRate=0.01,
+            samplingInterval=0.2,
+            cycles=2,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "2 CV 2x 200mV s-1"
+        )
+
+        ### 3 - Perform EIS
+        LOGGER.info(
+            "Performing electrochemical test: 3 - Electrochemical impedance spectroscopy"
+        )
+        self.admiral.setup_EIS_potentiostatic(
+            start_frequency=500000,
+            end_frequency=1,
+            points_per_decade=10,
+            voltage_bias=1.5,
+            voltage_amplitude=0.01,
+            number_of_runs=1,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "3 EIS"
+        )
+        # Find ohmic resistance
+        self.ohmic_resistance = self.find_ohmic_resistance(df=ac_data)
+        # Updata metadata
+        self.metadata.loc[0, "ohmic_resistance"] = self.ohmic_resistance
+
+        ### 4 - Perform CP at 100 mA/cm^2
+        LOGGER.info(
+            "Performing electrochemical test: 4 - Constant current at 100 mA/cm^2"
+        )
+        self.admiral.setup_constant_current(
+            holdAtCurrent=0.1 * self.sample_surface_area,
+            samplingInterval=0.05,
+            duration=70,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Correct DC data for ohmic resistance
+        dc_data = self.correct_for_ohmic_resistance(
+            df=dc_data,
+            ohmic_resistance=self.ohmic_resistance,
+            ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
+        )
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "4 CP 100 mA cm-2"
+        )
+
+        ### 5 - Perform CP at 50 mA/cm^2
+        LOGGER.info(
+            "Performing electrochemical test: 5 - Constant current at 50 mA/cm^2"
+        )
+        self.admiral.setup_constant_current(
+            holdAtCurrent=0.05 * self.sample_surface_area,
+            samplingInterval=0.05,
+            duration=70,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Correct DC data for ohmic resistance
+        dc_data = self.correct_for_ohmic_resistance(
+            df=dc_data,
+            ohmic_resistance=self.ohmic_resistance,
+            ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
+        )
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "5 CP 50 mA cm-2"
+        )
+
+        ### 6 - Perform CP at 20 mA/cm^2
+        LOGGER.info(
+            "Performing electrochemical test: 6 - Constant current at 20 mA/cm^2"
+        )
+        self.admiral.setup_constant_current(
+            holdAtCurrent=0.02 * self.sample_surface_area,
+            samplingInterval=0.05,
+            duration=70,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Correct DC data for ohmic resistance
+        dc_data = self.correct_for_ohmic_resistance(
+            df=dc_data,
+            ohmic_resistance=self.ohmic_resistance,
+            ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
+        )
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "6 CP 20 mA cm-2"
+        )
+
+        ### 7 - Perform CP at 10 mA/cm^2
+        LOGGER.info(
+            "Performing electrochemical test: 7 - Constant current at 10 mA/cm^2"
+        )
+        self.admiral.setup_constant_current(
+            holdAtCurrent=0.01 * self.sample_surface_area,
+            samplingInterval=0.05,
+            duration=70,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Correct DC data for ohmic resistance
+        dc_data = self.correct_for_ohmic_resistance(
+            df=dc_data,
+            ohmic_resistance=self.ohmic_resistance,
+            ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
+        )
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "7 CP 10 mA cm-2"
+        )
+
+        # 8 - Perform CP at 5 mA/cm^2
+        LOGGER.info(
+            "Performing electrochemical test: 8 - Constant current at 5 mA/cm^2"
+        )
+        self.admiral.setup_constant_current(
+            holdAtCurrent=0.005 * self.sample_surface_area,
+            samplingInterval=0.05,
+            duration=70,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Correct DC data for ohmic resistance
+        dc_data = self.correct_for_ohmic_resistance(
+            df=dc_data,
+            ohmic_resistance=self.ohmic_resistance,
+            ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
+        )
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "8 CP 5 mA cm-2"
+        )
+
+        ### 9 - Perform CP at 2 mA/cm^2
+        LOGGER.info(
+            "Performing electrochemical test: 9 - Constant current at 2 mA/cm^2"
+        )
+        self.admiral.setup_constant_current(
+            holdAtCurrent=0.002 * self.sample_surface_area,
+            samplingInterval=0.05,
+            duration=70,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Correct DC data for ohmic resistance
+        dc_data = self.correct_for_ohmic_resistance(
+            df=dc_data,
+            ohmic_resistance=self.ohmic_resistance,
+            ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
+        )
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "9 CP 2 mA cm-2"
+        )
+
+        ### 10 - Perform CP at 1 mA/cm^2
+        LOGGER.info(
+            "Performing electrochemical test: 10 - Constant current at 1 mA/cm^2"
+        )
+        self.admiral.setup_constant_current(
+            holdAtCurrent=0.001 * self.sample_surface_area,
+            samplingInterval=0.05,
+            duration=70,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Correct DC data for ohmic resistance
+        dc_data = self.correct_for_ohmic_resistance(
+            df=dc_data,
+            ohmic_resistance=self.ohmic_resistance,
+            ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
+        )
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "10 CP 1 mA cm-2"
+        )
+
+        ### 11 - Perform CV
+        LOGGER.info("Performing electrochemical test: 11 - Cyclic voltammetry")
+        self.admiral.setup_cyclic_voltammetry(
+            startVoltage=1.6,
+            firstVoltageLimit=0.8,
+            secondVoltageLimit=1.6,
+            endVoltage=0.8,
+            scanRate=0.01,
+            samplingInterval=0.2,
+            cycles=2,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Correct DC data for ohmic resistance
+        dc_data = self.correct_for_ohmic_resistance(
+            df=dc_data,
+            ohmic_resistance=self.ohmic_resistance,
+            ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
+        )
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "11 CV 2x 10mV s-1"
+        )
+
+    def perform_potentiostat_electrodeposition(self, seconds: int = 10):
+        """Perform electrodeposition of the sample
+
+        Args:
+            seconds (int, optional): Duration of the electrodeposition in seconds. Defaults to 10.
+        """
+        LOGGER.info(
+            f"Potentiostat performing electrodeposition of the sample with {self.deposition_current} A for {seconds} seconds"
+        )
+
+        # Get temperature of the well
+        self.metadata.loc[0, "well_temperature_during_deposition"] = (
+            self.arduino.get_temperature1()
+        )
+
+        # Apply constant current for X seconds
+        self.admiral.setup_constant_current(
+            holdAtCurrent=self.deposition_current,
+            samplingInterval=0.1,
+            duration=seconds,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.measurement.get_data()
+        self.admiral.clear_data()
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data,
+            ac_data=ac_data,
+            file_name=DATA_PATH + self.unique_id + " Electrodeposition",
+        )
+
+    def perform_potentiostat_reference_measurement(self, string_to_add: str = ""):
+        """Perform reference electrode measurement
+
+        Args:
+            string_to_add (str, optional): String to add to the file name
+                eg. ' after'). Defaults to ''.
+        """
+
+        ### Create a EIS technique
+        LOGGER.info(
+            "Performing EIS on Biologic potentiostat for reference electrode correction"
+        )
+        params = PEISParams(
+            vs_initial=False,
+            initial_voltage_step=0.1,
+            duration_step=3,
+            record_every_dI=0.01,
+            record_every_dT=1,
+            correction=False,
+            final_frequency=1000,
+            initial_frequency=100000,
+            amplitude_voltage=0.01,
+            average_n_times=3,
+            frequency_number=10,
+            sweep=SweepMode.Linear,  # Linear or Logarithmic
+            wait_for_steady=False,
+            bandwidth=BANDWIDTH.BW_5,
+        )
+
+        tech = PEISTechnique(params)
+
+        # Push the technique to the Biologic
+        results = []
+        with connect("USB0", force_load=True) as bl:
+            channel = bl.get_channel(2)
+            runner = channel.run_techniques([tech])
+            for result in runner:
+                results.append(result.data.process_data)
+            else:
+                time.sleep(1)
+
+        # make results into a pandas dataframe
+        df = pd.DataFrame(results)
+
+        # Save the data
+        df.to_csv(DATA_PATH + self.unique_id + f" Ref EIS{string_to_add}.csv")
+
+        ### Create a CV technique
+        LOGGER.info(
+            "Performing CV on Biologic potentiostat for reference electrode correction"
+        )
+        Ei = CVStep(voltage=0, scan_rate=0.5, vs_initial=False)
+        E1 = CVStep(voltage=1.5, scan_rate=0.5, vs_initial=False)
+        E2 = CVStep(voltage=0, scan_rate=0.5, vs_initial=False)
+        Ef = CVStep(voltage=0, scan_rate=0.5, vs_initial=False)
+
+        params = CVParams(
+            record_every_dE=0.01,
+            average_over_dE=False,
+            n_cycles=25,
+            begin_measuring_i=0.1,
+            end_measuring_i=0.5,
+            Ei=Ei,
+            E1=E1,
+            E2=E2,
+            Ef=Ef,
+            bandwidth=BANDWIDTH.BW_5,
+        )
+
+        tech = CVTechnique(params)
+
+        # Push the technique to the Biologic
+        results = []
+        with connect("USB0", force_load=True) as bl:
+            channel = bl.get_channel(2)
+            runner = channel.run_techniques([tech])
+            for result in runner:
+                results.append(result.data)
+            else:
+                time.sleep(1)
+
+        # make results into a pandas dataframe
+        df = pd.DataFrame(results)
+
+        # Save the data
+        df.to_csv(DATA_PATH + self.unique_id + f" Ref CV{string_to_add}.csv")
+
+    def cleaning(self, well_number: int):
+        # To avoid cable clutter, move openTron first to pipette tip rack
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_pipette_tips,
+            strWellName=pipette_tips["NH4OH"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=130,
+            intSpeed=100,  # mm/s
+        )
+
+        # Go to flush tool rack
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["Flush_tool"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=tool_x_offset["Flush_tool"],
+            intOffsetY=tool_y_offset["Flush_tool"],
+            intOffsetZ=50,
+            intSpeed=50,  # mm/s
+        )
+
+        # Pick up flush tool
+        self.openTron.pickUpTip(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["Flush_tool"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            strOffsetX=tool_x_offset["Flush_tool"],
+            strOffsetY=tool_y_offset["Flush_tool"],
+            strOffsetZ=tool_z_offset["Flush_tool"],
+        )
+
+        # Go to well
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=well_number,
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=0,
+            intSpeed=50,  # mm/s
+        )
+
+        # Go a little deeper
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=well_number,
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=-20,
+            intSpeed=50,  # mm/s
+        )
+
+        # Drain to avoid overflow
+        self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
+
+        # Go a little deeper
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=well_number,
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=-30,
+            intSpeed=50,  # mm/s
+        )
+
+        # Drain to avoid overflow
+        self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
+
+        # Go a little deeper
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=well_number,
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=-40,
+            intSpeed=50,  # mm/s
+        )
+        # Drain to avoid overflow
+        self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
+        # Go a little deeper
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=well_number,
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=-50,
+            intSpeed=50,  # mm/s
+        )
+        # Drain to avoid overflow
+        self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
+
+        # Go to deepest position
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=well_number,
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=-54,
+            intSpeed=50,  # mm/s
+        )
+        # Drain
+        self.arduino.dispense_ml(pump=0, volume=1)
+
+        # Flush with water
+        self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+        self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+        self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+        self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+
+        # Flush with acid
+        self.arduino.dispense_ml(pump=2, volume=0.5)  # ml to dispense
+        time.sleep(30)
+        self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+
+        # Flush with water
+        self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+        self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+        self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+        self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+
+        # Go straight up in the air
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=well_number,
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=20,
+            intSpeed=50,  # mm/s
+        )
+
+        # Go to tool rack
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["Flush_tool"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=tool_x_offset["Flush_tool"],
+            intOffsetY=tool_y_offset["Flush_tool"],
+            intOffsetZ=50,
+            intSpeed=50,  # mm/s
+        )
+
+        # Drop tip
+        self.openTron.dropTip(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["Flush_tool"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="bottom",
+            strOffsetX=tool_x_offset["Flush_tool"],
+            strOffsetY=tool_y_offset["Flush_tool"],
+            strOffsetZ=tool_z_dropoff["Flush_tool"],
+            boolHomeAfter=False,
+            boolAlternateDropLocation=False,
+        )
+
+        # Go stright up in the air
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["Flush_tool"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=tool_x_offset["Flush_tool"],
+            intOffsetY=tool_y_offset["Flush_tool"],
+            intOffsetZ=100,
+            intSpeed=50,  # mm/s
+        )
+
+    def normalize_volume(self, chemicals_to_mix: dict):
+        # normalize the volume of each chemical dividing each volumes in the dict chemicals_to_mix with the sum of volumes in the dict so that the normalized sum  = 1
+        sum_volume = sum(chemicals_to_mix.values())
+        chemicals_to_mix = {k: v / sum_volume for k, v in chemicals_to_mix.items()}
+        return chemicals_to_mix
+
+    def dose_chemicals(
+        self, chemicals_to_mix: dict, well_number: int, total_volume: float
+    ):
+        """Mix chemicals in a well
+
+        Args:
+            chemicals_to_mix (dict): Form must be: {"chemical_name": % of total volume}
+            well_number (int): Well number to mix chemicals in
+            total_volume (float): Total volume in ml
+        """
+        total_volume = total_volume * 1000  # Convert to uL
+
+        # Normalize the volume of each chemical
+        chemicals_to_mix = self.normalize_volume(chemicals_to_mix)
+
+        # Loop through all chemicals to mix
+        for chemical, volume in chemicals_to_mix.items():
+            volume_to_dispense = volume * total_volume
+
+            LOGGER.info(
+                f"Mixing {chemical} with {volume*total_volume} uL to well {wells[well_number]}"
+            )
+            # Move to pipette rack
+            self.openTron.moveToWell(
+                strLabwareName=self.labware_pipette_tips,
+                strWellName=pipette_tips[chemical],
+                strPipetteName=self.openTron_pipette_name,
+                strOffsetStart="top",
+                intOffsetX=0,
+                intOffsetY=0,
+                intOffsetZ=50,
+            )
+            # Pick up tip
+            self.openTron.pickUpTip(
+                strLabwareName=self.labware_pipette_tips,
+                strWellName=pipette_tips[chemical],
+                strPipetteName=self.openTron_pipette_name,
+                strOffsetStart="top",
+                strOffsetX=0,
+                strOffsetY=0,
+                strOffsetZ=0,
+            )
+
+            volume_left = volume_to_dispense
+            for dispense in range(0, volume_to_dispense, 1000):
+                if volume_left < 1000:
+                    dispense_volume = volume_left
+                else:
+                    dispense_volume = 1000
+
+                LOGGER.info(f"Aspirating {dispense_volume} uL of {chemical}")
+                # Move to stock solution
+                self.openTron.moveToWell(
+                    strLabwareName=pipetteable_chemical_racks[chemical],
+                    strWellName=pipetteable_chemicals[chemical],
+                    strPipetteName=self.openTron_pipette_name,
+                    strOffsetStart="top",
+                    intOffsetX=0,
+                    intOffsetY=0,
+                    intOffsetZ=0,
+                )
+                # Aspirate
+                self.openTron.aspirate(
+                    strLabwareName=pipetteable_chemical_racks[chemical],
+                    strWellName=pipetteable_chemicals[chemical],
+                    strPipetteName=self.openTron_pipette_name,
+                    intVolume=dispense_volume,  # uL
+                    strOffsetStart="top",
+                    strOffsetX=0,
+                    strOffsetY=0,
+                    strOffsetZ=-50,
+                )
+                # Go straight up in the air
+                self.openTron.moveToWell(
+                    strLabwareName=pipetteable_chemical_racks[chemical],
+                    strWellName=pipetteable_chemicals[chemical],
+                    strPipetteName=self.openTron_pipette_name,
+                    strOffsetStart="top",
+                    intOffsetX=0,
+                    intOffsetY=0,
+                    intOffsetZ=80,
+                )
+                # Go to well
+                self.openTron.moveToWell(
+                    strLabwareName=self.labware_well_plate,
+                    strWellName=wells[well_number],
+                    strPipetteName=self.openTron_pipette_name,
+                    strOffsetStart="top",
+                    intOffsetX=0,
+                    intOffsetY=0,
+                    intOffsetZ=10,
+                )
+                LOGGER.info(f"Dispensing {dispense} uL of {chemical}")
+                # Dispense
+                self.openTron.dispense(
+                    strLabwareName=self.labware_well_plate,
+                    strWellName=wells[well_number],
+                    strPipetteName=self.openTron_pipette_name,
+                    intVolume=dispense_volume,  # uL
+                    strOffsetStart="top",
+                    strOffsetX=0,
+                    strOffsetY=0,
+                    strOffsetZ=0,
+                )
+                volume_left -= dispense_volume
+
+            # Go to pipette tip rack
+            self.openTron.moveToWell(
+                strLabwareName=self.labware_pipette_tips,
+                strWellName=pipette_tips[chemical],
+                strPipetteName=self.openTron_pipette_name,
+                strOffsetStart="top",
+                intOffsetX=0,
+                intOffsetY=0,
+                intOffsetZ=20,
+            )
+            LOGGER.info(f"Dropping tip for {chemical}")
+            # Drop tip
+            self.openTron.dropTip(
+                strLabwareName=self.labware_pipette_tips,
+                strWellName=pipette_tips[chemical],
+                strPipetteName=self.openTron_pipette_name,
+                strOffsetStart="bottom",
+                strOffsetX=0,
+                strOffsetY=0,
+                strOffsetZ=10,
+                boolHomeAfter=False,
+                boolAlternateDropLocation=False,
+            )
+
+    def perform_electrodeposition(self, well_number: int):
+        # Go to Ni deposition tool
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["Ni_electrode"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=50,
+        )
+        # Pick up Ni deposition tool
+        self.openTron.pickUpTip(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["Ni_electrode"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            strOffsetX=tool_x_offset["Ni_electrode"],
+            strOffsetY=tool_y_offset["Ni_electrode"],
+            strOffsetZ=tool_z_offset["Ni_electrode"],
+        )
+        # Go to well at slow speed due to cable clutter
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=wells[well_number],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=0,
+            intSpeed=50,  # mm/s
+        )
+        # Go down in the well
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=wells[well_number],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=-15,
+            intSpeed=50,  # mm/s
+        )
+
+        # Measure temperature of cartridge 1
+        temperature_cartridge1 = self.arduino.get_temperature1()
+        # TODO store this temperature in a file
+
+        # Perform the actual electrochemical deposition
+        self.perform_potentiostat_electrodeposition()
+
+        # Go straight up from the well
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=wells[well_number],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=20,
+            intSpeed=50,  # mm/s
+        )
+
+        # Go to cleaning cartridge
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_cleaning_cartridge,
+            strWellName="A2",
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=-25,
+            intSpeed=50,  # mm/s
+        )
+        time.sleep(5)
+        # TODO CLEAN ELECTRODE
+        # Move straight up
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_cleaning_cartridge,
+            strWellName="A2",
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=20,
+            intSpeed=50,  # mm/s
+        )
+        # Go to tool rack Ni deposition tool
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["Ni_electrode"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=tool_x_offset["Ni_electrode"],
+            intOffsetY=tool_y_offset["Ni_electrode"],
+            intOffsetZ=20,
+            intSpeed=50,  # mm/s
+        )
+        # Drop Ni deposition tool
+        self.openTron.dropTip(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["Ni_electrode"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="bottom",
+            strOffsetX=tool_x_offset["Ni_electrode"],
+            strOffsetY=tool_y_offset["Ni_electrode"],
+            strOffsetZ=tool_z_dropoff["Ni_electrode"],
+            boolHomeAfter=False,
+            boolAlternateDropLocation=False,
+        )
+
+    def dispense_electrolyte(self, volume: float, chemical: str, well_number: int):
+        volume = volume * 1000
+
+        # Pipette 80% of the volume of KOH into the well
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_pipette_tips,
+            strWellName=pipette_tips[chemical],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=20,
+        )
+        # Pick up tip
+        self.openTron.pickUpTip(
+            strLabwareName=self.labware_pipette_tips,
+            strWellName=pipette_tips[chemical],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            strOffsetX=0,
+            strOffsetY=0,
+            strOffsetZ=0,
+        )
+        volume_left = volume
+        for dispense in range(0, volume, 1000):
+            if volume_left < 1000:
+                dispense_volume = volume_left
+            else:
+                dispense_volume = 1000
+
+            # Move to stock solution
+            self.openTron.moveToWell(
+                strLabwareName=pipetteable_chemical_racks[chemical],
+                strWellName=pipetteable_chemicals[chemical],
+                strPipetteName=self.openTron_pipette_name,
+                strOffsetStart="top",
+                intOffsetX=0,
+                intOffsetY=0,
+                intOffsetZ=0,
+            )
+
+            # Aspirate
+            self.openTron.aspirate(
+                strLabwareName=pipetteable_chemical_racks[chemical],
+                strWellName=pipetteable_chemicals[chemical],
+                strPipetteName=self.openTron_pipette_name,
+                intVolume=dispense_volume,  # uL
+                strOffsetStart="top",
+                strOffsetX=0,
+                strOffsetY=0,
+                strOffsetZ=-50,
+            )
+            # Go to well
+            self.openTron.moveToWell(
+                strLabwareName=self.labware_well_plate,
+                strWellName=wells[well_number],
+                strPipetteName=self.openTron_pipette_name,
+                strOffsetStart="top",
+                intOffsetX=0,
+                intOffsetY=0,
+                intOffsetZ=0,
+            )
+            # Dispense
+            self.openTron.dispense(
+                strLabwareName=self.labware_well_plate,
+                strWellName=wells[well_number],
+                strPipetteName=self.openTron_pipette_name,
+                intVolume=dispense_volume,  # uL
+                strOffsetStart="top",
+                strOffsetX=0,
+                strOffsetY=0,
+                strOffsetZ=0,
+            )
+            volume_left -= dispense_volume
+
+        # Go to pipette tip rack
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_pipette_tips,
+            strWellName=pipette_tips[chemical],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=20,
+        )
+        # Drop tip
+        self.openTron.dropTip(
+            strLabwareName=self.labware_pipette_tips,
+            strWellName=pipette_tips[chemical],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="bottom",
+            strOffsetX=0,
+            strOffsetY=0,
+            strOffsetZ=10,
+            boolHomeAfter=False,
+            boolAlternateDropLocation=False,
+        )
+
+    def perform_electrochemical_testing(self, well_number: int):
+        # Use the OER_electrode
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["OER_electrode"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=tool_x_offset["OER_electrode"],
+            intOffsetY=tool_y_offset["OER_electrode"],
+            intOffsetZ=10,
+        )
+        self.openTron.pickUpTip(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["OER_electrode"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            strOffsetX=tool_x_offset["OER_electrode"],
+            strOffsetY=tool_y_offset["OER_electrode"],
+            strOffsetZ=tool_z_offset["OER_electrode"],
+        )
+        # Go to well
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=wells[well_number],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=10,
+            intSpeed=50,  # mm/s
+        )
+        # Go down in well
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=wells[well_number],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=-20,
+            intSpeed=10,  # mm/s
+        )
+        # Perform reference electrode calibration
+        self.perform_potentiostat_reference_measurement(" before")
+
+        # Perform the actual electrochemical testing
+        self.perform_potentiostat_measurements()
+
+        # Perform reference electrode calibration
+        self.perform_potentiostat_reference_measurement(" after")
+
+        # Go straight up from the well
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=wells[well_number],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=20,
+            intSpeed=50,  # mm/s
+        )
+        # Go to cleaning cartridge
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_cleaning_cartridge,
+            strWellName="A2",
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=20,
+            intSpeed=50,  # mm/s
+        )
+        # Go down in well
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_cleaning_cartridge,
+            strWellName="A2",
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=-20,
+            intSpeed=10,  # mm/s
+        )
+        time.sleep(5)
+        # Go straight up
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_cleaning_cartridge,
+            strWellName="A2",
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=0,
+            intOffsetY=0,
+            intOffsetZ=20,
+            intSpeed=50,  # mm/s
+        )
+        # Go to tool rack
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["OER_electrode"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            intOffsetX=tool_x_offset["OER_electrode"],
+            intOffsetY=tool_y_offset["OER_electrode"],
+            intOffsetZ=50,
+            intSpeed=50,  # mm/s
+        )
+        # Drop OER electrode
+        self.openTron.dropTip(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["OER_electrode"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="bottom",
+            strOffsetX=tool_x_offset["OER_electrode"],
+            strOffsetY=tool_y_offset["OER_electrode"],
+            strOffsetZ=tool_z_dropoff["OER_electrode"],
+            boolHomeAfter=False,
+            boolAlternateDropLocation=False,
+        )
+
+    def find_ohmic_resistance(df: pd.DataFrame) -> float:
+        """Find the ohmic resistance from the EIS data
+
+        Args:
+            data (pd.DataFrame): EIS data
+
+        Returns:
+            float: Ohmic resistance
+        """
+        # Select the first 10 rows of data dataframe to avoid a negative
+        # tail of the ohmic resistance at higher frequencies
+        df = df.iloc[:10]
+
+        # Finding ohmic resistance
+        LOGGER.info("Finding ohmic resistance")
+        row_index = df["Imaginary Impedance"].abs().idxmin(skipna=True)
+        if row_index is None:
+            raise ValueError("EIS data does not contain valid impedance values.")
+        ohmic_resistance = round(float(df.loc[row_index, "Real Impedance"]), 3)
+        LOGGER.info(f"Ohmic resistance: {ohmic_resistance}")
+        return ohmic_resistance
+
+    def run_experiment(
+        self,
+        chemicals_to_mix: dict,
+        well_number: int,
+        dispense_ml_electrolyte: float,
+        electrolyte: str = "KOH",
+    ):
+        self.openTron.lights(True)
+        self.openTron.homeRobot()
+        self.cleaning(well_number=well_number)
+        self.dose_chemicals(
+            chemicals_to_mix=chemicals_to_mix,
+            well_number=well_number,
+            total_volume=self.well_volume,
+        )
+        # Connect to admiral potentiostat
+        self.initiate_potentiostat_admiral()
+        # Run recipe for electrodeposition
+        self.perform_electrodeposition(well_number=well_number)
+        # Clean the well
+        self.cleaning(well_number=well_number)
+        # Dispense electrolyte
+        self.dispense_electrolyte(
+            volume=dispense_ml_electrolyte,
+            chemical=electrolyte,
+            well_number=well_number,
+        )
+        # Perform electrochemical testing
+        self.perform_electrochemical_testing(well_number=well_number)
+        # Disconnect admiral potentiostat
+        self.close_potentiostat_admiral()
+
+        self.arduino.set_temperature(0, 0)
+        self.arduino.set_temperature(1, 0)
+        self.openTron.homeRobot()
+        self.openTron.lights(False)
+
+    def __del__(self):
+        # Turn on light
+        self.openTron.lights(True)
         # Home robot
         self.openTron.homeRobot()
+        # Turn off light
+        self.openTron.lights(False)
+
+        # Set temperature to 0 C so it doesnt heat
+        self.arduino.set_temperature(0, 0)
+        self.arduino.set_temperature(1, 0)
