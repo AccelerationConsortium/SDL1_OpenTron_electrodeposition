@@ -3,6 +3,10 @@ import logging
 from datetime import datetime
 import sys
 import time
+from parameters import (
+    pump_slope,
+    pump_intercept,
+)
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
@@ -14,7 +18,9 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(DATA_PATH + "example_arduino_pump_calibration.log", mode="a"),
+        logging.FileHandler(
+            DATA_PATH + "example_arduino_pump_calibration.log", mode="a"
+        ),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -29,6 +35,8 @@ robot = Arduino(
     ],  # List of cartridges, where len(list) = number of cartridges
     list_of_pump_relays=[0, 1, 2, 3, 4, 5],  # Pumps connected to which relays
     list_of_ultrasonic_relays=[6, 7],  # Ultrasonic connected to which relays
+    pump_slope=pump_slope,  # dict of pump slopes: a in y = ax + b
+    pump_intercept=pump_intercept,  # dict of pump intercepts: b in y = ax + b
 )
 
 
@@ -36,7 +44,7 @@ robot = Arduino(
 # Workflow
 ###############################################################################
 robot.set_temperature(0, 0)
-robot.set_temperature(1, 35)
+robot.set_temperature(1, 0)
 # Write down the weight of dispensed water and tare in between dispensing.
 # Repeat for each pump 3 times.
 # This can, combined with temparature, be used to calibrate the pumps by
@@ -49,7 +57,9 @@ pump_number = int(input("Enter pump number to calibrate: "))
 for seconds in list_of_times:
     input(f"Press enter to start dispensing {seconds} seconds")
     robot.set_pump_on(pump_number, seconds)
-    secondss = int(input("Enter seconds to drain: "))
-    robot.set_pump_on(3, secondss)
+    # secondss = int(input("Enter seconds to drain: "))
+    # robot.set_pump_on(3, secondss)
 
 print("Calibration done")
+
+robot.dispense_ml(pump=0, ml=1)

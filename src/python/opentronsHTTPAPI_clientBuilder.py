@@ -415,7 +415,7 @@ class opentronsClient:
 
     def dropTip(self,
                 strPipetteName: str,
-                strLabwareName: str = "fixed-trash",
+                strLabwareName: str,
                 strWellName: str = "A1",
                 strOffsetStart: str = "center",
                 strOffsetX: int = 0,
@@ -521,7 +521,7 @@ class opentronsClient:
                  strWellName: str,
                  strPipetteName: str,
                  intVolume: int,                        # uL
-                 fltFlowRate: float = 200,              # uL/s -- need to check this
+                 fltFlowRate: float = 274.7,            # uL/s -- need to check this
                  strOffsetStart: str = "center",
                  strOffsetX: int = 0,
                  strOffsetY: int = 0,
@@ -627,7 +627,7 @@ class opentronsClient:
                  strWellName: str,
                  strPipetteName: str,
                  intVolume: int,                        # uL
-                 fltFlowRate: float = 600,              # uL/s -- need to check this
+                 fltFlowRate: float = 274.7,            # uL/s -- need to check this
                  strOffsetStart: str = "top",
                  strOffsetX: int = 0,
                  strOffsetY: int = 0,
@@ -735,7 +735,7 @@ class opentronsClient:
                    intOffsetY: int = 0,
                    intOffsetZ: int = 0,
                    strIntent: str = "setup",
-                   intSpeed: int = 10   # mm/s
+                   intSpeed: int = 400   # mm/s
                    ):
         '''
         moves the pipette to a well
@@ -852,7 +852,10 @@ class opentronsClient:
         # from the self.labware dictionary, get the labware ID
         strLabwareID = self.labware[strLabwareName]["id"]
 
+        print(strLabwareID)
+
         dicRunInfo = self.getRunInfo()
+        print(dicRunInfo)
 
         # find the list of labware from the run info
         lstLabware = dicRunInfo['data']['labware']
@@ -867,6 +870,8 @@ class opentronsClient:
                 strDefinitionUri = dicLabware_temp['definitionUri']
                 # get the slot
                 strSlot = dicLabware_temp['location']['slotName']
+    
+        print(strDefinitionUri)
 
         # if the definitionUri is not found
         if strDefinitionUri == None:
@@ -876,10 +881,10 @@ class opentronsClient:
         dicCommand = {
             "data": {
                 "definitionUri": strDefinitionUri,
-                "location":{"slot": strSlot},
-                'vector': {'x': fltXOffset,
-                           'y': fltYOffset,
-                           'z': fltZOffset}
+                "location":{"slotName": strSlot},
+                "vector": {"x": str(fltXOffset),
+                           "y": str(fltYOffset),
+                           "z": str(fltZOffset)}
             }
         }
 
@@ -892,7 +897,7 @@ class opentronsClient:
 
         # make request
         response = requests.post(
-            url = f"http://{self.robotIP}:31950/runs/{self.runID}/labware_definitions",
+            url = f"http://{self.robotIP}:31950/runs/{self.runID}/labware_offsets",
             headers = self.headers,
             data = strCommand
         )
@@ -946,6 +951,35 @@ class opentronsClient:
             # LOG - info
             LOGGER.info(f"Lights turned {strState}")
 
+    def controlAction(self,
+                 strAction: str):
+        dicCommand = {
+            "data": {
+                "actionType": strAction,
+        }}
+
+        strCommand = json.dumps(dicCommand)
+
+        # LOG - info
+        LOGGER.info(f"Performing action: {strAction}")
+        # LOG - debug
+        LOGGER.debug(f"Command: {strCommand}")
+
+        response = requests.post(
+            url = f"http://{self.robotIP}:31950/runs/{self.runID}/actions",
+            headers = self.headers,
+            data = strCommand
+        )
+
+        # LOG - debug
+        LOGGER.debug(f"Response: {response.text}")
+
+        if response.status_code == 201:
+            # LOG - info
+            LOGGER.info(f"Action: {strAction} successful.")
+        else:
+            raise Exception(f"Failed to perform action.\nError code: {response.status_code}\n Error message: {response.text}")
+        
 
             
     '''
