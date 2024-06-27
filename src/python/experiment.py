@@ -521,13 +521,13 @@ class Experiment:
             duration=seconds,
         )
         self.admiral.run_experiment()
-        ac_data, dc_data = self.measurement.get_data()
+        ac_data, dc_data = self.admiral.get_data()
         self.admiral.clear_data()
         # Save data
         self.store_data_admiral(
             dc_data=dc_data,
             ac_data=ac_data,
-            file_name=DATA_PATH + self.unique_id + " Electrodeposition",
+            file_name=DATA_PATH + str(self.unique_id) + " Electrodeposition",
         )
 
     def perform_potentiostat_reference_measurement(self, string_to_add: str = ""):
@@ -536,47 +536,7 @@ class Experiment:
         Args:
             string_to_add (str, optional): String to add to the file name
                 eg. ' after'). Defaults to ''.
-        """
-
-        ### Create a EIS technique
-        LOGGER.info(
-            "Performing EIS on Biologic potentiostat for reference electrode correction"
-        )
-        params = PEISParams(
-            vs_initial=False,
-            initial_voltage_step=0.1,
-            duration_step=3,
-            record_every_dI=0.01,
-            record_every_dT=1,
-            correction=False,
-            final_frequency=1000,
-            initial_frequency=100000,
-            amplitude_voltage=0.01,
-            average_n_times=3,
-            frequency_number=10,
-            sweep=SweepMode.Linear,  # Linear or Logarithmic
-            wait_for_steady=False,
-            bandwidth=BANDWIDTH.BW_5,
-        )
-
-        tech = PEISTechnique(params)
-
-        # Push the technique to the Biologic
-        results = []
-        with connect("USB0", force_load=True) as bl:
-            channel = bl.get_channel(2)
-            runner = channel.run_techniques([tech])
-            for result in runner:
-                results.append(result.data.process_data)
-            else:
-                time.sleep(1)
-
-        # make results into a pandas dataframe
-        df = pd.DataFrame(results)
-
-        # Save the data
-        df.to_csv(DATA_PATH + self.unique_id + f" Ref EIS{string_to_add}.csv")
-
+        """      
         ### Create a CV technique
         LOGGER.info(
             "Performing CV on Biologic potentiostat for reference electrode correction"
@@ -613,9 +573,58 @@ class Experiment:
 
         # make results into a pandas dataframe
         df = pd.DataFrame(results)
+        LOGGER.debug(f"Dataframe received: {df}")
 
         # Save the data
-        df.to_csv(DATA_PATH + self.unique_id + f" Ref CV{string_to_add}.csv")
+        LOGGER.debug(f"Saving data to {DATA_PATH + str(self.unique_id) + f' Ref CV{string_to_add}.csv'}")
+        df.to_csv(DATA_PATH + str(self.unique_id) + f" Ref CV{string_to_add}.csv")
+        time.sleep(120)
+
+        
+        ### Create a EIS technique
+        LOGGER.info(
+            "Performing EIS on Biologic potentiostat for reference electrode correction"
+        )
+        params = PEISParams(
+            vs_initial=False,
+            initial_voltage_step=0.1,
+            duration_step=3,
+            record_every_dI=0.01,
+            record_every_dT=1,
+            correction=False,
+            final_frequency=1000,
+            initial_frequency=100000,
+            amplitude_voltage=0.01,
+            average_n_times=3,
+            frequency_number=10,
+            sweep=SweepMode.Linear,  # Linear or Logarithmic
+            wait_for_steady=False,
+            bandwidth=BANDWIDTH.BW_5,
+        )
+
+        tech = PEISTechnique(params)
+
+        # Push the technique to the Biologic
+        results = []
+        with connect("USB0", force_load=True) as bl:
+            channel = bl.get_channel(2)
+            runner = channel.run_techniques([tech])
+            for result in runner:
+                results.append(result.data.process_data)
+            else:
+                time.sleep(1)
+
+        # make results into a pandas dataframe
+        df = pd.DataFrame(results)
+        LOGGER.debug(f"Dataframe received: {df}")
+
+        # Save the data
+        LOGGER.debug(f"Saving data to {DATA_PATH + str(self.unique_id) + f' Ref EIS{string_to_add}.csv'}")
+        df.to_csv(DATA_PATH + str(self.unique_id) + f" Ref EIS{string_to_add}.csv")
+
+
+
+        
 
     def cleaning(self, well_number: int):
         """Clean the well
@@ -669,21 +678,6 @@ class Experiment:
             fltOffsetZ=0,
             intSpeed=50,  # mm/s
         )
-
-        # Go a little deeper
-        self.openTron.moveToWell(
-            strLabwareName=self.labware_well_plate,
-            strWellName=wells[well_number],
-            strPipetteName=self.openTron_pipette_name,
-            strOffsetStart="top",
-            fltOffsetX=0,
-            fltOffsetY=0,
-            fltOffsetZ=-20,
-            intSpeed=50,  # mm/s
-        )
-
-        # Drain to avoid overflow
-        self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
 
         # Go a little deeper
         self.openTron.moveToWell(
@@ -1020,9 +1014,33 @@ class Experiment:
             fltOffsetZ=-25,
             intSpeed=50,  # mm/s
         )
+        # Dispense self.cleaning_station_volume on pump 4
+        self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
 
-        # Ultrasound for 30 seconds
+        # Ultrasound for 10 seconds
+        self.arduino.set_ultrasound_on(0, 5)
+
+        # Drain the cleaning cartridge by dispensing 20 ml on pump 3
+        self.arduino.dispense_ml(pump=3, volume=20)
+
+        # Dispense HCl self.cleaning_station_volume on pump 5
+        self.arduino.dispense_ml(pump=5, volume=self.cleaning_station_volume)
+
+        # Ultrasound for 10 seconds
         self.arduino.set_ultrasound_on(0, 30)
+
+        # Drain the cleaning cartridge by dispensing 25 ml on pump 3
+        self.arduino.dispense_ml(pump=3, volume=20)
+
+        # Dispense self.cleaning_station_volume on pump 4
+        self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
+
+        # Ultrasound for 10 seconds
+        self.arduino.set_ultrasound_on(0, 5)
+
+        # Drain the cleaning cartridge by dispensing 20 ml on pump 3
+        self.arduino.dispense_ml(pump=3, volume=20)
+
 
         # Move straight up
         self.openTron.moveToWell(
@@ -1204,6 +1222,7 @@ class Experiment:
         self.metadata.loc[
             0, "well_temperature_during_electrochemical_measurements"
         ] = self.arduino.get_temperature1()
+        self.save_metadata()
 
         # Perform reference electrode calibration
         self.perform_potentiostat_reference_measurement(" before")
@@ -1322,19 +1341,17 @@ class Experiment:
         try:
             with open("last_processed_well.txt", "r") as f:
                 well_number = int(f.read())
+            # Update well number
+            well_number += 1
         except FileNotFoundError:
             well_number = 0
 
-        # Update well number
-        well_number += 1
+        
         if well_number > 13: # XXX THIS HAS TO CHANGE WITH MORE CARTRIDGES AND IN parameters.py
             # Throw error if all wells are used
             raise ValueError(
                 "All wells are used. Please clean the well plate and delete the file last_processed_well.txt."
             )
-        # Save well number
-        with open("last_processed_well.txt", "w") as f:
-            f.write(str(well_number))
 
         # Update metadata
         self.metadata.loc[0, "well_number"] = well_number
@@ -1373,9 +1390,7 @@ class Experiment:
         electrolyte: str = "KOH",
         well_number: int = None,
     ):  
-        if well_number is None:
-            pass
-        else:
+        if well_number is not None:
             self.well_number = well_number
         LOGGER.info(f"Starting experiment {self.unique_id} in well {self.well_number}")
         LOGGER.info(f"Chemicals to mix: {chemicals_to_mix}")
@@ -1384,26 +1399,36 @@ class Experiment:
         LOGGER.info(f"Cleaning cartridge volume: {self.cleaning_station_volume} ml")
 
         self.save_metadata()
+
+        # Save well number
+        with open("last_processed_well.txt", "w") as f:
+            f.write(str(self.well_number))
+
         self.openTron.lights(True)
         self.openTron.homeRobot()
-        self.cleaning(well_number=self.well_number)
-        self.dose_chemicals(
-            chemicals_to_mix=chemicals_to_mix,
-            well_number=self.well_number,
-            total_volume=self.well_volume,
-        )
+        # self.cleaning(well_number=self.well_number)
+        # self.dose_chemicals(
+        #     chemicals_to_mix=chemicals_to_mix,
+        #     well_number=self.well_number,
+        #     total_volume=self.well_volume,
+        # )
+
         # Connect to admiral potentiostat
         self.initiate_potentiostat_admiral()
+
         # Run recipe for electrodeposition
-        self.perform_electrodeposition(well_number=self.well_number)
+        # self.perform_electrodeposition(well_number=self.well_number)
+
         # Clean the well
-        self.cleaning(well_number=self.well_number)
+        # self.cleaning(well_number=self.well_number)
+
         # Dispense electrolyte
-        self.dispense_electrolyte(
-            volume=dispense_ml_electrolyte,
-            chemical=electrolyte,
-            well_number=self.well_number,
-        )
+        # self.dispense_electrolyte(
+        #     volume=dispense_ml_electrolyte,
+        #     chemical=electrolyte,
+        #     well_number=self.well_number,
+        # )
+
         # Perform electrochemical testing
         self.perform_electrochemical_testing(well_number=self.well_number)
         # Disconnect admiral potentiostat
