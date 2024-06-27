@@ -1,0 +1,6 @@
+unique_id,well_number,chemicals_to_mix,total_volume,deposition_current,sample_surface_area,ohmic_resistance,well_temperature_during_deposition,well_temperature_during_electrochemical_measurements,potential_at_10mAcm2corrected_potential_at_10mAcm2
+1,1,,,,,,,,
+3,1,,,,,,,,
+4,2,,,,,,,,
+5,3,,,,,,,,
+6,4,,,,,,,,

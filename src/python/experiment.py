@@ -10,10 +10,10 @@ from biologic.techniques.cv import CVTechnique, CVParams, CVStep
 from biologic.techniques.ocv import OCVTechnique, OCVParams
 from biologic.techniques.peis import PEISTechnique, PEISParams, SweepMode
 from biologic.techniques.cp import CPTechnique, CPParams, CPStep, Parameter
-from .ardu import Arduino
-from .admiral import AdmiralSquidstatWrapper
-from .opentronsHTTPAPI_clientBuilder import opentronsClient
-from .parameters import (
+from ardu import Arduino
+from admiral import AdmiralSquidstatWrapper
+from opentronsHTTPAPI_clientBuilder import opentronsClient
+from parameters import (
     labware_paths,
     wells,
     pipetteable_chemicals,
@@ -128,16 +128,11 @@ class Experiment:
 
         # Tools
         path = os.path.join(DATA_PATH, labware_paths["nistall_4_tiprack_1ul"])
+        LOGGER.debug(f"Path given to read_json(): {path}")
         self.labware_tool_rack = self.read_json(path)
         self.labware_tool_rack = self.openTron.loadCustomLabware(
             dicLabware=self.labware_tool_rack,
             intSlot=10,
-        )
-        self.openTron.addLabwareOffsets(
-            strLabwareName=self.labware_tool_rack,
-            fltXOffset=0.7,
-            fltYOffset=0.5,
-            fltZOffset=5.2,
         )
 
         # Vials with solutions
@@ -173,14 +168,8 @@ class Experiment:
         self.labware_pipette_tips = self.openTron.loadLabware(
             intSlot=1, strLabwareName="opentrons_96_tiprack_1000ul"
         )
-        self.openTron.addLabwareOffsets(
-            strLabwareName=self.labware_pipette_tips,
-            fltXOffset=0.5,
-            fltYOffset=0.9,
-            fltZOffset=-0.1,
-        )
 
-    def read_json(path: str) -> dict:
+    def read_json(self, path: str) -> dict:
         with open(path, encoding="utf8") as f:
             return json.load(f)
 
@@ -629,15 +618,20 @@ class Experiment:
         df.to_csv(DATA_PATH + self.unique_id + f" Ref CV{string_to_add}.csv")
 
     def cleaning(self, well_number: int):
+        """Clean the well
+
+        Args:
+            well_number (int): Number of the well to clean
+        """
         # To avoid cable clutter, move openTron first to pipette tip rack
         self.openTron.moveToWell(
             strLabwareName=self.labware_pipette_tips,
             strWellName=pipette_tips["NH4OH"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=130,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=130,
             intSpeed=100,  # mm/s
         )
 
@@ -647,9 +641,9 @@ class Experiment:
             strWellName=labware_tools["Flush_tool"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=tool_x_offset["Flush_tool"],
-            intOffsetY=tool_y_offset["Flush_tool"],
-            intOffsetZ=50,
+            fltOffsetX=tool_x_offset["Flush_tool"],
+            fltOffsetY=tool_y_offset["Flush_tool"],
+            fltOffsetZ=50,
             intSpeed=50,  # mm/s
         )
 
@@ -659,47 +653,32 @@ class Experiment:
             strWellName=labware_tools["Flush_tool"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            strOffsetX=tool_x_offset["Flush_tool"],
-            strOffsetY=tool_y_offset["Flush_tool"],
-            strOffsetZ=tool_z_offset["Flush_tool"],
+            fltOffsetX=tool_x_offset["Flush_tool"],
+            fltOffsetY=tool_y_offset["Flush_tool"],
+            fltOffsetZ=tool_z_offset["Flush_tool"],
         )
 
         # Go to well
         self.openTron.moveToWell(
             strLabwareName=self.labware_well_plate,
-            strWellName=well_number,
+            strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=0,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=0,
             intSpeed=50,  # mm/s
         )
 
         # Go a little deeper
         self.openTron.moveToWell(
             strLabwareName=self.labware_well_plate,
-            strWellName=well_number,
+            strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=-20,
-            intSpeed=50,  # mm/s
-        )
-
-        # Drain to avoid overflow
-        self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
-
-        # Go a little deeper
-        self.openTron.moveToWell(
-            strLabwareName=self.labware_well_plate,
-            strWellName=well_number,
-            strPipetteName=self.openTron_pipette_name,
-            strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=-30,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=-20,
             intSpeed=50,  # mm/s
         )
 
@@ -709,12 +688,27 @@ class Experiment:
         # Go a little deeper
         self.openTron.moveToWell(
             strLabwareName=self.labware_well_plate,
-            strWellName=well_number,
+            strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=-40,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=-30,
+            intSpeed=50,  # mm/s
+        )
+
+        # Drain to avoid overflow
+        self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
+
+        # Go a little deeper
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=wells[well_number],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=-40,
             intSpeed=50,  # mm/s
         )
         # Drain to avoid overflow
@@ -722,12 +716,12 @@ class Experiment:
         # Go a little deeper
         self.openTron.moveToWell(
             strLabwareName=self.labware_well_plate,
-            strWellName=well_number,
+            strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=-50,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=-50,
             intSpeed=50,  # mm/s
         )
         # Drain to avoid overflow
@@ -736,12 +730,12 @@ class Experiment:
         # Go to deepest position
         self.openTron.moveToWell(
             strLabwareName=self.labware_well_plate,
-            strWellName=well_number,
+            strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=-54,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=-54,
             intSpeed=50,  # mm/s
         )
         # Drain
@@ -767,12 +761,12 @@ class Experiment:
         # Go straight up in the air
         self.openTron.moveToWell(
             strLabwareName=self.labware_well_plate,
-            strWellName=well_number,
+            strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=20,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
             intSpeed=50,  # mm/s
         )
 
@@ -782,9 +776,9 @@ class Experiment:
             strWellName=labware_tools["Flush_tool"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=tool_x_offset["Flush_tool"],
-            intOffsetY=tool_y_offset["Flush_tool"],
-            intOffsetZ=50,
+            fltOffsetX=tool_x_offset["Flush_tool"],
+            fltOffsetY=tool_y_offset["Flush_tool"],
+            fltOffsetZ=50,
             intSpeed=50,  # mm/s
         )
 
@@ -794,9 +788,9 @@ class Experiment:
             strWellName=labware_tools["Flush_tool"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="bottom",
-            strOffsetX=tool_x_offset["Flush_tool"],
-            strOffsetY=tool_y_offset["Flush_tool"],
-            strOffsetZ=tool_z_dropoff["Flush_tool"],
+            fltOffsetX=tool_x_offset["Flush_tool"],
+            fltOffsetY=tool_y_offset["Flush_tool"],
+            fltOffsetZ=tool_z_dropoff["Flush_tool"],
             boolHomeAfter=False,
             boolAlternateDropLocation=False,
         )
@@ -807,9 +801,9 @@ class Experiment:
             strWellName=labware_tools["Flush_tool"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=tool_x_offset["Flush_tool"],
-            intOffsetY=tool_y_offset["Flush_tool"],
-            intOffsetZ=100,
+            fltOffsetX=tool_x_offset["Flush_tool"],
+            fltOffsetY=tool_y_offset["Flush_tool"],
+            fltOffsetZ=100,
             intSpeed=50,  # mm/s
         )
 
@@ -829,17 +823,19 @@ class Experiment:
             well_number (int): Well number to mix chemicals in
             total_volume (float): Total volume in ml
         """
-        total_volume = total_volume * 1000  # Convert to uL
+        total_volume = int(total_volume * 1000)  # Convert to uL
 
         # Normalize the volume of each chemical
         chemicals_to_mix = self.normalize_volume(chemicals_to_mix)
 
         # Loop through all chemicals to mix
-        for chemical, volume in chemicals_to_mix.items():
-            volume_to_dispense = volume * total_volume
+        for chemical, percentage in chemicals_to_mix.items():
+            if percentage == 0:
+                continue
+            volume_to_dispense = int(percentage * total_volume)
 
             LOGGER.info(
-                f"Mixing {chemical} with {volume*total_volume} uL to well {wells[well_number]}"
+                f"Mixing {chemical} with {percentage*total_volume} uL to well {wells[well_number]}"
             )
             # Move to pipette rack
             self.openTron.moveToWell(
@@ -847,9 +843,9 @@ class Experiment:
                 strWellName=pipette_tips[chemical],
                 strPipetteName=self.openTron_pipette_name,
                 strOffsetStart="top",
-                intOffsetX=0,
-                intOffsetY=0,
-                intOffsetZ=50,
+                fltOffsetX=0,
+                fltOffsetY=0,
+                fltOffsetZ=50,
             )
             # Pick up tip
             self.openTron.pickUpTip(
@@ -857,9 +853,9 @@ class Experiment:
                 strWellName=pipette_tips[chemical],
                 strPipetteName=self.openTron_pipette_name,
                 strOffsetStart="top",
-                strOffsetX=0,
-                strOffsetY=0,
-                strOffsetZ=0,
+                fltOffsetX=0,
+                fltOffsetY=0,
+                fltOffsetZ=0,
             )
 
             volume_left = volume_to_dispense
@@ -876,9 +872,9 @@ class Experiment:
                     strWellName=pipetteable_chemicals[chemical],
                     strPipetteName=self.openTron_pipette_name,
                     strOffsetStart="top",
-                    intOffsetX=0,
-                    intOffsetY=0,
-                    intOffsetZ=0,
+                    fltOffsetX=0,
+                    fltOffsetY=0,
+                    fltOffsetZ=0,
                 )
                 # Aspirate
                 self.openTron.aspirate(
@@ -887,9 +883,9 @@ class Experiment:
                     strPipetteName=self.openTron_pipette_name,
                     intVolume=dispense_volume,  # uL
                     strOffsetStart="top",
-                    strOffsetX=0,
-                    strOffsetY=0,
-                    strOffsetZ=-50,
+                    fltOffsetX=0,
+                    fltOffsetY=0,
+                    fltOffsetZ=-50,
                 )
                 # Go straight up in the air
                 self.openTron.moveToWell(
@@ -897,9 +893,9 @@ class Experiment:
                     strWellName=pipetteable_chemicals[chemical],
                     strPipetteName=self.openTron_pipette_name,
                     strOffsetStart="top",
-                    intOffsetX=0,
-                    intOffsetY=0,
-                    intOffsetZ=80,
+                    fltOffsetX=0,
+                    fltOffsetY=0,
+                    fltOffsetZ=80,
                 )
                 # Go to well
                 self.openTron.moveToWell(
@@ -907,9 +903,9 @@ class Experiment:
                     strWellName=wells[well_number],
                     strPipetteName=self.openTron_pipette_name,
                     strOffsetStart="top",
-                    intOffsetX=0,
-                    intOffsetY=0,
-                    intOffsetZ=10,
+                    fltOffsetX=0,
+                    fltOffsetY=0,
+                    fltOffsetZ=10,
                 )
                 LOGGER.info(f"Dispensing {dispense} uL of {chemical}")
                 # Dispense
@@ -919,9 +915,9 @@ class Experiment:
                     strPipetteName=self.openTron_pipette_name,
                     intVolume=dispense_volume,  # uL
                     strOffsetStart="top",
-                    strOffsetX=0,
-                    strOffsetY=0,
-                    strOffsetZ=0,
+                    fltOffsetX=0,
+                    fltOffsetY=0,
+                    fltOffsetZ=0,
                 )
                 volume_left -= dispense_volume
 
@@ -931,9 +927,9 @@ class Experiment:
                 strWellName=pipette_tips[chemical],
                 strPipetteName=self.openTron_pipette_name,
                 strOffsetStart="top",
-                intOffsetX=0,
-                intOffsetY=0,
-                intOffsetZ=20,
+                fltOffsetX=0,
+                fltOffsetY=0,
+                fltOffsetZ=20,
             )
             LOGGER.info(f"Dropping tip for {chemical}")
             # Drop tip
@@ -942,9 +938,9 @@ class Experiment:
                 strWellName=pipette_tips[chemical],
                 strPipetteName=self.openTron_pipette_name,
                 strOffsetStart="bottom",
-                strOffsetX=0,
-                strOffsetY=0,
-                strOffsetZ=10,
+                fltOffsetX=0,
+                fltOffsetY=0,
+                fltOffsetZ=10,
                 boolHomeAfter=False,
                 boolAlternateDropLocation=False,
             )
@@ -956,9 +952,9 @@ class Experiment:
             strWellName=labware_tools["Ni_electrode"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=50,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=50,
         )
         # Pick up Ni deposition tool
         self.openTron.pickUpTip(
@@ -966,9 +962,9 @@ class Experiment:
             strWellName=labware_tools["Ni_electrode"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            strOffsetX=tool_x_offset["Ni_electrode"],
-            strOffsetY=tool_y_offset["Ni_electrode"],
-            strOffsetZ=tool_z_offset["Ni_electrode"],
+            fltOffsetX=tool_x_offset["Ni_electrode"],
+            fltOffsetY=tool_y_offset["Ni_electrode"],
+            fltOffsetZ=tool_z_offset["Ni_electrode"],
         )
         # Go to well at slow speed due to cable clutter
         self.openTron.moveToWell(
@@ -976,9 +972,9 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=0,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=0,
             intSpeed=50,  # mm/s
         )
         # Go down in the well
@@ -987,16 +983,16 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=-15,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=-15,
             intSpeed=50,  # mm/s
         )
 
         # Measure temperature of cartridge 1 and store it as metadata
-        self.metadata.loc[0, "well_temperature_during_electrodeposition"] = (
-            self.arduino.get_temperature1()
-        )
+        self.metadata.loc[
+            0, "well_temperature_during_electrodeposition"
+        ] = self.arduino.get_temperature1()
 
         # Perform the actual electrochemical deposition
         self.perform_potentiostat_electrodeposition()
@@ -1007,9 +1003,9 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=20,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
             intSpeed=50,  # mm/s
         )
 
@@ -1019,9 +1015,9 @@ class Experiment:
             strWellName="A2",
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=-25,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=-25,
             intSpeed=50,  # mm/s
         )
 
@@ -1034,9 +1030,9 @@ class Experiment:
             strWellName="A2",
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=20,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
             intSpeed=50,  # mm/s
         )
         # Go to tool rack Ni deposition tool
@@ -1045,9 +1041,9 @@ class Experiment:
             strWellName=labware_tools["Ni_electrode"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=tool_x_offset["Ni_electrode"],
-            intOffsetY=tool_y_offset["Ni_electrode"],
-            intOffsetZ=20,
+            fltOffsetX=tool_x_offset["Ni_electrode"],
+            fltOffsetY=tool_y_offset["Ni_electrode"],
+            fltOffsetZ=20,
             intSpeed=50,  # mm/s
         )
         # Drop Ni deposition tool
@@ -1056,9 +1052,9 @@ class Experiment:
             strWellName=labware_tools["Ni_electrode"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="bottom",
-            strOffsetX=tool_x_offset["Ni_electrode"],
-            strOffsetY=tool_y_offset["Ni_electrode"],
-            strOffsetZ=tool_z_dropoff["Ni_electrode"],
+            fltOffsetX=tool_x_offset["Ni_electrode"],
+            fltOffsetY=tool_y_offset["Ni_electrode"],
+            fltOffsetZ=tool_z_dropoff["Ni_electrode"],
             boolHomeAfter=False,
             boolAlternateDropLocation=False,
         )
@@ -1072,9 +1068,9 @@ class Experiment:
             strWellName=pipette_tips[chemical],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=20,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
         )
         # Pick up tip
         self.openTron.pickUpTip(
@@ -1082,9 +1078,9 @@ class Experiment:
             strWellName=pipette_tips[chemical],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            strOffsetX=0,
-            strOffsetY=0,
-            strOffsetZ=0,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=0,
         )
         volume_left = volume
         for dispense in range(0, volume, 1000):
@@ -1099,9 +1095,9 @@ class Experiment:
                 strWellName=pipetteable_chemicals[chemical],
                 strPipetteName=self.openTron_pipette_name,
                 strOffsetStart="top",
-                intOffsetX=0,
-                intOffsetY=0,
-                intOffsetZ=0,
+                fltOffsetX=0,
+                fltOffsetY=0,
+                fltOffsetZ=0,
             )
 
             # Aspirate
@@ -1111,9 +1107,9 @@ class Experiment:
                 strPipetteName=self.openTron_pipette_name,
                 intVolume=dispense_volume,  # uL
                 strOffsetStart="top",
-                strOffsetX=0,
-                strOffsetY=0,
-                strOffsetZ=-50,
+                fltOffsetX=0,
+                fltOffsetY=0,
+                fltOffsetZ=-50,
             )
             # Go to well
             self.openTron.moveToWell(
@@ -1121,9 +1117,9 @@ class Experiment:
                 strWellName=wells[well_number],
                 strPipetteName=self.openTron_pipette_name,
                 strOffsetStart="top",
-                intOffsetX=0,
-                intOffsetY=0,
-                intOffsetZ=0,
+                fltOffsetX=0,
+                fltOffsetY=0,
+                fltOffsetZ=0,
             )
             # Dispense
             self.openTron.dispense(
@@ -1132,9 +1128,9 @@ class Experiment:
                 strPipetteName=self.openTron_pipette_name,
                 intVolume=dispense_volume,  # uL
                 strOffsetStart="top",
-                strOffsetX=0,
-                strOffsetY=0,
-                strOffsetZ=0,
+                fltOffsetX=0,
+                fltOffsetY=0,
+                fltOffsetZ=0,
             )
             volume_left -= dispense_volume
 
@@ -1144,9 +1140,9 @@ class Experiment:
             strWellName=pipette_tips[chemical],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=20,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
         )
         # Drop tip
         self.openTron.dropTip(
@@ -1154,9 +1150,9 @@ class Experiment:
             strWellName=pipette_tips[chemical],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="bottom",
-            strOffsetX=0,
-            strOffsetY=0,
-            strOffsetZ=10,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=10,
             boolHomeAfter=False,
             boolAlternateDropLocation=False,
         )
@@ -1168,18 +1164,18 @@ class Experiment:
             strWellName=labware_tools["OER_electrode"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=tool_x_offset["OER_electrode"],
-            intOffsetY=tool_y_offset["OER_electrode"],
-            intOffsetZ=10,
+            fltOffsetX=tool_x_offset["OER_electrode"],
+            fltOffsetY=tool_y_offset["OER_electrode"],
+            fltOffsetZ=10,
         )
         self.openTron.pickUpTip(
             strLabwareName=self.labware_tool_rack,
             strWellName=labware_tools["OER_electrode"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            strOffsetX=tool_x_offset["OER_electrode"],
-            strOffsetY=tool_y_offset["OER_electrode"],
-            strOffsetZ=tool_z_offset["OER_electrode"],
+            fltOffsetX=tool_x_offset["OER_electrode"],
+            fltOffsetY=tool_y_offset["OER_electrode"],
+            fltOffsetZ=tool_z_offset["OER_electrode"],
         )
         # Go to well
         self.openTron.moveToWell(
@@ -1187,9 +1183,9 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=10,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=10,
             intSpeed=50,  # mm/s
         )
         # Go down in well
@@ -1198,16 +1194,16 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=-20,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=-20,
             intSpeed=10,  # mm/s
         )
 
         # Get temperature of the well and store in metadata
-        self.metadata.loc[0, "well_temperature_during_electrochemical_measurements"] = (
-            self.arduino.get_temperature1()
-        )
+        self.metadata.loc[
+            0, "well_temperature_during_electrochemical_measurements"
+        ] = self.arduino.get_temperature1()
 
         # Perform reference electrode calibration
         self.perform_potentiostat_reference_measurement(" before")
@@ -1224,9 +1220,9 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=20,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
             intSpeed=50,  # mm/s
         )
         # Go to cleaning cartridge
@@ -1235,9 +1231,9 @@ class Experiment:
             strWellName="A2",
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=20,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
             intSpeed=50,  # mm/s
         )
         # Go down in well
@@ -1246,9 +1242,9 @@ class Experiment:
             strWellName="A2",
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=-20,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=-20,
             intSpeed=10,  # mm/s
         )
         time.sleep(5)
@@ -1258,9 +1254,9 @@ class Experiment:
             strWellName="A2",
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=0,
-            intOffsetY=0,
-            intOffsetZ=20,
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
             intSpeed=50,  # mm/s
         )
         # Go to tool rack
@@ -1269,9 +1265,9 @@ class Experiment:
             strWellName=labware_tools["OER_electrode"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            intOffsetX=tool_x_offset["OER_electrode"],
-            intOffsetY=tool_y_offset["OER_electrode"],
-            intOffsetZ=50,
+            fltOffsetX=tool_x_offset["OER_electrode"],
+            fltOffsetY=tool_y_offset["OER_electrode"],
+            fltOffsetZ=50,
             intSpeed=50,  # mm/s
         )
         # Drop OER electrode
@@ -1280,9 +1276,9 @@ class Experiment:
             strWellName=labware_tools["OER_electrode"],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="bottom",
-            strOffsetX=tool_x_offset["OER_electrode"],
-            strOffsetY=tool_y_offset["OER_electrode"],
-            strOffsetZ=tool_z_dropoff["OER_electrode"],
+            fltOffsetX=tool_x_offset["OER_electrode"],
+            fltOffsetY=tool_y_offset["OER_electrode"],
+            fltOffsetZ=tool_z_dropoff["OER_electrode"],
             boolHomeAfter=False,
             boolAlternateDropLocation=False,
         )
@@ -1331,7 +1327,7 @@ class Experiment:
 
         # Update well number
         well_number += 1
-        if well_number > 14:
+        if well_number > 13: # XXX THIS HAS TO CHANGE WITH MORE CARTRIDGES AND IN parameters.py
             # Throw error if all wells are used
             raise ValueError(
                 "All wells are used. Please clean the well plate and delete the file last_processed_well.txt."
@@ -1346,6 +1342,13 @@ class Experiment:
         return well_number
 
     def save_metadata(self):
+        """Save metadata
+        
+        Saves metadata to a csv file. If the file exists, it appends the metadata to the file. If the file doesn't exist, it creates the file.
+        
+        Args by class attribute:
+            metadata (pd.DataFrame): Metadata to save
+        """
         # Save metadata to a csv file
         # if file exists, append to it (after checking if there is already a line with the same unique_id).
         # If there is already a line with the same unique_id, overwrite that line with the new data.
@@ -1366,33 +1369,43 @@ class Experiment:
     def run_experiment(
         self,
         chemicals_to_mix: dict,
-        well_number: int,
         dispense_ml_electrolyte: float,
         electrolyte: str = "KOH",
-    ):
+        well_number: int = None,
+    ):  
+        if well_number is None:
+            pass
+        else:
+            self.well_number = well_number
+        LOGGER.info(f"Starting experiment {self.unique_id} in well {self.well_number}")
+        LOGGER.info(f"Chemicals to mix: {chemicals_to_mix}")
+        LOGGER.info(f"Electrolyte: {electrolyte} {dispense_ml_electrolyte} ml")
+        LOGGER.info(f"Well volume: {self.well_volume} ml")
+        LOGGER.info(f"Cleaning cartridge volume: {self.cleaning_station_volume} ml")
+
         self.save_metadata()
         self.openTron.lights(True)
         self.openTron.homeRobot()
-        self.cleaning(well_number=well_number)
+        self.cleaning(well_number=self.well_number)
         self.dose_chemicals(
             chemicals_to_mix=chemicals_to_mix,
-            well_number=well_number,
+            well_number=self.well_number,
             total_volume=self.well_volume,
         )
         # Connect to admiral potentiostat
         self.initiate_potentiostat_admiral()
         # Run recipe for electrodeposition
-        self.perform_electrodeposition(well_number=well_number)
+        self.perform_electrodeposition(well_number=self.well_number)
         # Clean the well
-        self.cleaning(well_number=well_number)
+        self.cleaning(well_number=self.well_number)
         # Dispense electrolyte
         self.dispense_electrolyte(
             volume=dispense_ml_electrolyte,
             chemical=electrolyte,
-            well_number=well_number,
+            well_number=self.well_number,
         )
         # Perform electrochemical testing
-        self.perform_electrochemical_testing(well_number=well_number)
+        self.perform_electrochemical_testing(well_number=self.well_number)
         # Disconnect admiral potentiostat
         self.close_potentiostat_admiral()
 
