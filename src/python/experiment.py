@@ -37,7 +37,6 @@ path = os.path.join(DATA_PATH, "src", "opentron_labware", "nis_4_tiprack_1ul.jso
 
 
 class Experiment:
-
     def __init__(
         self,
         well_volume: float = 3.0,
@@ -520,9 +519,9 @@ class Experiment:
         )
 
         # Get temperature of the well
-        self.metadata.loc[0, "well_temperature_during_deposition"] = (
-            self.arduino.get_temperature1()
-        )
+        self.metadata.loc[
+            0, "well_temperature_during_deposition"
+        ] = self.arduino.get_temperature1()
 
         # Apply constant current for X seconds
         self.admiral.setup_constant_current(

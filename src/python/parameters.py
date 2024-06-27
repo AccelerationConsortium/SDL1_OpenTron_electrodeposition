@@ -21,7 +21,7 @@ peristaltic_pump_content = {
 
 labware_paths = {
     "nistall_4_tiprack_1ul": "src/opentron_labware/nistall_4_tiprack_1ul.json",
-    "nis_15_wellplate_3895ul":"src/opentron_labware/nis_15_wellplate_3895ul.json",
+    "nis_15_wellplate_3895ul": "src/opentron_labware/nis_15_wellplate_3895ul.json",
     "nis_2_wellplate_30000ul": "src/opentron_labware/nis_2_wellplate_30000ul.json",
     "nis_8_reservoir_25000ul": "src/opentron_labware/nis_8_reservoir_25000ul.json",
 }
@@ -112,5 +112,5 @@ pipette_tips = {
     "Cu": "H11",
 }
 
-pump_slope={0: 2.05, 1: 2.13, 2: 1.93, 3: 2.24, 4: 1.86, 5: 1.85}
-pump_intercept={0: 0.082, 1: 0.058, 2: 0.0686, 3: 0.0362, 4: 0.0356, 5: 0.0186}
+pump_slope = {0: 2.05, 1: 2.13, 2: 1.93, 3: 2.24, 4: 1.86, 5: 1.85}
+pump_intercept = {0: 0.082, 1: 0.058, 2: 0.0686, 3: 0.0362, 4: 0.0356, 5: 0.0186}

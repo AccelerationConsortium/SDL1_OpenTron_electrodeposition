@@ -26,7 +26,7 @@ import time
 import warnings
 
 # Suppress FutureWarning messages from Pandas
-warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter(action="ignore", category=FutureWarning)
 
 
 class AdmiralSquidstatWrapper:
@@ -80,7 +80,7 @@ class AdmiralSquidstatWrapper:
 
     def get_data(self):
         """Return the AC and DC data as pandas dataframes. If no data is available, return None for the respective dataframe.
-        
+
         Returns:
             [pd.DataFrame, pd.DataFrame]: A list containing the two AC data and the DC data pandas dataframes.
         """
@@ -134,7 +134,9 @@ class AdmiralSquidstatWrapper:
                     pd.DataFrame(
                         {
                             "Timestamp": [data.timestamp],
-                            "Working Electrode Voltage [V]": [data.workingElectrodeVoltage],
+                            "Working Electrode Voltage [V]": [
+                                data.workingElectrodeVoltage
+                            ],
                             "Working Electrode Current [A]": [data.current],
                             "Temperature [C]": [data.temperature],
                         }
@@ -183,7 +185,9 @@ class AdmiralSquidstatWrapper:
         )
 
     def on_device_connected(self, device_name):
-        print(f"Device is connected as: {device_name} \nPlease use this name when loading the AdmiralWrapper.")
+        print(
+            f"Device is connected as: {device_name} \nPlease use this name when loading the AdmiralWrapper."
+        )
 
     def handle_experiment_stopped(self, channel):
         print("Experiment completed on channel: %d" % channel)
