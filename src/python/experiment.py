@@ -87,6 +87,8 @@ class Experiment:
         # Update the metadata with the unique id
         self.metadata.loc[0, "unique_id"] = self.unique_id
 
+        self.well_number = self.load_well_number()
+
     def initiate_arduino(
         self,
         ARDUINO_NAME: str = "CH340",
@@ -991,9 +993,10 @@ class Experiment:
             intSpeed=50,  # mm/s
         )
 
-        # Measure temperature of cartridge 1
-        temperature_cartridge1 = self.arduino.get_temperature1()
-        # TODO store this temperature in a file
+        # Measure temperature of cartridge 1 and store it as metadata
+        self.metadata.loc[0, "well_temperature_during_electrodeposition"] = (
+            self.arduino.get_temperature1()
+        )
 
         # Perform the actual electrochemical deposition
         self.perform_potentiostat_electrodeposition()
@@ -1021,8 +1024,10 @@ class Experiment:
             intOffsetZ=-25,
             intSpeed=50,  # mm/s
         )
-        time.sleep(5)
-        # TODO CLEAN ELECTRODE
+
+        # Ultrasound for 30 seconds
+        self.arduino.set_ultrasound_on(0, 30)
+
         # Move straight up
         self.openTron.moveToWell(
             strLabwareName=self.labware_cleaning_cartridge,
@@ -1198,6 +1203,12 @@ class Experiment:
             intOffsetZ=-20,
             intSpeed=10,  # mm/s
         )
+
+        # Get temperature of the well and store in metadata
+        self.metadata.loc[0, "well_temperature_during_electrochemical_measurements"] = (
+            self.arduino.get_temperature1()
+        )
+
         # Perform reference electrode calibration
         self.perform_potentiostat_reference_measurement(" before")
 
@@ -1298,6 +1309,60 @@ class Experiment:
         LOGGER.info(f"Ohmic resistance: {ohmic_resistance}")
         return ohmic_resistance
 
+    def __del__(self):
+        # Turn on light
+        self.openTron.lights(True)
+        # Home robot
+        self.openTron.homeRobot()
+        # Turn off light
+        self.openTron.lights(False)
+
+        # Set temperature to 0 C so it doesnt heat
+        self.arduino.set_temperature(0, 0)
+        self.arduino.set_temperature(1, 0)
+
+    def load_well_number(self):
+        # Load well number from last_processed_well.txt and update it to +1 (until 14). If the file doesn't exist, start with 0.
+        try:
+            with open("last_processed_well.txt", "r") as f:
+                well_number = int(f.read())
+        except FileNotFoundError:
+            well_number = 0
+
+        # Update well number
+        well_number += 1
+        if well_number > 14:
+            # Throw error if all wells are used
+            raise ValueError(
+                "All wells are used. Please clean the well plate and delete the file last_processed_well.txt."
+            )
+        # Save well number
+        with open("last_processed_well.txt", "w") as f:
+            f.write(str(well_number))
+
+        # Update metadata
+        self.metadata.loc[0, "well_number"] = well_number
+
+        return well_number
+
+    def save_metadata(self):
+        # Save metadata to a csv file
+        # if file exists, append to it (after checking if there is already a line with the same unique_id).
+        # If there is already a line with the same unique_id, overwrite that line with the new data.
+        # If file doesn't exist, create it.
+        if os.path.isfile("metadata.csv"):
+            df = pd.read_csv("metadata.csv")
+            if self.metadata["unique_id"].values[0] in df["unique_id"].values:
+                df = df[df["unique_id"] != self.metadata["unique_id"].values[0]]
+                df = pd.concat([df, self.metadata])
+                df.to_csv("metadata.csv", index=False)
+            else:
+                self.metadata.to_csv(
+                    "metadata.csv", mode="a", header=False, index=False
+                )
+        else:
+            self.metadata.to_csv("metadata.csv", index=False)
+
     def run_experiment(
         self,
         chemicals_to_mix: dict,
@@ -1305,6 +1370,7 @@ class Experiment:
         dispense_ml_electrolyte: float,
         electrolyte: str = "KOH",
     ):
+        self.save_metadata()
         self.openTron.lights(True)
         self.openTron.homeRobot()
         self.cleaning(well_number=well_number)
@@ -1334,15 +1400,4 @@ class Experiment:
         self.arduino.set_temperature(1, 0)
         self.openTron.homeRobot()
         self.openTron.lights(False)
-
-    def __del__(self):
-        # Turn on light
-        self.openTron.lights(True)
-        # Home robot
-        self.openTron.homeRobot()
-        # Turn off light
-        self.openTron.lights(False)
-
-        # Set temperature to 0 C so it doesnt heat
-        self.arduino.set_temperature(0, 0)
-        self.arduino.set_temperature(1, 0)
+        self.save_metadata()
