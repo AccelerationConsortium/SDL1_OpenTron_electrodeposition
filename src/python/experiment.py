@@ -250,59 +250,59 @@ class Experiment:
 
     def perform_potentiostat_measurements(self):
         ### 0 - Electrochemical Activation
-        LOGGER.info("Performing electrochemical test: 0 - Electrochemical activation")
-        self.admiral.setup_constant_current(
-            holdAtCurrent=0.2 * self.sample_surface_area,
-            samplingInterval=0.05,
-            duration=60,
-        )
-        self.admiral.run_experiment()
-        ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 0 CP 200 mA cm-2"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        # LOGGER.info("Performing electrochemical test: 0 - Electrochemical activation")
+        # self.admiral.setup_constant_current(
+        #     holdAtCurrent=0.2 * self.sample_surface_area,
+        #     samplingInterval=0.05,
+        #     duration=60,
+        # )
+        # self.admiral.run_experiment()
+        # ac_data, dc_data = self.admiral.get_data()
+        # self.admiral.clear_data()
+        # filepath = DATA_PATH + "\\" + str(self.unique_id) + " 0 CP 200 mA cm-2"
+        # self.store_data_admiral(
+        #     dc_data=dc_data, ac_data=ac_data, file_name=filepath
+        # )
 
-        ### 1 - Perform CV
-        LOGGER.info("Performing electrochemical test: 1 - Cyclic voltammetry")
-        self.admiral.setup_cyclic_voltammetry(
-            startVoltage=1.6,
-            firstVoltageLimit=0.8,
-            secondVoltageLimit=1.6,
-            endVoltage=1.6,
-            scanRate=0.2,
-            samplingInterval=0.05,
-            cycles=25,
-        )
-        self.admiral.run_experiment()
-        ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
-        # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 1 CV 25x 200mV s-1"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        # ### 1 - Perform CV
+        # LOGGER.info("Performing electrochemical test: 1 - Cyclic voltammetry")
+        # self.admiral.setup_cyclic_voltammetry(
+        #     startVoltage=1.6,
+        #     firstVoltageLimit=0.8,
+        #     secondVoltageLimit=1.6,
+        #     endVoltage=1.6,
+        #     scanRate=0.2,
+        #     samplingInterval=0.05,
+        #     cycles=25,
+        # )
+        # self.admiral.run_experiment()
+        # ac_data, dc_data = self.admiral.get_data()
+        # # Save data
+        # filepath = DATA_PATH + "\\" + str(self.unique_id) + " 1 CV 25x 200mV s-1"
+        # self.store_data_admiral(
+        #     dc_data=dc_data, ac_data=ac_data, file_name=filepath
+        # )
+        # self.admiral.clear_data()
 
-        ### 2 - Perform CV
-        LOGGER.info("Performing electrochemical test: 2 - Cyclic voltammetry")
-        self.admiral.setup_cyclic_voltammetry(
-            startVoltage=1.6,
-            firstVoltageLimit=0.8,
-            secondVoltageLimit=1.6,
-            endVoltage=0.8,
-            scanRate=0.01,
-            samplingInterval=0.2,
-            cycles=2,
-        )
-        self.admiral.run_experiment()
-        ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
-        # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 2 CV 2x 10mV s-1"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        # ### 2 - Perform CV
+        # LOGGER.info("Performing electrochemical test: 2 - Cyclic voltammetry")
+        # self.admiral.setup_cyclic_voltammetry(
+        #     startVoltage=1.6,
+        #     firstVoltageLimit=0.8,
+        #     secondVoltageLimit=1.6,
+        #     endVoltage=0.8,
+        #     scanRate=0.01,
+        #     samplingInterval=0.2,
+        #     cycles=2,
+        # )
+        # self.admiral.run_experiment()
+        # ac_data, dc_data = self.admiral.get_data()
+        # # Save data
+        # filepath = DATA_PATH + "\\" + str(self.unique_id) + " 2 CV 2x 10mV s-1"
+        # self.store_data_admiral(
+        #     dc_data=dc_data, ac_data=ac_data, file_name=filepath
+        # )
+        # self.admiral.clear_data()
 
         ### 3 - Perform EIS
         LOGGER.info(
@@ -318,7 +318,6 @@ class Experiment:
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 3 EIS"
         self.store_data_admiral(
@@ -326,6 +325,7 @@ class Experiment:
         )
         # Find ohmic resistance
         self.ohmic_resistance = self.find_ohmic_resistance(df=ac_data)
+        self.admiral.clear_data()
         # Updata metadata
         self.metadata.loc[0, "ohmic_resistance"] = self.ohmic_resistance
 
@@ -340,7 +340,6 @@ class Experiment:
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
         # Correct DC data for ohmic resistance
         dc_data = self.correct_for_ohmic_resistance(
             df=dc_data,
@@ -352,6 +351,7 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
+        self.admiral.clear_data()
 
         ### 5 - Perform CP at 50 mA/cm^2
         LOGGER.info(
@@ -364,7 +364,6 @@ class Experiment:
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
         # Correct DC data for ohmic resistance
         dc_data = self.correct_for_ohmic_resistance(
             df=dc_data,
@@ -376,6 +375,7 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
+        self.admiral.clear_data()
 
         ### 6 - Perform CP at 20 mA/cm^2
         LOGGER.info(
@@ -388,7 +388,6 @@ class Experiment:
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
         # Correct DC data for ohmic resistance
         dc_data = self.correct_for_ohmic_resistance(
             df=dc_data,
@@ -400,6 +399,7 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
+        self.admiral.clear_data()
 
         ### 7 - Perform CP at 10 mA/cm^2
         LOGGER.info(
@@ -412,7 +412,6 @@ class Experiment:
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
         # Correct DC data for ohmic resistance
         dc_data = self.correct_for_ohmic_resistance(
             df=dc_data,
@@ -424,6 +423,7 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
+        self.admiral.clear_data()
 
         # 8 - Perform CP at 5 mA/cm^2
         LOGGER.info(
@@ -436,7 +436,7 @@ class Experiment:
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
+
         # Correct DC data for ohmic resistance
         dc_data = self.correct_for_ohmic_resistance(
             df=dc_data,
@@ -448,6 +448,7 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
+        self.admiral.clear_data()
 
         ### 9 - Perform CP at 2 mA/cm^2
         LOGGER.info(
@@ -460,7 +461,6 @@ class Experiment:
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
         # Correct DC data for ohmic resistance
         dc_data = self.correct_for_ohmic_resistance(
             df=dc_data,
@@ -472,6 +472,7 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
+        self.admiral.clear_data()
 
         ### 10 - Perform CP at 1 mA/cm^2
         LOGGER.info(
@@ -484,7 +485,6 @@ class Experiment:
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
         # Correct DC data for ohmic resistance
         dc_data = self.correct_for_ohmic_resistance(
             df=dc_data,
@@ -496,6 +496,7 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
+        self.admiral.clear_data()
 
         ### 11 - Perform CV
         LOGGER.info("Performing electrochemical test: 11 - Cyclic voltammetry")
@@ -510,7 +511,6 @@ class Experiment:
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
-        self.admiral.clear_data()
         # Correct DC data for ohmic resistance
         dc_data = self.correct_for_ohmic_resistance(
             df=dc_data,
@@ -522,6 +522,7 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
+        self.admiral.clear_data()
 
     def perform_potentiostat_electrodeposition(self, seconds: int = 10):
         """Perform electrodeposition of the sample
