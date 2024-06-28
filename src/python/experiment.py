@@ -626,11 +626,12 @@ class Experiment:
 
         
 
-    def cleaning(self, well_number: int):
+    def cleaning(self, well_number: int, sleep_time: int = 0):
         """Clean the well
 
         Args:
             well_number (int): Number of the well to clean
+            sleep_time (int, optional): Time in seconds to sleep with HCl. Defaults to 0.
         """
         # To avoid cable clutter, move openTron first to pipette tip rack
         self.openTron.moveToWell(
@@ -743,7 +744,7 @@ class Experiment:
 
         # Flush with acid
         self.arduino.dispense_ml(pump=2, volume=0.5)  # ml to dispense
-        time.sleep(30)
+        time.sleep(sleep_time)  # Sleep to let the acid work
         self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
 
         # Flush with water
@@ -1014,33 +1015,16 @@ class Experiment:
             fltOffsetZ=-25,
             intSpeed=50,  # mm/s
         )
-        # Dispense self.cleaning_station_volume on pump 4
+
+        # Flush the electrode in the cleaning station/cartridge
         self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
-
-        # Ultrasound for 10 seconds
-        self.arduino.set_ultrasound_on(0, 5)
-
-        # Drain the cleaning cartridge by dispensing 20 ml on pump 3
         self.arduino.dispense_ml(pump=3, volume=20)
-
-        # Dispense HCl self.cleaning_station_volume on pump 5
         self.arduino.dispense_ml(pump=5, volume=self.cleaning_station_volume)
-
-        # Ultrasound for 10 seconds
-        self.arduino.set_ultrasound_on(0, 30)
-
-        # Drain the cleaning cartridge by dispensing 25 ml on pump 3
+        self.arduino.set_ultrasound_on(1, 15)
         self.arduino.dispense_ml(pump=3, volume=20)
-
-        # Dispense self.cleaning_station_volume on pump 4
         self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
-
-        # Ultrasound for 10 seconds
-        self.arduino.set_ultrasound_on(0, 5)
-
-        # Drain the cleaning cartridge by dispensing 20 ml on pump 3
+        self.arduino.set_ultrasound_on(1, 5)
         self.arduino.dispense_ml(pump=3, volume=20)
-
 
         # Move straight up
         self.openTron.moveToWell(
@@ -1266,7 +1250,17 @@ class Experiment:
             fltOffsetZ=-20,
             intSpeed=10,  # mm/s
         )
-        time.sleep(5)
+
+        # Flush the electrode in the cleaning station/cartridge
+        self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
+        self.arduino.dispense_ml(pump=3, volume=20)
+        self.arduino.dispense_ml(pump=5, volume=self.cleaning_station_volume)
+        self.arduino.set_ultrasound_on(1, 15)
+        self.arduino.dispense_ml(pump=3, volume=20)
+        self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
+        self.arduino.set_ultrasound_on(1, 5)
+        self.arduino.dispense_ml(pump=3, volume=20)
+
         # Go straight up
         self.openTron.moveToWell(
             strLabwareName=self.labware_cleaning_cartridge,
@@ -1406,13 +1400,12 @@ class Experiment:
 
         self.openTron.lights(True)
         self.openTron.homeRobot()
-        # self.cleaning(well_number=self.well_number)
-        # self.dose_chemicals(
-        #     chemicals_to_mix=chemicals_to_mix,
-        #     well_number=self.well_number,
-        #     total_volume=self.well_volume,
-        # )
-
+        self.cleaning(well_number=self.well_number, sleep_time=30)
+        self.dose_chemicals(
+            chemicals_to_mix=chemicals_to_mix,
+            well_number=self.well_number,
+            total_volume=self.well_volume,
+        )
         # Connect to admiral potentiostat
         self.initiate_potentiostat_admiral()
 
@@ -1420,8 +1413,7 @@ class Experiment:
         # self.perform_electrodeposition(well_number=self.well_number)
 
         # Clean the well
-        # self.cleaning(well_number=self.well_number)
-
+        self.cleaning(well_number=self.well_number, sleep_time=30)
         # Dispense electrolyte
         # self.dispense_electrolyte(
         #     volume=dispense_ml_electrolyte,
