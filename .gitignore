@@ -4,5 +4,4 @@
 __pycache__/
 build/
 .DS_Store
-*.log
 *.code-workspace
