@@ -21,10 +21,10 @@ chemicals_to_mix = {
 
 # Initialize logging
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(DATA_PATH + "main.log", mode="a"),
+        logging.FileHandler(DATA_PATH + "delete_me.log", mode="a"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -36,13 +36,10 @@ experiment = Experiment(
     openTron_IP="100.67.86.197",
     arduino_usb_name="CH340",
 )
+# Flush the electrode in the cleaning station/cartridge
 
-experiment.run_experiment(
-    chemicals_to_mix=chemicals_to_mix,
-    dispense_ml_electrolyte=2.8,
-    well_number=0,
-    electrodeposition_time=10,
-)
+experiment.arduino.dispense_ml(pump=2, volume=5)
+
 
 # Return potential at 10 mA/cm^2s
 print("Done\n")

@@ -40,7 +40,7 @@ class Experiment:
     def __init__(
         self,
         well_volume: float = 3.0,
-        cleaning_station_volume: float = 5,
+        cleaning_station_volume: float = 4,
         openTron_IP: str = "100.67.86.197",
         openTron_pipette_name: str = "p1000_single_gen2",
         arduino_usb_name: str = "CH340",
@@ -82,12 +82,21 @@ class Experiment:
                 "well_temperature_during_deposition",
                 "well_temperature_during_electrochemical_measurements",
                 "potential_at_10mAcm2" "corrected_potential_at_10mAcm2",
+                "timestamp_start",
+                "timestamp_end",
+                "status_of_run",
             ]
         )
         # Update the metadata with the unique id
         self.metadata.loc[0, "unique_id"] = self.unique_id
 
+        # Set the timestamp for the start of the experiment
+        self.metadata.loc[0, "timestamp_start"] = datetime.now()
+
+        # Get the well number
         self.well_number = self.load_well_number()
+
+        self.save_metadata()
 
     def initiate_arduino(
         self,
@@ -119,7 +128,10 @@ class Experiment:
         )
 
     def initiate_openTron(self):
-        self.openTron = opentronsClient(self.openTron_IP)
+        try:
+            self.openTron = opentronsClient(self.openTron_IP)
+        except Exception as e:
+            LOGGER.error(f"Could not connect to the openTron: {e}")
 
         # add pipette
         self.openTron.loadPipette(
@@ -247,8 +259,9 @@ class Experiment:
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
         self.admiral.clear_data()
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 0 CP 200 mA cm-2"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "0 CP 200 mA cm-2"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
         ### 1 - Perform CV
@@ -266,8 +279,9 @@ class Experiment:
         ac_data, dc_data = self.admiral.get_data()
         self.admiral.clear_data()
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 1 CV 25x 200mV s-1"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "1 CV 25x 200mV s-1"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
         ### 2 - Perform CV
@@ -285,8 +299,9 @@ class Experiment:
         ac_data, dc_data = self.admiral.get_data()
         self.admiral.clear_data()
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 2 CV 2x 10mV s-1"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "2 CV 2x 200mV s-1"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
         ### 3 - Perform EIS
@@ -305,8 +320,9 @@ class Experiment:
         ac_data, dc_data = self.admiral.get_data()
         self.admiral.clear_data()
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 3 EIS"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "3 EIS"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
         # Find ohmic resistance
         self.ohmic_resistance = self.find_ohmic_resistance(df=ac_data)
@@ -332,8 +348,9 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 4 CP 100 mA cm-2"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "4 CP 100 mA cm-2"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
         ### 5 - Perform CP at 50 mA/cm^2
@@ -355,8 +372,9 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 5 CP 50 mA cm-2"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "5 CP 50 mA cm-2"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
         ### 6 - Perform CP at 20 mA/cm^2
@@ -378,8 +396,9 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 6 CP 20 mA cm-2"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "6 CP 20 mA cm-2"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
         ### 7 - Perform CP at 10 mA/cm^2
@@ -401,8 +420,9 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 7 CP 10 mA cm-2"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "7 CP 10 mA cm-2"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
         # 8 - Perform CP at 5 mA/cm^2
@@ -424,8 +444,9 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 8 CP 5 mA cm-2"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "8 CP 5 mA cm-2"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
         ### 9 - Perform CP at 2 mA/cm^2
@@ -447,8 +468,9 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 9 CP 2 mA cm-2"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "9 CP 2 mA cm-2"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
         ### 10 - Perform CP at 1 mA/cm^2
@@ -470,8 +492,9 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 10 CP 1 mA cm-2"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "10 CP 1 mA cm-2"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
         ### 11 - Perform CV
@@ -495,8 +518,9 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 11 CV 2x 10mV s-1"
         self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=DATA_PATH + "11 CV 2x 10mV s-1"
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
         )
 
     def perform_potentiostat_electrodeposition(self, seconds: int = 10):
@@ -527,7 +551,7 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data,
             ac_data=ac_data,
-            file_name=DATA_PATH + str(self.unique_id) + " Electrodeposition",
+            file_name=DATA_PATH + "\\" + str(self.unique_id) + " Electrodeposition",
         )
 
     def perform_potentiostat_reference_measurement(self, string_to_add: str = ""):
@@ -561,66 +585,68 @@ class Experiment:
 
         tech = CVTechnique(params)
 
-        # Push the technique to the Biologic
-        results = []
+
+        params = PEISParams(
+                vs_initial=False,
+                initial_voltage_step=0.1,
+                duration_step=3,
+                record_every_dI=0.01,
+                record_every_dT=1,
+                correction=False,
+                final_frequency=1000,
+                initial_frequency=100000,
+                amplitude_voltage=0.01,
+                average_n_times=3,
+                frequency_number=10,
+                sweep=SweepMode.Linear,  # Linear or Logarithmic
+                wait_for_steady=False,
+                bandwidth=BANDWIDTH.BW_5,
+            )
+
+        tech2 = PEISTechnique(params)
+    
         with connect("USB0", force_load=True) as bl:
             channel = bl.get_channel(2)
+
+            # Push the technique to the Biologic        
+            results = []
             runner = channel.run_techniques([tech])
             for result in runner:
                 results.append(result.data)
             else:
                 time.sleep(1)
 
-        # make results into a pandas dataframe
-        df = pd.DataFrame(results)
-        LOGGER.debug(f"Dataframe received: {df}")
+            # make results into a pandas dataframe
+            df = pd.DataFrame(results)
+            LOGGER.debug(f"Dataframe received: {df}")
 
-        # Save the data
-        LOGGER.debug(f"Saving data to {DATA_PATH + str(self.unique_id) + f' Ref CV{string_to_add}.csv'}")
-        df.to_csv(DATA_PATH + str(self.unique_id) + f" Ref CV{string_to_add}.csv")
-        time.sleep(120)
+            # Save the data
+            filepath = DATA_PATH + "\\" + str(self.unique_id) + f" Ref CV{string_to_add}.csv"
+            LOGGER.debug(f"Saving data to {filepath}")
+            df.to_csv(filepath)
+            time.sleep(1)
+            
+            ### Create a EIS technique
+            LOGGER.info(
+                "Performing EIS on Biologic potentiostat for reference electrode correction"
+            )
 
-        
-        ### Create a EIS technique
-        LOGGER.info(
-            "Performing EIS on Biologic potentiostat for reference electrode correction"
-        )
-        params = PEISParams(
-            vs_initial=False,
-            initial_voltage_step=0.1,
-            duration_step=3,
-            record_every_dI=0.01,
-            record_every_dT=1,
-            correction=False,
-            final_frequency=1000,
-            initial_frequency=100000,
-            amplitude_voltage=0.01,
-            average_n_times=3,
-            frequency_number=10,
-            sweep=SweepMode.Linear,  # Linear or Logarithmic
-            wait_for_steady=False,
-            bandwidth=BANDWIDTH.BW_5,
-        )
-
-        tech = PEISTechnique(params)
-
-        # Push the technique to the Biologic
-        results = []
-        with connect("USB0", force_load=True) as bl:
-            channel = bl.get_channel(2)
-            runner = channel.run_techniques([tech])
+            # Push the technique to the Biologic
+            results = []
+            runner = channel.run_techniques([tech2])
             for result in runner:
                 results.append(result.data.process_data)
             else:
                 time.sleep(1)
 
-        # make results into a pandas dataframe
-        df = pd.DataFrame(results)
-        LOGGER.debug(f"Dataframe received: {df}")
+            # make results into a pandas dataframe
+            df = pd.DataFrame(results)
+            LOGGER.debug(f"Dataframe received: {df}")
 
-        # Save the data
-        LOGGER.debug(f"Saving data to {DATA_PATH + str(self.unique_id) + f' Ref EIS{string_to_add}.csv'}")
-        df.to_csv(DATA_PATH + str(self.unique_id) + f" Ref EIS{string_to_add}.csv")
+            # Save the data
+            filepath = DATA_PATH + "\\" + str(self.unique_id) + f" Ref EIS{string_to_add}.csv"
+            LOGGER.debug(f"Saving data to {filepath}")
+            df.to_csv(filepath)
 
 
 
@@ -706,8 +732,10 @@ class Experiment:
             fltOffsetZ=-40,
             intSpeed=50,  # mm/s
         )
+
         # Drain to avoid overflow
         self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
+
         # Go a little deeper
         self.openTron.moveToWell(
             strLabwareName=self.labware_well_plate,
@@ -733,24 +761,31 @@ class Experiment:
             fltOffsetZ=-54,
             intSpeed=50,  # mm/s
         )
+
         # Drain
         self.arduino.dispense_ml(pump=0, volume=1)
 
         # Flush with water
         self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+        self.arduino.set_ultrasound_on(1, 5)
         self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
         self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+        self.arduino.set_ultrasound_on(1, 5)
         self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
 
         # Flush with acid
         self.arduino.dispense_ml(pump=2, volume=0.5)  # ml to dispense
+        LOGGER.info(f"Sleeping for {sleep_time} seconds")
         time.sleep(sleep_time)  # Sleep to let the acid work
+        self.arduino.set_ultrasound_on(1, 5)
         self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
 
         # Flush with water
         self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+        self.arduino.set_ultrasound_on(1, 5)
         self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
         self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+        self.arduino.set_ultrasound_on(1, 5)
         self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
 
         # Go straight up in the air
@@ -974,7 +1009,7 @@ class Experiment:
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
             fltOffsetX=0,
-            fltOffsetY=0,
+            fltOffsetY=1,
             fltOffsetZ=0,
             intSpeed=50,  # mm/s
         )
@@ -985,7 +1020,7 @@ class Experiment:
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
             fltOffsetX=0,
-            fltOffsetY=0,
+            fltOffsetY=1,
             fltOffsetZ=-15,
             intSpeed=50,  # mm/s
         )
@@ -1005,7 +1040,7 @@ class Experiment:
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
             fltOffsetX=0,
-            fltOffsetY=0,
+            fltOffsetY=1,
             fltOffsetZ=20,
             intSpeed=50,  # mm/s
         )
@@ -1024,13 +1059,13 @@ class Experiment:
 
         # Flush the electrode in the cleaning station/cartridge
         self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
-        self.arduino.dispense_ml(pump=3, volume=20)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
         self.arduino.dispense_ml(pump=5, volume=self.cleaning_station_volume)
-        self.arduino.set_ultrasound_on(1, 15)
-        self.arduino.dispense_ml(pump=3, volume=20)
+        self.arduino.set_ultrasound_on(0, 15)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
         self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
-        self.arduino.set_ultrasound_on(1, 5)
-        self.arduino.dispense_ml(pump=3, volume=20)
+        self.arduino.set_ultrasound_on(0, 5)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
 
         # Move straight up
         self.openTron.moveToWell(
@@ -1259,13 +1294,13 @@ class Experiment:
 
         # Flush the electrode in the cleaning station/cartridge
         self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
-        self.arduino.dispense_ml(pump=3, volume=20)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
         self.arduino.dispense_ml(pump=5, volume=self.cleaning_station_volume)
-        self.arduino.set_ultrasound_on(1, 15)
-        self.arduino.dispense_ml(pump=3, volume=20)
+        self.arduino.set_ultrasound_on(0, 15)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
         self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
-        self.arduino.set_ultrasound_on(1, 5)
-        self.arduino.dispense_ml(pump=3, volume=20)
+        self.arduino.set_ultrasound_on(0, 5)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
 
         # Go straight up
         self.openTron.moveToWell(
@@ -1332,6 +1367,14 @@ class Experiment:
         # Turn off light
         self.openTron.lights(False)
 
+        # Set timestamp_end of metadata
+        self.metadata.loc[0, "timestamp_end"] = datetime.now().strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
+
+        # Save metadata
+        self.save_metadata()
+
         # Set temperature to 0 C so it doesnt heat
         self.arduino.set_temperature(0, 0)
         self.arduino.set_temperature(1, 0)
@@ -1366,6 +1409,7 @@ class Experiment:
         Args by class attribute:
             metadata (pd.DataFrame): Metadata to save
         """
+        LOGGER.debug(f"Saving metadata \n {self.metadata}")
         # Save metadata to a csv file
         # if file exists, append to it (after checking if there is already a line with the same unique_id).
         # If there is already a line with the same unique_id, overwrite that line with the new data.
@@ -1417,26 +1461,32 @@ class Experiment:
 
         self.openTron.lights(True)
         self.openTron.homeRobot()
-        self.cleaning(well_number=self.well_number, sleep_time=30)
-        self.dose_chemicals(
-            chemicals_to_mix=chemicals_to_mix,
-            well_number=self.well_number,
-            total_volume=self.well_volume,
-        )
+
+        # Clean the well
+        # self.cleaning(well_number=self.well_number, sleep_time=30)
+
+        # Dose chemicals
+        # self.dose_chemicals(
+        #     chemicals_to_mix=chemicals_to_mix,
+        #     well_number=self.well_number,
+        #     total_volume=self.well_volume,
+        # )
+
         # Connect to admiral potentiostat
         self.initiate_potentiostat_admiral()
 
         # Run recipe for electrodeposition
-        self.perform_electrodeposition(well_number=self.well_number, electrodeposition_time=electrodeposition_time)
+        # self.perform_electrodeposition(well_number=self.well_number, electrodeposition_time=electrodeposition_time)
 
         # Clean the well
-        self.cleaning(well_number=self.well_number, sleep_time=30)
+        # self.cleaning(well_number=self.well_number, sleep_time=30)
+
         # Dispense electrolyte
-        self.dispense_electrolyte(
-            volume=dispense_ml_electrolyte,
-            chemical=electrolyte,
-            well_number=self.well_number,
-        )
+        # self.dispense_electrolyte(
+        #     volume=dispense_ml_electrolyte,
+        #     chemical=electrolyte,
+        #     well_number=self.well_number,
+        # )
 
         # Perform electrochemical testing
         self.perform_electrochemical_testing(well_number=self.well_number)
@@ -1447,4 +1497,13 @@ class Experiment:
         self.arduino.set_temperature(1, 0)
         self.openTron.homeRobot()
         self.openTron.lights(False)
+
+        # Set timestamp_end of metadata
+        self.metadata.loc[0, "timestamp_end"] = datetime.now().strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
+        # Set status of metadata
+        self.metadata.loc[0, "status_of_run"] = "success"
+
+        # Save metadata
         self.save_metadata()

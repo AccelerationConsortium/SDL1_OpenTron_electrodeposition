@@ -282,6 +282,9 @@ class Arduino:
         # Calculate the time to turn on the pump
         time_on = self.pump_slope[pump] * volume + self.pump_intercept[pump]
 
+        # Round to the nearest 0.1 second
+        time_on = round(time_on, 1)
+
         LOGGER.info(f"Dispensing {volume} ml from pump {pump}.")
 
         self.set_pump_on(pump, time_on)
@@ -291,7 +294,7 @@ class Arduino:
 
         Args:
             max_wait_time (int, optional): Maximum wait time to get response
-            from arduino in seconds. Defaults to 2000.
+            from arduino in seconds. Defaults to 30.
 
         Raises:
             RuntimeWarning: Arduino did not finish the job in given time.
@@ -305,6 +308,7 @@ class Arduino:
                 LOGGER.debug("Arduino finished the task")
                 break
             count += 1
+            time.sleep(0.1)
         else:
             raise RuntimeWarning(
                 "Arduino did not finish the job.",
