@@ -759,7 +759,7 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=0,
             fltOffsetY=0,
-            fltOffsetZ=-54,
+            fltOffsetZ=-54.1,
             intSpeed=50,  # mm/s
         )
 
@@ -1464,8 +1464,8 @@ class Experiment:
         self.openTron.homeRobot()
 
         # Clean the well
-        # self.cleaning(well_number=self.well_number, sleep_time=30)
-
+        self.cleaning(well_number=self.well_number, sleep_time=30)
+        exit()
         # Dose chemicals
         # self.dose_chemicals(
         #     chemicals_to_mix=chemicals_to_mix,
