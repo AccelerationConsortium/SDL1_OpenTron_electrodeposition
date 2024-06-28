@@ -516,7 +516,7 @@ class Experiment:
 
         # Apply constant current for X seconds
         self.admiral.setup_constant_current(
-            holdAtCurrent=self.deposition_current,
+            holdAtCurrent=-self.deposition_current,
             samplingInterval=0.1,
             duration=seconds,
         )
@@ -940,7 +940,13 @@ class Experiment:
                 boolAlternateDropLocation=False,
             )
 
-    def perform_electrodeposition(self, well_number: int):
+    def perform_electrodeposition(self, well_number: int, electrodeposition_time: float = 10):
+        """Perform electrodeposition of the sample
+
+        Args:
+            well_number (int): Well number to perform electrodeposition in
+            seconds (float, optional): Duration of the electrodeposition in seconds. Defaults to 10.
+        """
         # Go to Ni deposition tool
         self.openTron.moveToWell(
             strLabwareName=self.labware_tool_rack,
@@ -990,7 +996,7 @@ class Experiment:
         ] = self.arduino.get_temperature1()
 
         # Perform the actual electrochemical deposition
-        self.perform_potentiostat_electrodeposition()
+        self.perform_potentiostat_electrodeposition(seconds=electrodeposition_time)
 
         # Go straight up from the well
         self.openTron.moveToWell(
@@ -1383,7 +1389,18 @@ class Experiment:
         dispense_ml_electrolyte: float,
         electrolyte: str = "KOH",
         well_number: int = None,
+        electrodeposition_seconds: float = 10,
     ):  
+        """Run the experiment
+
+        Args:
+            chemicals_to_mix (dict): Form must be: {"chemical_name": % of total volume}
+            dispense_ml_electrolyte (float): Volume of electrolyte to dispense in ml
+            electrolyte (str, optional): Electrolyte to dispense. Defaults to "KOH".
+            well_number (int, optional): Well number to run the experiment in. Defaults to None.
+            electrodeposition_seconds (float, optional): Duration of the electrodeposition in seconds. Defaults to 10.
+        """
+
         if well_number is not None:
             self.well_number = well_number
         LOGGER.info(f"Starting experiment {self.unique_id} in well {self.well_number}")
@@ -1410,16 +1427,16 @@ class Experiment:
         self.initiate_potentiostat_admiral()
 
         # Run recipe for electrodeposition
-        # self.perform_electrodeposition(well_number=self.well_number)
+        self.perform_electrodeposition(well_number=self.well_number, electrodeposition_time=electrodeposition_seconds)
 
         # Clean the well
         self.cleaning(well_number=self.well_number, sleep_time=30)
         # Dispense electrolyte
-        # self.dispense_electrolyte(
-        #     volume=dispense_ml_electrolyte,
-        #     chemical=electrolyte,
-        #     well_number=self.well_number,
-        # )
+        self.dispense_electrolyte(
+            volume=dispense_ml_electrolyte,
+            chemical=electrolyte,
+            well_number=self.well_number,
+        )
 
         # Perform electrochemical testing
         self.perform_electrochemical_testing(well_number=self.well_number)
