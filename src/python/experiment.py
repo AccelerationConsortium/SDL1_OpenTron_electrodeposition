@@ -536,7 +536,7 @@ class Experiment:
         Args:
             string_to_add (str, optional): String to add to the file name
                 eg. ' after'). Defaults to ''.
-        """      
+        """
         ### Create a CV technique
         LOGGER.info(
             "Performing CV on Biologic potentiostat for reference electrode correction"
@@ -576,11 +576,12 @@ class Experiment:
         LOGGER.debug(f"Dataframe received: {df}")
 
         # Save the data
-        LOGGER.debug(f"Saving data to {DATA_PATH + str(self.unique_id) + f' Ref CV{string_to_add}.csv'}")
+        LOGGER.debug(
+            f"Saving data to {DATA_PATH + str(self.unique_id) + f' Ref CV{string_to_add}.csv'}"
+        )
         df.to_csv(DATA_PATH + str(self.unique_id) + f" Ref CV{string_to_add}.csv")
         time.sleep(120)
 
-        
         ### Create a EIS technique
         LOGGER.info(
             "Performing EIS on Biologic potentiostat for reference electrode correction"
@@ -619,12 +620,10 @@ class Experiment:
         LOGGER.debug(f"Dataframe received: {df}")
 
         # Save the data
-        LOGGER.debug(f"Saving data to {DATA_PATH + str(self.unique_id) + f' Ref EIS{string_to_add}.csv'}")
+        LOGGER.debug(
+            f"Saving data to {DATA_PATH + str(self.unique_id) + f' Ref EIS{string_to_add}.csv'}"
+        )
         df.to_csv(DATA_PATH + str(self.unique_id) + f" Ref EIS{string_to_add}.csv")
-
-
-
-        
 
     def cleaning(self, well_number: int, sleep_time: int = 0):
         """Clean the well
@@ -940,7 +939,9 @@ class Experiment:
                 boolAlternateDropLocation=False,
             )
 
-    def perform_electrodeposition(self, well_number: int, electrodeposition_time: float = 10):
+    def perform_electrodeposition(
+        self, well_number: int, electrodeposition_time: float = 10
+    ):
         """Perform electrodeposition of the sample
 
         Args:
@@ -1346,8 +1347,9 @@ class Experiment:
         except FileNotFoundError:
             well_number = 0
 
-        
-        if well_number > 13: # XXX THIS HAS TO CHANGE WITH MORE CARTRIDGES AND IN parameters.py
+        if (
+            well_number > 13
+        ):  # XXX THIS HAS TO CHANGE WITH MORE CARTRIDGES AND IN parameters.py
             # Throw error if all wells are used
             raise ValueError(
                 "All wells are used. Please clean the well plate and delete the file last_processed_well.txt."
@@ -1360,9 +1362,9 @@ class Experiment:
 
     def save_metadata(self):
         """Save metadata
-        
+
         Saves metadata to a csv file. If the file exists, it appends the metadata to the file. If the file doesn't exist, it creates the file.
-        
+
         Args by class attribute:
             metadata (pd.DataFrame): Metadata to save
         """
@@ -1390,7 +1392,7 @@ class Experiment:
         electrolyte: str = "KOH",
         well_number: int = None,
         electrodeposition_seconds: float = 10,
-    ):  
+    ):
         """Run the experiment
 
         Args:
@@ -1427,7 +1429,10 @@ class Experiment:
         self.initiate_potentiostat_admiral()
 
         # Run recipe for electrodeposition
-        self.perform_electrodeposition(well_number=self.well_number, electrodeposition_time=electrodeposition_seconds)
+        self.perform_electrodeposition(
+            well_number=self.well_number,
+            electrodeposition_time=electrodeposition_seconds,
+        )
 
         # Clean the well
         self.cleaning(well_number=self.well_number, sleep_time=30)
