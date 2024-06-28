@@ -39,7 +39,7 @@ experiment = Experiment(
 
 experiment.run_experiment(
     chemicals_to_mix=chemicals_to_mix,
-    dispense_ml_electrolyte=2.8,
+    dispense_ml_electrolyte=3,
     well_number=0,
     electrodeposition_time=10,
 )

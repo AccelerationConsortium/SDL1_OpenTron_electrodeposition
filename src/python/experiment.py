@@ -1239,7 +1239,7 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=0,
             fltOffsetY=0,
-            fltOffsetZ=-20,
+            fltOffsetZ=-18,
             intSpeed=10,  # mm/s
         )
 
