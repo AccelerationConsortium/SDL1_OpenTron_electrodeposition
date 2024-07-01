@@ -38,7 +38,16 @@ experiment = Experiment(
 )
 # Flush the electrode in the cleaning station/cartridge
 
-experiment.arduino.dispense_ml(pump=2, volume=5)
+# Prime pumps for flush tool
+experiment.arduino.dispense_ml(pump=1, volume=1)
+experiment.arduino.dispense_ml(pump=2, volume=1)
+
+# Prime pumps for cleaning cartridge
+# experiment.arduino.dispense_ml(pump=3, volume=5)
+# experiment.arduino.dispense_ml(pump=4, volume=5)
+# experiment.arduino.dispense_ml(pump=3, volume=5)
+# experiment.arduino.dispense_ml(pump=5, volume=5)
+# experiment.arduino.dispense_ml(pump=3, volume=5)
 
 
 # Return potential at 10 mA/cm^2s

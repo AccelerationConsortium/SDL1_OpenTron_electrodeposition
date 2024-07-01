@@ -320,11 +320,13 @@ class Experiment:
         ac_data, dc_data = self.admiral.get_data()
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 3 EIS"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         # Find ohmic resistance
-        self.ohmic_resistance = self.find_ohmic_resistance(df=ac_data)
+        self.ohmic_resistance = self.find_ohmic_resistance(
+            df=ac_data,
+            column_name_imag="Imaginary Impedance",
+            column_name_real="Real Impedance",
+        )
         self.admiral.clear_data()
         # Updata metadata
         self.metadata.loc[0, "ohmic_resistance"] = self.ohmic_resistance
@@ -348,9 +350,7 @@ class Experiment:
         )
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 4 CP 100 mA cm-2"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
         ### 5 - Perform CP at 50 mA/cm^2
@@ -372,9 +372,7 @@ class Experiment:
         )
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 5 CP 50 mA cm-2"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
         ### 6 - Perform CP at 20 mA/cm^2
@@ -396,9 +394,7 @@ class Experiment:
         )
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 6 CP 20 mA cm-2"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
         ### 7 - Perform CP at 10 mA/cm^2
@@ -420,9 +416,7 @@ class Experiment:
         )
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 7 CP 10 mA cm-2"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
         # 8 - Perform CP at 5 mA/cm^2
@@ -445,9 +439,7 @@ class Experiment:
         )
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 8 CP 5 mA cm-2"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
         ### 9 - Perform CP at 2 mA/cm^2
@@ -469,9 +461,7 @@ class Experiment:
         )
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 9 CP 2 mA cm-2"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
         ### 10 - Perform CP at 1 mA/cm^2
@@ -493,9 +483,7 @@ class Experiment:
         )
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 10 CP 1 mA cm-2"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
         ### 11 - Perform CV
@@ -519,9 +507,7 @@ class Experiment:
         )
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 11 CV 2x 10mV s-1"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
     def perform_potentiostat_electrodeposition(self, seconds: int = 10):
@@ -561,7 +547,7 @@ class Experiment:
         Args:
             string_to_add (str, optional): String to add to the file name
                 eg. ' after'). Defaults to ''.
-        """      
+        """
         ### Create a CV technique
         LOGGER.info(
             "Performing CV on Biologic potentiostat for reference electrode correction"
@@ -586,72 +572,95 @@ class Experiment:
 
         tech = CVTechnique(params)
 
-
         params = PEISParams(
-                vs_initial=False,
-                initial_voltage_step=0.1,
-                duration_step=3,
-                record_every_dI=0.01,
-                record_every_dT=1,
-                correction=False,
-                final_frequency=1000,
-                initial_frequency=100000,
-                amplitude_voltage=0.01,
-                average_n_times=3,
-                frequency_number=10,
-                sweep=SweepMode.Linear,  # Linear or Logarithmic
-                wait_for_steady=False,
-                bandwidth=BANDWIDTH.BW_5,
-            )
+            vs_initial=False,
+            initial_voltage_step=0.1,
+            duration_step=3,
+            record_every_dI=0.01,
+            record_every_dT=1,
+            correction=False,
+            final_frequency=1000,
+            initial_frequency=100000,
+            amplitude_voltage=0.01,
+            average_n_times=3,
+            frequency_number=10,
+            sweep=SweepMode.Linear,  # Linear or Logarithmic
+            wait_for_steady=False,
+            bandwidth=BANDWIDTH.BW_5,
+        )
 
         tech2 = PEISTechnique(params)
-    
-        with connect("USB0", force_load=True) as bl:
-            channel = bl.get_channel(2)
 
-            # Push the technique to the Biologic        
-            results = []
-            runner = channel.run_techniques([tech])
-            for result in runner:
-                results.append(result.data)
-            else:
-                time.sleep(1)
-
-            # make results into a pandas dataframe
-            df = pd.DataFrame(results)
-            LOGGER.debug(f"Dataframe received: {df}")
-
-            # Save the data
-            filepath = DATA_PATH + "\\" + str(self.unique_id) + f" Ref CV{string_to_add}.csv"
-            LOGGER.debug(f"Saving data to {filepath}")
-            df.to_csv(filepath)
-            time.sleep(1)
-            
-            ### Create a EIS technique
+        break_loop = False
+        max_tries = 5
+        counter = 0
+        while break_loop == False and max_tries > counter:
             LOGGER.info(
-                "Performing EIS on Biologic potentiostat for reference electrode correction"
+                f"Trying to connect to the potentiostat: {counter+1}/{max_tries}"
             )
+            try:
+                with connect("USB0", force_load=True) as bl:
+                    channel = bl.get_channel(2)
 
-            # Push the technique to the Biologic
-            results = []
-            runner = channel.run_techniques([tech2])
-            for result in runner:
-                results.append(result.data.process_data)
-            else:
-                time.sleep(1)
+                    # Push the technique to the Biologic
+                    results = []
+                    runner = channel.run_techniques([tech])
+                    for result in runner:
+                        results.append(result.data)
+                    else:
+                        time.sleep(1)
 
-            # make results into a pandas dataframe
-            df = pd.DataFrame(results)
-            LOGGER.debug(f"Dataframe received: {df}")
+                    # make results into a pandas dataframe
+                    df = pd.DataFrame(results)
+                    LOGGER.debug(f"Dataframe received: {df}")
 
-            # Save the data
-            filepath = DATA_PATH + "\\" + str(self.unique_id) + f" Ref EIS{string_to_add}.csv"
-            LOGGER.debug(f"Saving data to {filepath}")
-            df.to_csv(filepath)
+                    # Save the data
+                    filepath = (
+                        DATA_PATH
+                        + "\\"
+                        + str(self.unique_id)
+                        + f" Ref CV{string_to_add}.csv"
+                    )
+                    LOGGER.debug(f"Saving data to {filepath}")
+                    df.to_csv(filepath)
+                    time.sleep(1)
 
+                    ### Create a EIS technique
+                    LOGGER.info(
+                        "Performing EIS on Biologic potentiostat for reference electrode correction"
+                    )
 
+                    # Push the technique to the Biologic
+                    results = []
+                    runner = channel.run_techniques([tech2])
+                    for result in runner:
+                        results.append(result.data.process_data)
+                    else:
+                        time.sleep(1)
 
-        
+                    # make results into a pandas dataframe
+                    df = pd.DataFrame(results)
+                    LOGGER.debug(f"Dataframe received: {df}")
+
+                    # Save the data
+                    filepath = (
+                        DATA_PATH
+                        + "\\"
+                        + str(self.unique_id)
+                        + f" Ref EIS{string_to_add}.csv"
+                    )
+                    LOGGER.debug(f"Saving data to {filepath}")
+                    df.to_csv(filepath)
+
+                    # Break the loop
+                    break_loop = True
+
+            except Exception as e:
+                LOGGER.error(f"Error in potentiostat measurement: {e}")
+                LOGGER.info("Trying again in 120 seconds")
+                time.sleep(120)
+
+            counter += 1
 
     def cleaning(self, well_number: int, sleep_time: int = 0):
         """Clean the well
@@ -701,7 +710,7 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            fltOffsetX=0,
+            fltOffsetX=-0.5,
             fltOffsetY=0,
             fltOffsetZ=0,
             intSpeed=50,  # mm/s
@@ -713,7 +722,7 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            fltOffsetX=0,
+            fltOffsetX=-0.5,
             fltOffsetY=0,
             fltOffsetZ=-30,
             intSpeed=50,  # mm/s
@@ -728,7 +737,7 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            fltOffsetX=0,
+            fltOffsetX=-0.5,
             fltOffsetY=0,
             fltOffsetZ=-40,
             intSpeed=50,  # mm/s
@@ -743,7 +752,7 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            fltOffsetX=0,
+            fltOffsetX=-0.5,
             fltOffsetY=0,
             fltOffsetZ=-50,
             intSpeed=50,  # mm/s
@@ -757,7 +766,7 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            fltOffsetX=0,
+            fltOffsetX=-0.5,
             fltOffsetY=0,
             fltOffsetZ=-54.1,
             intSpeed=50,  # mm/s
@@ -795,7 +804,7 @@ class Experiment:
             strWellName=wells[well_number],
             strPipetteName=self.openTron_pipette_name,
             strOffsetStart="top",
-            fltOffsetX=0,
+            fltOffsetX=-0.5,
             fltOffsetY=0,
             fltOffsetZ=20,
             intSpeed=50,  # mm/s
@@ -976,7 +985,9 @@ class Experiment:
                 boolAlternateDropLocation=False,
             )
 
-    def perform_electrodeposition(self, well_number: int, electrodeposition_time: float = 10):
+    def perform_electrodeposition(
+        self, well_number: int, electrodeposition_time: float = 10
+    ):
         """Perform electrodeposition of the sample
 
         Args:
@@ -1054,19 +1065,19 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=0,
             fltOffsetY=0,
-            fltOffsetZ=-25,
+            fltOffsetZ=-33,
             intSpeed=50,  # mm/s
         )
 
         # Flush the electrode in the cleaning station/cartridge
         self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
         self.arduino.dispense_ml(pump=5, volume=self.cleaning_station_volume)
         self.arduino.set_ultrasound_on(0, 15)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
         self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
         self.arduino.set_ultrasound_on(0, 5)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
 
         # Move straight up
         self.openTron.moveToWell(
@@ -1295,13 +1306,13 @@ class Experiment:
 
         # Flush the electrode in the cleaning station/cartridge
         self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
         self.arduino.dispense_ml(pump=5, volume=self.cleaning_station_volume)
         self.arduino.set_ultrasound_on(0, 15)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
         self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
         self.arduino.set_ultrasound_on(0, 5)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume+1)
+        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
 
         # Go straight up
         self.openTron.moveToWell(
@@ -1338,7 +1349,9 @@ class Experiment:
             boolAlternateDropLocation=False,
         )
 
-    def find_ohmic_resistance(df: pd.DataFrame) -> float:
+    def find_ohmic_resistance(
+        self, df: pd.DataFrame, column_name_imag: str, column_name_real
+    ) -> float:
         """Find the ohmic resistance from the EIS data
 
         Args:
@@ -1353,10 +1366,17 @@ class Experiment:
 
         # Finding ohmic resistance
         LOGGER.info("Finding ohmic resistance")
-        row_index = df["Imaginary Impedance"].abs().idxmin(skipna=True)
+
+        # If column_name_imag = 0 and column_name_real = 0 exist, delete this row
+        df = df[(df[column_name_imag] != 0) & (df[column_name_real] != 0)]
+
+        row_index = df[column_name_imag].abs().idxmin(skipna=True)
         if row_index is None:
             raise ValueError("EIS data does not contain valid impedance values.")
-        ohmic_resistance = round(float(df.loc[row_index, "Real Impedance"]), 3)
+        LOGGER.debug(f"Row index of minimum imaginary impedance: {row_index}")
+        LOGGER.debug(f"Imaginary impedance: {df.loc[row_index, column_name_imag]}")
+        LOGGER.debug(f"Real impedance: {df.loc[row_index, column_name_real]}")
+        ohmic_resistance = round(float(df.loc[row_index, column_name_real]), 3)
         LOGGER.info(f"Ohmic resistance: {ohmic_resistance}")
         return ohmic_resistance
 
@@ -1390,8 +1410,9 @@ class Experiment:
         except FileNotFoundError:
             well_number = 0
 
-        
-        if well_number > 13: # XXX THIS HAS TO CHANGE WITH MORE CARTRIDGES AND IN parameters.py
+        if (
+            well_number > 13
+        ):  # XXX THIS HAS TO CHANGE WITH MORE CARTRIDGES AND IN parameters.py
             # Throw error if all wells are used
             raise ValueError(
                 "All wells are used. Please clean the well plate and delete the file last_processed_well.txt."
@@ -1404,9 +1425,9 @@ class Experiment:
 
     def save_metadata(self):
         """Save metadata
-        
+
         Saves metadata to a csv file. If the file exists, it appends the metadata to the file. If the file doesn't exist, it creates the file.
-        
+
         Args by class attribute:
             metadata (pd.DataFrame): Metadata to save
         """
@@ -1435,7 +1456,7 @@ class Experiment:
         electrolyte: str = "KOH",
         well_number: int = None,
         electrodeposition_time: float = 10,
-    ):  
+    ):
         """Run the experiment
 
         Args:
@@ -1464,8 +1485,8 @@ class Experiment:
         self.openTron.homeRobot()
 
         # Clean the well
-        self.cleaning(well_number=self.well_number, sleep_time=30)
-        exit()
+        # self.cleaning(well_number=self.well_number, sleep_time=30)
+
         # Dose chemicals
         # self.dose_chemicals(
         #     chemicals_to_mix=chemicals_to_mix,
@@ -1491,6 +1512,7 @@ class Experiment:
 
         # Perform electrochemical testing
         self.perform_electrochemical_testing(well_number=self.well_number)
+
         # Disconnect admiral potentiostat
         self.close_potentiostat_admiral()
 

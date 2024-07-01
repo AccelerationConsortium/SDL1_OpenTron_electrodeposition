@@ -87,12 +87,28 @@ class AdmiralSquidstatWrapper:
         print("Returning data")
         if self.ac_data_list.empty is True:
             print("No AC data available \n")
+
+            # Reset index to avoid issues with concatenation
+            self.dc_data_list.reset_index(drop=True, inplace=True)
+
             return None, self.dc_data_list
         elif self.dc_data_list.empty is True:
             print("No DC data available \n")
+
+            # Reset index to avoid issues with concatenation
+            self.ac_data_list.reset_index(drop=True, inplace=True)
+            
             return self.ac_data_list, None
         else:
             print("")
+            
+
+            # Reset index to avoid issues with concatenation
+            self.ac_data_list.reset_index(drop=True, inplace=True)
+            
+            # Reset index to avoid issues with concatenation
+            self.dc_data_list.reset_index(drop=True, inplace=True)
+
             return self.ac_data_list, self.dc_data_list
 
     def clear_data(self):
