@@ -81,7 +81,8 @@ class Experiment:
                 "ohmic_resistance",
                 "well_temperature_during_deposition",
                 "well_temperature_during_electrochemical_measurements",
-                "potential_at_10mAcm2" "corrected_potential_at_10mAcm2",
+                "potential_at_10mAcm2",
+                "corrected_potential_at_10mAcm2",
                 "timestamp_start",
                 "timestamp_end",
                 "status_of_run",
@@ -202,6 +203,7 @@ class Experiment:
         )
 
     def correct_for_ohmic_resistance(
+        self,                        
         df: pd.DataFrame,
         ohmic_resistance: float,
         ohmic_correction_factor: float = OHMIC_CORRECTION_FACTOR,
@@ -221,7 +223,7 @@ class Experiment:
             df["Working Electrode Voltage [V]"]
             - ohmic_correction_factor
             * ohmic_resistance
-            * df["Working Electrode Current [A]]"]
+            * df["Working Electrode Current [A]"]
         )
         return df
 
@@ -314,7 +316,7 @@ class Experiment:
             points_per_decade=10,
             voltage_bias=1.5,
             voltage_amplitude=0.01,
-            number_of_runs=1,
+            number_of_runs=2,
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
@@ -328,8 +330,10 @@ class Experiment:
             column_name_real="Real Impedance",
         )
         self.admiral.clear_data()
+
         # Updata metadata
         self.metadata.loc[0, "ohmic_resistance"] = self.ohmic_resistance
+        self.save_metadata()
 
         ### 4 - Perform CP at 100 mA/cm^2
         LOGGER.info(
@@ -418,6 +422,15 @@ class Experiment:
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 7 CP 10 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
+
+        # Find average ohmic corrected potential at 10 mA/cm^2 for the last third of the data
+        self.metadata.loc[0, "potential_at_10mAcm2"] = dc_data[
+            "Working Electrode Voltage [V]"
+        ].tail(int(len(dc_data) / 3)).mean()
+        self.metadata.loc[0, "corrected_potential_at_10mAcm2"]  = dc_data[
+            "Corrected Working Electrode Voltage [V]"
+        ].tail(int(len(dc_data) / 3)).mean()
+        self.save_metadata()
 
         # 8 - Perform CP at 5 mA/cm^2
         LOGGER.info(
@@ -1300,7 +1313,7 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=0,
             fltOffsetY=0,
-            fltOffsetZ=-20,
+            fltOffsetZ=-40,
             intSpeed=10,  # mm/s
         )
 
@@ -1423,6 +1436,13 @@ class Experiment:
 
         return well_number
 
+    def save_well_number(self):
+        """Save well number to last_processed_well.txt"""
+
+        # Save well number to last_processed_well.txt
+        with open("last_processed_well.txt", "w") as f:
+            f.write(str(self.well_number))
+
     def save_metadata(self):
         """Save metadata
 
@@ -1469,6 +1489,7 @@ class Experiment:
 
         if well_number is not None:
             self.well_number = well_number
+            self.metadata.loc[0, "well_number"] = well_number
         LOGGER.info(f"Starting experiment {self.unique_id} in well {self.well_number}")
         LOGGER.info(f"Chemicals to mix: {chemicals_to_mix}")
         LOGGER.info(f"Electrolyte: {electrolyte} {dispense_ml_electrolyte} ml")
@@ -1476,6 +1497,7 @@ class Experiment:
         LOGGER.info(f"Cleaning cartridge volume: {self.cleaning_station_volume} ml")
 
         self.save_metadata()
+        self.save_well_number()
 
         # Save well number
         with open("last_processed_well.txt", "w") as f:
@@ -1485,36 +1507,39 @@ class Experiment:
         self.openTron.homeRobot()
 
         # Clean the well
-        # self.cleaning(well_number=self.well_number, sleep_time=30)
+        self.cleaning(well_number=self.well_number, sleep_time=30)
 
         # Dose chemicals
-        # self.dose_chemicals(
-        #     chemicals_to_mix=chemicals_to_mix,
-        #     well_number=self.well_number,
-        #     total_volume=self.well_volume,
-        # )
+        self.dose_chemicals(
+            chemicals_to_mix=chemicals_to_mix,
+            well_number=self.well_number,
+            total_volume=self.well_volume,
+        )
 
         # Connect to admiral potentiostat
         self.initiate_potentiostat_admiral()
 
         # Run recipe for electrodeposition
-        # self.perform_electrodeposition(well_number=self.well_number, electrodeposition_time=electrodeposition_time)
+        self.perform_electrodeposition(well_number=self.well_number, electrodeposition_time=electrodeposition_time)
 
         # Clean the well
-        # self.cleaning(well_number=self.well_number, sleep_time=30)
+        self.cleaning(well_number=self.well_number, sleep_time=30)
 
         # Dispense electrolyte
-        # self.dispense_electrolyte(
-        #     volume=dispense_ml_electrolyte,
-        #     chemical=electrolyte,
-        #     well_number=self.well_number,
-        # )
+        self.dispense_electrolyte(
+            volume=dispense_ml_electrolyte,
+            chemical=electrolyte,
+            well_number=self.well_number,
+        )
 
         # Perform electrochemical testing
         self.perform_electrochemical_testing(well_number=self.well_number)
 
         # Disconnect admiral potentiostat
         self.close_potentiostat_admiral()
+
+        # Clean the well
+        self.cleaning(well_number=self.well_number, sleep_time=30)
 
         self.arduino.set_temperature(0, 0)
         self.arduino.set_temperature(1, 0)
@@ -1530,3 +1555,4 @@ class Experiment:
 
         # Save metadata
         self.save_metadata()
+        return self.metadata.loc[0, "corrected_potential_at_10mAcm2"]

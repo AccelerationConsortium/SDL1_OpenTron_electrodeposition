@@ -37,11 +37,11 @@ experiment = Experiment(
     arduino_usb_name="CH340",
 )
 
-experiment.run_experiment(
+corrected_potential_10mA = experiment.run_experiment(
     chemicals_to_mix=chemicals_to_mix,
     dispense_ml_electrolyte=3,
     well_number=1,
-    electrodeposition_time=10,
+    electrodeposition_time=40,
 )
 
 # Return potential at 10 mA/cm^2s
