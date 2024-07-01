@@ -677,12 +677,13 @@ class Experiment:
 
             counter += 1
 
-    def cleaning(self, well_number: int, sleep_time: int = 0):
+    def cleaning(self, well_number: int, sleep_time: int = 0, use_acid: bool = True):
         """Clean the well
 
         Args:
             well_number (int): Number of the well to clean
             sleep_time (int, optional): Time in seconds to sleep with HCl. Defaults to 0.
+            use_acid (bool, optional): Use acid to clean the well. Defaults to True.
         """
         # To avoid cable clutter, move openTron first to pipette tip rack
         self.openTron.moveToWell(
@@ -798,20 +799,22 @@ class Experiment:
         self.arduino.set_ultrasound_on(1, 5)
         self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
 
-        # Flush with acid
-        self.arduino.dispense_ml(pump=2, volume=0.5)  # ml to dispense
-        LOGGER.info(f"Sleeping for {sleep_time} seconds")
-        time.sleep(sleep_time)  # Sleep to let the acid work
-        self.arduino.set_ultrasound_on(1, 5)
-        self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+        
+        if use_acid is True:
+            # Flush with acid
+            self.arduino.dispense_ml(pump=2, volume=0.5)  # ml to dispense
+            LOGGER.info(f"Sleeping for {sleep_time} seconds")
+            time.sleep(sleep_time)  # Sleep to let the acid work
+            self.arduino.set_ultrasound_on(1, 5)
+            self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
 
-        # Flush with water
-        self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
-        self.arduino.set_ultrasound_on(1, 5)
-        self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
-        self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
-        self.arduino.set_ultrasound_on(1, 5)
-        self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+            # Flush with water
+            self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+            self.arduino.set_ultrasound_on(1, 5)
+            self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+            self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+            self.arduino.set_ultrasound_on(1, 5)
+            self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
 
         # Go straight up in the air
         self.openTron.moveToWell(
@@ -1559,7 +1562,7 @@ class Experiment:
         self.perform_electrodeposition(well_number=self.well_number, electrodeposition_time=electrodeposition_time)
 
         # Clean the well
-        self.cleaning(well_number=self.well_number, sleep_time=30)
+        self.cleaning(well_number=self.well_number, sleep_time=0.1)
 
         # Dispense electrolyte
         self.dispense_electrolyte(
@@ -1575,7 +1578,7 @@ class Experiment:
         self.close_potentiostat_admiral()
 
         # Clean the well
-        self.cleaning(well_number=self.well_number, sleep_time=30)
+        self.cleaning(well_number=self.well_number, sleep_time=0, use_acid=False)
 
         self.openTron.homeRobot()
         self.openTron.lights(False)
