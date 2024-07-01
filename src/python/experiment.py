@@ -1187,7 +1187,17 @@ class Experiment:
                 strOffsetStart="top",
                 fltOffsetX=0,
                 fltOffsetY=0,
-                fltOffsetZ=0,
+                fltOffsetZ=10,
+            )
+            # Go down in well
+            self.openTron.moveToWell(
+                strLabwareName=self.labware_well_plate,
+                strWellName=wells[well_number],
+                strPipetteName=self.openTron_pipette_name,
+                strOffsetStart="top",
+                fltOffsetX=0,
+                fltOffsetY=0,
+                fltOffsetZ=-10,
             )
             # Dispense
             self.openTron.dispense(
@@ -1201,6 +1211,17 @@ class Experiment:
                 fltOffsetZ=0,
             )
             volume_left -= dispense_volume
+
+            # Go up from well
+            self.openTron.moveToWell(
+                strLabwareName=self.labware_well_plate,
+                strWellName=wells[well_number],
+                strPipetteName=self.openTron_pipette_name,
+                strOffsetStart="top",
+                fltOffsetX=0,
+                fltOffsetY=0,
+                fltOffsetZ=10,
+            )
 
         # Go to pipette tip rack
         self.openTron.moveToWell(
