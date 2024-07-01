@@ -77,6 +77,7 @@ class Experiment:
                 "chemicals_to_mix",
                 "total_volume",
                 "deposition_current",
+                "electrodeposition_time [s]",
                 "sample_surface_area",
                 "ohmic_resistance",
                 "well_temperature_during_deposition",
@@ -86,6 +87,7 @@ class Experiment:
                 "timestamp_start",
                 "timestamp_end",
                 "status_of_run",
+                "electrodeposition_temperature",
             ]
         )
         # Update the metadata with the unique id
@@ -252,59 +254,59 @@ class Experiment:
 
     def perform_potentiostat_measurements(self):
         ### 0 - Electrochemical Activation
-        # LOGGER.info("Performing electrochemical test: 0 - Electrochemical activation")
-        # self.admiral.setup_constant_current(
-        #     holdAtCurrent=0.2 * self.sample_surface_area,
-        #     samplingInterval=0.05,
-        #     duration=60,
-        # )
-        # self.admiral.run_experiment()
-        # ac_data, dc_data = self.admiral.get_data()
-        # self.admiral.clear_data()
-        # filepath = DATA_PATH + "\\" + str(self.unique_id) + " 0 CP 200 mA cm-2"
-        # self.store_data_admiral(
-        #     dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        # )
+        LOGGER.info("Performing electrochemical test: 0 - Electrochemical activation")
+        self.admiral.setup_constant_current(
+            holdAtCurrent=0.2 * self.sample_surface_area,
+            samplingInterval=0.05,
+            duration=60,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 0 CP 200 mA cm-2"
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
+        )
 
-        # ### 1 - Perform CV
-        # LOGGER.info("Performing electrochemical test: 1 - Cyclic voltammetry")
-        # self.admiral.setup_cyclic_voltammetry(
-        #     startVoltage=1.6,
-        #     firstVoltageLimit=0.8,
-        #     secondVoltageLimit=1.6,
-        #     endVoltage=1.6,
-        #     scanRate=0.2,
-        #     samplingInterval=0.05,
-        #     cycles=25,
-        # )
-        # self.admiral.run_experiment()
-        # ac_data, dc_data = self.admiral.get_data()
-        # # Save data
-        # filepath = DATA_PATH + "\\" + str(self.unique_id) + " 1 CV 25x 200mV s-1"
-        # self.store_data_admiral(
-        #     dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        # )
-        # self.admiral.clear_data()
+        ### 1 - Perform CV
+        LOGGER.info("Performing electrochemical test: 1 - Cyclic voltammetry")
+        self.admiral.setup_cyclic_voltammetry(
+            startVoltage=1.6,
+            firstVoltageLimit=0.8,
+            secondVoltageLimit=1.6,
+            endVoltage=1.6,
+            scanRate=0.2,
+            samplingInterval=0.05,
+            cycles=25,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 1 CV 25x 200mV s-1"
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
+        )
+        self.admiral.clear_data()
 
-        # ### 2 - Perform CV
-        # LOGGER.info("Performing electrochemical test: 2 - Cyclic voltammetry")
-        # self.admiral.setup_cyclic_voltammetry(
-        #     startVoltage=1.6,
-        #     firstVoltageLimit=0.8,
-        #     secondVoltageLimit=1.6,
-        #     endVoltage=0.8,
-        #     scanRate=0.01,
-        #     samplingInterval=0.2,
-        #     cycles=2,
-        # )
-        # self.admiral.run_experiment()
-        # ac_data, dc_data = self.admiral.get_data()
-        # # Save data
-        # filepath = DATA_PATH + "\\" + str(self.unique_id) + " 2 CV 2x 10mV s-1"
-        # self.store_data_admiral(
-        #     dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        # )
-        # self.admiral.clear_data()
+        ### 2 - Perform CV
+        LOGGER.info("Performing electrochemical test: 2 - Cyclic voltammetry")
+        self.admiral.setup_cyclic_voltammetry(
+            startVoltage=1.6,
+            firstVoltageLimit=0.8,
+            secondVoltageLimit=1.6,
+            endVoltage=0.8,
+            scanRate=0.01,
+            samplingInterval=0.2,
+            cycles=2,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 2 CV 2x 10mV s-1"
+        self.store_data_admiral(
+            dc_data=dc_data, ac_data=ac_data, file_name=filepath
+        )
+        self.admiral.clear_data()
 
         ### 3 - Perform EIS
         LOGGER.info(
@@ -1497,6 +1499,7 @@ class Experiment:
         electrolyte: str = "KOH",
         well_number: int = None,
         electrodeposition_time: float = 10,
+        electrodeposition_temperature: float = 0,
     ):
         """Run the experiment
 
@@ -1506,19 +1509,31 @@ class Experiment:
             electrolyte (str, optional): Electrolyte to dispense. Defaults to "KOH".
             well_number (int, optional): Well number to run the experiment in. Defaults to None.
             electrodeposition_time (float, optional): Duration of the electrodeposition in seconds. Defaults to 10.
+            electrodeposition_temperature (float, optional): Temperature of the electrodeposition in degrees Celsius. Defaults to 0.
         """
 
         if well_number is not None:
             self.well_number = well_number
             self.metadata.loc[0, "well_number"] = well_number
+        
+        self.metadata.loc[0, "chemicals_to_mix"] = str(chemicals_to_mix)
+        self.metadata.loc[0, "total_volume"] = electrolyte
+        self.metadata.loc[0, "electrodeposition_time [s]"] = electrodeposition_time
+        self.metadata.loc[0, "deposition_current"] = self.deposition_current
+        self.metadata.loc[0, "sample_surface_area"] = self.sample_surface_area
+        self.metadata.loc[0, "electrodeposition_temperature"] = electrodeposition_temperature
+        self.save_metadata()
+        self.save_well_number()
+
         LOGGER.info(f"Starting experiment {self.unique_id} in well {self.well_number}")
         LOGGER.info(f"Chemicals to mix: {chemicals_to_mix}")
         LOGGER.info(f"Electrolyte: {electrolyte} {dispense_ml_electrolyte} ml")
         LOGGER.info(f"Well volume: {self.well_volume} ml")
+        LOGGER.info(f"Electrodeposition time: {electrodeposition_time} seconds")
         LOGGER.info(f"Cleaning cartridge volume: {self.cleaning_station_volume} ml")
 
-        self.save_metadata()
-        self.save_well_number()
+        self.arduino.set_temperature(0, 0)
+        self.arduino.set_temperature(1, electrodeposition_temperature)
 
         # Save well number
         with open("last_processed_well.txt", "w") as f:
@@ -1562,8 +1577,6 @@ class Experiment:
         # Clean the well
         self.cleaning(well_number=self.well_number, sleep_time=30)
 
-        self.arduino.set_temperature(0, 0)
-        self.arduino.set_temperature(1, 0)
         self.openTron.homeRobot()
         self.openTron.lights(False)
 

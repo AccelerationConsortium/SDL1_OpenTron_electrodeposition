@@ -42,7 +42,9 @@ corrected_potential_10mA = experiment.run_experiment(
     dispense_ml_electrolyte=3,
     well_number=1,
     electrodeposition_time=40,
+    electrodeposition_temperature=35,
 )
+experiment.arduino.set_temperature(1, 0)
 
 # Return potential at 10 mA/cm^2s
 print("Done\n")
