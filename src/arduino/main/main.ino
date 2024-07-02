@@ -65,6 +65,9 @@ Qwiic_Relay solidStateRelay(RELAY_SOLIDSTATE);
 #define RELAY_ADDR2 0x6C // 0x09
 Qwiic_Relay quadRelay2(RELAY_ADDR2);
 
+// Relay 8
+#define RELAY_ADDR3 0x18 
+Qwiic_Relay singleRelay3(RELAY_ADDR3);
 
 /*
    Load PID control
@@ -72,12 +75,12 @@ Qwiic_Relay quadRelay2(RELAY_ADDR2);
 #include <AutoPID.h>
 #define OUTPUT_MIN 0
 #define OUTPUT_MAX 255
-#define KP0 1
-#define KI0 1
-#define KD0 1
-#define KP1 1
-#define KI1 1
-#define KD1 1
+#define KP0 .12
+#define KI0 0.5
+#define KD0 0.3
+#define KP1 .12
+#define KI1 0.5
+#define KD1 0.3
 double temperature0, outputVal0;
 double temperature1, outputVal1;
 double setPoint0;
@@ -111,7 +114,7 @@ void setup() {
   if (!quadRelay.begin()) {
     lcd.setCursor(0, 0);
     lcd.print("Quad relay not connected");
-    Serial.println("Check connections to Qwiic Relay.");
+    Serial.println("Check connections to Qwiic Relay 0-3.");
   }
   if (!solidStateRelay.begin()) {
     lcd.setCursor(0, 0);
@@ -121,7 +124,12 @@ void setup() {
   if (!quadRelay2.begin()) {
     lcd.setCursor(0, 0);
     lcd.print("Quad relay not connected");
-    Serial.println("Check connections to Qwiic Relay.");
+    Serial.println("Check connections to Qwiic Relay 4-7.");
+  }
+  if (!singleRelay3.begin()) {
+    lcd.setCursor(0, 0);
+    lcd.print("Single relay not connected");
+    Serial.println("Check connections to Qwiic Relay 8.");
   }
 
 /*
@@ -296,7 +304,58 @@ void parse_data()
       delay(time_ms);
       quadRelay2.turnRelayOff(relay);
     }
+    if (8 == relay_num) // Single relay
+    {
+      singleRelay3.turnRelayOn(1);
+      delay(time_ms);
+      singleRelay3.turnRelayOff(1);
+    }
     Serial.println("#"); // '#' indicates process is done
+  }
+
+  if (message_from_pc == "set_relay_on")
+  {
+        str_to_ind = strtok(NULL, ","); // this continues where the previous call left off
+    int relay_num = atoi(str_to_ind);       // convert this part to an integer
+
+    str_to_ind = strtok(NULL, ",");
+    int time_ms = atoi(str_to_ind);
+
+    if (0 <= relay_num && relay_num <= 3) // First quad relay
+    {
+      int relay = relay_num + 1;
+      quadRelay.turnRelayOn(relay);
+    }
+    if (4 <= relay_num && relay_num <= 7) // Second quad relay
+    {
+      int relay = relay_num - 3;
+      quadRelay2.turnRelayOn(relay);
+    }
+    if (8 == relay_num) // Single relay
+    {
+      singleRelay3.turnRelayOn(1);
+    }
+  }
+
+  if (message_from_pc == "set_relay_off")
+  {
+    str_to_ind = strtok(NULL, ","); // this continues where the previous call left off
+    int relay_num = atoi(str_to_ind);       // convert this part to an integer
+
+    if (0 <= relay_num && relay_num <= 3) // First quad relay
+    {
+      int relay = relay_num + 1;
+      quadRelay.turnRelayOff(relay);
+    }
+    if (4 <= relay_num && relay_num <= 7) // Second quad relay
+    {
+      int relay = relay_num - 3;
+      quadRelay2.turnRelayOff(relay);
+    }
+    if (8 == relay_num) // Single relay
+    {
+      singleRelay3.turnRelayOff(1);
+    }
   }
 
 

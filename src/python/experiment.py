@@ -799,7 +799,6 @@ class Experiment:
         self.arduino.set_ultrasound_on(1, 5)
         self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
 
-        
         if use_acid is True:
             # Flush with acid
             self.arduino.dispense_ml(pump=2, volume=0.5)  # ml to dispense
@@ -1060,8 +1059,14 @@ class Experiment:
             0, "well_temperature_during_electrodeposition"
         ] = self.arduino.get_temperature1()
 
+        # Switch relay on to make reference electrode the nickel deposition electrode
+        self.arduino.set_relay_on(8)
+
         # Perform the actual electrochemical deposition
         self.perform_potentiostat_electrodeposition(seconds=electrodeposition_time)
+
+        # Switch relay off to make reference electrode the real reference electrode
+        self.arduino.set_relay_on(8)
 
         # Go straight up from the well
         self.openTron.moveToWell(
@@ -1518,7 +1523,7 @@ class Experiment:
         if well_number is not None:
             self.well_number = well_number
             self.metadata.loc[0, "well_number"] = well_number
-        
+
         self.metadata.loc[0, "chemicals_to_mix"] = str(chemicals_to_mix)
         self.metadata.loc[0, "total_volume"] = electrolyte
         self.metadata.loc[0, "electrodeposition_time [s]"] = electrodeposition_time

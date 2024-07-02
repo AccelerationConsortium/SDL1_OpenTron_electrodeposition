@@ -37,7 +37,6 @@ experiment = Experiment(
     arduino_usb_name="CH340",
 )
 experiment.arduino.set_temperature(1, 35)
-exit()
 corrected_potential_10mA = experiment.run_experiment(
     chemicals_to_mix=chemicals_to_mix,
     dispense_ml_electrolyte=3,

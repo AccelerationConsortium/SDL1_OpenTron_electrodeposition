@@ -373,3 +373,23 @@ class Arduino:
         else:
             LOGGER.info(f"Status of relay {relay_num}: Low / Off")
             return False
+
+    def set_relay_on(self, relay_num: int) -> None:
+        """Turn on the relay.
+
+        Args:
+            relay_num (int): Number of the relay.
+        """
+        LOGGER.info(f"Switching relay {relay_num} on")
+        self.connection.write(f"<set_relay_on,{relay_num}>".encode())
+        self.wait_for_arduino()
+
+    def set_relay_off(self, relay_num: int) -> None:
+        """Turn off the relay.
+
+        Args:
+            relay_num (int): Number of the relay.
+        """
+        LOGGER.info(f"Switching relay {relay_num} off")
+        self.connection.write(f"<set_relay_off,{relay_num}>".encode())
+        self.wait_for_arduino()
