@@ -1,3 +1,4 @@
 unique_id,well_number,chemicals_to_mix,total_volume,deposition_current,electrodeposition_time [s],sample_surface_area,ohmic_resistance,well_temperature_during_deposition,well_temperature_during_electrochemical_measurements,potential_at_10mAcm2,corrected_potential_at_10mAcm2,timestamp_start,timestamp_end,status_of_run,electrodeposition_temperature
 50,2,,,,,,,,,,,2024-07-01 13:54:38.343251,,,
 51,2,,,,,,,,,,,2024-07-01 13:59:08.547669,,,
+52,2,,,,,,,,,,,2024-07-02 09:57:51.251406,,,
