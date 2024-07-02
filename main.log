@@ -26861,3 +26861,176 @@ Firmware: v11.52 2023/06/15
 2024-07-02 13:38:29,726 [INFO] [168601] mode change from POT to ISO
 2024-07-02 13:38:30,989 [INFO] Connection closed.
 2024-07-02 13:38:30,990 [INFO] Performing electrochemical test: 0 - Electrochemical activation
+2024-07-02 13:59:23,463 [INFO] Initiating arduino with usb nam: CH340
+2024-07-02 13:59:23,479 [INFO] List of USB ports:
+2024-07-02 13:59:23,479 [INFO] COM5 - USB Serial Device (COM5)
+2024-07-02 13:59:23,479 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-07-02 13:59:23,479 [INFO] Arduino found on port: COM7
+2024-07-02 13:59:32,156 [INFO] New run created with ID: fd97e4f5-0fd1-487e-af74-376b5909fc42
+2024-07-02 13:59:32,156 [INFO] Command URL: http://100.67.86.197:31950/runs/fd97e4f5-0fd1-487e-af74-376b5909fc42/commands
+2024-07-02 13:59:32,156 [INFO] Loading pipette: p1000_single_gen2 on mount: right
+2024-07-02 13:59:34,368 [INFO] Pipette loaded with name: p1000_single_gen2 and ID: 72b355cc-3617-42ae-92e4-0c82913d9fab
+2024-07-02 13:59:34,368 [INFO] Loading custom labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-02 13:59:34,462 [INFO] Custome labware nistall_4_tiprack_1ul loaded in slot: 10 successfully.
+2024-07-02 13:59:34,463 [INFO] Loading labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-02 13:59:34,541 [INFO] Labware loaded with name: nistall_4_tiprack_1ul and ID: 2f79c887-02cf-4d63-81c4-88eb70c3a2a1
+2024-07-02 13:59:34,542 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-02 13:59:34,618 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 11 successfully.
+2024-07-02 13:59:34,619 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-02 13:59:34,697 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: e912aee2-8eb4-4f88-a3aa-e0972f373c9f
+2024-07-02 13:59:34,703 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-02 13:59:34,777 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 7 successfully.
+2024-07-02 13:59:34,778 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-02 13:59:34,854 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: ab5683c9-1b73-4a32-89c5-d36962d210d9
+2024-07-02 13:59:34,854 [INFO] Loading custom labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-02 13:59:34,939 [INFO] Custome labware nis_15_wellplate_3895ul loaded in slot: 9 successfully.
+2024-07-02 13:59:34,939 [INFO] Loading labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-02 13:59:35,027 [INFO] Labware loaded with name: nis_15_wellplate_3895ul and ID: 6a5575da-a05c-4ba8-a517-641944fb691e
+2024-07-02 13:59:35,030 [INFO] Loading custom labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-02 13:59:35,099 [INFO] Custome labware nis_2_wellplate_30000ul loaded in slot: 3 successfully.
+2024-07-02 13:59:35,100 [INFO] Loading labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-02 13:59:35,173 [INFO] Labware loaded with name: nis_2_wellplate_30000ul and ID: 110c731d-a047-47de-98b2-c74dff5a02db
+2024-07-02 13:59:35,178 [INFO] Loading labware: opentrons_96_tiprack_1000ul in slot: 1
+2024-07-02 13:59:35,486 [INFO] Labware loaded with name: opentrons_96_tiprack_1000ul and ID: 9e51f5d2-c78b-421c-9c94-3ea36d8bb039
+2024-07-02 13:59:36,223 [INFO] Set temperature to 0 C
+2024-07-02 13:59:36,223 [INFO] Switching relay 8 off
+2024-07-02 13:59:37,623 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H1
+2024-07-02 13:59:37,704 [INFO] Move successful.
+2024-07-02 13:59:37,704 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-02 13:59:44,042 [INFO] Move successful.
+2024-07-02 13:59:44,042 [INFO] Picking up tip from labware: nistall_4_tiprack_1ul_10
+2024-07-02 13:59:52,322 [INFO] Lights On: true
+2024-07-02 13:59:52,367 [INFO] Light change successful.
+2024-07-02 13:59:52,367 [INFO] Homing the robot
+2024-07-02 14:00:10,850 [INFO] Robot homed successfully.
+2024-07-02 14:00:10,850 [INFO] Lights On: false
+2024-07-02 14:00:10,886 [INFO] Light change successful.
+2024-07-02 14:00:22,255 [INFO] Initiating arduino with usb nam: CH340
+2024-07-02 14:00:22,271 [INFO] List of USB ports:
+2024-07-02 14:00:22,271 [INFO] COM5 - USB Serial Device (COM5)
+2024-07-02 14:00:22,271 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-07-02 14:00:22,279 [INFO] Arduino found on port: COM7
+2024-07-02 14:00:30,775 [INFO] New run created with ID: 44f66bbd-66b4-42bb-a121-64bf53aaf4b5
+2024-07-02 14:00:30,775 [INFO] Command URL: http://100.67.86.197:31950/runs/44f66bbd-66b4-42bb-a121-64bf53aaf4b5/commands
+2024-07-02 14:00:30,775 [INFO] Loading pipette: p1000_single_gen2 on mount: right
+2024-07-02 14:00:33,042 [INFO] Pipette loaded with name: p1000_single_gen2 and ID: d0576681-7223-4c85-8a0b-0e787a8ea329
+2024-07-02 14:00:33,042 [INFO] Loading custom labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-02 14:00:33,151 [INFO] Custome labware nistall_4_tiprack_1ul loaded in slot: 10 successfully.
+2024-07-02 14:00:33,151 [INFO] Loading labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-02 14:00:33,233 [INFO] Labware loaded with name: nistall_4_tiprack_1ul and ID: 2a7e751c-b259-4d5d-934a-d040b67669c1
+2024-07-02 14:00:33,233 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-02 14:00:33,314 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 11 successfully.
+2024-07-02 14:00:33,314 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-02 14:00:33,383 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: dc3ed8cc-2041-486e-aad0-43563854d4fd
+2024-07-02 14:00:33,383 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-02 14:00:33,451 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 7 successfully.
+2024-07-02 14:00:33,451 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-02 14:00:33,530 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: b9ce66ae-9d3c-4e28-9da9-db8c1a1284ea
+2024-07-02 14:00:33,531 [INFO] Loading custom labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-02 14:00:33,615 [INFO] Custome labware nis_15_wellplate_3895ul loaded in slot: 9 successfully.
+2024-07-02 14:00:33,616 [INFO] Loading labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-02 14:00:33,706 [INFO] Labware loaded with name: nis_15_wellplate_3895ul and ID: 9ff9d2a7-bd89-4ff5-8778-536439f9d588
+2024-07-02 14:00:33,706 [INFO] Loading custom labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-02 14:00:33,770 [INFO] Custome labware nis_2_wellplate_30000ul loaded in slot: 3 successfully.
+2024-07-02 14:00:33,771 [INFO] Loading labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-02 14:00:33,845 [INFO] Labware loaded with name: nis_2_wellplate_30000ul and ID: fdcb4d71-7bf7-4327-8eae-083d3a7b68a0
+2024-07-02 14:00:33,847 [INFO] Loading labware: opentrons_96_tiprack_1000ul in slot: 1
+2024-07-02 14:00:34,153 [INFO] Labware loaded with name: opentrons_96_tiprack_1000ul and ID: 9e0fb53a-8c68-494f-90c8-292132dd960a
+2024-07-02 14:00:34,735 [INFO] Set temperature to 0 C
+2024-07-02 14:00:34,735 [INFO] Switching relay 8 off
+2024-07-02 14:00:36,127 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H1
+2024-07-02 14:00:36,235 [INFO] Move successful.
+2024-07-02 14:00:36,236 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-02 14:00:45,514 [INFO] Move successful.
+2024-07-02 14:00:45,514 [INFO] Picking up tip from labware: nistall_4_tiprack_1ul_10
+2024-07-02 14:00:52,286 [INFO] Tip picked up from labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-02 14:00:52,302 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A3
+2024-07-02 14:00:59,355 [INFO] Move successful.
+2024-07-02 14:00:59,355 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A3
+2024-07-02 14:01:00,169 [INFO] Move successful.
+2024-07-02 14:01:00,169 [INFO] Dispensing 1 ml from pump 0.
+2024-07-02 14:01:00,172 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-02 14:01:00,172 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-02 14:01:03,885 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A3
+2024-07-02 14:01:04,278 [INFO] Move successful.
+2024-07-02 14:01:04,278 [INFO] Dispensing 1 ml from pump 0.
+2024-07-02 14:01:04,278 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-02 14:01:04,278 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-02 14:01:08,438 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A3
+2024-07-02 14:01:08,828 [INFO] Move successful.
+2024-07-02 14:01:08,828 [INFO] Dispensing 1 ml from pump 0.
+2024-07-02 14:01:08,828 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-02 14:01:08,828 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-02 14:01:13,016 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A3
+2024-07-02 14:01:13,286 [INFO] Move successful.
+2024-07-02 14:01:13,286 [INFO] Dispensing 1 ml from pump 0.
+2024-07-02 14:01:13,286 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-02 14:01:13,286 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-02 14:01:17,520 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-02 14:01:17,520 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-02 14:01:17,520 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-02 14:01:21,723 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-02 14:01:21,723 [INFO] Switching relay 7 on for 5 seconds
+2024-07-02 14:01:26,860 [INFO] Dispensing 2 ml from pump 0.
+2024-07-02 14:01:26,860 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-02 14:01:26,860 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-02 14:01:32,460 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-02 14:01:32,460 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-02 14:01:32,460 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-02 14:01:36,485 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-02 14:01:36,485 [INFO] Switching relay 7 on for 5 seconds
+2024-07-02 14:01:42,745 [INFO] Dispensing 2 ml from pump 0.
+2024-07-02 14:01:42,745 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-02 14:01:42,745 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-02 14:01:48,347 [INFO] Dispensing 0.5 ml from pump 2.
+2024-07-02 14:01:48,348 [INFO] Turning on pump 2 for 1.0 seconds.
+2024-07-02 14:01:48,348 [INFO] Switching relay 2 on for 1.0 seconds
+2024-07-02 14:01:52,418 [INFO] Sleeping for 0 seconds
+2024-07-02 14:01:52,418 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-02 14:01:52,418 [INFO] Switching relay 7 on for 5 seconds
+2024-07-02 14:01:58,521 [INFO] Dispensing 2 ml from pump 0.
+2024-07-02 14:01:58,521 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-02 14:01:58,521 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-02 14:02:04,124 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-02 14:02:04,124 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-02 14:02:04,124 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-02 14:02:08,260 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-02 14:02:08,260 [INFO] Switching relay 7 on for 5 seconds
+2024-07-02 14:02:14,406 [INFO] Dispensing 2 ml from pump 0.
+2024-07-02 14:02:14,406 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-02 14:02:14,406 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-02 14:02:20,000 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-02 14:02:20,000 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-02 14:02:20,000 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-02 14:02:24,139 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-02 14:02:24,139 [INFO] Switching relay 7 on for 5 seconds
+2024-07-02 14:02:30,296 [INFO] Dispensing 2 ml from pump 0.
+2024-07-02 14:02:30,297 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-02 14:02:30,298 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-02 14:02:35,886 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A3
+2024-07-02 14:02:37,598 [INFO] Move successful.
+2024-07-02 14:02:37,598 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-02 14:02:37,706 [INFO] Move successful.
+2024-07-02 14:02:37,710 [INFO] Dropping tip into labware: nistall_4_tiprack_1ul_10
+2024-07-02 14:02:43,602 [INFO] Tip dropped into labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-02 14:02:43,602 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-02 14:02:45,755 [INFO] Move successful.
+2024-07-02 14:02:45,795 [INFO] Starting experiment 67 in well 3
+2024-07-02 14:02:45,799 [INFO] Chemicals to mix: {'NH4OH': 0, 'KCHO': 0, 'Ni': 1, 'Fe': 0, 'Cr': 0, 'Mn': 0, 'Co': 0, 'Zn': 0, 'Cu': 0}
+2024-07-02 14:02:45,799 [INFO] Electrolyte: KOH 3 ml
+2024-07-02 14:02:45,799 [INFO] Well volume: 2.5 ml
+2024-07-02 14:02:45,799 [INFO] Electrodeposition time: 60 seconds
+2024-07-02 14:02:45,800 [INFO] Cleaning cartridge volume: 6 ml
+2024-07-02 14:02:45,801 [INFO] Set temperature to 0 C
+2024-07-02 14:02:45,801 [INFO] Set temperature to 35 C
+2024-07-02 14:02:45,812 [INFO] Lights On: true
+2024-07-02 14:02:45,848 [INFO] Light change successful.
+2024-07-02 14:02:45,855 [INFO] Homing the robot
+2024-07-02 14:03:04,425 [INFO] Robot homed successfully.
+2024-07-02 14:03:04,425 [INFO] Initiating potentiostat on port COM5 with name Plus1894
+2024-07-02 14:03:05,552 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H3
+2024-07-02 14:03:08,100 [INFO] Move successful.
+2024-07-02 14:03:08,101 [INFO] Picking up tip from labware: opentrons_96_tiprack_1000ul_1
+2024-07-02 14:03:14,929 [INFO] Lights On: true
+2024-07-02 14:03:14,975 [INFO] Light change successful.
+2024-07-02 14:03:14,975 [INFO] Homing the robot

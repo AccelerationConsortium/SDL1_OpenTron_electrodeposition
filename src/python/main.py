@@ -36,8 +36,10 @@ experiment = Experiment(
     openTron_IP="100.67.86.197",
     arduino_usb_name="CH340",
 )
-experiment.arduino.set_temperature(1, 35)
+experiment.arduino.set_temperature(1, 0)
 experiment.arduino.set_relay_off(8)
+#experiment.openTron.homeRobot()
+#experiment.cleaning(2)
 
 # Temporary priming of pumps
 # experiment.arduino.dispense_ml(pump=1, volume=2)
@@ -47,7 +49,7 @@ experiment.arduino.set_relay_off(8)
 # experiment.arduino.dispense_ml(pump=4, volume=4)
 # experiment.arduino.dispense_ml(pump=3, volume=4)
 
-
+exit()
 corrected_potential_10mA = experiment.run_experiment(
     chemicals_to_mix=chemicals_to_mix,
     dispense_ml_electrolyte=3,
