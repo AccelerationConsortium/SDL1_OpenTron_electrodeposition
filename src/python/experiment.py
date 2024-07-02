@@ -974,7 +974,7 @@ class Experiment:
                     strOffsetStart="top",
                     fltOffsetX=0,
                     fltOffsetY=0,
-                    fltOffsetZ=0,
+                    fltOffsetZ=-10,
                 )
                 volume_left -= dispense_volume
 
@@ -1066,7 +1066,7 @@ class Experiment:
         self.perform_potentiostat_electrodeposition(seconds=electrodeposition_time)
 
         # Switch relay off to make reference electrode the real reference electrode
-        self.arduino.set_relay_on(8)
+        self.arduino.set_relay_off(8)
 
         # Go straight up from the well
         self.openTron.moveToWell(
@@ -1551,23 +1551,23 @@ class Experiment:
         self.openTron.homeRobot()
 
         # Clean the well
-        self.cleaning(well_number=self.well_number, sleep_time=30)
+        # self.cleaning(well_number=self.well_number, sleep_time=30)
 
-        # Dose chemicals
-        self.dose_chemicals(
-            chemicals_to_mix=chemicals_to_mix,
-            well_number=self.well_number,
-            total_volume=self.well_volume,
-        )
+        # # Dose chemicals
+        # self.dose_chemicals(
+        #     chemicals_to_mix=chemicals_to_mix,
+        #     well_number=self.well_number,
+        #     total_volume=self.well_volume,
+        # )
 
         # Connect to admiral potentiostat
         self.initiate_potentiostat_admiral()
 
-        # Run recipe for electrodeposition
-        self.perform_electrodeposition(well_number=self.well_number, electrodeposition_time=electrodeposition_time)
+        # # Run recipe for electrodeposition
+        # self.perform_electrodeposition(well_number=self.well_number, electrodeposition_time=electrodeposition_time)
 
-        # Clean the well
-        self.cleaning(well_number=self.well_number, sleep_time=0.1)
+        # # Clean the well
+        # self.cleaning(well_number=self.well_number, sleep_time=0.1)
 
         # Dispense electrolyte
         self.dispense_electrolyte(
