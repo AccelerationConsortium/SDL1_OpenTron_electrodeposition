@@ -1306,13 +1306,13 @@ class Experiment:
         self.save_metadata()
 
         # Perform reference electrode calibration
-        self.perform_potentiostat_reference_measurement(" before")
+        # self.perform_potentiostat_reference_measurement(" before") # XXX
 
         # Perform the actual electrochemical testing
         self.perform_potentiostat_measurements()
 
         # Perform reference electrode calibration
-        self.perform_potentiostat_reference_measurement(" after")
+        # self.perform_potentiostat_reference_measurement(" after") # XXX
 
         # Go straight up from the well
         self.openTron.moveToWell(
@@ -1569,12 +1569,12 @@ class Experiment:
         # # Clean the well
         # self.cleaning(well_number=self.well_number, sleep_time=0.1)
 
-        # Dispense electrolyte
-        self.dispense_electrolyte(
-            volume=dispense_ml_electrolyte,
-            chemical=electrolyte,
-            well_number=self.well_number,
-        )
+        # # Dispense electrolyte
+        # self.dispense_electrolyte(
+        #     volume=dispense_ml_electrolyte,
+        #     chemical=electrolyte,
+        #     well_number=self.well_number,
+        # )
 
         # Perform electrochemical testing
         self.perform_electrochemical_testing(well_number=self.well_number)

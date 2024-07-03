@@ -38,8 +38,14 @@ experiment = Experiment(
 )
 experiment.arduino.set_temperature(1, 0)
 experiment.arduino.set_relay_off(8)
-#experiment.openTron.homeRobot()
-#experiment.cleaning(2)
+
+experiment.initiate_potentiostat_admiral()
+experiment.perform_potentiostat_electrodeposition(60)
+experiment.perform_potentiostat_measurements()
+experiment.close_potentiostat_admiral()
+
+# experiment.openTron.homeRobot()
+# experiment.cleaning(2)
 
 # Temporary priming of pumps
 # experiment.arduino.dispense_ml(pump=1, volume=2)
@@ -49,14 +55,13 @@ experiment.arduino.set_relay_off(8)
 # experiment.arduino.dispense_ml(pump=4, volume=4)
 # experiment.arduino.dispense_ml(pump=3, volume=4)
 
-exit()
-corrected_potential_10mA = experiment.run_experiment(
-    chemicals_to_mix=chemicals_to_mix,
-    dispense_ml_electrolyte=3,
-    electrodeposition_time=60,
-    electrodeposition_temperature=35,
-)
-experiment.arduino.set_temperature(1, 0)
+# corrected_potential_10mA = experiment.run_experiment(
+#     chemicals_to_mix=chemicals_to_mix,
+#     dispense_ml_electrolyte=3,
+#     electrodeposition_time=60,
+#     electrodeposition_temperature=35,
+# )
+# experiment.arduino.set_temperature(1, 0)
 
 # Return potential at 10 mA/cm^2s
 print("Done\n")
