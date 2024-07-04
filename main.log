@@ -27034,3 +27034,687 @@ Firmware: v11.52 2023/06/15
 2024-07-02 14:03:14,929 [INFO] Lights On: true
 2024-07-02 14:03:14,975 [INFO] Light change successful.
 2024-07-02 14:03:14,975 [INFO] Homing the robot
+2024-07-03 17:58:06,348 [INFO] Initiating arduino with usb nam: CH340
+2024-07-03 17:58:06,348 [INFO] List of USB ports:
+2024-07-03 17:58:06,348 [INFO] COM5 - USB Serial Device (COM5)
+2024-07-03 17:58:06,348 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-07-03 17:58:06,348 [INFO] Arduino found on port: COM7
+2024-07-03 17:58:14,821 [INFO] New run created with ID: 9d731e2b-6d9a-4821-89ee-4d32363fdaae
+2024-07-03 17:58:14,821 [INFO] Command URL: http://100.67.86.197:31950/runs/9d731e2b-6d9a-4821-89ee-4d32363fdaae/commands
+2024-07-03 17:58:14,821 [INFO] Loading pipette: p1000_single_gen2 on mount: right
+2024-07-03 17:58:17,063 [INFO] Pipette loaded with name: p1000_single_gen2 and ID: 61a0f656-7908-49a5-9e61-2cecbe790f0d
+2024-07-03 17:58:17,078 [INFO] Loading custom labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-03 17:58:17,174 [INFO] Custome labware nistall_4_tiprack_1ul loaded in slot: 10 successfully.
+2024-07-03 17:58:17,175 [INFO] Loading labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-03 17:58:17,243 [INFO] Labware loaded with name: nistall_4_tiprack_1ul and ID: 0149b8a2-8689-4512-a141-a4f15b6528b1
+2024-07-03 17:58:17,261 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-03 17:58:17,328 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 11 successfully.
+2024-07-03 17:58:17,328 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-03 17:58:17,412 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: de517a75-10f5-47ee-9c26-e744bbaa2962
+2024-07-03 17:58:17,412 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-03 17:58:17,492 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 7 successfully.
+2024-07-03 17:58:17,493 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-03 17:58:17,562 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: b138126a-575b-441d-a490-8f344304bcd4
+2024-07-03 17:58:17,577 [INFO] Loading custom labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-03 17:58:17,668 [INFO] Custome labware nis_15_wellplate_3895ul loaded in slot: 9 successfully.
+2024-07-03 17:58:17,670 [INFO] Loading labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-03 17:58:17,745 [INFO] Labware loaded with name: nis_15_wellplate_3895ul and ID: aacbc275-68bb-4d9c-8bb8-bb7b1b411737
+2024-07-03 17:58:17,780 [INFO] Loading custom labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-03 17:58:17,845 [INFO] Custome labware nis_2_wellplate_30000ul loaded in slot: 3 successfully.
+2024-07-03 17:58:17,845 [INFO] Loading labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-03 17:58:17,911 [INFO] Labware loaded with name: nis_2_wellplate_30000ul and ID: 67d7b758-84cc-49f4-ad8b-34e5114584b8
+2024-07-03 17:58:17,911 [INFO] Loading labware: opentrons_96_tiprack_1000ul in slot: 1
+2024-07-03 17:58:18,241 [INFO] Labware loaded with name: opentrons_96_tiprack_1000ul and ID: 72cb5f83-bce5-4534-8afa-14c3aa57e628
+2024-07-03 17:58:19,162 [INFO] Set temperature to 0 C
+2024-07-03 17:58:19,162 [INFO] Switching relay 8 off
+2024-07-03 17:58:20,557 [INFO] Initiating potentiostat on port COM5 with name Plus1894
+2024-07-03 17:58:21,841 [INFO] Potentiostat performing electrodeposition of the sample with 0.005654 A for 60 seconds
+2024-07-03 17:58:21,841 [INFO] Reading sample temperature sensor 1
+2024-07-03 17:58:21,842 [INFO] Waiting for arduino to respond
+2024-07-03 17:58:22,844 [INFO] Waiting for arduino to respond
+2024-07-03 17:58:23,845 [INFO] Temperature sensor: 27.56 C
+2024-07-03 17:59:24,891 [INFO] Performing electrochemical test: 0 - Electrochemical activation
+2024-07-03 18:00:25,929 [INFO] Performing electrochemical test: 1 - Cyclic voltammetry
+2024-07-03 18:03:47,988 [INFO] Performing electrochemical test: 2 - Cyclic voltammetry
+2024-07-03 18:11:49,361 [INFO] Performing electrochemical test: 3 - Electrochemical impedance spectroscopy
+2024-07-03 18:13:08,966 [INFO] Finding ohmic resistance
+2024-07-03 18:13:08,994 [INFO] Ohmic resistance: 1.671
+2024-07-03 18:13:10,024 [INFO] Performing electrochemical test: 4 - Constant current at 100 mA/cm^2
+2024-07-03 18:14:20,026 [INFO] Correcting for ohmic resistance
+2024-07-03 18:14:21,050 [INFO] Performing electrochemical test: 5 - Constant current at 50 mA/cm^2
+2024-07-03 18:15:31,059 [INFO] Correcting for ohmic resistance
+2024-07-03 18:15:32,079 [INFO] Performing electrochemical test: 6 - Constant current at 20 mA/cm^2
+2024-07-03 18:16:42,084 [INFO] Correcting for ohmic resistance
+2024-07-03 18:16:43,119 [INFO] Performing electrochemical test: 7 - Constant current at 10 mA/cm^2
+2024-07-03 18:17:53,125 [INFO] Correcting for ohmic resistance
+2024-07-03 18:17:54,169 [INFO] Performing electrochemical test: 8 - Constant current at 5 mA/cm^2
+2024-07-03 18:19:04,183 [INFO] Correcting for ohmic resistance
+2024-07-03 18:19:05,211 [INFO] Performing electrochemical test: 9 - Constant current at 2 mA/cm^2
+2024-07-03 18:20:15,210 [INFO] Correcting for ohmic resistance
+2024-07-03 18:20:16,239 [INFO] Performing electrochemical test: 10 - Constant current at 1 mA/cm^2
+2024-07-03 18:21:26,235 [INFO] Correcting for ohmic resistance
+2024-07-03 18:21:27,267 [INFO] Performing electrochemical test: 11 - Cyclic voltammetry
+2024-07-03 18:29:27,649 [INFO] Correcting for ohmic resistance
+2024-07-03 18:29:28,663 [INFO] Closing admiral potentiostat connection
+2024-07-03 18:29:29,718 [INFO] Lights On: true
+2024-07-03 18:29:29,760 [INFO] Light change successful.
+2024-07-03 18:29:29,760 [INFO] Homing the robot
+2024-07-03 18:29:42,661 [INFO] Robot homed successfully.
+2024-07-03 18:29:42,663 [INFO] Lights On: false
+2024-07-03 18:29:42,703 [INFO] Light change successful.
+2024-07-03 19:16:40,717 [INFO] Initiating arduino with usb nam: CH340
+2024-07-03 19:16:40,717 [INFO] List of USB ports:
+2024-07-03 19:16:40,717 [INFO] COM5 - USB Serial Device (COM5)
+2024-07-03 19:16:40,717 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-07-03 19:16:40,724 [INFO] Arduino found on port: COM7
+2024-07-03 19:16:49,160 [INFO] New run created with ID: 7d64d5fe-3ad9-41ac-b70a-25702d8f0b12
+2024-07-03 19:16:49,176 [INFO] Command URL: http://100.67.86.197:31950/runs/7d64d5fe-3ad9-41ac-b70a-25702d8f0b12/commands
+2024-07-03 19:16:49,178 [INFO] Loading pipette: p1000_single_gen2 on mount: right
+2024-07-03 19:16:51,393 [INFO] Pipette loaded with name: p1000_single_gen2 and ID: e36c7d75-29b9-4a19-9f70-bddcf9795f2c
+2024-07-03 19:16:51,396 [INFO] Loading custom labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-03 19:16:51,528 [INFO] Custome labware nistall_4_tiprack_1ul loaded in slot: 10 successfully.
+2024-07-03 19:16:51,529 [INFO] Loading labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-03 19:16:51,611 [INFO] Labware loaded with name: nistall_4_tiprack_1ul and ID: 4cad29ee-2c4e-4e26-88fb-ba10ac25b779
+2024-07-03 19:16:51,613 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-03 19:16:51,678 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 11 successfully.
+2024-07-03 19:16:51,689 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-03 19:16:51,766 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: 05b330b8-662f-49db-8f44-9a148b9961a2
+2024-07-03 19:16:51,768 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-03 19:16:51,839 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 7 successfully.
+2024-07-03 19:16:51,841 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-03 19:16:51,923 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: f58bcf13-5423-45f6-bbd4-9b43271f5fa0
+2024-07-03 19:16:51,925 [INFO] Loading custom labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-03 19:16:52,011 [INFO] Custome labware nis_15_wellplate_3895ul loaded in slot: 9 successfully.
+2024-07-03 19:16:52,012 [INFO] Loading labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-03 19:16:52,101 [INFO] Labware loaded with name: nis_15_wellplate_3895ul and ID: 450c2eee-6752-4ef4-991c-ea61680d58b6
+2024-07-03 19:16:52,104 [INFO] Loading custom labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-03 19:16:52,167 [INFO] Custome labware nis_2_wellplate_30000ul loaded in slot: 3 successfully.
+2024-07-03 19:16:52,167 [INFO] Loading labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-03 19:16:52,244 [INFO] Labware loaded with name: nis_2_wellplate_30000ul and ID: 9e67176c-de61-4254-939f-d80bdcdadd38
+2024-07-03 19:16:52,244 [INFO] Loading labware: opentrons_96_tiprack_1000ul in slot: 1
+2024-07-03 19:16:52,567 [INFO] Labware loaded with name: opentrons_96_tiprack_1000ul and ID: 6e668879-4a1a-4b71-89d1-a9493f490d4b
+2024-07-03 19:16:53,222 [INFO] Set temperature to 0 C
+2024-07-03 19:16:53,237 [INFO] Switching relay 8 off
+2024-07-03 19:16:54,621 [INFO] Initiating potentiostat on port COM5 with name Plus1894
+2024-07-03 19:16:55,721 [INFO] Potentiostat performing electrodeposition of the sample with 0.005654 A for 60 seconds
+2024-07-03 19:16:55,721 [INFO] Reading sample temperature sensor 1
+2024-07-03 19:16:55,722 [INFO] Waiting for arduino to respond
+2024-07-03 19:16:56,723 [INFO] Waiting for arduino to respond
+2024-07-03 19:16:57,725 [INFO] Temperature sensor: 22.62 C
+2024-07-03 19:17:58,753 [INFO] Performing CV on Biologic potentiostat for reference electrode correction
+2024-07-03 19:17:58,753 [INFO] Trying to connect to the potentiostat: 1/5
+2024-07-03 19:17:58,857 [INFO] EcLib version: 6.5.4.1
+2024-07-03 19:17:58,857 [INFO] Connecting to USB0...
+2024-07-03 19:18:14,085 [ERROR] Error in potentiostat measurement: Cannot establish connection with the instrument
+2024-07-03 19:18:14,087 [INFO] Trying again in 120 seconds
+2024-07-03 19:20:14,096 [INFO] Trying to connect to the potentiostat: 2/5
+2024-07-03 19:20:14,100 [INFO] EcLib version: 6.5.4.1
+2024-07-03 19:20:14,102 [INFO] Connecting to USB0...
+2024-07-03 19:20:14,342 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-03 19:20:14,342 [INFO] Load firmware on channel(s): 1,2
+2024-07-03 19:20:18,832 [INFO] Testing device channels...
+2024-07-03 19:20:18,854 [INFO] Device connected.
+2024-07-03 19:20:18,858 [INFO] [9] board code = 19
+2024-07-03 19:20:18,863 [INFO] [9] board code = 19
+2024-07-03 19:20:18,864 [INFO] [655] board number: 78234
+2024-07-03 19:20:19,043 [INFO] [655] board number: 78137
+2024-07-03 19:20:19,043 [INFO] [655] initialisation done
+2024-07-03 19:20:19,130 [INFO] [655] initialisation done
+2024-07-03 19:20:19,154 [INFO] [656] kernel version: 5282
+2024-07-03 19:20:19,160 [INFO] [656] kernel version: 5282
+2024-07-03 19:20:19,162 [INFO] [656] released on (d/m/y): 12/8/2020
+2024-07-03 19:20:19,166 [INFO] [656] released on (d/m/y): 12/8/2020
+2024-07-03 19:20:19,168 [INFO] [656] xilinx version: a60d
+2024-07-03 19:20:19,172 [INFO] [656] xilinx version: a60d
+2024-07-03 19:20:19,173 [INFO] [656] make experiment begin...
+2024-07-03 19:20:19,176 [INFO] [656] make experiment begin...
+2024-07-03 19:20:19,178 [INFO] [762] make protocol ID = 0
+2024-07-03 19:20:19,181 [INFO] [762] make protocol ID = 0
+2024-07-03 19:20:19,183 [INFO] [762] make experiment done
+2024-07-03 19:20:19,187 [INFO] [762] make experiment done
+2024-07-03 19:20:19,188 [INFO] [762] start experiment
+2024-07-03 19:20:19,191 [INFO] [762] start experiment
+2024-07-03 19:20:19,193 [INFO] [762] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-03 19:20:19,196 [INFO] [762] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-03 19:20:19,198 [INFO] [763] mode change from OCV to ISO
+2024-07-03 19:20:19,203 [INFO] [763] mode change from OCV to ISO
+2024-07-03 19:20:19,204 [INFO] [778] options changed from 0 to 15
+2024-07-03 19:20:19,207 [INFO] [778] options changed from 0 to 15
+2024-07-03 19:20:19,211 [INFO] [922] load new technique...
+2024-07-03 19:20:19,214 [INFO] [924] halt old experiment
+2024-07-03 19:20:19,218 [INFO] [924] IRQ overflow 0 times
+2024-07-03 19:20:19,221 [INFO] [924] max irq time 8.05 (us)
+2024-07-03 19:20:19,225 [INFO] [924] min irq time 6.59 (us)
+2024-07-03 19:20:19,228 [INFO] [925] make experiment begin...
+2024-07-03 19:20:19,231 [INFO] [1008] make protocol ID = 103
+2024-07-03 19:20:19,234 [INFO] [1088] make protocol ID = 0
+2024-07-03 19:20:19,237 [INFO] [1089] make experiment done
+2024-07-03 19:20:19,240 [INFO] [1098] start experiment
+2024-07-03 19:20:19,244 [INFO] [1098] run protocol #0 process #0, ID=103, timebase=0.000050
+2024-07-03 19:20:19,247 [INFO] [1098] mode change from ISO to POT
+2024-07-03 19:22:55,187 [INFO] [157127] end protocol 0
+2024-07-03 19:22:55,192 [INFO] [157127] IRQ overflow 0 times
+2024-07-03 19:22:55,194 [INFO] [157127] max irq time 37.73 (us)
+2024-07-03 19:22:55,197 [INFO] [157128] min irq time 18.32 (us)
+2024-07-03 19:22:55,200 [INFO] [157128] start protocol 1
+2024-07-03 19:22:55,203 [INFO] [157128] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-03 19:22:55,207 [INFO] [157128] mode change from POT to ISO
+2024-07-03 19:22:57,283 [INFO] Performing EIS on Biologic potentiostat for reference electrode correction
+2024-07-03 19:22:58,258 [INFO] [159364] load new technique...
+2024-07-03 19:22:58,258 [INFO] [159372] load new technique...
+2024-07-03 19:22:58,265 [INFO] [159374] halt old experiment
+2024-07-03 19:22:58,265 [INFO] [159374] IRQ overflow 0 times
+2024-07-03 19:22:58,271 [INFO] [159374] max irq time 8.05 (us)
+2024-07-03 19:22:58,274 [INFO] [159374] min irq time 6.59 (us)
+2024-07-03 19:22:58,274 [INFO] [159374] make experiment begin...
+2024-07-03 19:22:58,274 [INFO] [159538] make protocol ID = 104
+2024-07-03 19:22:58,274 [INFO] [159619] make protocol ID = 0
+2024-07-03 19:22:58,288 [INFO] [159619] make experiment done
+2024-07-03 19:22:58,291 [INFO] [159623] start experiment
+2024-07-03 19:22:58,295 [INFO] [159623] run protocol #0 process #0, ID=104, timebase=0.000024
+2024-07-03 19:22:58,297 [INFO] [159623] mode change from ISO to POT
+2024-07-03 19:23:01,329 [INFO] [162656] max irq time 22.08 (us)
+2024-07-03 19:23:01,329 [INFO] [162656] min irq time 12.59 (us)
+2024-07-03 19:23:01,336 [INFO] [162656] next process 1
+2024-07-03 19:23:01,347 [INFO] [162656] run protocol #0 process #1, ID=104, timebase=0.000000
+2024-07-03 19:23:01,351 [INFO] [162656] mode change from POT to POT
+2024-07-03 19:23:07,420 [INFO] [168772] end protocol 0
+2024-07-03 19:23:07,422 [INFO] [168772] IRQ overflow 0 times
+2024-07-03 19:23:07,422 [INFO] [168772] max irq time 7.44 (us)
+2024-07-03 19:23:07,428 [INFO] [168772] min irq time 4.77 (us)
+2024-07-03 19:23:07,430 [INFO] [168794] start protocol 1
+2024-07-03 19:23:07,432 [INFO] [168794] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-03 19:23:07,434 [INFO] [168794] mode change from POT to ISO
+2024-07-03 19:23:08,752 [INFO] Connection closed.
+2024-07-03 19:23:08,752 [INFO] Performing electrochemical test: 0 - Electrochemical activation
+2024-07-03 19:24:09,794 [INFO] Performing electrochemical test: 1 - Cyclic voltammetry
+2024-07-03 19:27:31,865 [INFO] Performing electrochemical test: 2 - Cyclic voltammetry
+2024-07-03 19:35:33,250 [INFO] Performing electrochemical test: 3 - Electrochemical impedance spectroscopy
+2024-07-03 19:36:57,923 [INFO] Finding ohmic resistance
+2024-07-03 19:36:57,923 [INFO] Ohmic resistance: 1.46
+2024-07-03 19:36:58,979 [INFO] Performing electrochemical test: 4 - Constant current at 100 mA/cm^2
+2024-07-03 19:38:08,983 [INFO] Correcting for ohmic resistance
+2024-07-03 19:38:10,014 [INFO] Performing electrochemical test: 5 - Constant current at 50 mA/cm^2
+2024-07-03 19:39:20,021 [INFO] Correcting for ohmic resistance
+2024-07-03 19:39:21,039 [INFO] Performing electrochemical test: 6 - Constant current at 20 mA/cm^2
+2024-07-03 19:40:31,049 [INFO] Correcting for ohmic resistance
+2024-07-03 19:40:32,066 [INFO] Performing electrochemical test: 7 - Constant current at 10 mA/cm^2
+2024-07-03 19:41:42,074 [INFO] Correcting for ohmic resistance
+2024-07-03 19:41:43,131 [INFO] Performing electrochemical test: 8 - Constant current at 5 mA/cm^2
+2024-07-03 19:42:53,136 [INFO] Correcting for ohmic resistance
+2024-07-03 19:42:54,157 [INFO] Performing electrochemical test: 9 - Constant current at 2 mA/cm^2
+2024-07-03 19:44:04,165 [INFO] Correcting for ohmic resistance
+2024-07-03 19:44:05,189 [INFO] Performing electrochemical test: 10 - Constant current at 1 mA/cm^2
+2024-07-03 19:45:15,193 [INFO] Correcting for ohmic resistance
+2024-07-03 19:45:16,213 [INFO] Performing electrochemical test: 11 - Cyclic voltammetry
+2024-07-03 19:53:16,560 [INFO] Correcting for ohmic resistance
+2024-07-03 19:53:17,592 [INFO] Performing CV on Biologic potentiostat for reference electrode correction
+2024-07-03 19:53:17,592 [INFO] Trying to connect to the potentiostat: 1/5
+2024-07-03 19:53:17,592 [INFO] EcLib version: 6.5.4.1
+2024-07-03 19:53:17,592 [INFO] Connecting to USB0...
+2024-07-03 19:53:17,819 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-03 19:53:17,820 [INFO] Load firmware on channel(s): 1,2
+2024-07-03 19:53:22,238 [INFO] Testing device channels...
+2024-07-03 19:53:22,238 [INFO] Device connected.
+2024-07-03 19:53:22,248 [INFO] [9] board code = 19
+2024-07-03 19:53:22,249 [INFO] [9] board code = 19
+2024-07-03 19:53:22,253 [INFO] [641] board number: 78234
+2024-07-03 19:53:22,256 [INFO] [641] board number: 78137
+2024-07-03 19:53:22,437 [INFO] [641] initialisation done
+2024-07-03 19:53:22,444 [INFO] [641] initialisation done
+2024-07-03 19:53:22,499 [INFO] [641] kernel version: 5282
+2024-07-03 19:53:22,546 [INFO] [641] kernel version: 5282
+2024-07-03 19:53:22,547 [INFO] [642] released on (d/m/y): 12/8/2020
+2024-07-03 19:53:22,547 [INFO] [642] released on (d/m/y): 12/8/2020
+2024-07-03 19:53:22,556 [INFO] [642] xilinx version: a60d
+2024-07-03 19:53:22,558 [INFO] [642] xilinx version: a60d
+2024-07-03 19:53:22,561 [INFO] [642] make experiment begin...
+2024-07-03 19:53:22,563 [INFO] [642] make experiment begin...
+2024-07-03 19:53:22,563 [INFO] [748] make protocol ID = 0
+2024-07-03 19:53:22,567 [INFO] [748] make protocol ID = 0
+2024-07-03 19:53:22,568 [INFO] [748] make experiment done
+2024-07-03 19:53:22,572 [INFO] [748] make experiment done
+2024-07-03 19:53:22,575 [INFO] [748] start experiment
+2024-07-03 19:53:22,577 [INFO] [748] start experiment
+2024-07-03 19:53:22,579 [INFO] [748] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-03 19:53:22,579 [INFO] [748] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-03 19:53:22,585 [INFO] [749] mode change from OCV to ISO
+2024-07-03 19:53:22,586 [INFO] [749] mode change from OCV to ISO
+2024-07-03 19:53:22,590 [INFO] [764] options changed from 0 to 15
+2024-07-03 19:53:22,592 [INFO] [764] options changed from 0 to 15
+2024-07-03 19:53:22,596 [INFO] [900] load new technique...
+2024-07-03 19:53:22,599 [INFO] [902] halt old experiment
+2024-07-03 19:53:22,603 [INFO] [902] IRQ overflow 0 times
+2024-07-03 19:53:22,605 [INFO] [902] max irq time 8.05 (us)
+2024-07-03 19:53:22,605 [INFO] [902] min irq time 6.59 (us)
+2024-07-03 19:53:22,612 [INFO] [902] make experiment begin...
+2024-07-03 19:53:22,613 [INFO] [986] make protocol ID = 103
+2024-07-03 19:53:22,613 [INFO] [1066] make protocol ID = 0
+2024-07-03 19:53:22,621 [INFO] [1067] make experiment done
+2024-07-03 19:53:22,626 [INFO] [1075] start experiment
+2024-07-03 19:53:22,629 [INFO] [1076] run protocol #0 process #0, ID=103, timebase=0.000050
+2024-07-03 19:53:22,633 [INFO] [1076] mode change from ISO to POT
+2024-07-03 19:53:32,653 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-03 19:53:32,713 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-03 19:53:38,686 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-03 19:53:38,744 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-03 19:53:44,698 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-03 19:53:44,764 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-03 19:53:47,952 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Communication failed with the instrument
+2024-07-03 19:53:47,952 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Communication failed with the instrument
+2024-07-03 19:53:48,964 [ERROR] Error in potentiostat measurement: Communication failed with the instrument
+2024-07-03 19:53:48,964 [INFO] Trying again in 120 seconds
+2024-07-03 19:55:48,978 [INFO] Trying to connect to the potentiostat: 2/5
+2024-07-03 19:55:48,981 [INFO] EcLib version: 6.5.4.1
+2024-07-03 19:55:48,981 [INFO] Connecting to USB0...
+2024-07-03 19:55:49,212 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-03 19:55:49,212 [INFO] Load firmware on channel(s): 1,2
+2024-07-03 19:55:53,662 [INFO] Testing device channels...
+2024-07-03 19:55:53,666 [INFO] Device connected.
+2024-07-03 19:55:53,671 [INFO] [9] board code = 19
+2024-07-03 19:55:53,674 [INFO] [9] board code = 19
+2024-07-03 19:55:53,675 [INFO] [651] board number: 78234
+2024-07-03 19:55:53,675 [INFO] [651] board number: 78137
+2024-07-03 19:55:53,865 [INFO] [651] initialisation done
+2024-07-03 19:55:53,866 [INFO] [651] initialisation done
+2024-07-03 19:55:53,924 [INFO] [651] kernel version: 5282
+2024-07-03 19:55:53,963 [INFO] [651] kernel version: 5282
+2024-07-03 19:55:53,971 [INFO] [651] released on (d/m/y): 12/8/2020
+2024-07-03 19:55:53,972 [INFO] [651] released on (d/m/y): 12/8/2020
+2024-07-03 19:55:53,976 [INFO] [651] xilinx version: a60d
+2024-07-03 19:55:53,978 [INFO] [651] xilinx version: a60d
+2024-07-03 19:55:53,981 [INFO] [652] make experiment begin...
+2024-07-03 19:55:53,982 [INFO] [652] make experiment begin...
+2024-07-03 19:55:53,986 [INFO] [758] make protocol ID = 0
+2024-07-03 19:55:53,987 [INFO] [758] make protocol ID = 0
+2024-07-03 19:55:53,991 [INFO] [758] make experiment done
+2024-07-03 19:55:53,993 [INFO] [758] make experiment done
+2024-07-03 19:55:53,996 [INFO] [758] start experiment
+2024-07-03 19:55:53,997 [INFO] [758] start experiment
+2024-07-03 19:55:53,997 [INFO] [758] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-03 19:55:53,997 [INFO] [758] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-03 19:55:54,006 [INFO] [759] mode change from OCV to ISO
+2024-07-03 19:55:54,007 [INFO] [759] mode change from OCV to ISO
+2024-07-03 19:55:54,010 [INFO] [774] options changed from 0 to 15
+2024-07-03 19:55:54,012 [INFO] [774] options changed from 0 to 15
+2024-07-03 19:55:54,016 [INFO] [915] load new technique...
+2024-07-03 19:55:54,017 [INFO] [916] halt old experiment
+2024-07-03 19:55:54,023 [INFO] [916] IRQ overflow 0 times
+2024-07-03 19:55:54,026 [INFO] [917] max irq time 8.05 (us)
+2024-07-03 19:55:54,029 [INFO] [917] min irq time 6.59 (us)
+2024-07-03 19:55:54,032 [INFO] [917] make experiment begin...
+2024-07-03 19:55:54,032 [INFO] [1000] make protocol ID = 103
+2024-07-03 19:55:54,039 [INFO] [1080] make protocol ID = 0
+2024-07-03 19:55:54,042 [INFO] [1081] make experiment done
+2024-07-03 19:55:54,042 [INFO] [1087] start experiment
+2024-07-03 19:55:54,048 [INFO] [1087] run protocol #0 process #0, ID=103, timebase=0.000050
+2024-07-03 19:55:54,052 [INFO] [1087] mode change from ISO to POT
+2024-07-03 19:58:30,832 [INFO] [157117] end protocol 0
+2024-07-03 19:58:30,835 [INFO] [157117] IRQ overflow 0 times
+2024-07-03 19:58:30,837 [INFO] [157117] max irq time 37.73 (us)
+2024-07-03 19:58:30,839 [INFO] [157118] min irq time 18.11 (us)
+2024-07-03 19:58:30,840 [INFO] [157118] start protocol 1
+2024-07-03 19:58:30,842 [INFO] [157118] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-03 19:58:30,844 [INFO] [157118] mode change from POT to ISO
+2024-07-03 19:58:32,030 [INFO] Performing EIS on Biologic potentiostat for reference electrode correction
+2024-07-03 19:58:32,863 [INFO] [159286] load new technique...
+2024-07-03 19:58:32,865 [INFO] [159294] load new technique...
+2024-07-03 19:58:32,865 [INFO] [159296] halt old experiment
+2024-07-03 19:58:32,873 [INFO] [159296] IRQ overflow 0 times
+2024-07-03 19:58:32,876 [INFO] [159296] max irq time 8.05 (us)
+2024-07-03 19:58:32,876 [INFO] [159296] min irq time 6.59 (us)
+2024-07-03 19:58:32,883 [INFO] [159296] make experiment begin...
+2024-07-03 19:58:32,887 [INFO] [159460] make protocol ID = 104
+2024-07-03 19:58:32,889 [INFO] [159541] make protocol ID = 0
+2024-07-03 19:58:32,892 [INFO] [159541] make experiment done
+2024-07-03 19:58:32,895 [INFO] [159544] start experiment
+2024-07-03 19:58:32,899 [INFO] [159544] run protocol #0 process #0, ID=104, timebase=0.000024
+2024-07-03 19:58:32,902 [INFO] [159545] mode change from ISO to POT
+2024-07-03 19:58:35,938 [INFO] [162578] max irq time 22.08 (us)
+2024-07-03 19:58:35,938 [INFO] [162578] min irq time 12.59 (us)
+2024-07-03 19:58:35,945 [INFO] [162578] next process 1
+2024-07-03 19:58:35,955 [INFO] [162578] run protocol #0 process #1, ID=104, timebase=0.000000
+2024-07-03 19:58:35,962 [INFO] [162578] mode change from POT to POT
+2024-07-03 19:58:42,018 [INFO] [168558] end protocol 0
+2024-07-03 19:58:42,018 [INFO] [168558] IRQ overflow 0 times
+2024-07-03 19:58:42,025 [INFO] [168558] max irq time 7.44 (us)
+2024-07-03 19:58:42,027 [INFO] [168558] min irq time 4.77 (us)
+2024-07-03 19:58:42,028 [INFO] [168558] start protocol 1
+2024-07-03 19:58:42,032 [INFO] [168558] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-03 19:58:42,035 [INFO] [168558] mode change from POT to ISO
+2024-07-03 19:58:43,290 [INFO] Connection closed.
+2024-07-03 19:58:43,290 [INFO] Closing admiral potentiostat connection
+2024-07-03 19:58:44,320 [INFO] Lights On: true
+2024-07-03 19:58:44,365 [INFO] Light change successful.
+2024-07-03 19:58:44,366 [INFO] Homing the robot
+2024-07-03 19:58:57,305 [INFO] Robot homed successfully.
+2024-07-03 19:58:57,305 [INFO] Lights On: false
+2024-07-03 19:58:57,345 [INFO] Light change successful.
+2024-07-03 20:00:49,594 [INFO] Initiating arduino with usb nam: CH340
+2024-07-03 20:00:49,599 [INFO] List of USB ports:
+2024-07-03 20:00:49,599 [INFO] COM5 - USB Serial Device (COM5)
+2024-07-03 20:00:49,599 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-07-03 20:00:49,601 [INFO] Arduino found on port: COM7
+2024-07-03 20:00:57,953 [INFO] New run created with ID: 1ac91fb1-74b0-4196-b63e-32f1648ad7be
+2024-07-03 20:00:57,953 [INFO] Command URL: http://100.67.86.197:31950/runs/1ac91fb1-74b0-4196-b63e-32f1648ad7be/commands
+2024-07-03 20:00:57,954 [INFO] Loading pipette: p1000_single_gen2 on mount: right
+2024-07-03 20:01:00,126 [INFO] Pipette loaded with name: p1000_single_gen2 and ID: 6e1ada1a-0d7b-462e-b3ef-c9138f418dd0
+2024-07-03 20:01:00,127 [INFO] Loading custom labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-03 20:01:00,226 [INFO] Custome labware nistall_4_tiprack_1ul loaded in slot: 10 successfully.
+2024-07-03 20:01:00,226 [INFO] Loading labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-03 20:01:00,292 [INFO] Labware loaded with name: nistall_4_tiprack_1ul and ID: 17edc72d-3109-45dd-b70a-a718369487d3
+2024-07-03 20:01:00,292 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-03 20:01:00,369 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 11 successfully.
+2024-07-03 20:01:00,369 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-03 20:01:00,444 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: ef9dc6b7-4466-4529-90bc-344507d5cd6a
+2024-07-03 20:01:00,444 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-03 20:01:00,526 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 7 successfully.
+2024-07-03 20:01:00,526 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-03 20:01:00,623 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: 4bce8b20-203c-42bb-b0d5-9ef1fadb62d7
+2024-07-03 20:01:00,626 [INFO] Loading custom labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-03 20:01:00,725 [INFO] Custome labware nis_15_wellplate_3895ul loaded in slot: 9 successfully.
+2024-07-03 20:01:00,726 [INFO] Loading labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-03 20:01:00,809 [INFO] Labware loaded with name: nis_15_wellplate_3895ul and ID: 0585abf0-e69b-4c6e-afd8-674f2f42c38d
+2024-07-03 20:01:00,809 [INFO] Loading custom labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-03 20:01:00,876 [INFO] Custome labware nis_2_wellplate_30000ul loaded in slot: 3 successfully.
+2024-07-03 20:01:00,876 [INFO] Loading labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-03 20:01:00,950 [INFO] Labware loaded with name: nis_2_wellplate_30000ul and ID: 4276f05b-d989-442d-8e12-d84568fe3b0f
+2024-07-03 20:01:00,958 [INFO] Loading labware: opentrons_96_tiprack_1000ul in slot: 1
+2024-07-03 20:01:01,315 [INFO] Labware loaded with name: opentrons_96_tiprack_1000ul and ID: 852c8593-8804-42fa-bb6b-acbf495457a5
+2024-07-03 20:01:01,407 [INFO] Set temperature to 0 C
+2024-07-03 20:01:01,407 [INFO] Switching relay 8 off
+2024-07-03 20:01:02,800 [INFO] Initiating potentiostat on port COM5 with name Plus1894
+2024-07-03 20:01:03,890 [INFO] Potentiostat performing electrodeposition of the sample with 0.005654 A for 60 seconds
+2024-07-03 20:01:03,890 [INFO] Reading sample temperature sensor 1
+2024-07-03 20:01:03,891 [INFO] Waiting for arduino to respond
+2024-07-03 20:01:04,891 [INFO] Waiting for arduino to respond
+2024-07-03 20:01:05,896 [INFO] Temperature sensor: 22.06 C
+2024-07-03 20:02:06,918 [INFO] Performing CV on Biologic potentiostat for reference electrode correction
+2024-07-03 20:02:06,923 [INFO] Trying to connect to the potentiostat: 1/5
+2024-07-03 20:02:06,935 [INFO] EcLib version: 6.5.4.1
+2024-07-03 20:02:06,935 [INFO] Connecting to USB0...
+2024-07-03 20:02:22,177 [ERROR] Error in potentiostat measurement: Cannot establish connection with the instrument
+2024-07-03 20:02:22,177 [INFO] Trying again in 120 seconds
+2024-07-03 20:04:22,181 [INFO] Trying to connect to the potentiostat: 2/5
+2024-07-03 20:04:22,181 [INFO] EcLib version: 6.5.4.1
+2024-07-03 20:04:22,181 [INFO] Connecting to USB0...
+2024-07-03 20:04:22,407 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-03 20:04:22,407 [INFO] Load firmware on channel(s): 1,2
+2024-07-03 20:04:26,918 [INFO] Testing device channels...
+2024-07-03 20:04:26,927 [INFO] Device connected.
+2024-07-03 20:04:26,936 [INFO] [9] board code = 19
+2024-07-03 20:04:26,939 [INFO] [9] board code = 19
+2024-07-03 20:04:26,945 [INFO] [647] board number: 78234
+2024-07-03 20:04:26,949 [INFO] [647] board number: 78137
+2024-07-03 20:04:27,133 [INFO] [647] initialisation done
+2024-07-03 20:04:27,138 [INFO] [647] initialisation done
+2024-07-03 20:04:27,182 [INFO] [648] kernel version: 5282
+2024-07-03 20:04:27,237 [INFO] [648] kernel version: 5282
+2024-07-03 20:04:27,239 [INFO] [648] released on (d/m/y): 12/8/2020
+2024-07-03 20:04:27,239 [INFO] [648] released on (d/m/y): 12/8/2020
+2024-07-03 20:04:27,247 [INFO] [648] xilinx version: a60d
+2024-07-03 20:04:27,249 [INFO] [648] xilinx version: a60d
+2024-07-03 20:04:27,252 [INFO] [648] make experiment begin...
+2024-07-03 20:04:27,253 [INFO] [648] make experiment begin...
+2024-07-03 20:04:27,257 [INFO] [754] make protocol ID = 0
+2024-07-03 20:04:27,259 [INFO] [754] make protocol ID = 0
+2024-07-03 20:04:27,261 [INFO] [754] make experiment done
+2024-07-03 20:04:27,264 [INFO] [754] make experiment done
+2024-07-03 20:04:27,267 [INFO] [754] start experiment
+2024-07-03 20:04:27,268 [INFO] [754] start experiment
+2024-07-03 20:04:27,271 [INFO] [754] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-03 20:04:27,274 [INFO] [754] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-03 20:04:27,276 [INFO] [755] mode change from OCV to ISO
+2024-07-03 20:04:27,278 [INFO] [755] mode change from OCV to ISO
+2024-07-03 20:04:27,281 [INFO] [770] options changed from 0 to 15
+2024-07-03 20:04:27,283 [INFO] [770] options changed from 0 to 15
+2024-07-03 20:04:27,288 [INFO] [918] load new technique...
+2024-07-03 20:04:27,292 [INFO] [919] halt old experiment
+2024-07-03 20:04:27,295 [INFO] [919] IRQ overflow 0 times
+2024-07-03 20:04:27,298 [INFO] [920] max irq time 8.05 (us)
+2024-07-03 20:04:27,301 [INFO] [920] min irq time 6.59 (us)
+2024-07-03 20:04:27,305 [INFO] [920] make experiment begin...
+2024-07-03 20:04:27,308 [INFO] [1003] make protocol ID = 103
+2024-07-03 20:04:27,311 [INFO] [1083] make protocol ID = 0
+2024-07-03 20:04:27,314 [INFO] [1084] make experiment done
+2024-07-03 20:04:27,317 [INFO] [1092] start experiment
+2024-07-03 20:04:27,320 [INFO] [1092] run protocol #0 process #0, ID=103, timebase=0.000050
+2024-07-03 20:04:27,323 [INFO] [1092] mode change from ISO to POT
+2024-07-03 20:07:03,883 [INFO] [157121] end protocol 0
+2024-07-03 20:07:03,883 [INFO] [157121] IRQ overflow 0 times
+2024-07-03 20:07:03,902 [INFO] [157121] max irq time 37.73 (us)
+2024-07-03 20:07:03,930 [INFO] [157122] min irq time 18.32 (us)
+2024-07-03 20:07:03,933 [INFO] [157122] start protocol 1
+2024-07-03 20:07:03,936 [INFO] [157122] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-03 20:07:03,941 [INFO] [157122] mode change from POT to ISO
+2024-07-03 20:07:05,298 [INFO] Performing EIS on Biologic potentiostat for reference electrode correction
+2024-07-03 20:07:05,962 [INFO] [159285] load new technique...
+2024-07-03 20:07:05,970 [INFO] [159293] load new technique...
+2024-07-03 20:07:05,977 [INFO] [159295] halt old experiment
+2024-07-03 20:07:05,981 [INFO] [159295] IRQ overflow 0 times
+2024-07-03 20:07:05,985 [INFO] [159295] max irq time 8.05 (us)
+2024-07-03 20:07:05,989 [INFO] [159295] min irq time 6.59 (us)
+2024-07-03 20:07:05,994 [INFO] [159295] make experiment begin...
+2024-07-03 20:07:05,997 [INFO] [159459] make protocol ID = 104
+2024-07-03 20:07:06,002 [INFO] [159540] make protocol ID = 0
+2024-07-03 20:07:06,005 [INFO] [159540] make experiment done
+2024-07-03 20:07:06,008 [INFO] [159543] start experiment
+2024-07-03 20:07:06,012 [INFO] [159543] run protocol #0 process #0, ID=104, timebase=0.000024
+2024-07-03 20:07:06,015 [INFO] [159544] mode change from ISO to POT
+2024-07-03 20:07:09,083 [INFO] [162577] max irq time 22.08 (us)
+2024-07-03 20:07:09,090 [INFO] [162577] min irq time 12.59 (us)
+2024-07-03 20:07:09,090 [INFO] [162577] next process 1
+2024-07-03 20:07:09,101 [INFO] [162577] run protocol #0 process #1, ID=104, timebase=0.000000
+2024-07-03 20:07:09,105 [INFO] [162577] mode change from POT to POT
+2024-07-03 20:07:15,151 [INFO] [168557] end protocol 0
+2024-07-03 20:07:15,158 [INFO] [168557] IRQ overflow 0 times
+2024-07-03 20:07:15,159 [INFO] [168557] max irq time 7.44 (us)
+2024-07-03 20:07:15,159 [INFO] [168557] min irq time 4.77 (us)
+2024-07-03 20:07:15,168 [INFO] [168557] start protocol 1
+2024-07-03 20:07:15,171 [INFO] [168557] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-03 20:07:15,174 [INFO] [168557] mode change from POT to ISO
+2024-07-03 20:07:16,503 [INFO] Connection closed.
+2024-07-03 20:07:16,504 [INFO] Performing electrochemical test: 0 - Electrochemical activation
+2024-07-03 20:08:17,529 [INFO] Performing electrochemical test: 1 - Cyclic voltammetry
+2024-07-03 20:11:39,615 [INFO] Performing electrochemical test: 2 - Cyclic voltammetry
+2024-07-03 20:19:40,975 [INFO] Performing electrochemical test: 3 - Electrochemical impedance spectroscopy
+2024-07-03 20:21:00,383 [INFO] Finding ohmic resistance
+2024-07-03 20:21:00,385 [INFO] Ohmic resistance: 1.416
+2024-07-03 20:21:01,428 [INFO] Performing electrochemical test: 4 - Constant current at 100 mA/cm^2
+2024-07-03 20:22:11,438 [INFO] Correcting for ohmic resistance
+2024-07-03 20:22:12,448 [INFO] Performing electrochemical test: 5 - Constant current at 50 mA/cm^2
+2024-07-03 20:23:22,451 [INFO] Correcting for ohmic resistance
+2024-07-03 20:23:23,489 [INFO] Performing electrochemical test: 6 - Constant current at 20 mA/cm^2
+2024-07-03 20:24:33,496 [INFO] Correcting for ohmic resistance
+2024-07-03 20:24:34,506 [INFO] Performing electrochemical test: 7 - Constant current at 10 mA/cm^2
+2024-07-03 20:25:44,512 [INFO] Correcting for ohmic resistance
+2024-07-03 20:25:45,569 [INFO] Performing electrochemical test: 8 - Constant current at 5 mA/cm^2
+2024-07-03 20:26:55,577 [INFO] Correcting for ohmic resistance
+2024-07-03 20:26:56,604 [INFO] Performing electrochemical test: 9 - Constant current at 2 mA/cm^2
+2024-07-03 20:28:06,604 [INFO] Correcting for ohmic resistance
+2024-07-03 20:28:07,623 [INFO] Performing electrochemical test: 10 - Constant current at 1 mA/cm^2
+2024-07-03 20:29:17,665 [INFO] Correcting for ohmic resistance
+2024-07-03 20:29:18,683 [INFO] Performing electrochemical test: 11 - Cyclic voltammetry
+2024-07-03 20:37:19,036 [INFO] Correcting for ohmic resistance
+2024-07-03 20:37:20,063 [INFO] Performing CV on Biologic potentiostat for reference electrode correction
+2024-07-03 20:37:20,063 [INFO] Trying to connect to the potentiostat: 1/5
+2024-07-03 20:37:20,063 [INFO] EcLib version: 6.5.4.1
+2024-07-03 20:37:20,065 [INFO] Connecting to USB0...
+2024-07-03 20:37:20,304 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-03 20:37:20,308 [INFO] Load firmware on channel(s): 1,2
+2024-07-03 20:37:24,738 [INFO] Testing device channels...
+2024-07-03 20:37:24,738 [INFO] Device connected.
+2024-07-03 20:37:24,747 [INFO] [9] board code = 19
+2024-07-03 20:37:24,749 [INFO] [9] board code = 19
+2024-07-03 20:37:24,753 [INFO] [649] board number: 78234
+2024-07-03 20:37:24,753 [INFO] [649] board number: 78137
+2024-07-03 20:37:24,938 [INFO] [649] initialisation done
+2024-07-03 20:37:24,938 [INFO] [649] initialisation done
+2024-07-03 20:37:24,997 [INFO] [649] kernel version: 5282
+2024-07-03 20:37:25,040 [INFO] [649] kernel version: 5282
+2024-07-03 20:37:25,044 [INFO] [649] released on (d/m/y): 12/8/2020
+2024-07-03 20:37:25,044 [INFO] [649] released on (d/m/y): 12/8/2020
+2024-07-03 20:37:25,050 [INFO] [649] xilinx version: a60d
+2024-07-03 20:37:25,052 [INFO] [649] xilinx version: a60d
+2024-07-03 20:37:25,055 [INFO] [649] make experiment begin...
+2024-07-03 20:37:25,057 [INFO] [649] make experiment begin...
+2024-07-03 20:37:25,061 [INFO] [756] make protocol ID = 0
+2024-07-03 20:37:25,062 [INFO] [756] make protocol ID = 0
+2024-07-03 20:37:25,065 [INFO] [756] make experiment done
+2024-07-03 20:37:25,067 [INFO] [756] make experiment done
+2024-07-03 20:37:25,070 [INFO] [756] start experiment
+2024-07-03 20:37:25,071 [INFO] [756] start experiment
+2024-07-03 20:37:25,072 [INFO] [756] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-03 20:37:25,077 [INFO] [756] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-03 20:37:25,079 [INFO] [757] mode change from OCV to ISO
+2024-07-03 20:37:25,081 [INFO] [757] mode change from OCV to ISO
+2024-07-03 20:37:25,084 [INFO] [772] options changed from 0 to 15
+2024-07-03 20:37:25,084 [INFO] [772] options changed from 0 to 15
+2024-07-03 20:37:25,091 [INFO] [909] load new technique...
+2024-07-03 20:37:25,092 [INFO] [911] halt old experiment
+2024-07-03 20:37:25,097 [INFO] [911] IRQ overflow 0 times
+2024-07-03 20:37:25,100 [INFO] [911] max irq time 8.05 (us)
+2024-07-03 20:37:25,103 [INFO] [911] min irq time 6.59 (us)
+2024-07-03 20:37:25,107 [INFO] [911] make experiment begin...
+2024-07-03 20:37:25,108 [INFO] [995] make protocol ID = 103
+2024-07-03 20:37:25,113 [INFO] [1075] make protocol ID = 0
+2024-07-03 20:37:25,117 [INFO] [1076] make experiment done
+2024-07-03 20:37:25,118 [INFO] [1082] start experiment
+2024-07-03 20:37:25,124 [INFO] [1082] run protocol #0 process #0, ID=103, timebase=0.000050
+2024-07-03 20:37:25,125 [INFO] [1082] mode change from ISO to POT
+2024-07-03 20:40:01,943 [INFO] [157111] end protocol 0
+2024-07-03 20:40:01,943 [INFO] [157111] IRQ overflow 0 times
+2024-07-03 20:40:01,964 [INFO] [157111] max irq time 37.79 (us)
+2024-07-03 20:40:01,967 [INFO] [157112] min irq time 18.32 (us)
+2024-07-03 20:40:01,972 [INFO] [157112] start protocol 1
+2024-07-03 20:40:01,975 [INFO] [157112] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-03 20:40:01,977 [INFO] [157112] mode change from POT to ISO
+2024-07-03 20:40:03,113 [INFO] Performing EIS on Biologic potentiostat for reference electrode correction
+2024-07-03 20:40:03,991 [INFO] [159287] load new technique...
+2024-07-03 20:40:03,991 [INFO] [159295] load new technique...
+2024-07-03 20:40:03,999 [INFO] [159297] halt old experiment
+2024-07-03 20:40:04,005 [INFO] [159297] IRQ overflow 0 times
+2024-07-03 20:40:04,012 [INFO] [159297] max irq time 8.05 (us)
+2024-07-03 20:40:04,015 [INFO] [159298] min irq time 6.59 (us)
+2024-07-03 20:40:04,018 [INFO] [159298] make experiment begin...
+2024-07-03 20:40:04,022 [INFO] [159462] make protocol ID = 104
+2024-07-03 20:40:04,023 [INFO] [159543] make protocol ID = 0
+2024-07-03 20:40:04,032 [INFO] [159543] make experiment done
+2024-07-03 20:40:04,035 [INFO] [159547] start experiment
+2024-07-03 20:40:04,038 [INFO] [159547] run protocol #0 process #0, ID=104, timebase=0.000024
+2024-07-03 20:40:04,043 [INFO] [159547] mode change from ISO to POT
+2024-07-03 20:40:07,066 [INFO] [162581] max irq time 22.08 (us)
+2024-07-03 20:40:07,066 [INFO] [162581] min irq time 12.59 (us)
+2024-07-03 20:40:07,073 [INFO] [162581] next process 1
+2024-07-03 20:40:07,077 [INFO] [162581] run protocol #0 process #1, ID=104, timebase=0.000000
+2024-07-03 20:40:07,080 [INFO] [162581] mode change from POT to POT
+2024-07-03 20:40:13,142 [INFO] [168697] end protocol 0
+2024-07-03 20:40:13,142 [INFO] [168697] IRQ overflow 0 times
+2024-07-03 20:40:13,150 [INFO] [168697] max irq time 7.44 (us)
+2024-07-03 20:40:13,153 [INFO] [168697] min irq time 4.77 (us)
+2024-07-03 20:40:13,155 [INFO] [168697] start protocol 1
+2024-07-03 20:40:13,155 [INFO] [168697] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-03 20:40:13,165 [INFO] [168697] mode change from POT to ISO
+2024-07-03 20:40:14,359 [INFO] Connection closed.
+2024-07-03 20:40:14,359 [INFO] Closing admiral potentiostat connection
+2024-07-03 20:40:15,390 [INFO] Lights On: true
+2024-07-03 20:40:15,439 [INFO] Light change successful.
+2024-07-03 20:40:15,440 [INFO] Homing the robot
+2024-07-03 20:40:28,347 [INFO] Robot homed successfully.
+2024-07-03 20:40:28,356 [INFO] Lights On: false
+2024-07-03 20:40:28,389 [INFO] Light change successful.
