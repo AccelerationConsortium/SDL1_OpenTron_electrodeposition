@@ -88,6 +88,8 @@ class Experiment:
                 "timestamp_end",
                 "status_of_run",
                 "electrodeposition_temperature",
+                "chemical_ultrasound_mixing_time",
+                "chemical_rest_time",
             ]
         )
         # Update the metadata with the unique id
@@ -1508,6 +1510,8 @@ class Experiment:
         well_number: int = None,
         electrodeposition_time: float = 10,
         electrodeposition_temperature: float = 0,
+        chemical_ultrasound_mixing_time: int = 30,
+        chemical_rest_time: int = 300,
     ):
         """Run the experiment
 
@@ -1517,7 +1521,10 @@ class Experiment:
             electrolyte (str, optional): Electrolyte to dispense. Defaults to "KOH".
             well_number (int, optional): Well number to run the experiment in. Defaults to None.
             electrodeposition_time (float, optional): Duration of the electrodeposition in seconds. Defaults to 10.
+            chemical_ultrasound_mixing_time (int, optional): Time to mix chemicals with ultrasound in seconds. Defaults to 30.
             electrodeposition_temperature (float, optional): Temperature of the electrodeposition in degrees Celsius. Defaults to 0.
+            chemical_ultrasound_mixing_time (int, optional): Time to mix chemicals with ultrasound in seconds. Defaults to 30.
+            chemical_rest_time (int, optional): Time to rest after mixing chemicals in seconds. Defaults to 300.
         """
 
         if well_number is not None:
@@ -1530,6 +1537,11 @@ class Experiment:
         self.metadata.loc[0, "deposition_current"] = self.deposition_current
         self.metadata.loc[0, "sample_surface_area"] = self.sample_surface_area
         self.metadata.loc[0, "electrodeposition_temperature"] = electrodeposition_temperature
+        self.metadata.loc[0, "cleaning_station_volume"] = self.cleaning_station_volume
+        self.metadata.loc[0, "chemical_ultrasound_mixing_time"] = (
+            chemical_ultrasound_mixing_time
+        )
+        self.metadata.loc[0, "chemical_rest_time"] = chemical_rest_time
         self.save_metadata()
         self.save_well_number()
 
@@ -1551,30 +1563,36 @@ class Experiment:
         self.openTron.homeRobot()
 
         # Clean the well
-        # self.cleaning(well_number=self.well_number, sleep_time=30)
+        self.cleaning(well_number=self.well_number, sleep_time=30)
 
-        # # Dose chemicals
-        # self.dose_chemicals(
-        #     chemicals_to_mix=chemicals_to_mix,
-        #     well_number=self.well_number,
-        #     total_volume=self.well_volume,
-        # )
+        # Dose chemicals
+        self.dose_chemicals(
+            chemicals_to_mix=chemicals_to_mix,
+            well_number=self.well_number,
+            total_volume=self.well_volume,
+        )
+
+        # Stirring of chemicals
+        self.arduino.set_ultrasound_on(1, chemical_ultrasound_mixing_time)
+        time.sleep(chemical_rest_time)
 
         # Connect to admiral potentiostat
         self.initiate_potentiostat_admiral()
 
-        # # Run recipe for electrodeposition
-        # self.perform_electrodeposition(well_number=self.well_number, electrodeposition_time=electrodeposition_time)
+        # Run recipe for electrodeposition
+        self.perform_electrodeposition(
+            well_number=self.well_number, electrodeposition_time=electrodeposition_time
+        )
 
-        # # Clean the well
-        # self.cleaning(well_number=self.well_number, sleep_time=0.1)
+        # Clean the well
+        self.cleaning(well_number=self.well_number, sleep_time=0.1)
 
-        # # Dispense electrolyte
-        # self.dispense_electrolyte(
-        #     volume=dispense_ml_electrolyte,
-        #     chemical=electrolyte,
-        #     well_number=self.well_number,
-        # )
+        # Dispense electrolyte
+        self.dispense_electrolyte(
+            volume=dispense_ml_electrolyte,
+            chemical=electrolyte,
+            well_number=self.well_number,
+        )
 
         # Perform electrochemical testing
         self.perform_electrochemical_testing(well_number=self.well_number)
