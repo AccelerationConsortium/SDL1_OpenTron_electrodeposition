@@ -39,12 +39,12 @@ experiment = Experiment(
 experiment.arduino.set_temperature(1, 0)
 experiment.arduino.set_relay_off(8)
 
-experiment.initiate_potentiostat_admiral()
-experiment.perform_potentiostat_electrodeposition(60)
-experiment.perform_potentiostat_reference_measurement("Before")
-experiment.perform_potentiostat_measurements()
-experiment.perform_potentiostat_reference_measurement("After")
-experiment.close_potentiostat_admiral()
+# experiment.initiate_potentiostat_admiral()
+# experiment.perform_potentiostat_electrodeposition(60)
+# experiment.perform_potentiostat_reference_measurement("Before")
+# experiment.perform_potentiostat_measurements()
+# experiment.perform_potentiostat_reference_measurement("After")
+# experiment.close_potentiostat_admiral()
 
 # experiment.openTron.homeRobot()
 # experiment.cleaning(2)
