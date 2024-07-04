@@ -29154,3 +29154,15 @@ Firmware: v11.52 2023/06/15
 2024-07-04 12:39:32,578 [INFO] Switching relay 1 on for 1.1 seconds
 2024-07-04 12:39:36,663 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
 2024-07-04 12:39:36,663 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 12:39:42,860 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 12:39:42,861 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 12:39:42,861 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 12:39:48,450 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 12:39:50,142 [INFO] Move successful.
+2024-07-04 12:39:50,142 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 12:39:50,243 [INFO] Move successful.
+2024-07-04 12:39:50,243 [INFO] Dropping tip into labware: nistall_4_tiprack_1ul_10
+2024-07-04 12:39:56,274 [INFO] Tip dropped into labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 12:39:56,274 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 12:39:58,493 [INFO] Move successful.
+2024-07-04 12:39:58,545 [INFO] Homing the robot
