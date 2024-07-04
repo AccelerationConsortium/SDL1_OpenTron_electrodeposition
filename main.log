@@ -28378,3 +28378,779 @@ Firmware: v11.52 2023/06/15
 2024-07-04 11:37:57,185 [INFO] Light change successful.
 2024-07-04 11:37:57,216 [INFO] Set temperature to 0 C
 2024-07-04 11:37:57,217 [INFO] Set temperature to 0 C
+2024-07-04 11:39:23,273 [INFO] Initiating arduino with usb nam: CH340
+2024-07-04 11:39:23,273 [INFO] List of USB ports:
+2024-07-04 11:39:23,273 [INFO] COM5 - USB Serial Device (COM5)
+2024-07-04 11:39:23,273 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-07-04 11:39:23,273 [INFO] Arduino found on port: COM7
+2024-07-04 11:39:31,625 [INFO] New run created with ID: a621388c-fbe5-4f37-accd-6ec5c4e65edd
+2024-07-04 11:39:31,625 [INFO] Command URL: http://100.67.86.197:31950/runs/a621388c-fbe5-4f37-accd-6ec5c4e65edd/commands
+2024-07-04 11:39:31,632 [INFO] Loading pipette: p1000_single_gen2 on mount: right
+2024-07-04 11:39:33,871 [INFO] Pipette loaded with name: p1000_single_gen2 and ID: 22f49b2d-ee0f-4396-946c-bcdbd2dacad7
+2024-07-04 11:39:33,871 [INFO] Loading custom labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-04 11:39:33,986 [INFO] Custome labware nistall_4_tiprack_1ul loaded in slot: 10 successfully.
+2024-07-04 11:39:33,986 [INFO] Loading labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-04 11:39:34,067 [INFO] Labware loaded with name: nistall_4_tiprack_1ul and ID: cb6b8c6f-2c24-4cef-8b2a-f1b460d967bd
+2024-07-04 11:39:34,068 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-04 11:39:34,142 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 11 successfully.
+2024-07-04 11:39:34,142 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-04 11:39:34,227 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: 51787ccc-0df1-40cd-8765-e76e3a494f4c
+2024-07-04 11:39:34,227 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-04 11:39:34,293 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 7 successfully.
+2024-07-04 11:39:34,293 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-04 11:39:34,391 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: 58a7d67b-37b3-4742-ab6f-fe1947ddb6be
+2024-07-04 11:39:34,391 [INFO] Loading custom labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-04 11:39:34,474 [INFO] Custome labware nis_15_wellplate_3895ul loaded in slot: 9 successfully.
+2024-07-04 11:39:34,474 [INFO] Loading labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-04 11:39:34,573 [INFO] Labware loaded with name: nis_15_wellplate_3895ul and ID: 9318bcfb-1b43-4e24-8e46-1bc9206212fd
+2024-07-04 11:39:34,573 [INFO] Loading custom labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-04 11:39:34,642 [INFO] Custome labware nis_2_wellplate_30000ul loaded in slot: 3 successfully.
+2024-07-04 11:39:34,643 [INFO] Loading labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-04 11:39:34,709 [INFO] Labware loaded with name: nis_2_wellplate_30000ul and ID: 713ff421-be8d-4ea9-a9e1-8a157585b9f3
+2024-07-04 11:39:34,709 [INFO] Loading labware: opentrons_96_tiprack_1000ul in slot: 1
+2024-07-04 11:39:35,045 [INFO] Labware loaded with name: opentrons_96_tiprack_1000ul and ID: 86bb76e8-a8be-431b-a6ab-febaaab0addf
+2024-07-04 11:39:35,062 [INFO] Switching relay 8 off
+2024-07-04 11:39:36,229 [INFO] Set temperature to 35 C
+2024-07-04 11:39:36,245 [INFO] Starting experiment 76 in well 4
+2024-07-04 11:39:36,245 [INFO] Chemicals to mix: {'Ni': 0, 'Fe': 1, 'Cr': 0, 'Mn': 0, 'Co': 0, 'Zn': 0, 'Cu': 0, 'NH4OH': 0, 'KCHO': 0}
+2024-07-04 11:39:36,245 [INFO] Electrolyte: KOH 3 ml
+2024-07-04 11:39:36,245 [INFO] Well volume: 2.5 ml
+2024-07-04 11:39:36,245 [INFO] Electrodeposition time: 60 seconds
+2024-07-04 11:39:36,245 [INFO] Cleaning cartridge volume: 6 ml
+2024-07-04 11:39:36,245 [INFO] Set temperature to 0 C
+2024-07-04 11:39:37,622 [INFO] Set temperature to 35 C
+2024-07-04 11:39:37,622 [INFO] Lights On: true
+2024-07-04 11:39:37,657 [INFO] Light change successful.
+2024-07-04 11:39:37,657 [INFO] Homing the robot
+2024-07-04 11:39:50,572 [INFO] Robot homed successfully.
+2024-07-04 11:39:50,572 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H1
+2024-07-04 11:39:50,657 [INFO] Move successful.
+2024-07-04 11:39:50,657 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 11:39:59,942 [INFO] Move successful.
+2024-07-04 11:39:59,942 [INFO] Picking up tip from labware: nistall_4_tiprack_1ul_10
+2024-07-04 11:40:06,750 [INFO] Tip picked up from labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 11:40:06,750 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:40:14,805 [INFO] Move successful.
+2024-07-04 11:40:14,805 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:40:15,599 [INFO] Move successful.
+2024-07-04 11:40:15,609 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 11:40:15,609 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 11:40:15,609 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 11:40:21,654 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:40:22,044 [INFO] Move successful.
+2024-07-04 11:40:22,048 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 11:40:22,048 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 11:40:22,048 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 11:40:26,187 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:40:26,589 [INFO] Move successful.
+2024-07-04 11:40:26,589 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 11:40:26,589 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 11:40:26,601 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 11:40:30,702 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:40:30,978 [INFO] Move successful.
+2024-07-04 11:40:30,978 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 11:40:30,978 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 11:40:30,978 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 11:40:35,119 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-04 11:40:35,119 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-04 11:40:35,119 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-04 11:40:39,218 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 11:40:39,218 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 11:40:45,087 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 11:40:45,087 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 11:40:45,087 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 11:40:50,694 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-04 11:40:50,694 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-04 11:40:50,694 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-04 11:40:54,819 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 11:40:54,819 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 11:41:00,979 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 11:41:00,979 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 11:41:00,980 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 11:41:06,566 [INFO] Dispensing 0.5 ml from pump 2.
+2024-07-04 11:41:06,566 [INFO] Turning on pump 2 for 1.0 seconds.
+2024-07-04 11:41:06,566 [INFO] Switching relay 2 on for 1.0 seconds
+2024-07-04 11:41:10,715 [INFO] Sleeping for 30 seconds
+2024-07-04 11:41:40,730 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 11:41:40,730 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 11:41:46,024 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 11:41:46,025 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 11:41:46,025 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 11:41:51,622 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-04 11:41:51,622 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-04 11:41:51,622 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-04 11:41:55,616 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 11:41:55,618 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 11:42:01,900 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 11:42:01,900 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 11:42:01,900 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 11:42:07,504 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-04 11:42:07,505 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-04 11:42:07,505 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-04 11:42:11,601 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 11:42:11,602 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 11:42:17,782 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 11:42:17,782 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 11:42:17,782 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 11:42:23,383 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:42:25,066 [INFO] Move successful.
+2024-07-04 11:42:25,066 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 11:42:25,150 [INFO] Move successful.
+2024-07-04 11:42:25,150 [INFO] Dropping tip into labware: nistall_4_tiprack_1ul_10
+2024-07-04 11:42:31,168 [INFO] Tip dropped into labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 11:42:31,168 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 11:42:33,315 [INFO] Move successful.
+2024-07-04 11:42:33,315 [INFO] Mixing Fe with 2500.0 uL to well A5
+2024-07-04 11:42:33,315 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H5
+2024-07-04 11:42:35,049 [INFO] Move successful.
+2024-07-04 11:42:35,049 [INFO] Picking up tip from labware: opentrons_96_tiprack_1000ul_1
+2024-07-04 11:42:42,147 [INFO] Tip picked up from labware: opentrons_96_tiprack_1000ul_1, well: H5
+2024-07-04 11:42:42,148 [INFO] Aspirating 1000 uL of Fe
+2024-07-04 11:42:42,150 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: A2
+2024-07-04 11:42:44,198 [INFO] Move successful.
+2024-07-04 11:42:44,198 [INFO] Aspirating from labware: nis_8_reservoir_25000ul_11, well: A2
+2024-07-04 11:42:48,818 [INFO] Aspiration successful.
+2024-07-04 11:42:48,818 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: A2
+2024-07-04 11:42:50,090 [INFO] Move successful.
+2024-07-04 11:42:50,090 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:42:51,339 [INFO] Move successful.
+2024-07-04 11:42:51,347 [INFO] Dispensing 0 uL of Fe
+2024-07-04 11:42:51,347 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:42:55,630 [INFO] Dispense successful.
+2024-07-04 11:42:55,630 [INFO] Aspirating 1000 uL of Fe
+2024-07-04 11:42:55,630 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: A2
+2024-07-04 11:42:57,513 [INFO] Move successful.
+2024-07-04 11:42:57,513 [INFO] Aspirating from labware: nis_8_reservoir_25000ul_11, well: A2
+2024-07-04 11:43:02,165 [INFO] Aspiration successful.
+2024-07-04 11:43:02,165 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: A2
+2024-07-04 11:43:03,451 [INFO] Move successful.
+2024-07-04 11:43:03,452 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:43:04,681 [INFO] Move successful.
+2024-07-04 11:43:04,681 [INFO] Dispensing 1000 uL of Fe
+2024-07-04 11:43:04,687 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:43:08,948 [INFO] Dispense successful.
+2024-07-04 11:43:08,949 [INFO] Aspirating 500 uL of Fe
+2024-07-04 11:43:08,950 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: A2
+2024-07-04 11:43:10,847 [INFO] Move successful.
+2024-07-04 11:43:10,847 [INFO] Aspirating from labware: nis_8_reservoir_25000ul_11, well: A2
+2024-07-04 11:43:13,631 [INFO] Aspiration successful.
+2024-07-04 11:43:13,631 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: A2
+2024-07-04 11:43:14,897 [INFO] Move successful.
+2024-07-04 11:43:14,913 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:43:16,130 [INFO] Move successful.
+2024-07-04 11:43:16,130 [INFO] Dispensing 2000 uL of Fe
+2024-07-04 11:43:16,130 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:43:18,580 [INFO] Dispense successful.
+2024-07-04 11:43:18,590 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H5
+2024-07-04 11:43:20,480 [INFO] Move successful.
+2024-07-04 11:43:20,493 [INFO] Dropping tip for Fe
+2024-07-04 11:43:20,493 [INFO] Dropping tip into labware: opentrons_96_tiprack_1000ul_1
+2024-07-04 11:43:25,380 [INFO] Tip dropped into labware: opentrons_96_tiprack_1000ul_1, well: H5
+2024-07-04 11:43:25,396 [INFO] Stirring chemicals for 30 seconds.
+2024-07-04 11:43:25,396 [INFO] Turning on ultrasound for 30 seconds on cartridge 1.
+2024-07-04 11:43:25,398 [INFO] Switching relay 7 on for 30 seconds
+2024-07-04 11:43:56,095 [INFO] Sleeping for 300 seconds to let chemistry settle in.
+2024-07-04 11:48:56,108 [INFO] Initiating potentiostat on port COM5 with name Plus1894
+2024-07-04 11:48:57,354 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: A1
+2024-07-04 11:48:59,206 [INFO] Move successful.
+2024-07-04 11:48:59,207 [INFO] Picking up tip from labware: nistall_4_tiprack_1ul_10
+2024-07-04 11:49:06,071 [INFO] Tip picked up from labware: nistall_4_tiprack_1ul_10, well: A1
+2024-07-04 11:49:06,072 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:49:14,280 [INFO] Move successful.
+2024-07-04 11:49:14,282 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:49:14,769 [INFO] Move successful.
+2024-07-04 11:49:14,772 [INFO] Reading sample temperature sensor 1
+2024-07-04 11:49:14,774 [INFO] Waiting for arduino to respond
+2024-07-04 11:49:15,777 [INFO] Waiting for arduino to respond
+2024-07-04 11:49:16,780 [INFO] Temperature sensor: 38.0 C
+2024-07-04 11:49:16,782 [INFO] Switching relay 8 on
+2024-07-04 11:49:19,693 [INFO] Potentiostat performing electrodeposition of the sample with 0.005654 A for 60 seconds
+2024-07-04 11:49:19,693 [INFO] Reading sample temperature sensor 1
+2024-07-04 11:49:19,693 [INFO] Waiting for arduino to respond
+2024-07-04 11:49:20,697 [INFO] Waiting for arduino to respond
+2024-07-04 11:49:21,698 [INFO] Temperature sensor: 37.94 C
+2024-07-04 11:50:22,715 [INFO] Switching relay 8 off
+2024-07-04 11:50:25,905 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:50:26,800 [INFO] Move successful.
+2024-07-04 11:50:26,803 [INFO] Moving pipette to labware: nis_2_wellplate_30000ul_3, well: A2
+2024-07-04 11:50:32,513 [INFO] Move successful.
+2024-07-04 11:50:32,513 [INFO] Dispensing 6 ml from pump 4.
+2024-07-04 11:50:32,513 [INFO] Turning on pump 4 for 11.2 seconds.
+2024-07-04 11:50:32,528 [INFO] Switching relay 4 on for 11.2 seconds
+2024-07-04 11:50:44,375 [INFO] Dispensing 7 ml from pump 3.
+2024-07-04 11:50:44,375 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-04 11:50:44,375 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-04 11:51:01,478 [INFO] Dispensing 6 ml from pump 5.
+2024-07-04 11:51:01,478 [INFO] Turning on pump 5 for 11.1 seconds.
+2024-07-04 11:51:01,478 [INFO] Switching relay 5 on for 11.1 seconds
+2024-07-04 11:51:13,962 [INFO] Turning on ultrasound for 15 seconds on cartridge 0.
+2024-07-04 11:51:13,962 [INFO] Switching relay 6 on for 15 seconds
+2024-07-04 11:51:30,364 [INFO] Dispensing 7 ml from pump 3.
+2024-07-04 11:51:30,364 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-04 11:51:30,364 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-04 11:51:47,462 [INFO] Dispensing 6 ml from pump 4.
+2024-07-04 11:51:47,462 [INFO] Turning on pump 4 for 11.2 seconds.
+2024-07-04 11:51:47,462 [INFO] Switching relay 4 on for 11.2 seconds
+2024-07-04 11:52:00,068 [INFO] Turning on ultrasound for 5 seconds on cartridge 0.
+2024-07-04 11:52:00,068 [INFO] Switching relay 6 on for 5 seconds
+2024-07-04 11:52:06,452 [INFO] Dispensing 7 ml from pump 3.
+2024-07-04 11:52:06,468 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-04 11:52:06,468 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-04 11:52:23,568 [INFO] Moving pipette to labware: nis_2_wellplate_30000ul_3, well: A2
+2024-07-04 11:52:24,835 [INFO] Move successful.
+2024-07-04 11:52:24,835 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: A1
+2024-07-04 11:52:34,069 [INFO] Move successful.
+2024-07-04 11:52:34,069 [INFO] Dropping tip into labware: nistall_4_tiprack_1ul_10
+2024-07-04 11:52:38,930 [INFO] Tip dropped into labware: nistall_4_tiprack_1ul_10, well: A1
+2024-07-04 11:52:38,930 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H1
+2024-07-04 11:52:39,020 [INFO] Move successful.
+2024-07-04 11:52:39,035 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 11:52:41,149 [INFO] Move successful.
+2024-07-04 11:52:41,149 [INFO] Picking up tip from labware: nistall_4_tiprack_1ul_10
+2024-07-04 11:52:47,975 [INFO] Tip picked up from labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 11:52:47,975 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:52:56,037 [INFO] Move successful.
+2024-07-04 11:52:56,040 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:52:56,825 [INFO] Move successful.
+2024-07-04 11:52:56,825 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 11:52:56,825 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 11:52:56,825 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 11:53:00,949 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:53:01,319 [INFO] Move successful.
+2024-07-04 11:53:01,335 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 11:53:01,337 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 11:53:01,337 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 11:53:05,457 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:53:05,837 [INFO] Move successful.
+2024-07-04 11:53:05,850 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 11:53:05,850 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 11:53:05,850 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 11:53:09,967 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:53:10,223 [INFO] Move successful.
+2024-07-04 11:53:10,223 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 11:53:10,223 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 11:53:10,223 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 11:53:14,388 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-04 11:53:14,388 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-04 11:53:14,388 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-04 11:53:18,535 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 11:53:18,535 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 11:53:24,044 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 11:53:24,044 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 11:53:24,044 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 11:53:29,649 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-04 11:53:29,649 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-04 11:53:29,653 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-04 11:53:33,808 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 11:53:33,808 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 11:53:39,924 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 11:53:39,924 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 11:53:39,924 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 11:53:45,532 [INFO] Dispensing 0.5 ml from pump 2.
+2024-07-04 11:53:45,533 [INFO] Turning on pump 2 for 1.0 seconds.
+2024-07-04 11:53:45,533 [INFO] Switching relay 2 on for 1.0 seconds
+2024-07-04 11:53:49,659 [INFO] Sleeping for 0.1 seconds
+2024-07-04 11:53:49,763 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 11:53:49,764 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 11:53:55,709 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 11:53:55,709 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 11:53:55,709 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 11:54:01,314 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-04 11:54:01,314 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-04 11:54:01,314 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-04 11:54:05,466 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 11:54:05,467 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 11:54:11,596 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 11:54:11,601 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 11:54:11,601 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 11:54:17,188 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-04 11:54:17,197 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-04 11:54:17,197 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-04 11:54:21,305 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 11:54:21,305 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 11:54:27,471 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 11:54:27,471 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 11:54:27,471 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 11:54:33,078 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:54:34,744 [INFO] Move successful.
+2024-07-04 11:54:34,744 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 11:54:34,835 [INFO] Move successful.
+2024-07-04 11:54:34,835 [INFO] Dropping tip into labware: nistall_4_tiprack_1ul_10
+2024-07-04 11:54:40,856 [INFO] Tip dropped into labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 11:54:40,856 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 11:54:43,006 [INFO] Move successful.
+2024-07-04 11:54:43,006 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H3
+2024-07-04 11:54:44,969 [INFO] Move successful.
+2024-07-04 11:54:44,969 [INFO] Picking up tip from labware: opentrons_96_tiprack_1000ul_1
+2024-07-04 11:54:51,755 [INFO] Tip picked up from labware: opentrons_96_tiprack_1000ul_1, well: H3
+2024-07-04 11:54:51,755 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-04 11:54:53,775 [INFO] Move successful.
+2024-07-04 11:54:53,776 [INFO] Aspirating from labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-04 11:54:58,386 [INFO] Aspiration successful.
+2024-07-04 11:54:58,387 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:00,303 [INFO] Move successful.
+2024-07-04 11:55:00,303 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:00,692 [INFO] Move successful.
+2024-07-04 11:55:00,692 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:04,663 [INFO] Dispense successful.
+2024-07-04 11:55:04,663 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:05,050 [INFO] Move successful.
+2024-07-04 11:55:05,050 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-04 11:55:06,603 [INFO] Move successful.
+2024-07-04 11:55:06,604 [INFO] Aspirating from labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-04 11:55:11,226 [INFO] Aspiration successful.
+2024-07-04 11:55:11,226 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:13,159 [INFO] Move successful.
+2024-07-04 11:55:13,159 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:13,544 [INFO] Move successful.
+2024-07-04 11:55:13,544 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:17,508 [INFO] Dispense successful.
+2024-07-04 11:55:17,508 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:17,893 [INFO] Move successful.
+2024-07-04 11:55:17,893 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-04 11:55:19,453 [INFO] Move successful.
+2024-07-04 11:55:19,453 [INFO] Aspirating from labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-04 11:55:24,059 [INFO] Aspiration successful.
+2024-07-04 11:55:24,059 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:26,024 [INFO] Move successful.
+2024-07-04 11:55:26,024 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:26,423 [INFO] Move successful.
+2024-07-04 11:55:26,423 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:30,379 [INFO] Dispense successful.
+2024-07-04 11:55:30,379 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:30,777 [INFO] Move successful.
+2024-07-04 11:55:30,777 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H3
+2024-07-04 11:55:32,541 [INFO] Move successful.
+2024-07-04 11:55:32,541 [INFO] Dropping tip into labware: opentrons_96_tiprack_1000ul_1
+2024-07-04 11:55:37,414 [INFO] Tip dropped into labware: opentrons_96_tiprack_1000ul_1, well: H3
+2024-07-04 11:55:37,414 [INFO] Switching relay 8 off
+2024-07-04 11:55:41,358 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B2
+2024-07-04 11:55:42,811 [INFO] Move successful.
+2024-07-04 11:55:42,811 [INFO] Picking up tip from labware: nistall_4_tiprack_1ul_10
+2024-07-04 11:55:49,360 [INFO] Tip picked up from labware: nistall_4_tiprack_1ul_10, well: B2
+2024-07-04 11:55:49,360 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:55,958 [INFO] Move successful.
+2024-07-04 11:55:55,958 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 11:55:58,927 [INFO] Move successful.
+2024-07-04 11:55:58,927 [INFO] Reading sample temperature sensor 1
+2024-07-04 11:55:58,927 [INFO] Waiting for arduino to respond
+2024-07-04 11:55:59,939 [INFO] Waiting for arduino to respond
+2024-07-04 11:56:00,941 [INFO] Temperature sensor: 37.88 C
+2024-07-04 11:56:00,982 [INFO] Performing CV on Biologic potentiostat for reference electrode correction
+2024-07-04 11:56:00,982 [INFO] Trying to connect to the potentiostat: 1/5
+2024-07-04 11:56:01,010 [INFO] EcLib version: 6.5.4.1
+2024-07-04 11:56:01,014 [INFO] Connecting to USB0...
+2024-07-04 11:56:16,222 [ERROR] Error in potentiostat measurement: Cannot establish connection with the instrument
+2024-07-04 11:56:16,238 [INFO] Trying again in 120 seconds
+2024-07-04 11:58:16,243 [INFO] Trying to connect to the potentiostat: 2/5
+2024-07-04 11:58:16,243 [INFO] EcLib version: 6.5.4.1
+2024-07-04 11:58:16,243 [INFO] Connecting to USB0...
+2024-07-04 11:58:16,470 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-04 11:58:16,470 [INFO] Load firmware on channel(s): 1,2
+2024-07-04 11:58:20,884 [INFO] Testing device channels...
+2024-07-04 11:58:20,884 [INFO] Device connected.
+2024-07-04 11:58:20,899 [INFO] [9] board code = 19
+2024-07-04 11:58:20,900 [INFO] [9] board code = 19
+2024-07-04 11:58:20,903 [INFO] [639] board number: 78234
+2024-07-04 11:58:20,903 [INFO] [639] board number: 78137
+2024-07-04 11:58:21,080 [INFO] [639] initialisation done
+2024-07-04 11:58:21,096 [INFO] [639] initialisation done
+2024-07-04 11:58:21,153 [INFO] [639] kernel version: 5282
+2024-07-04 11:58:21,175 [INFO] [639] kernel version: 5282
+2024-07-04 11:58:21,177 [INFO] [639] released on (d/m/y): 12/8/2020
+2024-07-04 11:58:21,177 [INFO] [639] released on (d/m/y): 12/8/2020
+2024-07-04 11:58:21,183 [INFO] [639] xilinx version: a60d
+2024-07-04 11:58:21,187 [INFO] [639] xilinx version: a60d
+2024-07-04 11:58:21,191 [INFO] [639] make experiment begin...
+2024-07-04 11:58:21,192 [INFO] [639] make experiment begin...
+2024-07-04 11:58:21,194 [INFO] [746] make protocol ID = 0
+2024-07-04 11:58:21,194 [INFO] [746] make protocol ID = 0
+2024-07-04 11:58:21,200 [INFO] [746] make experiment done
+2024-07-04 11:58:21,202 [INFO] [746] make experiment done
+2024-07-04 11:58:21,205 [INFO] [746] start experiment
+2024-07-04 11:58:21,206 [INFO] [746] start experiment
+2024-07-04 11:58:21,209 [INFO] [746] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-04 11:58:21,211 [INFO] [746] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-04 11:58:21,214 [INFO] [747] mode change from OCV to ISO
+2024-07-04 11:58:21,216 [INFO] [747] mode change from OCV to ISO
+2024-07-04 11:58:21,221 [INFO] [762] options changed from 0 to 15
+2024-07-04 11:58:21,223 [INFO] [762] options changed from 0 to 15
+2024-07-04 11:58:21,225 [INFO] [902] load new technique...
+2024-07-04 11:58:21,231 [INFO] [904] halt old experiment
+2024-07-04 11:58:21,233 [INFO] [904] IRQ overflow 0 times
+2024-07-04 11:58:21,233 [INFO] [904] max irq time 8.05 (us)
+2024-07-04 11:58:21,241 [INFO] [904] min irq time 6.59 (us)
+2024-07-04 11:58:21,244 [INFO] [905] make experiment begin...
+2024-07-04 11:58:21,245 [INFO] [988] make protocol ID = 103
+2024-07-04 11:58:21,250 [INFO] [1068] make protocol ID = 0
+2024-07-04 11:58:21,254 [INFO] [1069] make experiment done
+2024-07-04 11:58:21,258 [INFO] [1077] start experiment
+2024-07-04 11:58:21,261 [INFO] [1078] run protocol #0 process #0, ID=103, timebase=0.000050
+2024-07-04 11:58:21,262 [INFO] [1078] mode change from ISO to POT
+2024-07-04 12:00:57,977 [INFO] [157110] end protocol 0
+2024-07-04 12:00:57,977 [INFO] [157110] IRQ overflow 0 times
+2024-07-04 12:00:57,977 [INFO] [157110] max irq time 37.73 (us)
+2024-07-04 12:00:57,977 [INFO] [157110] min irq time 18.32 (us)
+2024-07-04 12:00:57,990 [INFO] [157110] start protocol 1
+2024-07-04 12:00:57,993 [INFO] [157110] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-04 12:00:57,997 [INFO] [157111] mode change from POT to ISO
+2024-07-04 12:00:59,289 [INFO] Performing EIS on Biologic potentiostat for reference electrode correction
+2024-07-04 12:01:00,009 [INFO] [159305] load new technique...
+2024-07-04 12:01:00,009 [INFO] [159313] load new technique...
+2024-07-04 12:01:00,009 [INFO] [159315] halt old experiment
+2024-07-04 12:01:00,022 [INFO] [159315] IRQ overflow 0 times
+2024-07-04 12:01:00,025 [INFO] [159315] max irq time 8.05 (us)
+2024-07-04 12:01:00,027 [INFO] [159315] min irq time 6.59 (us)
+2024-07-04 12:01:00,032 [INFO] [159316] make experiment begin...
+2024-07-04 12:01:00,035 [INFO] [159480] make protocol ID = 104
+2024-07-04 12:01:00,036 [INFO] [159561] make protocol ID = 0
+2024-07-04 12:01:00,042 [INFO] [159561] make experiment done
+2024-07-04 12:01:00,046 [INFO] [159565] start experiment
+2024-07-04 12:01:00,046 [INFO] [159565] run protocol #0 process #0, ID=104, timebase=0.000024
+2024-07-04 12:01:00,053 [INFO] [159565] mode change from ISO to POT
+2024-07-04 12:01:03,088 [INFO] [162599] max irq time 22.08 (us)
+2024-07-04 12:01:03,088 [INFO] [162599] min irq time 12.59 (us)
+2024-07-04 12:01:03,088 [INFO] [162599] next process 1
+2024-07-04 12:01:03,102 [INFO] [162599] run protocol #0 process #1, ID=104, timebase=0.000000
+2024-07-04 12:01:03,104 [INFO] [162599] mode change from POT to POT
+2024-07-04 12:01:09,160 [INFO] [168715] end protocol 0
+2024-07-04 12:01:09,160 [INFO] [168715] IRQ overflow 0 times
+2024-07-04 12:01:09,167 [INFO] [168715] max irq time 7.44 (us)
+2024-07-04 12:01:09,171 [INFO] [168715] min irq time 4.77 (us)
+2024-07-04 12:01:09,174 [INFO] [168715] start protocol 1
+2024-07-04 12:01:09,176 [INFO] [168715] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-04 12:01:09,179 [INFO] [168715] mode change from POT to ISO
+2024-07-04 12:01:10,371 [INFO] Connection closed.
+2024-07-04 12:01:10,371 [INFO] Performing electrochemical test: 0 - Electrochemical activation
+2024-07-04 12:02:11,425 [INFO] Performing electrochemical test: 1 - Cyclic voltammetry
+2024-07-04 12:05:33,512 [INFO] Performing electrochemical test: 2 - Cyclic voltammetry
+2024-07-04 12:13:34,902 [INFO] Performing electrochemical test: 3 - Electrochemical impedance spectroscopy
+2024-07-04 12:14:44,216 [INFO] Finding ohmic resistance
+2024-07-04 12:14:44,232 [INFO] Ohmic resistance: 21.808
+2024-07-04 12:14:45,285 [INFO] Performing electrochemical test: 4 - Constant current at 100 mA/cm^2
+2024-07-04 12:15:55,295 [INFO] Correcting for ohmic resistance
+2024-07-04 12:15:56,329 [INFO] Performing electrochemical test: 5 - Constant current at 50 mA/cm^2
+2024-07-04 12:17:06,338 [INFO] Correcting for ohmic resistance
+2024-07-04 12:17:07,367 [INFO] Performing electrochemical test: 6 - Constant current at 20 mA/cm^2
+2024-07-04 12:18:17,373 [INFO] Correcting for ohmic resistance
+2024-07-04 12:18:18,395 [INFO] Performing electrochemical test: 7 - Constant current at 10 mA/cm^2
+2024-07-04 12:19:28,402 [INFO] Correcting for ohmic resistance
+2024-07-04 12:19:29,451 [INFO] Performing electrochemical test: 8 - Constant current at 5 mA/cm^2
+2024-07-04 12:20:39,450 [INFO] Correcting for ohmic resistance
+2024-07-04 12:20:40,498 [INFO] Performing electrochemical test: 9 - Constant current at 2 mA/cm^2
+2024-07-04 12:21:50,499 [INFO] Correcting for ohmic resistance
+2024-07-04 12:21:51,535 [INFO] Performing electrochemical test: 10 - Constant current at 1 mA/cm^2
+2024-07-04 12:23:01,542 [INFO] Correcting for ohmic resistance
+2024-07-04 12:23:02,553 [INFO] Performing electrochemical test: 11 - Cyclic voltammetry
+2024-07-04 12:31:02,922 [INFO] Correcting for ohmic resistance
+2024-07-04 12:31:03,954 [INFO] Performing CV on Biologic potentiostat for reference electrode correction
+2024-07-04 12:31:03,955 [INFO] Trying to connect to the potentiostat: 1/5
+2024-07-04 12:31:03,957 [INFO] EcLib version: 6.5.4.1
+2024-07-04 12:31:03,957 [INFO] Connecting to USB0...
+2024-07-04 12:31:04,198 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-04 12:31:04,198 [INFO] Load firmware on channel(s): 1,2
+2024-07-04 12:31:08,608 [INFO] Testing device channels...
+2024-07-04 12:31:08,613 [INFO] Device connected.
+2024-07-04 12:31:08,618 [INFO] [9] board code = 19
+2024-07-04 12:31:08,620 [INFO] [9] board code = 19
+2024-07-04 12:31:08,623 [INFO] [657] board number: 78234
+2024-07-04 12:31:08,624 [INFO] [657] board number: 78137
+2024-07-04 12:31:08,796 [INFO] [657] initialisation done
+2024-07-04 12:31:08,796 [INFO] [657] initialisation done
+2024-07-04 12:31:08,869 [INFO] [657] kernel version: 5282
+2024-07-04 12:31:08,890 [INFO] [657] kernel version: 5282
+2024-07-04 12:31:08,894 [INFO] [657] released on (d/m/y): 12/8/2020
+2024-07-04 12:31:08,895 [INFO] [657] released on (d/m/y): 12/8/2020
+2024-07-04 12:31:08,898 [INFO] [657] xilinx version: a60d
+2024-07-04 12:31:08,900 [INFO] [657] xilinx version: a60d
+2024-07-04 12:31:08,904 [INFO] [657] make experiment begin...
+2024-07-04 12:31:08,904 [INFO] [657] make experiment begin...
+2024-07-04 12:31:08,908 [INFO] [764] make protocol ID = 0
+2024-07-04 12:31:08,910 [INFO] [764] make protocol ID = 0
+2024-07-04 12:31:08,911 [INFO] [764] make experiment done
+2024-07-04 12:31:08,911 [INFO] [764] make experiment done
+2024-07-04 12:31:08,918 [INFO] [764] start experiment
+2024-07-04 12:31:08,919 [INFO] [764] start experiment
+2024-07-04 12:31:08,921 [INFO] [764] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-04 12:31:08,925 [INFO] [764] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-04 12:31:08,928 [INFO] [765] mode change from OCV to ISO
+2024-07-04 12:31:08,929 [INFO] [765] mode change from OCV to ISO
+2024-07-04 12:31:08,932 [INFO] [780] options changed from 0 to 15
+2024-07-04 12:31:08,934 [INFO] [780] options changed from 0 to 15
+2024-07-04 12:31:08,936 [INFO] [914] load new technique...
+2024-07-04 12:31:08,941 [INFO] [916] halt old experiment
+2024-07-04 12:31:08,945 [INFO] [916] IRQ overflow 0 times
+2024-07-04 12:31:08,945 [INFO] [916] max irq time 8.05 (us)
+2024-07-04 12:31:08,951 [INFO] [916] min irq time 6.59 (us)
+2024-07-04 12:31:08,954 [INFO] [917] make experiment begin...
+2024-07-04 12:31:08,955 [INFO] [1000] make protocol ID = 103
+2024-07-04 12:31:08,959 [INFO] [1080] make protocol ID = 0
+2024-07-04 12:31:08,962 [INFO] [1081] make experiment done
+2024-07-04 12:31:08,963 [INFO] [1088] start experiment
+2024-07-04 12:31:08,969 [INFO] [1088] run protocol #0 process #0, ID=103, timebase=0.000050
+2024-07-04 12:31:08,972 [INFO] [1089] mode change from ISO to POT
+2024-07-04 12:31:19,000 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-04 12:31:19,036 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-04 12:31:25,018 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-04 12:31:25,051 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-04 12:31:31,041 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-04 12:31:31,067 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Function already in progress
+2024-07-04 12:31:34,283 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Communication failed with the instrument
+2024-07-04 12:31:34,283 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Communication failed with the instrument
+2024-07-04 12:31:35,299 [ERROR] Unhandled exception raised from message listener!
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\channel.py", line 258, in _message_listener
+    msg = self._api.GetMessage(self._id, self._chan)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 173, in GetMessage
+    self.BL_GetMessage(id_, ch-1, *message.parm)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Communication failed with the instrument
+2024-07-04 12:31:36,318 [ERROR] Error in potentiostat measurement: Communication failed with the instrument
+2024-07-04 12:31:36,318 [INFO] Trying again in 120 seconds
+2024-07-04 12:33:36,328 [INFO] Trying to connect to the potentiostat: 2/5
+2024-07-04 12:33:36,331 [INFO] EcLib version: 6.5.4.1
+2024-07-04 12:33:36,331 [INFO] Connecting to USB0...
+2024-07-04 12:33:36,546 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-04 12:33:36,546 [INFO] Load firmware on channel(s): 1,2
+2024-07-04 12:33:40,946 [INFO] Testing device channels...
+2024-07-04 12:33:40,946 [INFO] Device connected.
+2024-07-04 12:33:40,962 [INFO] [9] board code = 19
+2024-07-04 12:33:40,964 [INFO] [9] board code = 19
+2024-07-04 12:33:40,966 [INFO] [643] board number: 78234
+2024-07-04 12:33:40,966 [INFO] [643] board number: 78137
+2024-07-04 12:33:41,147 [INFO] [643] initialisation done
+2024-07-04 12:33:41,147 [INFO] [643] initialisation done
+2024-07-04 12:33:41,214 [INFO] [643] kernel version: 5282
+2024-07-04 12:33:41,236 [INFO] [643] kernel version: 5282
+2024-07-04 12:33:41,241 [INFO] [644] released on (d/m/y): 12/8/2020
+2024-07-04 12:33:41,243 [INFO] [644] released on (d/m/y): 12/8/2020
+2024-07-04 12:33:41,247 [INFO] [644] xilinx version: a60d
+2024-07-04 12:33:41,248 [INFO] [644] xilinx version: a60d
+2024-07-04 12:33:41,251 [INFO] [644] make experiment begin...
+2024-07-04 12:33:41,253 [INFO] [644] make experiment begin...
+2024-07-04 12:33:41,256 [INFO] [750] make protocol ID = 0
+2024-07-04 12:33:41,257 [INFO] [750] make protocol ID = 0
+2024-07-04 12:33:41,261 [INFO] [750] make experiment done
+2024-07-04 12:33:41,263 [INFO] [750] make experiment done
+2024-07-04 12:33:41,265 [INFO] [750] start experiment
+2024-07-04 12:33:41,267 [INFO] [750] start experiment
+2024-07-04 12:33:41,268 [INFO] [750] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-04 12:33:41,268 [INFO] [750] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-04 12:33:41,268 [INFO] [751] mode change from OCV to ISO
+2024-07-04 12:33:41,277 [INFO] [751] mode change from OCV to ISO
+2024-07-04 12:33:41,281 [INFO] [766] options changed from 0 to 15
+2024-07-04 12:33:41,282 [INFO] [766] options changed from 0 to 15
+2024-07-04 12:33:41,286 [INFO] [904] load new technique...
+2024-07-04 12:33:41,288 [INFO] [905] halt old experiment
+2024-07-04 12:33:41,288 [INFO] [905] IRQ overflow 0 times
+2024-07-04 12:33:41,296 [INFO] [906] max irq time 8.05 (us)
+2024-07-04 12:33:41,299 [INFO] [906] min irq time 6.59 (us)
+2024-07-04 12:33:41,302 [INFO] [906] make experiment begin...
+2024-07-04 12:33:41,306 [INFO] [989] make protocol ID = 103
+2024-07-04 12:33:41,309 [INFO] [1069] make protocol ID = 0
+2024-07-04 12:33:41,313 [INFO] [1070] make experiment done
+2024-07-04 12:33:41,316 [INFO] [1077] start experiment
+2024-07-04 12:33:41,318 [INFO] [1077] run protocol #0 process #0, ID=103, timebase=0.000050
+2024-07-04 12:33:41,322 [INFO] [1078] mode change from ISO to POT
+2024-07-04 12:36:17,655 [INFO] [157107] end protocol 0
+2024-07-04 12:36:17,655 [INFO] [157107] IRQ overflow 0 times
+2024-07-04 12:36:17,662 [INFO] [157107] max irq time 37.71 (us)
+2024-07-04 12:36:17,665 [INFO] [157108] min irq time 18.21 (us)
+2024-07-04 12:36:17,667 [INFO] [157108] start protocol 1
+2024-07-04 12:36:17,669 [INFO] [157108] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-04 12:36:17,671 [INFO] [157108] mode change from POT to ISO
+2024-07-04 12:36:19,320 [INFO] Performing EIS on Biologic potentiostat for reference electrode correction
+2024-07-04 12:36:19,705 [INFO] [159273] load new technique...
+2024-07-04 12:36:19,708 [INFO] [159282] load new technique...
+2024-07-04 12:36:19,708 [INFO] [159284] halt old experiment
+2024-07-04 12:36:19,716 [INFO] [159284] IRQ overflow 0 times
+2024-07-04 12:36:19,719 [INFO] [159284] max irq time 8.05 (us)
+2024-07-04 12:36:19,721 [INFO] [159284] min irq time 6.59 (us)
+2024-07-04 12:36:19,727 [INFO] [159284] make experiment begin...
+2024-07-04 12:36:19,730 [INFO] [159448] make protocol ID = 104
+2024-07-04 12:36:19,730 [INFO] [159529] make protocol ID = 0
+2024-07-04 12:36:19,737 [INFO] [159529] make experiment done
+2024-07-04 12:36:19,746 [INFO] [159532] start experiment
+2024-07-04 12:36:19,747 [INFO] [159532] run protocol #0 process #0, ID=104, timebase=0.000024
+2024-07-04 12:36:19,752 [INFO] [159533] mode change from ISO to POT
+2024-07-04 12:36:22,804 [INFO] [162566] max irq time 22.08 (us)
+2024-07-04 12:36:22,820 [INFO] [162566] min irq time 12.59 (us)
+2024-07-04 12:36:22,820 [INFO] [162566] next process 1
+2024-07-04 12:36:22,820 [INFO] [162566] run protocol #0 process #1, ID=104, timebase=0.000000
+2024-07-04 12:36:22,830 [INFO] [162566] mode change from POT to POT
+2024-07-04 12:36:28,888 [INFO] [168410] end protocol 0
+2024-07-04 12:36:28,888 [INFO] [168410] IRQ overflow 0 times
+2024-07-04 12:36:28,888 [INFO] [168410] max irq time 7.44 (us)
+2024-07-04 12:36:28,888 [INFO] [168410] min irq time 4.77 (us)
+2024-07-04 12:36:28,904 [INFO] [168410] start protocol 1
+2024-07-04 12:36:28,906 [INFO] [168410] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-04 12:36:28,908 [INFO] [168410] mode change from POT to ISO
+2024-07-04 12:36:30,255 [INFO] Connection closed.
+2024-07-04 12:36:30,255 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 12:36:31,203 [INFO] Move successful.
+2024-07-04 12:36:31,203 [INFO] Moving pipette to labware: nis_2_wellplate_30000ul_3, well: A2
+2024-07-04 12:36:35,837 [INFO] Move successful.
+2024-07-04 12:36:35,838 [INFO] Moving pipette to labware: nis_2_wellplate_30000ul_3, well: A2
+2024-07-04 12:36:42,020 [INFO] Move successful.
+2024-07-04 12:36:42,020 [INFO] Dispensing 6 ml from pump 4.
+2024-07-04 12:36:42,020 [INFO] Turning on pump 4 for 11.2 seconds.
+2024-07-04 12:36:42,020 [INFO] Switching relay 4 on for 11.2 seconds
+2024-07-04 12:36:54,253 [INFO] Dispensing 7 ml from pump 3.
+2024-07-04 12:36:54,253 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-04 12:36:54,253 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-04 12:37:11,355 [INFO] Dispensing 6 ml from pump 5.
+2024-07-04 12:37:11,356 [INFO] Turning on pump 5 for 11.1 seconds.
+2024-07-04 12:37:11,356 [INFO] Switching relay 5 on for 11.1 seconds
+2024-07-04 12:37:23,850 [INFO] Turning on ultrasound for 15 seconds on cartridge 0.
+2024-07-04 12:37:23,850 [INFO] Switching relay 6 on for 15 seconds
+2024-07-04 12:37:40,251 [INFO] Dispensing 7 ml from pump 3.
+2024-07-04 12:37:40,251 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-04 12:37:40,251 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-04 12:37:57,348 [INFO] Dispensing 6 ml from pump 4.
+2024-07-04 12:37:57,348 [INFO] Turning on pump 4 for 11.2 seconds.
+2024-07-04 12:37:57,348 [INFO] Switching relay 4 on for 11.2 seconds
+2024-07-04 12:38:09,950 [INFO] Turning on ultrasound for 5 seconds on cartridge 0.
+2024-07-04 12:38:09,951 [INFO] Switching relay 6 on for 5 seconds
+2024-07-04 12:38:16,347 [INFO] Dispensing 7 ml from pump 3.
+2024-07-04 12:38:16,348 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-04 12:38:16,348 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-04 12:38:33,446 [INFO] Moving pipette to labware: nis_2_wellplate_30000ul_3, well: A2
+2024-07-04 12:38:34,833 [INFO] Move successful.
+2024-07-04 12:38:34,833 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B2
+2024-07-04 12:38:34,914 [INFO] Move successful.
+2024-07-04 12:38:34,914 [INFO] Dropping tip into labware: nistall_4_tiprack_1ul_10
+2024-07-04 12:38:40,863 [INFO] Tip dropped into labware: nistall_4_tiprack_1ul_10, well: B2
+2024-07-04 12:38:40,880 [INFO] Closing admiral potentiostat connection
+2024-07-04 12:38:41,896 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H1
+2024-07-04 12:38:41,980 [INFO] Move successful.
+2024-07-04 12:38:41,980 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 12:38:44,496 [INFO] Move successful.
+2024-07-04 12:38:44,496 [INFO] Picking up tip from labware: nistall_4_tiprack_1ul_10
+2024-07-04 12:38:51,313 [INFO] Tip picked up from labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-04 12:38:51,313 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 12:38:59,379 [INFO] Move successful.
+2024-07-04 12:38:59,382 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 12:39:00,165 [INFO] Move successful.
+2024-07-04 12:39:00,165 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 12:39:00,165 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 12:39:00,165 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 12:39:04,347 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 12:39:04,745 [INFO] Move successful.
+2024-07-04 12:39:04,746 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 12:39:04,746 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 12:39:04,746 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 12:39:08,794 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 12:39:09,194 [INFO] Move successful.
+2024-07-04 12:39:09,195 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 12:39:09,195 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 12:39:09,195 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 12:39:13,352 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: A5
+2024-07-04 12:39:13,613 [INFO] Move successful.
+2024-07-04 12:39:13,613 [INFO] Dispensing 1 ml from pump 0.
+2024-07-04 12:39:13,613 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-04 12:39:13,627 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-04 12:39:17,811 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-04 12:39:17,812 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-04 12:39:17,812 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-04 12:39:21,943 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 12:39:21,944 [INFO] Switching relay 7 on for 5 seconds
+2024-07-04 12:39:26,978 [INFO] Dispensing 2 ml from pump 0.
+2024-07-04 12:39:26,979 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-04 12:39:26,979 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-04 12:39:32,562 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-04 12:39:32,577 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-04 12:39:32,578 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-04 12:39:36,663 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-04 12:39:36,663 [INFO] Switching relay 7 on for 5 seconds
