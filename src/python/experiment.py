@@ -786,7 +786,7 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=-0.5,
             fltOffsetY=0,
-            fltOffsetZ=-54.1,
+            fltOffsetZ=-53.8,
             intSpeed=50,  # mm/s
         )
 
@@ -1220,7 +1220,7 @@ class Experiment:
                 strOffsetStart="top",
                 fltOffsetX=0,
                 fltOffsetY=0,
-                fltOffsetZ=0,
+                fltOffsetZ=-10,
             )
             volume_left -= dispense_volume
 
@@ -1308,13 +1308,13 @@ class Experiment:
         self.save_metadata()
 
         # Perform reference electrode calibration
-        # self.perform_potentiostat_reference_measurement(" before") # XXX
+        self.perform_potentiostat_reference_measurement(" before")
 
         # Perform the actual electrochemical testing
         self.perform_potentiostat_measurements()
 
         # Perform reference electrode calibration
-        # self.perform_potentiostat_reference_measurement(" after") # XXX
+        self.perform_potentiostat_reference_measurement(" after")
 
         # Go straight up from the well
         self.openTron.moveToWell(
@@ -1346,7 +1346,7 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=0,
             fltOffsetY=0,
-            fltOffsetZ=-40,
+            fltOffsetZ=-33,
             intSpeed=10,  # mm/s
         )
 
@@ -1428,16 +1428,11 @@ class Experiment:
 
     def __del__(self):
         # Turn on light
-        self.openTron.lights(True)
+        # self.openTron.lights(True)
         # Home robot
         self.openTron.homeRobot()
         # Turn off light
         self.openTron.lights(False)
-
-        # Set timestamp_end of metadata
-        self.metadata.loc[0, "timestamp_end"] = datetime.now().strftime(
-            "%Y-%m-%d %H:%M:%S"
-        )
 
         # Save metadata
         self.save_metadata()
@@ -1573,7 +1568,9 @@ class Experiment:
         )
 
         # Stirring of chemicals
+        LOGGER.info(f"Stirring chemicals for {chemical_ultrasound_mixing_time} seconds.")
         self.arduino.set_ultrasound_on(1, chemical_ultrasound_mixing_time)
+        LOGGER.info(f"Sleeping for {chemical_rest_time} seconds to let chemistry settle in.")
         time.sleep(chemical_rest_time)
 
         # Connect to admiral potentiostat
@@ -1594,6 +1591,7 @@ class Experiment:
             well_number=self.well_number,
         )
 
+        self.arduino.set_relay_off(8)
         # Perform electrochemical testing
         self.perform_electrochemical_testing(well_number=self.well_number)
 
@@ -1603,8 +1601,8 @@ class Experiment:
         # Clean the well
         self.cleaning(well_number=self.well_number, sleep_time=0, use_acid=False)
 
-        self.openTron.homeRobot()
-        self.openTron.lights(False)
+        # self.openTron.homeRobot()
+        # self.openTron.lights(False)
 
         # Set timestamp_end of metadata
         self.metadata.loc[0, "timestamp_end"] = datetime.now().strftime(

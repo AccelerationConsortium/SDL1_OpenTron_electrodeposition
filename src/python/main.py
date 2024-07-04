@@ -6,9 +6,7 @@ from experiment import Experiment
 # Folder where data and log-file will be saved
 DATA_PATH = ""
 NAME_OF_ARDUINO = "CH340"  # Arduino name on Windows for auto finding COM port
-chemicals_to_mix = {
-    "NH4OH": 0,
-    "KCHO": 0,
+chemicals_to_mix = [{
     "Ni": 1,
     "Fe": 0,
     "Cr": 0,
@@ -16,7 +14,120 @@ chemicals_to_mix = {
     "Co": 0,
     "Zn": 0,
     "Cu": 0,
-}
+    "NH4OH": 0,
+    "KCHO": 0,
+},
+{
+    "Ni": 0,
+    "Fe": 1,
+    "Cr": 0,
+    "Mn": 0,
+    "Co": 0,
+    "Zn": 0,
+    "Cu": 0,
+    "NH4OH": 0,
+    "KCHO": 0,
+},
+{
+    "Ni": 0,
+    "Fe": 0,
+    "Cr": 1,
+    "Mn": 0,
+    "Co": 0,
+    "Zn": 0,
+    "Cu": 0,
+    "NH4OH": 0,
+    "KCHO": 0,
+},
+{
+    "Ni": 0,
+    "Fe": 0,
+    "Cr": 0,
+    "Mn": 1,
+    "Co": 0,
+    "Zn": 0,
+    "Cu": 0,
+    "NH4OH": 0,
+    "KCHO": 0,
+},
+{
+    "Ni": 0,
+    "Fe": 0,
+    "Cr": 0,
+    "Mn": 0,
+    "Co": 1,
+    "Zn": 0,
+    "Cu": 0,
+    "NH4OH": 0,
+    "KCHO": 0,
+},
+{
+    "Ni": 0,
+    "Fe": 0,
+    "Cr": 0,
+    "Mn": 0,
+    "Co": 0,
+    "Zn": 1,
+    "Cu": 0,
+    "NH4OH": 0,
+    "KCHO": 0,
+},
+{
+    "Ni": 0,
+    "Fe": 0,
+    "Cr": 0,
+    "Mn": 0,
+    "Co": 0,
+    "Zn": 0,
+    "Cu": 1,
+    "NH4OH": 0,
+    "KCHO": 0,
+},
+{
+    "Ni": 1,
+    "Fe": 1,
+    "Cr": 1,
+    "Mn": 1,
+    "Co": 1,
+    "Zn": 1,
+    "Cu": 1,
+    "NH4OH": 0,
+    "KCHO": 0,
+},
+{
+    "Ni": 1,
+    "Fe": 1,
+    "Cr": 1,
+    "Mn": 1,
+    "Co": 1,
+    "Zn": 1,
+    "Cu": 1,
+    "NH4OH": 1,
+    "KCHO": 0,
+},
+{
+    "Ni": 1,
+    "Fe": 1,
+    "Cr": 1,
+    "Mn": 1,
+    "Co": 1,
+    "Zn": 1,
+    "Cu": 1,
+    "NH4OH": 1,
+    "KCHO": 1,
+},
+{
+    "Ni": 1,
+    "Fe": 1,
+    "Cr": 1,
+    "Mn": 1,
+    "Co": 1,
+    "Zn": 1,
+    "Cu": 1,
+    "NH4OH": 0,
+    "KCHO": 1,
+},
+]
 
 
 # Initialize logging
@@ -36,7 +147,6 @@ experiment = Experiment(
     openTron_IP="100.67.86.197",
     arduino_usb_name="CH340",
 )
-experiment.arduino.set_temperature(1, 0)
 experiment.arduino.set_relay_off(8)
 
 # experiment.initiate_potentiostat_admiral()
@@ -57,12 +167,15 @@ experiment.arduino.set_relay_off(8)
 # experiment.arduino.dispense_ml(pump=4, volume=4)
 # experiment.arduino.dispense_ml(pump=3, volume=4)
 
-# corrected_potential_10mA = experiment.run_experiment(
-#     chemicals_to_mix=chemicals_to_mix,
-#     dispense_ml_electrolyte=3,
-#     electrodeposition_time=60,
-#     electrodeposition_temperature=35,
-# )
+experiment.arduino.set_temperature(1, 35)
+corrected_potential_10mA = experiment.run_experiment(
+    chemicals_to_mix=chemicals_to_mix[1],
+    dispense_ml_electrolyte=3,
+    electrodeposition_time=60,
+    electrodeposition_temperature=35,
+    chemical_ultrasound_mixing_time=30,
+    chemical_rest_time=300,
+)
 # experiment.arduino.set_temperature(1, 0)
 
 # Return potential at 10 mA/cm^2s

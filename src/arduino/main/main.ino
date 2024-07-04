@@ -293,9 +293,9 @@ void parse_data() {
     }
     if (8 == relay_num)  // Single relay
     {
-      singleRelay3.turnRelayOn(1);
+      singleRelay3.turnRelayOn();
       delay(time_ms);
-      singleRelay3.turnRelayOff(1);
+      singleRelay3.turnRelayOff();
     }
     Serial.println("#");  // '#' indicates process is done
   }
@@ -316,7 +316,7 @@ void parse_data() {
     }
     if (8 == relay_num)  // Single relay
     {
-      singleRelay3.turnRelayOn(1);
+      singleRelay3.turnRelayOn();
     }
     Serial.println("#");  // '#' indicates process is done
   }
@@ -337,7 +337,7 @@ void parse_data() {
     }
     if (8 == relay_num)  // Single relay
     {
-      singleRelay3.turnRelayOff(1);
+      singleRelay3.turnRelayOff();
     }
     Serial.println("#");  // '#' indicates process is done
   }
