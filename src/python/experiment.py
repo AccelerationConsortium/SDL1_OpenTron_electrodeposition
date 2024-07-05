@@ -320,7 +320,7 @@ class Experiment:
             points_per_decade=10,
             voltage_bias=1.5,
             voltage_amplitude=0.01,
-            number_of_runs=2,
+            number_of_runs=0,
         )
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
@@ -542,6 +542,30 @@ class Experiment:
             0, "well_temperature_during_deposition"
         ] = self.arduino.get_temperature1()
 
+        LOGGER.info("Making a cathodic scan")
+        self.admiral.setup_cyclic_voltammetry(
+            startVoltage=0,  # XXX Can this be OCV somehow?
+            firstVoltageLimit=0.2,
+            secondVoltageLimit=-2.5,
+            endVoltage=0,  # XXX Can this be OCV somehow?
+            scanRate=0.01,
+            samplingInterval=0.2,
+            cycles=1,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data,
+            ac_data=ac_data,
+            file_name=DATA_PATH
+            + "\\"
+            + str(self.unique_id)
+            + " Cathodic scan 1x 10mV s-1",
+        )
+
+        LOGGER.info("Performing electrodeposition")
         # Apply constant current for X seconds
         self.admiral.setup_constant_current(
             holdAtCurrent=-self.deposition_current,
@@ -1402,6 +1426,8 @@ class Experiment:
 
         Args:
             data (pd.DataFrame): EIS data
+            column_name_imag (str): Column name of the imaginary impedance
+            column_name_real (str): Column name of the real impedance
 
         Returns:
             float: Ohmic resistance

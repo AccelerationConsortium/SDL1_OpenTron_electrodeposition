@@ -668,7 +668,6 @@ robot.set_temperature(1, 0)
 robot.set_ultrasound_on(cartridge=0, time=10)
 openTron.homeRobot()
 openTron.lights(False)
-exit()
 
 # Go to tool rack OER_electrode
 openTron.moveToWell(
