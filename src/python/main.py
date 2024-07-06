@@ -151,6 +151,7 @@ experiment = Experiment(
     arduino_usb_name="CH340",
 )
 experiment.arduino.set_temperature(1, 35)
+experiment.__del__()
 
 # experiment.arduino.dispense_ml(pump=1, volume=2)
 # experiment.arduino.dispense_ml(pump=2, volume=2)
@@ -178,6 +179,7 @@ for i in range(0, 6):
         chemical_rest_time=300,
     )
     experiment.arduino.set_temperature(1, 0)
+    experiment.__del__()
     logging.info(f"Done with experiment {i}\n\n\n")
 
 

@@ -77,7 +77,12 @@ class Arduino:
             baudrate=self.BAUD_RATE,
             timeout=self.CONNECTION_TIMEOUT,
         )
-        time.sleep(2)  # initialization loadtime needs to be > 2 seconds
+        time.sleep(1)  # initialization loadtime needs to be > 2 seconds
+
+    def disconnect(self) -> None:
+        """Disconnects from serial port of arduino"""
+        self.connection.close()
+        time.sleep(31)
 
     def get_temperature0(self) -> float:
         """Measure the temeprature of the temperature sensor 0

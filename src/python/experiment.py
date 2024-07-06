@@ -1472,6 +1472,8 @@ class Experiment:
         # Save metadata
         self.save_metadata()
 
+        self.arduino.disconnect()
+
     def load_well_number(self):
         # Load well number from last_processed_well.txt and update it to +1 (until 14). If the file doesn't exist, start with 0.
         try:
