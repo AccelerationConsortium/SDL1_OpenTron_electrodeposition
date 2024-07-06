@@ -144,13 +144,14 @@ time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 
 ### Priming of pumps
-# experiment = Experiment(
-#     well_volume=2.5,
-#     cleaning_station_volume=6,
-#     openTron_IP="100.67.86.197",
-#     arduino_usb_name="CH340",
-# )
-# experiment.arduino.set_temperature(1, 35)
+experiment = Experiment(
+    well_volume=2.5,
+    cleaning_station_volume=6,
+    openTron_IP="100.67.86.197",
+    arduino_usb_name="CH340",
+)
+experiment.arduino.set_temperature(1, 35)
+
 # experiment.arduino.dispense_ml(pump=1, volume=2)
 # experiment.arduino.dispense_ml(pump=2, volume=2)
 # experiment.arduino.dispense_ml(pump=3, volume=5)

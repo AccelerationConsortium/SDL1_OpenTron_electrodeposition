@@ -539,7 +539,22 @@ class Experiment:
         self.metadata.loc[0, "well_temperature_during_deposition [C]"] = (
             self.arduino.get_temperature1()
         )
+        LOGGER.info("Making an OCV")
+        self.admiral.setup_OCP(duration=120, samplingInterval=0.2)
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        self.admiral.clear_data()
+        # Save data
+        self.store_data_admiral(
+            dc_data=dc_data,
+            ac_data=ac_data,
+            file_name=DATA_PATH
+            + "\\"
+            + str(self.unique_id)
+            + " -3 OCV scan 1x 10mV s-1",
+        )
 
+        # XXX THIS SECTION SHOULD BE REMOVED IN THE FUTURE
         LOGGER.info("Making a cathodic scan")
         self.admiral.setup_cyclic_voltammetry(
             startVoltage=0,  # XXX Can this be OCV somehow?
@@ -560,8 +575,9 @@ class Experiment:
             file_name=DATA_PATH
             + "\\"
             + str(self.unique_id)
-            + " Cathodic scan 1x 10mV s-1",
+            + " -2 Cathodic scan 1x 10mV s-1",
         )
+        # XXX END OF REMOVABLE SECTION
 
         LOGGER.info("Performing electrodeposition")
         # Apply constant current for X seconds
@@ -577,7 +593,7 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data,
             ac_data=ac_data,
-            file_name=DATA_PATH + "\\" + str(self.unique_id) + " Electrodeposition",
+            file_name=DATA_PATH + "\\" + str(self.unique_id) + " -1 Electrodeposition",
         )
 
     def perform_potentiostat_reference_measurement(self, string_to_add: str = ""):
