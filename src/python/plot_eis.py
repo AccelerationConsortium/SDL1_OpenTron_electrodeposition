@@ -193,11 +193,11 @@ for file in os.listdir():
                 )
             else:
                 df = rename_columns(data)
+                file_name = file.split(".")[0]
 
                 # Divide column "Current [A]" by sample_surface_area to get it in A/cm^2
                 df["Current [A]"] = df["Current [A]"] / sample_area
 
-                file_name = file.split(".")[0]
                 plot_cv(
                     df,
                     "Working electrode vs. reference potential [V]",
