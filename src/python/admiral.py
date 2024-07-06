@@ -97,15 +97,14 @@ class AdmiralSquidstatWrapper:
 
             # Reset index to avoid issues with concatenation
             self.ac_data_list.reset_index(drop=True, inplace=True)
-            
+
             return self.ac_data_list, None
         else:
             print("")
-            
 
             # Reset index to avoid issues with concatenation
             self.ac_data_list.reset_index(drop=True, inplace=True)
-            
+
             # Reset index to avoid issues with concatenation
             self.dc_data_list.reset_index(drop=True, inplace=True)
 

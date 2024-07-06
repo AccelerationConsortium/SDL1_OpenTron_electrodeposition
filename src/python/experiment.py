@@ -207,7 +207,7 @@ class Experiment:
         )
 
     def correct_for_ohmic_resistance(
-        self,                        
+        self,
         df: pd.DataFrame,
         ohmic_resistance: float,
         ohmic_correction_factor: float = OHMIC_CORRECTION_FACTOR,
@@ -266,9 +266,7 @@ class Experiment:
         ac_data, dc_data = self.admiral.get_data()
         self.admiral.clear_data()
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 0 CP 200 mA cm-2"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
 
         ### 1 - Perform CV
         LOGGER.info("Performing electrochemical test: 1 - Cyclic voltammetry")
@@ -285,9 +283,7 @@ class Experiment:
         ac_data, dc_data = self.admiral.get_data()
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 1 CV 25x 200mV s-1"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
         ### 2 - Perform CV
@@ -305,9 +301,7 @@ class Experiment:
         ac_data, dc_data = self.admiral.get_data()
         # Save data
         filepath = DATA_PATH + "\\" + str(self.unique_id) + " 2 CV 2x 10mV s-1"
-        self.store_data_admiral(
-            dc_data=dc_data, ac_data=ac_data, file_name=filepath
-        )
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
         ### 3 - Perform EIS
@@ -428,12 +422,14 @@ class Experiment:
         self.admiral.clear_data()
 
         # Find average ohmic corrected potential at 10 mA/cm^2 for the last third of the data
-        self.metadata.loc[0, "potential_at_10mAcm2"] = dc_data[
-            "Working Electrode Voltage [V]"
-        ].tail(int(len(dc_data) / 3)).mean()
-        self.metadata.loc[0, "corrected_potential_at_10mAcm2"]  = dc_data[
-            "Corrected Working Electrode Voltage [V]"
-        ].tail(int(len(dc_data) / 3)).mean()
+        self.metadata.loc[0, "potential_at_10mAcm2"] = (
+            dc_data["Working Electrode Voltage [V]"].tail(int(len(dc_data) / 3)).mean()
+        )
+        self.metadata.loc[0, "corrected_potential_at_10mAcm2"] = (
+            dc_data["Corrected Working Electrode Voltage [V]"]
+            .tail(int(len(dc_data) / 3))
+            .mean()
+        )
         self.save_metadata()
 
         # 8 - Perform CP at 5 mA/cm^2
@@ -538,9 +534,9 @@ class Experiment:
         )
 
         # Get temperature of the well
-        self.metadata.loc[
-            0, "well_temperature_during_deposition"
-        ] = self.arduino.get_temperature1()
+        self.metadata.loc[0, "well_temperature_during_deposition"] = (
+            self.arduino.get_temperature1()
+        )
 
         LOGGER.info("Making a cathodic scan")
         self.admiral.setup_cyclic_voltammetry(
@@ -1081,9 +1077,9 @@ class Experiment:
         )
 
         # Measure temperature of cartridge 1 and store it as metadata
-        self.metadata.loc[
-            0, "well_temperature_during_electrodeposition"
-        ] = self.arduino.get_temperature1()
+        self.metadata.loc[0, "well_temperature_during_electrodeposition"] = (
+            self.arduino.get_temperature1()
+        )
 
         # Switch relay on to make reference electrode the nickel deposition electrode
         self.arduino.set_relay_on(8)
@@ -1326,9 +1322,9 @@ class Experiment:
         )
 
         # Get temperature of the well and store in metadata
-        self.metadata.loc[
-            0, "well_temperature_during_electrochemical_measurements"
-        ] = self.arduino.get_temperature1()
+        self.metadata.loc[0, "well_temperature_during_electrochemical_measurements"] = (
+            self.arduino.get_temperature1()
+        )
         self.save_metadata()
 
         # Perform reference electrode calibration
@@ -1557,7 +1553,9 @@ class Experiment:
         self.metadata.loc[0, "electrodeposition_time [s]"] = electrodeposition_time
         self.metadata.loc[0, "deposition_current"] = self.deposition_current
         self.metadata.loc[0, "sample_surface_area"] = self.sample_surface_area
-        self.metadata.loc[0, "electrodeposition_temperature"] = electrodeposition_temperature
+        self.metadata.loc[0, "electrodeposition_temperature"] = (
+            electrodeposition_temperature
+        )
         self.metadata.loc[0, "cleaning_station_volume"] = self.cleaning_station_volume
         self.metadata.loc[0, "chemical_ultrasound_mixing_time"] = (
             chemical_ultrasound_mixing_time
@@ -1594,9 +1592,13 @@ class Experiment:
         )
 
         # Stirring of chemicals
-        LOGGER.info(f"Stirring chemicals for {chemical_ultrasound_mixing_time} seconds.")
+        LOGGER.info(
+            f"Stirring chemicals for {chemical_ultrasound_mixing_time} seconds."
+        )
         self.arduino.set_ultrasound_on(1, chemical_ultrasound_mixing_time)
-        LOGGER.info(f"Sleeping for {chemical_rest_time} seconds to let chemistry settle in.")
+        LOGGER.info(
+            f"Sleeping for {chemical_rest_time} seconds to let chemistry settle in."
+        )
         time.sleep(chemical_rest_time)
 
         # Connect to admiral potentiostat
