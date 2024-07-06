@@ -30593,3 +30593,39 @@ Starting experiment 1
 2024-07-06 15:25:29,287 [INFO] Robot homed successfully.
 2024-07-06 15:25:29,287 [INFO] Lights On: false
 2024-07-06 15:25:29,319 [INFO] Light change successful.
+2024-07-06 16:27:29,152 [INFO] Initiating arduino with usb nam: CH340
+2024-07-06 16:27:29,154 [INFO] List of USB ports:
+2024-07-06 16:27:29,157 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-07-06 16:27:29,157 [INFO] COM5 - USB Serial Device (COM5)
+2024-07-06 16:27:29,163 [INFO] Arduino found on port: COM7
+2024-07-06 16:27:37,642 [INFO] New run created with ID: 30e2d16f-ae29-482d-b27f-e6711634f54f
+2024-07-06 16:27:37,642 [INFO] Command URL: http://100.67.86.197:31950/runs/30e2d16f-ae29-482d-b27f-e6711634f54f/commands
+2024-07-06 16:27:37,642 [INFO] Loading pipette: p1000_single_gen2 on mount: right
+2024-07-06 16:27:39,835 [INFO] Pipette loaded with name: p1000_single_gen2 and ID: 8dfb49fc-580c-4512-9c11-3e865d3305e6
+2024-07-06 16:27:39,836 [INFO] Loading custom labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-06 16:27:39,932 [INFO] Custome labware nistall_4_tiprack_1ul loaded in slot: 10 successfully.
+2024-07-06 16:27:39,932 [INFO] Loading labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-06 16:27:40,006 [INFO] Labware loaded with name: nistall_4_tiprack_1ul and ID: 5a4da60e-f970-4dad-af51-911676de8834
+2024-07-06 16:27:40,008 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-06 16:27:40,078 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 11 successfully.
+2024-07-06 16:27:40,079 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-06 16:27:40,157 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: 6a91e3f5-d920-47a2-aaef-db2265aa0e8c
+2024-07-06 16:27:40,158 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-06 16:27:40,234 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 7 successfully.
+2024-07-06 16:27:40,235 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-06 16:27:40,312 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: 07612b1c-d665-494b-b1d7-81d25c138a82
+2024-07-06 16:27:40,314 [INFO] Loading custom labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-06 16:27:40,392 [INFO] Custome labware nis_15_wellplate_3895ul loaded in slot: 9 successfully.
+2024-07-06 16:27:40,393 [INFO] Loading labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-06 16:27:40,476 [INFO] Labware loaded with name: nis_15_wellplate_3895ul and ID: 8e16b61f-d7cf-4e87-826c-1b758245c107
+2024-07-06 16:27:40,476 [INFO] Loading custom labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-06 16:27:40,544 [INFO] Custome labware nis_2_wellplate_30000ul loaded in slot: 3 successfully.
+2024-07-06 16:27:40,546 [INFO] Loading labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-06 16:27:40,614 [INFO] Labware loaded with name: nis_2_wellplate_30000ul and ID: 0f809b53-8a7a-468d-b8bd-ba27cd66de46
+2024-07-06 16:27:40,615 [INFO] Loading labware: opentrons_96_tiprack_1000ul in slot: 1
+2024-07-06 16:27:40,942 [INFO] Labware loaded with name: opentrons_96_tiprack_1000ul and ID: c356987c-3574-4997-8415-4adf811b2223
+2024-07-06 16:27:42,060 [INFO] Set temperature to 35 C
+2024-07-06 16:27:42,060 [INFO] Homing the robot
+2024-07-06 16:27:55,042 [INFO] Robot homed successfully.
+2024-07-06 16:27:55,042 [INFO] Lights On: false
+2024-07-06 16:27:55,074 [INFO] Light change successful.
