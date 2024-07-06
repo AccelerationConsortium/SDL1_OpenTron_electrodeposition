@@ -1,6 +1,7 @@
 # Import for plotting EIS data
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 import math
 import os
 
@@ -81,8 +82,10 @@ def plot_eis_nyquist(df, x_col, y_col, title, x_label, y_label, file_name=None):
     plt.xlabel(x_label)
     plt.ylabel(y_label)
 
+    # Make an array with the first 15 values of y_col
+    y_values = df[y_col].head(11)
     # Find the minimum value of the absolute value of y_col
-    min_y = min(abs(df[y_col]))
+    min_y = min(y_values)
 
     # Find the corresponding index
     min_y_index = df[y_col].idxmin()
@@ -103,27 +106,28 @@ def plot_eis_nyquist(df, x_col, y_col, title, x_label, y_label, file_name=None):
 
 
 def plot_cv(df, x_col, y_col, title, x_label, y_label, file_name=None):
-    print(f"{df.columns} and the asked columns where '{x_col}' and '{y_col}'")
-
-    # Print column x_col and y_col
-    print(f"df[x_col]: {df[x_col]}")
-    print(f"df[y_col]: {df[y_col]}")
-
     # Remove rows with NaN values in either x_col or y_col
-    df = df.dropna(subset=[x_col, y_col])
+    try:
+        df = df.dropna(subset=[x_col, y_col])
+        # Assuming df is your DataFrame and x_col, y_col are column names
+        x_data = df[x_col].values
+        y_data = df[y_col].values
 
-    plt.figure()
-    plt.plot(df[x_col], df[y_col], "o-")
-    plt.title(title)
-    plt.xlabel(x_label)
-    plt.ylabel(y_label)
+        plt.figure()
+        plt.plot(x_data, y_data, "o-")
 
-    if file_name:
-        plt.savefig(file_name + ".jpg")
-    else:
-        plt.show()
+        plt.title(title)
+        plt.xlabel(x_label)
+        plt.ylabel(y_label)
 
-    plt.close()
+        if file_name:
+            plt.savefig(file_name + ".jpg")
+        else:
+            plt.show()
+
+        plt.close()
+    except KeyError:
+        print("No KeyError")
 
 
 # Loop through all .csv files in the folder and plot the Nyquist plot for each file containing "EIS" in the filename. Save plot under the same filename with .jpg extension.
@@ -143,6 +147,13 @@ for file in os.listdir():
                 )
 
                 data = rename_columns(data)
+
+                # If there are columns named "Real Impedance" and "Imaginary Impedance" where the value is = 0.0, drop the rows
+                data = data[
+                    (data["Real Impedance"] != 0.0)
+                    & (data["Imaginary Impedance"] != 0.0)
+                ]
+
                 # Take the filename and make it the same but with .jpg extension
                 file_name = file.split(".")[0]
                 plot_eis_nyquist(
@@ -157,7 +168,7 @@ for file in os.listdir():
             except Exception as e:
                 print(f"Could not read {file}, error: {e}")
 
-        if "CV" in file:
+        if "CV" in file or "Cathodic scan" in file:
             print(f"Reading {file}")
 
             # try:

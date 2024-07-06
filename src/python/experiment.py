@@ -558,9 +558,9 @@ class Experiment:
         LOGGER.info("Making a cathodic scan")
         self.admiral.setup_cyclic_voltammetry(
             startVoltage=0,  # XXX Can this be OCV somehow?
-            firstVoltageLimit=0.2,
-            secondVoltageLimit=-2.5,
-            endVoltage=0,  # XXX Can this be OCV somehow?
+            firstVoltageLimit=0.5,
+            secondVoltageLimit=-10,
+            endVoltage=0.5,  # XXX Can this be OCV somehow?
             scanRate=0.01,
             samplingInterval=0.2,
             cycles=1,
