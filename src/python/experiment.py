@@ -1456,10 +1456,6 @@ class Experiment:
         # Save metadata
         self.save_metadata()
 
-        # Set temperature to 0 C so it doesnt heat
-        self.arduino.set_temperature(0, 0)
-        self.arduino.set_temperature(1, 0)
-
     def load_well_number(self):
         # Load well number from last_processed_well.txt and update it to +1 (until 14). If the file doesn't exist, start with 0.
         try:
@@ -1618,7 +1614,9 @@ class Experiment:
             well_number=self.well_number,
         )
 
+        # Make sure the relay is off to make contact with the reference electrode
         self.arduino.set_relay_off(8)
+
         # Perform electrochemical testing
         self.perform_electrochemical_testing(well_number=self.well_number)
 
@@ -1637,6 +1635,10 @@ class Experiment:
         )
         # Set status of metadata
         self.metadata.loc[0, "status_of_run"] = "success"
+
+        # Set temperature to 0 C so it doesnt heat
+        self.arduino.set_temperature(0, 0)
+        self.arduino.set_temperature(1, 0)
 
         # Save metadata
         self.save_metadata()
