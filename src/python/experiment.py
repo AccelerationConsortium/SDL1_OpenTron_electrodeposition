@@ -75,28 +75,30 @@ class Experiment:
                 "unique_id",
                 "well_number",
                 "chemicals_to_mix",
-                "total_volume",
-                "deposition_current",
+                "total_volume [ml]",
+                "deposition_current [A]",
                 "electrodeposition_time [s]",
                 "sample_surface_area",
-                "ohmic_resistance",
-                "well_temperature_during_deposition",
-                "well_temperature_during_electrochemical_measurements",
-                "potential_at_10mAcm2",
-                "corrected_potential_at_10mAcm2",
+                "ohmic_resistance [ohm]",
+                "well_temperature_during_deposition [C]",
+                "well_temperature_during_electrochemical_measurements [C]",
+                "potential_at_10mAcm2 [V]",
+                "corrected_potential_at_10mAcm2 [V]",
                 "timestamp_start",
                 "timestamp_end",
                 "status_of_run",
-                "electrodeposition_temperature",
-                "chemical_ultrasound_mixing_time",
-                "chemical_rest_time",
+                "electrodeposition_temperature_setpoint [C]",
+                "chemical_ultrasound_mixing_time [s]",
+                "chemical_rest_time [s]",
             ]
         )
         # Update the metadata with the unique id
         self.metadata.loc[0, "unique_id"] = self.unique_id
 
         # Set the timestamp for the start of the experiment
-        self.metadata.loc[0, "timestamp_start"] = datetime.now()
+        self.metadata.loc[0, "timestamp_start"] = datetime.now().strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
 
         # Get the well number
         self.well_number = self.load_well_number()
@@ -330,7 +332,7 @@ class Experiment:
         self.admiral.clear_data()
 
         # Updata metadata
-        self.metadata.loc[0, "ohmic_resistance"] = self.ohmic_resistance
+        self.metadata.loc[0, "ohmic_resistance [ohm]"] = self.ohmic_resistance
         self.save_metadata()
 
         ### 4 - Perform CP at 100 mA/cm^2
@@ -422,10 +424,10 @@ class Experiment:
         self.admiral.clear_data()
 
         # Find average ohmic corrected potential at 10 mA/cm^2 for the last third of the data
-        self.metadata.loc[0, "potential_at_10mAcm2"] = (
+        self.metadata.loc[0, "potential_at_10mAcm2 [V]"] = (
             dc_data["Working Electrode Voltage [V]"].tail(int(len(dc_data) / 3)).mean()
         )
-        self.metadata.loc[0, "corrected_potential_at_10mAcm2"] = (
+        self.metadata.loc[0, "corrected_potential_at_10mAcm2 [V]"] = (
             dc_data["Corrected Working Electrode Voltage [V]"]
             .tail(int(len(dc_data) / 3))
             .mean()
@@ -534,7 +536,7 @@ class Experiment:
         )
 
         # Get temperature of the well
-        self.metadata.loc[0, "well_temperature_during_deposition"] = (
+        self.metadata.loc[0, "well_temperature_during_deposition [C]"] = (
             self.arduino.get_temperature1()
         )
 
@@ -1076,11 +1078,6 @@ class Experiment:
             intSpeed=50,  # mm/s
         )
 
-        # Measure temperature of cartridge 1 and store it as metadata
-        self.metadata.loc[0, "well_temperature_during_electrodeposition"] = (
-            self.arduino.get_temperature1()
-        )
-
         # Switch relay on to make reference electrode the nickel deposition electrode
         self.arduino.set_relay_on(8)
 
@@ -1322,9 +1319,9 @@ class Experiment:
         )
 
         # Get temperature of the well and store in metadata
-        self.metadata.loc[0, "well_temperature_during_electrochemical_measurements"] = (
-            self.arduino.get_temperature1()
-        )
+        self.metadata.loc[
+            0, "well_temperature_during_electrochemical_measurements [C]"
+        ] = self.arduino.get_temperature1()
         self.save_metadata()
 
         # Perform reference electrode calibration
@@ -1549,18 +1546,20 @@ class Experiment:
             self.metadata.loc[0, "well_number"] = well_number
 
         self.metadata.loc[0, "chemicals_to_mix"] = str(chemicals_to_mix)
-        self.metadata.loc[0, "total_volume"] = electrolyte
+        self.metadata.loc[0, "total_volume [ml]"] = electrolyte
         self.metadata.loc[0, "electrodeposition_time [s]"] = electrodeposition_time
-        self.metadata.loc[0, "deposition_current"] = self.deposition_current
-        self.metadata.loc[0, "sample_surface_area"] = self.sample_surface_area
-        self.metadata.loc[0, "electrodeposition_temperature"] = (
+        self.metadata.loc[0, "deposition_current [A]"] = self.deposition_current
+        self.metadata.loc[0, "sample_surface_area [cm2]"] = self.sample_surface_area
+        self.metadata.loc[0, "electrodeposition_temperature_setpoint [C]"] = (
             electrodeposition_temperature
         )
-        self.metadata.loc[0, "cleaning_station_volume"] = self.cleaning_station_volume
-        self.metadata.loc[0, "chemical_ultrasound_mixing_time"] = (
+        self.metadata.loc[0, "cleaning_station_volume [ml]"] = (
+            self.cleaning_station_volume
+        )
+        self.metadata.loc[0, "chemical_ultrasound_mixing_time [s]"] = (
             chemical_ultrasound_mixing_time
         )
-        self.metadata.loc[0, "chemical_rest_time"] = chemical_rest_time
+        self.metadata.loc[0, "chemical_rest_time [s]"] = chemical_rest_time
         self.save_metadata()
         self.save_well_number()
 
@@ -1641,4 +1640,4 @@ class Experiment:
 
         # Save metadata
         self.save_metadata()
-        return self.metadata.loc[0, "corrected_potential_at_10mAcm2"]
+        return self.metadata.loc[0, "corrected_potential_at_10mAcm2 [V]"]

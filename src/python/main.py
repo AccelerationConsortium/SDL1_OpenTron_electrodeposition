@@ -16,7 +16,7 @@ chemicals_to_mix = [
         "Zn": 0,
         "Cu": 0,
         "NH4OH": 0,
-        "KCHO": 0,
+        "NaCi": 0,
     },
     {
         "Ni": 0,
@@ -27,7 +27,7 @@ chemicals_to_mix = [
         "Zn": 0,
         "Cu": 0,
         "NH4OH": 0,
-        "KCHO": 0,
+        "NaCi": 0,
     },
     {
         "Ni": 0,
@@ -38,7 +38,7 @@ chemicals_to_mix = [
         "Zn": 0,
         "Cu": 0,
         "NH4OH": 0,
-        "KCHO": 0,
+        "NaCi": 0,
     },
     {
         "Ni": 0,
@@ -49,7 +49,7 @@ chemicals_to_mix = [
         "Zn": 0,
         "Cu": 0,
         "NH4OH": 0,
-        "KCHO": 0,
+        "NaCi": 0,
     },
     {
         "Ni": 0,
@@ -60,7 +60,7 @@ chemicals_to_mix = [
         "Zn": 0,
         "Cu": 0,
         "NH4OH": 0,
-        "KCHO": 0,
+        "NaCi": 0,
     },
     {
         "Ni": 0,
@@ -71,7 +71,7 @@ chemicals_to_mix = [
         "Zn": 1,
         "Cu": 0,
         "NH4OH": 0,
-        "KCHO": 0,
+        "NaCi": 0,
     },
     {
         "Ni": 0,
@@ -82,7 +82,7 @@ chemicals_to_mix = [
         "Zn": 0,
         "Cu": 1,
         "NH4OH": 0,
-        "KCHO": 0,
+        "NaCi": 0,
     },
     {
         "Ni": 1,
@@ -93,18 +93,7 @@ chemicals_to_mix = [
         "Zn": 1,
         "Cu": 1,
         "NH4OH": 0,
-        "KCHO": 0,
-    },
-    {
-        "Ni": 1,
-        "Fe": 1,
-        "Cr": 1,
-        "Mn": 1,
-        "Co": 1,
-        "Zn": 1,
-        "Cu": 1,
-        "NH4OH": 1,
-        "KCHO": 0,
+        "NaCi": 0,
     },
     {
         "Ni": 1,
@@ -115,7 +104,18 @@ chemicals_to_mix = [
         "Zn": 1,
         "Cu": 1,
         "NH4OH": 1,
-        "KCHO": 1,
+        "NaCi": 0,
+    },
+    {
+        "Ni": 1,
+        "Fe": 1,
+        "Cr": 1,
+        "Mn": 1,
+        "Co": 1,
+        "Zn": 1,
+        "Cu": 1,
+        "NH4OH": 1,
+        "NaCi": 1,
     },
     {
         "Ni": 1,
@@ -126,7 +126,7 @@ chemicals_to_mix = [
         "Zn": 1,
         "Cu": 1,
         "NH4OH": 0,
-        "KCHO": 1,
+        "NaCi": 1,
     },
 ]
 

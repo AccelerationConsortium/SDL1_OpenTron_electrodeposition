@@ -73,7 +73,7 @@ wells = {
 
 pipetteable_chemicals = {
     "NH4OH": "A4",
-    "KCHO": "B4",
+    "NaCi": "B4",
     "KOH": "B4",
     "Ni": "A1",
     "Fe": "A2",
@@ -85,7 +85,7 @@ pipetteable_chemicals = {
 }
 pipetteable_chemical_racks = {
     "NH4OH": "nis_8_reservoir_25000ul_7",
-    "KCHO": "nis_8_reservoir_25000ul_7",
+    "NaCi": "nis_8_reservoir_25000ul_7",
     "KOH": "nis_8_reservoir_25000ul_11",
     "Ni": "nis_8_reservoir_25000ul_11",
     "Fe": "nis_8_reservoir_25000ul_11",
@@ -99,7 +99,7 @@ pipetteable_chemical_racks = {
 
 pipette_tips = {
     "NH4OH": "H1",
-    "KCHO": "H2",
+    "NaCi": "H2",
     "KOH": "H3",
     "Ni": "H4",
     "Fe": "H5",
