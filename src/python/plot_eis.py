@@ -171,29 +171,35 @@ for file in os.listdir():
         if "CV" in file or "Cathodic scan" in file:
             print(f"Reading {file}")
 
-            # try:
-            # Read the file and name the first column "point"
-
             data = pd.read_csv(
                 file,
                 sep=",",
                 header=0,
                 encoding="utf8",
             )
-            df = rename_columns(data)
-            file_name = file.split(".")[0]
-            plot_cv(
-                df,
-                "Working electrode vs. reference potential [V]",
-                "Current [A]",
-                "Cyclic Voltammetry\nNot ohmic corrected",
-                "Working electrode vs. reference potential [V]",
-                "Current [A]",
-                file_name,
-            )
-            # except Exception as e:
-            #     print(f"Could not read {file}, error: {e}")
-            #     print(f"data: {data}")
+            if "Ref CV" in file:
+                file_name = file.split(".")[0]
+                plot_cv(
+                    data,
+                    "Ec",
+                    "I_avg",
+                    "Cyclic Voltammetry\nNot ohmic corrected",
+                    "Working electrode vs. reference potential [V]",
+                    "Current [A]",
+                    file_name,
+                )
+            else:
+                df = rename_columns(data)
+                file_name = file.split(".")[0]
+                plot_cv(
+                    df,
+                    "Working electrode vs. reference potential [V]",
+                    "Current [A]",
+                    "Cyclic Voltammetry\nNot ohmic corrected",
+                    "Working electrode vs. reference potential [V]",
+                    "Current [A]",
+                    file_name,
+                )
 
         if "Electrodeposition" in file or "CP" in file:
             print(f"Reading {file}")

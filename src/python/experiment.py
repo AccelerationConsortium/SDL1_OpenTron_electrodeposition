@@ -561,7 +561,7 @@ class Experiment:
             firstVoltageLimit=0.5,
             secondVoltageLimit=-10,
             endVoltage=0.5,  # XXX Can this be OCV somehow?
-            scanRate=0.01,
+            scanRate=0.1,
             samplingInterval=0.2,
             cycles=1,
         )
