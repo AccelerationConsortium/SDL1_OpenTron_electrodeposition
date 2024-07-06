@@ -1546,7 +1546,7 @@ class Experiment:
             self.metadata.loc[0, "well_number"] = well_number
 
         self.metadata.loc[0, "chemicals_to_mix"] = str(chemicals_to_mix)
-        self.metadata.loc[0, "total_volume [ml]"] = electrolyte
+        self.metadata.loc[0, "total_volume [ml]"] = self.well_volume
         self.metadata.loc[0, "electrodeposition_time [s]"] = electrodeposition_time
         self.metadata.loc[0, "deposition_current [A]"] = self.deposition_current
         self.metadata.loc[0, "sample_surface_area [cm2]"] = self.sample_surface_area
