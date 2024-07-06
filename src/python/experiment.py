@@ -273,10 +273,10 @@ class Experiment:
         ### 1 - Perform CV
         LOGGER.info("Performing electrochemical test: 1 - Cyclic voltammetry")
         self.admiral.setup_cyclic_voltammetry(
-            startVoltage=1.6,
-            firstVoltageLimit=0.8,
-            secondVoltageLimit=1.6,
-            endVoltage=1.6,
+            startVoltage=0.8,
+            firstVoltageLimit=2.3,
+            secondVoltageLimit=0.8,
+            endVoltage=0.8,
             scanRate=0.2,
             samplingInterval=0.05,
             cycles=25,
@@ -291,9 +291,9 @@ class Experiment:
         ### 2 - Perform CV
         LOGGER.info("Performing electrochemical test: 2 - Cyclic voltammetry")
         self.admiral.setup_cyclic_voltammetry(
-            startVoltage=1.6,
-            firstVoltageLimit=0.8,
-            secondVoltageLimit=1.6,
+            startVoltage=0.8,
+            firstVoltageLimit=2.3,
+            secondVoltageLimit=0.8,
             endVoltage=0.8,
             scanRate=0.01,
             samplingInterval=0.2,
@@ -504,9 +504,9 @@ class Experiment:
         ### 11 - Perform CV
         LOGGER.info("Performing electrochemical test: 11 - Cyclic voltammetry")
         self.admiral.setup_cyclic_voltammetry(
-            startVoltage=1.6,
-            firstVoltageLimit=0.8,
-            secondVoltageLimit=1.6,
+            startVoltage=0.8,
+            firstVoltageLimit=2.3,
+            secondVoltageLimit=0.8,
             endVoltage=0.8,
             scanRate=0.01,
             samplingInterval=0.2,
@@ -607,10 +607,10 @@ class Experiment:
         LOGGER.info(
             "Performing CV on Biologic potentiostat for reference electrode correction"
         )
-        Ei = CVStep(voltage=0, scan_rate=0.5, vs_initial=False)
-        E1 = CVStep(voltage=1.5, scan_rate=0.5, vs_initial=False)
-        E2 = CVStep(voltage=0, scan_rate=0.5, vs_initial=False)
-        Ef = CVStep(voltage=0, scan_rate=0.5, vs_initial=False)
+        Ei = CVStep(voltage=0, scan_rate=1, vs_initial=False)
+        E1 = CVStep(voltage=2, scan_rate=1, vs_initial=False)
+        E2 = CVStep(voltage=-0.2, scan_rate=1, vs_initial=False)
+        Ef = CVStep(voltage=0, scan_rate=1, vs_initial=False)
 
         params = CVParams(
             record_every_dE=0.01,

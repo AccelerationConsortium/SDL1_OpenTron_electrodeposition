@@ -5,6 +5,7 @@ import numpy as np
 import math
 import os
 
+sample_area = 0.2827
 
 def rename_columns(df: pd.DataFrame):
     # Loop through column headers and rename them
@@ -178,18 +179,24 @@ for file in os.listdir():
                 encoding="utf8",
             )
             if "Ref CV" in file:
+                surface_pt_wire = 0.0475
+                data["I_avg"] = data["I_avg"] / surface_pt_wire
                 file_name = file.split(".")[0]
                 plot_cv(
                     data,
-                    "Ec",
+                    "Ewe_avg",
                     "I_avg",
                     "Cyclic Voltammetry\nNot ohmic corrected",
                     "Working electrode vs. reference potential [V]",
-                    "Current [A]",
+                    "Current [A/cm2]",
                     file_name,
                 )
             else:
                 df = rename_columns(data)
+
+                # Divide column "Current [A]" by sample_surface_area to get it in A/cm^2
+                df["Current [A]"] = df["Current [A]"] / sample_area
+
                 file_name = file.split(".")[0]
                 plot_cv(
                     df,
@@ -197,7 +204,7 @@ for file in os.listdir():
                     "Current [A]",
                     "Cyclic Voltammetry\nNot ohmic corrected",
                     "Working electrode vs. reference potential [V]",
-                    "Current [A]",
+                    "Current [A/cm2]",
                     file_name,
                 )
 
