@@ -161,7 +161,7 @@ experiment.__del__()
 # experiment.arduino.dispense_ml(pump=4, volume=4)
 # experiment.arduino.dispense_ml(pump=3, volume=4)
 
-for i in range(0, 6):
+for i in range(1, 6):
     logging.info(f"\n\n\nStarting experiment {i}")
     experiment = Experiment(
         well_volume=2.5,

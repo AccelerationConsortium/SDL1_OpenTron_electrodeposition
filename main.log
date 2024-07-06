@@ -30629,3 +30629,58 @@ Starting experiment 1
 2024-07-06 16:27:55,042 [INFO] Robot homed successfully.
 2024-07-06 16:27:55,042 [INFO] Lights On: false
 2024-07-06 16:27:55,074 [INFO] Light change successful.
+2024-07-06 16:28:26,102 [INFO] 
+
+
+Starting experiment 0
+2024-07-06 16:28:26,102 [INFO] Initiating arduino with usb nam: CH340
+2024-07-06 16:28:26,110 [INFO] List of USB ports:
+2024-07-06 16:28:26,110 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-07-06 16:28:26,110 [INFO] COM5 - USB Serial Device (COM5)
+2024-07-06 16:28:26,115 [INFO] Arduino found on port: COM7
+2024-07-06 16:28:33,465 [INFO] New run created with ID: 27211283-19bf-42f8-bcfd-58c02319782d
+2024-07-06 16:28:33,465 [INFO] Command URL: http://100.67.86.197:31950/runs/27211283-19bf-42f8-bcfd-58c02319782d/commands
+2024-07-06 16:28:33,465 [INFO] Loading pipette: p1000_single_gen2 on mount: right
+2024-07-06 16:28:35,664 [INFO] Pipette loaded with name: p1000_single_gen2 and ID: 7445b665-0080-4d21-8d2c-ee3ea4eb9c64
+2024-07-06 16:28:35,664 [INFO] Loading custom labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-06 16:28:35,759 [INFO] Custome labware nistall_4_tiprack_1ul loaded in slot: 10 successfully.
+2024-07-06 16:28:35,760 [INFO] Loading labware: nistall_4_tiprack_1ul in slot: 10
+2024-07-06 16:28:35,838 [INFO] Labware loaded with name: nistall_4_tiprack_1ul and ID: a7d64d8f-ad94-425d-9962-e6b625ae1265
+2024-07-06 16:28:35,840 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-06 16:28:35,914 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 11 successfully.
+2024-07-06 16:28:35,915 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 11
+2024-07-06 16:28:35,988 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: e9a621d8-235f-420d-82cd-307435423709
+2024-07-06 16:28:35,990 [INFO] Loading custom labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-06 16:28:36,066 [INFO] Custome labware nis_8_reservoir_25000ul loaded in slot: 7 successfully.
+2024-07-06 16:28:36,067 [INFO] Loading labware: nis_8_reservoir_25000ul in slot: 7
+2024-07-06 16:28:36,147 [INFO] Labware loaded with name: nis_8_reservoir_25000ul and ID: 822860db-c9f4-481c-898b-afab30b581b4
+2024-07-06 16:28:36,149 [INFO] Loading custom labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-06 16:28:36,231 [INFO] Custome labware nis_15_wellplate_3895ul loaded in slot: 9 successfully.
+2024-07-06 16:28:36,233 [INFO] Loading labware: nis_15_wellplate_3895ul in slot: 9
+2024-07-06 16:28:36,324 [INFO] Labware loaded with name: nis_15_wellplate_3895ul and ID: cc0f5ac3-fff1-46ba-968d-fab879661c51
+2024-07-06 16:28:36,326 [INFO] Loading custom labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-06 16:28:36,392 [INFO] Custome labware nis_2_wellplate_30000ul loaded in slot: 3 successfully.
+2024-07-06 16:28:36,392 [INFO] Loading labware: nis_2_wellplate_30000ul in slot: 3
+2024-07-06 16:28:36,494 [INFO] Labware loaded with name: nis_2_wellplate_30000ul and ID: c0032071-5499-4136-9e05-add96fee57ea
+2024-07-06 16:28:36,495 [INFO] Loading labware: opentrons_96_tiprack_1000ul in slot: 1
+2024-07-06 16:28:36,828 [INFO] Labware loaded with name: opentrons_96_tiprack_1000ul and ID: cd9c9f88-3159-4b45-b49d-7a706309c607
+2024-07-06 16:28:36,856 [INFO] Homing the robot
+2024-07-06 16:28:49,776 [INFO] Robot homed successfully.
+2024-07-06 16:28:49,783 [INFO] Lights On: false
+2024-07-06 16:28:49,822 [INFO] Light change successful.
+2024-07-06 16:29:07,056 [INFO] Set temperature to 35 C
+2024-07-06 16:29:07,109 [INFO] Starting experiment 93 in well 6
+2024-07-06 16:29:07,110 [INFO] Chemicals to mix: {'Ni': 1, 'Fe': 0, 'Cr': 0, 'Mn': 0, 'Co': 0, 'Zn': 0, 'Cu': 0, 'NH4OH': 0, 'NaCi': 0}
+2024-07-06 16:29:07,110 [INFO] Electrolyte: KOH 3 ml
+2024-07-06 16:29:07,111 [INFO] Well volume: 2.5 ml
+2024-07-06 16:29:07,111 [INFO] Electrodeposition time: 60 seconds
+2024-07-06 16:29:07,112 [INFO] Cleaning cartridge volume: 6 ml
+2024-07-06 16:29:08,450 [INFO] Set temperature to 0 C
+2024-07-06 16:29:09,843 [INFO] Set temperature to 35 C
+2024-07-06 16:29:09,843 [INFO] Lights On: true
+2024-07-06 16:29:09,894 [INFO] Light change successful.
+2024-07-06 16:29:09,894 [INFO] Homing the robot
+2024-07-06 16:29:22,884 [INFO] Homing the robot
+2024-07-06 16:29:35,835 [INFO] Robot homed successfully.
+2024-07-06 16:29:35,835 [INFO] Lights On: false
+2024-07-06 16:29:35,869 [INFO] Light change successful.
