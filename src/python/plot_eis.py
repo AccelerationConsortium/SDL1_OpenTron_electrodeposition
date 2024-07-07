@@ -7,6 +7,7 @@ import os
 
 sample_area = 0.2827
 
+
 def rename_columns(df: pd.DataFrame):
     # Loop through column headers and rename them
     for i in range(len(df.columns)):

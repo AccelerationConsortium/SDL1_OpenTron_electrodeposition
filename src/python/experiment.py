@@ -1626,26 +1626,23 @@ class Experiment:
         self.cleaning(well_number=self.well_number, sleep_time=0.1)
 
         # Dispense electrolyte
-        self.dispense_electrolyte(
-            volume=dispense_ml_electrolyte,
-            chemical=electrolyte,
-            well_number=self.well_number,
-        )
+        # self.dispense_electrolyte(
+        #     volume=dispense_ml_electrolyte,
+        #     chemical=electrolyte,
+        #     well_number=self.well_number,
+        # )
 
         # Make sure the relay is off to make contact with the reference electrode
         self.arduino.set_relay_off(8)
 
         # Perform electrochemical testing
-        self.perform_electrochemical_testing(well_number=self.well_number)
+        # self.perform_electrochemical_testing(well_number=self.well_number)
 
         # Disconnect admiral potentiostat
         self.close_potentiostat_admiral()
 
         # Clean the well
-        self.cleaning(well_number=self.well_number, sleep_time=0, use_acid=False)
-
-        # self.openTron.homeRobot()
-        # self.openTron.lights(False)
+        # self.cleaning(well_number=self.well_number, sleep_time=0, use_acid=False)
 
         # Set timestamp_end of metadata
         self.metadata.loc[0, "timestamp_end"] = datetime.now().strftime(
