@@ -75,7 +75,14 @@ class AdmiralSquidstatWrapper:
 
     def __del__(self):
         """Close the experiment on the potentiostat and release the Qt application. Remember to call get_data() before calling this function to retrieve the data."""
-        self.app.quit()
+        try:
+            self.app.shutdown()
+        except Exception:
+            print("Error: Could not shutdown() the QApplication.")
+        try:
+            self.app.quit()
+        except Exception:
+            print("Error: Could not quit() the QApplication.")
         time.sleep(1)
 
     def get_data(self):
