@@ -2,6 +2,7 @@ import logging
 from datetime import datetime
 import sys
 from experiment import Experiment
+import time
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
@@ -152,7 +153,8 @@ experiment = Experiment(
 )
 experiment.arduino.set_temperature(1, 35)
 experiment.__del__()
-
+logging.info("Sleep 600 seconds to heat up the well plate to 35C")
+time.sleep(600)
 # experiment.arduino.dispense_ml(pump=1, volume=2)
 # experiment.arduino.dispense_ml(pump=2, volume=2)
 # experiment.arduino.dispense_ml(pump=3, volume=5)
@@ -161,7 +163,7 @@ experiment.__del__()
 # experiment.arduino.dispense_ml(pump=4, volume=4)
 # experiment.arduino.dispense_ml(pump=3, volume=4)
 
-for i in range(1, 6):
+for i in range(1, 3):
     logging.info(f"\n\n\nStarting experiment {i}")
     experiment = Experiment(
         well_volume=2.5,
