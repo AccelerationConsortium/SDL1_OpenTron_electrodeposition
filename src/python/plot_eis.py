@@ -4,6 +4,9 @@ import pandas as pd
 import numpy as np
 import math
 import os
+from matplotlib import colormaps
+
+list(colormaps)
 
 sample_area = 0.2827
 
@@ -107,17 +110,19 @@ def plot_eis_nyquist(df, x_col, y_col, title, x_label, y_label, file_name=None):
     plt.close()
 
 
-def plot_cv(df, x_col, y_col, title, x_label, y_label, file_name=None):
+def plot_cv(
+    df, x_col, y_col, title, x_label, y_label, cycle_label=None, file_name=None
+):
     # Remove rows with NaN values in either x_col or y_col
     try:
         df = df.dropna(subset=[x_col, y_col])
-        # Assuming df is your DataFrame and x_col, y_col are column names
-        x_data = df[x_col].values
-        y_data = df[y_col].values
 
         plt.figure()
-        plt.plot(x_data, y_data, "o-")
-
+        if cycle_label is not None:
+            plt.scatter(df[x_col], df[y_col], c=df[cycle_label], cmap="viridis")
+            plt.colorbar(label="Cycle")
+        else:
+            plt.plot(df[x_col], df[y_col], "o-")
         plt.title(title)
         plt.xlabel(x_label)
         plt.ylabel(y_label)
@@ -184,29 +189,37 @@ for file in os.listdir():
                 data["I_avg"] = data["I_avg"] / surface_pt_wire
                 file_name = file.split(".")[0]
                 plot_cv(
-                    data,
-                    "Ewe_avg",
-                    "I_avg",
-                    "Cyclic Voltammetry\nNot ohmic corrected",
-                    "Working electrode vs. reference potential [V]",
-                    "Current [A/cm2]",
-                    file_name,
+                    df=data,
+                    x_col="Ewe_avg",
+                    y_col="I_avg",
+                    title="Cyclic Voltammetry\nNot ohmic corrected",
+                    x_label="Working electrode vs. reference potential [V]",
+                    y_label="Current [A/cm2]",
+                    cycle_label="cycle",
+                    file_name=file_name,
                 )
             else:
                 df = rename_columns(data)
                 file_name = file.split(".")[0]
 
+                # Make a column "cycle" and make it so that it starts with 0 and increases by 1 every time the is a local minima in "Working electrode vs. reference potential [V]"
+                df["cycle"] = (
+                    df["Working electrode vs. reference potential [V]"]
+                    < df["Working electrode vs. reference potential [V]"].shift()
+                ).cumsum()
+
+                print(df)
                 # Divide column "Current [A]" by sample_surface_area to get it in A/cm^2
                 df["Current [A]"] = df["Current [A]"] / sample_area
 
                 plot_cv(
-                    df,
-                    "Working electrode vs. reference potential [V]",
-                    "Current [A]",
-                    "Cyclic Voltammetry\nNot ohmic corrected",
-                    "Working electrode vs. reference potential [V]",
-                    "Current [A/cm2]",
-                    file_name,
+                    df=df,
+                    x_col="Working electrode vs. reference potential [V]",
+                    y_col="Current [A]",
+                    title="Cyclic Voltammetry\nNot ohmic corrected",
+                    x_label="Working electrode vs. reference potential [V]",
+                    y_label="Current [A/cm2]",
+                    file_name=file_name,
                 )
 
         if "Electrodeposition" in file or "CP" in file:
