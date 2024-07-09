@@ -1004,7 +1004,7 @@ class Experiment:
                     fltOffsetY=0,
                     fltOffsetZ=10,
                 )
-                LOGGER.info(f"Dispensing {dispense} uL of {chemical}")
+                LOGGER.info(f"Dispensing {dispense_volume} uL of {chemical}")
                 # Dispense
                 self.openTron.dispense(
                     strLabwareName=self.labware_well_plate,
@@ -1014,7 +1014,8 @@ class Experiment:
                     strOffsetStart="top",
                     fltOffsetX=0,
                     fltOffsetY=0,
-                    fltOffsetZ=-10,
+                    fltOffsetZ=0,
+                    fltFlowRate=100,
                 )
                 volume_left -= dispense_volume
 
