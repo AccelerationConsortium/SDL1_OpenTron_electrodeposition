@@ -133,61 +133,87 @@ def plot_cv(
             plt.show()
 
         plt.close()
+    except Exception as e:
+        print(f"No KeyError, when it should not be, error: {e}")
+
+
+def plot_log_cv(
+    df, x_col, y_col, title, x_label, y_label, cycle_label=None, file_name=None
+):
+    # Remove rows with NaN values in either x_col or y_col
+    try:
+        df = df.dropna(subset=[x_col, y_col])
+        print(df)
+        # Make column y_col logarithmic
+        df[y_col] = np.log10(df[y_col])
+
+        print(df)
+
+        plt.figure()
+        if cycle_label is not None:
+            plt.scatter(df[x_col], df[y_col], c=df[cycle_label], cmap="viridis")
+            plt.colorbar(label="Cycle")
+        else:
+            plt.plot(df[x_col], df[y_col], "o-")
+        plt.title(title)
+        plt.xlabel(x_label)
+        plt.ylabel(y_label)
+
+        if file_name:
+            plt.savefig(file_name + ".jpg")
+        else:
+            plt.show()
+
+        plt.close()
     except KeyError:
-        print("No KeyError")
+        print("There should be no KeyError, but there is...")
 
 
 # Loop through all .csv files in the folder and plot the Nyquist plot for each file containing "EIS" in the filename. Save plot under the same filename with .jpg extension.
 for file in os.listdir():
     # If both "EIS" and ".csv" are in the filename, read the file and plot the Nyquist plot
     if ".csv" in file:
+        file_name = file.split(".")[0]
+        print(f"Reading {file}")
+
         if "EIS" in file:
-            pass
-            print(f"Reading {file}")
-
-            try:
-                data = pd.read_csv(
-                    file,
-                    sep=",",
-                    header=0,
-                    encoding="utf8",
-                )
-
-                data = rename_columns(data)
-
-                # If there are columns named "Real Impedance" and "Imaginary Impedance" where the value is = 0.0, drop the rows
-                data = data[
-                    (data["Real Impedance"] != 0.0)
-                    & (data["Imaginary Impedance"] != 0.0)
-                ]
-
-                # Take the filename and make it the same but with .jpg extension
-                file_name = file.split(".")[0]
-                plot_eis_nyquist(
-                    data,
-                    "Real Impedance",
-                    "Imaginary Impedance",
-                    "Nyquist plot",
-                    "Real Impedance [Ohm]",
-                    "Imaginary Impedance [Ohm]",
-                    file_name,
-                )
-            except Exception as e:
-                print(f"Could not read {file}, error: {e}")
-
-        if "CV" in file or "Cathodic scan" in file:
-            print(f"Reading {file}")
-
             data = pd.read_csv(
                 file,
                 sep=",",
                 header=0,
                 encoding="utf8",
             )
-            if "Ref CV" in file:
+
+            data = rename_columns(data)
+
+            # If there are columns named "Real Impedance" and "Imaginary Impedance" where the value is = 0.0, drop the rows
+            data = data[
+                (data["Real Impedance"] != 0.0) & (data["Imaginary Impedance"] != 0.0)
+            ]
+
+            # Take the filename and make it the same but with .jpg extension
+
+            plot_eis_nyquist(
+                data,
+                "Real Impedance",
+                "Imaginary Impedance",
+                "Nyquist plot",
+                "Real Impedance [Ohm]",
+                "Imaginary Impedance [Ohm]",
+                file_name,
+            )
+
+        if "CV" in file:
+            data = pd.read_csv(
+                file,
+                sep=",",
+                header=0,
+                encoding="utf8",
+            )
+            if "Ref CV" in file:  # Biologic data
                 surface_pt_wire = 0.0475
                 data["I_avg"] = data["I_avg"] / surface_pt_wire
-                file_name = file.split(".")[0]
+
                 plot_cv(
                     df=data,
                     x_col="Ewe_avg",
@@ -198,9 +224,8 @@ for file in os.listdir():
                     cycle_label="cycle",
                     file_name=file_name,
                 )
-            else:
+            else:  # Admiral data
                 df = rename_columns(data)
-                file_name = file.split(".")[0]
 
                 # Make a column "cycle" and make it so that it starts with 0 and increases by 1 every time the is a local minima in "Working electrode vs. reference potential [V]"
                 df["cycle"] = (
@@ -208,7 +233,6 @@ for file in os.listdir():
                     < df["Working electrode vs. reference potential [V]"].shift()
                 ).cumsum()
 
-                print(df)
                 # Divide column "Current [A]" by sample_surface_area to get it in A/cm^2
                 df["Current [A]"] = df["Current [A]"] / sample_area
 
@@ -222,26 +246,49 @@ for file in os.listdir():
                     file_name=file_name,
                 )
 
-        if "Electrodeposition" in file or "CP" in file:
-            print(f"Reading {file}")
+        if "Cathodic scan" in file:
+            data = pd.read_csv(
+                file,
+                sep=",",
+                header=0,
+                encoding="utf8",
+            )
+            df = rename_columns(data)
 
-            try:
-                data = pd.read_csv(
-                    file,
-                    sep=",",
-                    header=0,
-                    encoding="utf8",
-                )
-                data = rename_columns(data)
-                file_name = file.split(".")[0]
-                plot_cv(
-                    data,
-                    "Time [s]",
-                    "Working electrode vs. reference potential [V]",
-                    "Chrono Potentiommetry\nNot ohmic corrected",
-                    "Time [s]",
-                    "Working electrode vs. reference potential [V]",
-                    file_name,
-                )
-            except Exception as e:
-                print(f"Could not read {file}, error: {e}")
+            # Make a column "cycle" and make it so that it starts with 0 and increases by 1 every time the is a local minima in "Working electrode vs. reference potential [V]"
+            df["cycle"] = (
+                df["Working electrode vs. reference potential [V]"]
+                < df["Working electrode vs. reference potential [V]"].shift()
+            ).cumsum()
+
+            # Divide column "Current [A]" by sample_surface_area to get it in A/cm^2
+            df["Current [A]"] = df["Current [A]"] / sample_area
+
+            plot_log_cv(
+                df=df,
+                x_col="Working electrode vs. reference potential [V]",
+                y_col="Current [A]",
+                title="Cyclic Voltammetry\nNot ohmic corrected",
+                x_label="Working electrode vs. reference potential [V]",
+                y_label="Log(Current) [A/cm2]",
+                file_name=file_name,
+            )
+
+        if "Electrodeposition" in file or "CP" in file:
+            data = pd.read_csv(
+                file,
+                sep=",",
+                header=0,
+                encoding="utf8",
+            )
+            data = rename_columns(data)
+
+            plot_cv(
+                df=data,
+                x_col="Time [s]",
+                y_col="Working electrode vs. reference potential [V]",
+                title="Chrono Potentiommetry\nNot ohmic corrected",
+                x_label="Time [s]",
+                y_label="Working electrode vs. reference potential [V]",
+                file_name=file_name,
+            )
