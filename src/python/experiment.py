@@ -525,6 +525,8 @@ class Experiment:
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
+        # XXX TODO Make a reducing scan here to reduce the surface so that it isn't oxidized
+
     def perform_potentiostat_electrodeposition(self, seconds: int = 10):
         """Perform electrodeposition of the sample
 
@@ -1530,6 +1532,84 @@ class Experiment:
                 )
         else:
             self.metadata.to_csv("metadata.csv", index=False)
+
+    # XXX Write and implement this function
+    def check_chemical_volumes(
+        self,
+        chemicals_to_mix: dict,
+        well_volume: float,
+        flushing_sequence: list,
+        cleaning_cartridge_sequence: list,
+        dispense_ml_electrolyte: float,
+        electrolyte: str = "KOH",
+    ):
+        """Check if the total volume of chemicals to mix, electrolyte and cleaning solution is less than the total volume of the well
+
+        Args:
+            chemicals_to_mix (dict): Form must be: {"chemical_name": volume}
+        Raises:
+            ValueError: If the total volume of chemicals to mix, electrolyte and cleaning solution is greater than the total volume of the well
+        """
+
+        list_of_chemicals = [
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_HCl": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Ni": 0.1},
+            {"Fe": 0.1},
+            {"Cr": 0.1},
+            {"Mn": 0.1},
+            {"Co": 0.1},
+            {"Zn": 0.1},
+            {"Cu": 0.1},
+            {"NH4OH": 0.1},
+            {"NaCi": 0.1},
+            {"Waste": self.well_volume},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_HCl": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Cartridge_H2O": 15},
+            {"Waste": 15},
+            {"Cartridge_HCl": 15},
+            {"Waste": 15},
+            {"Cartridge_H2O": 15},
+            {"Waste": 15},
+            {"KOH": dispense_ml_electrolyte},
+            {"Waste": dispense_ml_electrolyte},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_HCl": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Flush_tool_H2O": 0.5},
+            {"Waste": 0.5},
+            {"Cartridge_H2O": 15},
+            {"Waste": 15},
+            {"Cartridge_HCl": 15},
+            {"Waste": 15},
+            {"Cartridge_H2O": 15},
+            {"Waste": 15},
+        ]
+        # Read dictionary of chemicals in stock solutions in "chemicals_left.txt"
+        with open("chemicals_left.txt", "r") as f:
+            chemicals_left = json.load(f)
 
     def run_experiment(
         self,

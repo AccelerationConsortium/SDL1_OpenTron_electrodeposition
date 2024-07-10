@@ -1,0 +1,1 @@
+"{'Ni': 20, 'Fe': 20, 'Cr': 20, 'Mn': 20, 'Co': 20, 'Zn': 20, 'Cu': 20, 'NH4OH': 20, 'NaCi': 20, 'KOH': 20, 'Waste': 4000, 'Flush_tool_H2O': 450, 'Flush_tool_HCl': 450; 'Cartidge_H2O': 450; 'Cartridge_HCl': 450}"

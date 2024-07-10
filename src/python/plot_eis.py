@@ -143,21 +143,41 @@ def plot_log_cv(
     # Remove rows with NaN values in either x_col or y_col
     try:
         df = df.dropna(subset=[x_col, y_col])
-        print(df)
-        # Make column y_col logarithmic
-        df[y_col] = np.log10(df[y_col])
 
-        print(df)
+        fig, axs = plt.subplots(
+            1, 2, figsize=(12, 5)
+        )  # Create a figure with two subplots
 
-        plt.figure()
+        # Plot original data
         if cycle_label is not None:
-            plt.scatter(df[x_col], df[y_col], c=df[cycle_label], cmap="viridis")
-            plt.colorbar(label="Cycle")
+            im = axs[0].scatter(df[x_col], df[y_col], c=df[cycle_label], cmap="viridis")
+            axs[0].colorbar(im, label="Cycle")
         else:
-            plt.plot(df[x_col], df[y_col], "o-")
-        plt.title(title)
-        plt.xlabel(x_label)
-        plt.ylabel(y_label)
+            axs[0].plot(df[x_col], df[y_col], "o-")
+        axs[0].set_title(title)
+        axs[0].set_xlabel(x_label)
+        axs[0].set_ylabel(y_label)
+
+        # Plot x_col vs log_current
+        if cycle_label is not None:
+            axs[1].set_yscale("log")
+            im2 = axs[1].scatter(
+                df[x_col],
+                np.abs(df[y_col]),
+                c=df[cycle_label],
+                cmap="viridis",
+            )
+            axs[1].colorbar(im2, label="Cycle")
+        else:
+
+            axs[1].plot(df[x_col], np.abs(df[y_col]), "o-")
+        axs[1].set_title(f"Cathodic CV scan\nLogarithmic scale\n{file_name}")
+        axs[1].set_xlabel(x_label)
+        axs[1].set_ylabel("log(current) [A/cm2]")
+        axs[1].set_yscale("log")
+        axs[1].grid()
+        # axs[1].yaxis.set_view_interval(0, np.log(-1), ignore=False)
+        plt.tight_layout()  # Adjust subplots to fit into the figure area
 
         if file_name:
             plt.savefig(file_name + ".jpg")
@@ -270,7 +290,7 @@ for file in os.listdir():
                 y_col="Current [A]",
                 title="Cyclic Voltammetry\nNot ohmic corrected",
                 x_label="Working electrode vs. reference potential [V]",
-                y_label="Log(Current) [A/cm2]",
+                y_label="Current [A/cm2]",
                 file_name=file_name,
             )
 
