@@ -37,10 +37,11 @@ path = os.path.join(DATA_PATH, "src", "opentron_labware", "nis_4_tiprack_1ul.jso
 
 
 class Experiment:
+
     def __init__(
         self,
         well_volume: float = 3.0,
-        cleaning_station_volume: float = 4,
+        cleaning_station_volume: float = 6,
         openTron_IP: str = "100.67.86.197",
         openTron_pipette_name: str = "p1000_single_gen2",
         arduino_usb_name: str = "CH340",
@@ -525,7 +526,29 @@ class Experiment:
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
-        # XXX TODO Make a reducing scan here to reduce the surface so that it isn't oxidized
+        ### 11 - Perform CV to reduce the surface again so that it looks nice and not rusty
+        LOGGER.info("Performing electrochemical test: 11 - Cyclic voltammetry")
+        self.admiral.setup_cyclic_voltammetry(
+            startVoltage=0.8,
+            firstVoltageLimit=-0.2,
+            secondVoltageLimit=0,
+            endVoltage=-0.2,
+            scanRate=0.01,
+            samplingInterval=0.2,
+            cycles=2,
+        )
+        self.admiral.run_experiment()
+        ac_data, dc_data = self.admiral.get_data()
+        # Correct DC data for ohmic resistance
+        dc_data = self.correct_for_ohmic_resistance(
+            df=dc_data,
+            ohmic_resistance=self.ohmic_resistance,
+            ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
+        )
+        # Save data
+        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 12 CV 2x 10mV s-1"
+        self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
+        self.admiral.clear_data()
 
     def perform_potentiostat_electrodeposition(self, seconds: int = 10):
         """Perform electrodeposition of the sample
@@ -1537,18 +1560,17 @@ class Experiment:
     def check_chemical_volumes(
         self,
         chemicals_to_mix: dict,
-        well_volume: float,
-        flushing_sequence: list,
-        cleaning_cartridge_sequence: list,
         dispense_ml_electrolyte: float,
         electrolyte: str = "KOH",
     ):
-        """Check if the total volume of chemicals to mix, electrolyte and cleaning solution is less than the total volume of the well
+        """Check if the total volume of chemicals to mix, electrolyte and
+        cleaning solution is less than the total volume of the well
 
         Args:
             chemicals_to_mix (dict): Form must be: {"chemical_name": volume}
         Raises:
-            ValueError: If the total volume of chemicals to mix, electrolyte and cleaning solution is greater than the total volume of the well
+            ValueError: If the total volume of chemicals to mix, electrolyte
+            and cleaning solution is greater than the total volume of the well
         """
 
         list_of_chemicals = [
@@ -1562,16 +1584,6 @@ class Experiment:
             {"Waste": 0.5},
             {"Flush_tool_H2O": 0.5},
             {"Waste": 0.5},
-            {"Ni": 0.1},
-            {"Fe": 0.1},
-            {"Cr": 0.1},
-            {"Mn": 0.1},
-            {"Co": 0.1},
-            {"Zn": 0.1},
-            {"Cu": 0.1},
-            {"NH4OH": 0.1},
-            {"NaCi": 0.1},
-            {"Waste": self.well_volume},
             {"Flush_tool_H2O": 0.5},
             {"Waste": 0.5},
             {"Flush_tool_H2O": 0.5},
@@ -1582,13 +1594,13 @@ class Experiment:
             {"Waste": 0.5},
             {"Flush_tool_H2O": 0.5},
             {"Waste": 0.5},
-            {"Cartridge_H2O": 15},
-            {"Waste": 15},
-            {"Cartridge_HCl": 15},
-            {"Waste": 15},
-            {"Cartridge_H2O": 15},
-            {"Waste": 15},
-            {"KOH": dispense_ml_electrolyte},
+            {"Cartridge_H2O": self.cleaning_station_volume},
+            {"Waste": self.cleaning_station_volume},
+            {"Cartridge_HCl": self.cleaning_station_volume},
+            {"Waste": self.cleaning_station_volume},
+            {"Cartridge_H2O": self.cleaning_station_volume},
+            {"Waste": self.cleaning_station_volume},
+            {electrolyte: dispense_ml_electrolyte},
             {"Waste": dispense_ml_electrolyte},
             {"Flush_tool_H2O": 0.5},
             {"Waste": 0.5},
@@ -1600,16 +1612,60 @@ class Experiment:
             {"Waste": 0.5},
             {"Flush_tool_H2O": 0.5},
             {"Waste": 0.5},
-            {"Cartridge_H2O": 15},
-            {"Waste": 15},
-            {"Cartridge_HCl": 15},
-            {"Waste": 15},
-            {"Cartridge_H2O": 15},
-            {"Waste": 15},
+            {"Cartridge_H2O": self.cleaning_station_volume},
+            {"Waste": self.cleaning_station_volume},
+            {"Cartridge_HCl": self.cleaning_station_volume},
+            {"Waste": self.cleaning_station_volume},
+            {"Cartridge_H2O": self.cleaning_station_volume},
+            {"Waste": self.cleaning_station_volume},
         ]
-        # Read dictionary of chemicals in stock solutions in "chemicals_left.txt"
-        with open("chemicals_left.txt", "r") as f:
-            chemicals_left = json.load(f)
+
+        # Add chemicals_to_mix to list_of_chemicals
+        for chemical, volume in chemicals_to_mix.items():
+            list_of_chemicals.append({chemical: volume})
+
+        # Add the waste amount corresponding to chemicals_to_mix
+        # to list_of_chemicals as waste
+        list_of_chemicals.append({"Waste": self.well_volume})
+
+        # Trigger to flip a warning further down in the code
+        trigger_stop = False
+
+        import json
+
+        try:
+            with open("chemicals_left.txt", "r") as f:
+                # Load the dictionary of chemicals in stock solutions
+                chemicals_left = json.load(f)
+
+                # Deduct each of the volumes listed in list_of_chemicals
+                # from chemicals_left.
+                for chemical in list_of_chemicals:
+                    for key, value in chemical.items():
+                        chemicals_left[key] -= value
+                        if chemicals_left[key] <= 0:
+                            trigger_stop = True
+                            LOGGER.warning(
+                                f"{key} will run out of stock solution. Please refill the stock solution."
+                            )
+
+        except FileNotFoundError:
+            LOGGER.error("Error: 'chemicals_left.txt' file not found.")
+            raise RuntimeError("Error: 'chemicals_left.txt' file not found.")
+
+        if trigger_stop:
+            # Throw exception if any of the chemicals
+            # will run out of stock solution
+            raise ValueError(
+                "One or more chemicals will run out of stock solution. Please refill the stock solution."
+            )
+        else:
+            LOGGER.info("All chemicals have enough stock solution.")
+
+            # Save the updated dictionary of chemicals in stock
+            # solutions to "chemicals_left.txt"
+            with open("chemicals_left.txt", "w") as f:
+                json.dump(chemicals_left, f)
 
     def run_experiment(
         self,
@@ -1665,6 +1721,14 @@ class Experiment:
         LOGGER.info(f"Electrodeposition time: {electrodeposition_time} seconds")
         LOGGER.info(f"Cleaning cartridge volume: {self.cleaning_station_volume} ml")
 
+        # Check that there is enough stock solution for a run
+        self.check_chemical_volumes(
+            chemicals_to_mix=chemicals_to_mix,
+            dispense_ml_electrolyte=dispense_ml_electrolyte,
+            electrolyte=electrolyte,
+        )
+
+        # Set temperature of the two heating plates
         self.arduino.set_temperature(0, 0)
         self.arduino.set_temperature(1, electrodeposition_temperature)
 
@@ -1672,6 +1736,7 @@ class Experiment:
         with open("last_processed_well.txt", "w") as f:
             f.write(str(self.well_number))
 
+        # Home robot and turn on light
         self.openTron.lights(True)
         self.openTron.homeRobot()
 
@@ -1685,7 +1750,7 @@ class Experiment:
             total_volume=self.well_volume,
         )
 
-        # Stirring of chemicals
+        # Stirring of dispensed chemicals
         LOGGER.info(
             f"Stirring chemicals for {chemical_ultrasound_mixing_time} seconds."
         )
@@ -1707,23 +1772,23 @@ class Experiment:
         self.cleaning(well_number=self.well_number, sleep_time=0.1)
 
         # Dispense electrolyte
-        # self.dispense_electrolyte(
-        #     volume=dispense_ml_electrolyte,
-        #     chemical=electrolyte,
-        #     well_number=self.well_number,
-        # )
+        self.dispense_electrolyte(
+            volume=dispense_ml_electrolyte,
+            chemical=electrolyte,
+            well_number=self.well_number,
+        )
 
         # Make sure the relay is off to make contact with the reference electrode
         self.arduino.set_relay_off(8)
 
         # Perform electrochemical testing
-        # self.perform_electrochemical_testing(well_number=self.well_number)
+        self.perform_electrochemical_testing(well_number=self.well_number)
 
         # Disconnect admiral potentiostat
         self.close_potentiostat_admiral()
 
         # Clean the well
-        # self.cleaning(well_number=self.well_number, sleep_time=0, use_acid=False)
+        self.cleaning(well_number=self.well_number, sleep_time=0, use_acid=False)
 
         # Set timestamp_end of metadata
         self.metadata.loc[0, "timestamp_end"] = datetime.now().strftime(
