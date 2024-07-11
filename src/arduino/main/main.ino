@@ -116,21 +116,25 @@ void setup() {
     lcd.setCursor(0, 0);
     lcd.print("Quad relay not connected");
     Serial.println("Check connections to Qwiic Relay 0-3.");
+    delay(2000);
   }
   if (!solidStateRelay.begin()) {
     lcd.setCursor(0, 0);
     lcd.print("SolStateRelay not connected");
     Serial.println("Check connections to solid state relay.");
+    delay(2000);
   }
   if (!quadRelay2.begin()) {
     lcd.setCursor(0, 0);
     lcd.print("Quad relay not connected");
     Serial.println("Check connections to Qwiic Relay 4-7.");
+    delay(2000);
   }
   if (!singleRelay3.begin()) {
     lcd.setCursor(0, 0);
     lcd.print("Single relay not connected");
     Serial.println("Check connections to Qwiic Relay 8.");
+    delay(2000);
   }
 
   /*
