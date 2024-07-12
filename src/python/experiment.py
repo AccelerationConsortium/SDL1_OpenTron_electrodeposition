@@ -1507,6 +1507,8 @@ class Experiment:
                 well_number = int(f.read())
             # Update well number
             well_number += 1
+        except ValueError:
+            well_number = 0
         except FileNotFoundError:
             well_number = 0
 
@@ -1622,7 +1624,7 @@ class Experiment:
 
         # Add chemicals_to_mix to list_of_chemicals
         for chemical, volume in chemicals_to_mix.items():
-            list_of_chemicals.append({chemical: volume})
+            list_of_chemicals.append({chemical: volume*self.well_volume})
 
         # Add the waste amount corresponding to chemicals_to_mix
         # to list_of_chemicals as waste
@@ -1637,6 +1639,7 @@ class Experiment:
             with open("chemicals_left.txt", "r") as f:
                 # Load the dictionary of chemicals in stock solutions
                 chemicals_left = json.load(f)
+                LOGGER.info(f"Chemicals left before experiment: {chemicals_left}")
 
                 # Deduct each of the volumes listed in list_of_chemicals
                 # from chemicals_left.
@@ -1648,6 +1651,7 @@ class Experiment:
                             LOGGER.warning(
                                 f"{key} will run out of stock solution. Please refill the stock solution."
                             )
+                LOGGER.info(f"Chemicals left after experiment: {chemicals_left}")
 
         except FileNotFoundError:
             LOGGER.error("Error: 'chemicals_left.txt' file not found.")
@@ -1691,6 +1695,12 @@ class Experiment:
             chemical_ultrasound_mixing_time (int, optional): Time to mix chemicals with ultrasound in seconds. Defaults to 30.
             chemical_rest_time (int, optional): Time to rest after mixing chemicals in seconds. Defaults to 300.
         """
+        # Check that there is enough stock solution for a run
+        self.check_chemical_volumes(
+            chemicals_to_mix=chemicals_to_mix,
+            dispense_ml_electrolyte=dispense_ml_electrolyte,
+            electrolyte=electrolyte,
+        )
 
         if well_number is not None:
             self.well_number = well_number
@@ -1721,20 +1731,9 @@ class Experiment:
         LOGGER.info(f"Electrodeposition time: {electrodeposition_time} seconds")
         LOGGER.info(f"Cleaning cartridge volume: {self.cleaning_station_volume} ml")
 
-        # Check that there is enough stock solution for a run
-        self.check_chemical_volumes(
-            chemicals_to_mix=chemicals_to_mix,
-            dispense_ml_electrolyte=dispense_ml_electrolyte,
-            electrolyte=electrolyte,
-        )
-
         # Set temperature of the two heating plates
         self.arduino.set_temperature(0, 0)
         self.arduino.set_temperature(1, electrodeposition_temperature)
-
-        # Save well number
-        with open("last_processed_well.txt", "w") as f:
-            f.write(str(self.well_number))
 
         # Home robot and turn on light
         self.openTron.lights(True)

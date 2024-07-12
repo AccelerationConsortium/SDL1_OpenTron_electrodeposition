@@ -68,15 +68,15 @@ time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 
 ### Priming of pumps
-experiment = Experiment(
-    well_volume=2.5,
-    cleaning_station_volume=6,
-    openTron_IP="100.67.86.197",
-    arduino_usb_name="CH340",
-)
-experiment.arduino.set_temperature(1, 35)
+# experiment = Experiment(
+#     well_volume=2.5,
+#     cleaning_station_volume=6,
+#     openTron_IP="100.67.86.197",
+#     arduino_usb_name="CH340",
+# )
+# experiment.arduino.set_temperature(1, 35)
 # experiment.cleaning(8)
-experiment.__del__()
+
 
 logging.info("Sleep 600 seconds to heat up the well plate to 35C")
 # time.sleep(600)
@@ -88,7 +88,9 @@ logging.info("Sleep 600 seconds to heat up the well plate to 35C")
 # experiment.arduino.dispense_ml(pump=4, volume=4)
 # experiment.arduino.dispense_ml(pump=3, volume=4)
 
-for i in range(0, 1):
+# experiment.__del__()
+
+for i in range(0, 4):
     logging.info(f"\n\n\nStarting experiment {i}")
     experiment = Experiment(
         well_volume=2.5,
