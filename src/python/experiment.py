@@ -118,6 +118,8 @@ class Experiment:
             LOGGER.error("Error: 'chemicals_left.txt' file not found.")
             raise RuntimeError("Error: 'chemicals_left.txt' file not found.")
 
+        self.electrode_is_on_pipette = False
+
     def initiate_arduino(
         self,
         ARDUINO_NAME: str = "CH340",
@@ -280,7 +282,7 @@ class Experiment:
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
         self.admiral.clear_data()
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 0 CP 200 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 0 CP 200 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
 
         ### 1 - Perform CV
@@ -297,7 +299,7 @@ class Experiment:
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 1 CV 25x 200mV s-1"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 1 CV 25x 200mV s-1"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -315,7 +317,7 @@ class Experiment:
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 2 CV 2x 10mV s-1"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 2 CV 2x 10mV s-1"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -334,7 +336,7 @@ class Experiment:
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 3 EIS"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 3 EIS"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         # Find ohmic resistance
         self.ohmic_resistance = self.find_ohmic_resistance(
@@ -366,7 +368,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 4 CP 100 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 4 CP 100 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -388,7 +390,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 5 CP 50 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 5 CP 50 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -410,7 +412,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 6 CP 20 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 6 CP 20 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -432,7 +434,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 7 CP 10 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 7 CP 10 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -466,7 +468,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 8 CP 5 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 8 CP 5 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -488,7 +490,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 9 CP 2 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 9 CP 2 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -510,7 +512,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 10 CP 1 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 10 CP 1 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -534,7 +536,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 11 CV 2x 10mV s-1"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 11 CV 2x 10mV s-1"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -558,7 +560,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 12 CV 2x 10mV s-1"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 12 CV 2x 10mV s-1"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -657,7 +659,135 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data,
             ac_data=ac_data,
-            file_name=DATA_PATH + "\\" + str(self.unique_id) + " -1 Electrodeposition",
+            file_name=DATA_PATH
+            + "\\data\\"
+            + str(self.unique_id)
+            + " -1 Electrodeposition",
+        )
+
+    def emergency_parking_of_electrode(self, well_number: int):
+        """Emergency park the electrode"""
+        LOGGER.warning("Emergency parking of the electrode")
+
+        # Go straight up from the well
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_well_plate,
+            strWellName=wells[well_number],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
+            intSpeed=50,  # mm/s
+        )
+        # Go to cleaning cartridge
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_cleaning_cartridge,
+            strWellName="A2",
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
+            intSpeed=50,  # mm/s
+        )
+        # Go down in well
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_cleaning_cartridge,
+            strWellName="A2",
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=-33,
+            intSpeed=10,  # mm/s
+        )
+
+        # Flush the electrode in the cleaning station/cartridge
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_H2O"],
+            volume=self.cleaning_station_volume,
+        )
+        # Update chemical volumes left
+        self.chemical_volumes_left["Cartridge_H2O"] -= self.cleaning_station_volume
+
+        # Drain
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_Drain"],
+            volume=self.cleaning_station_volume + 1,
+        )
+        # Update chemical volumes left
+        self.chemical_volumes_left["Waste"] -= self.cleaning_station_volume
+
+        # Flush with HCl
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_HCl"],
+            volume=self.cleaning_station_volume,
+        )
+        self.chemical_volumes_left["Cartridge_HCl"] -= self.cleaning_station_volume
+        self.arduino.set_ultrasound_on(0, 15)
+
+        # Drain
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_Drain"],
+            volume=self.cleaning_station_volume + 1,
+        )
+        # Update chemical volumes left
+        self.chemical_volumes_left["Waste"] -= self.cleaning_station_volume
+
+        # Flush with water
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_H2O"],
+            volume=self.cleaning_station_volume,
+        )
+        # Update chemical volumes left
+        self.chemical_volumes_left["Cartridge_H2O"] -= self.cleaning_station_volume
+        self.arduino.set_ultrasound_on(0, 5)
+
+        # Drain
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_Drain"],
+            volume=self.cleaning_station_volume + 1,
+        )
+        # Update chemical volumes left
+        self.chemical_volumes_left["Waste"] -= self.cleaning_station_volume
+
+        # Save the volumes left to file
+        self.save_chemical_volumes_left()
+
+        # Go straight up
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_cleaning_cartridge,
+            strWellName="A2",
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            fltOffsetX=0,
+            fltOffsetY=0,
+            fltOffsetZ=20,
+            intSpeed=50,  # mm/s
+        )
+        # Go to tool rack
+        self.openTron.moveToWell(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["OER_electrode"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="top",
+            fltOffsetX=tool_x_offset["OER_electrode"],
+            fltOffsetY=tool_y_offset["OER_electrode"],
+            fltOffsetZ=50,
+            intSpeed=50,  # mm/s
+        )
+        # Drop OER electrode
+        self.openTron.dropTip(
+            strLabwareName=self.labware_tool_rack,
+            strWellName=labware_tools["OER_electrode"],
+            strPipetteName=self.openTron_pipette_name,
+            strOffsetStart="bottom",
+            fltOffsetX=tool_x_offset["OER_electrode"],
+            fltOffsetY=tool_y_offset["OER_electrode"],
+            fltOffsetZ=tool_z_dropoff["OER_electrode"],
+            boolHomeAfter=False,
+            boolAlternateDropLocation=False,
         )
 
     def save_chemical_volumes_left(self):
@@ -1467,6 +1597,10 @@ class Experiment:
             fltOffsetY=tool_y_offset["OER_electrode"],
             fltOffsetZ=tool_z_offset["OER_electrode"],
         )
+
+        # Set the variable to indicate that the electrode is on the pipette
+        self.electrode_is_on_pipette = True
+
         # Go to well
         self.openTron.moveToWell(
             strLabwareName=self.labware_well_plate,
@@ -1626,6 +1760,9 @@ class Experiment:
             boolAlternateDropLocation=False,
         )
 
+        # Set the variable to indicate that the electrode is no more on the pipette
+        self.electrode_is_on_pipette = False
+
     def find_ohmic_resistance(
         self, df: pd.DataFrame, column_name_imag: str, column_name_real
     ) -> float:
@@ -1660,8 +1797,9 @@ class Experiment:
         return ohmic_resistance
 
     def __del__(self):
-        # Turn on light
-        # self.openTron.lights(True)
+        if self.electrode_is_on_pipette is True:
+            self.emergency_parking_of_electrode(well_number=self.well_number)
+
         # Home robot
         self.openTron.homeRobot()
         # Turn off light
@@ -1871,14 +2009,14 @@ class Experiment:
         )
 
         # Send an email stating that the job i starting
+        if well_number is not None:
+            self.well_number = well_number
+            self.metadata.loc[0, "well_number"] = well_number
+
         message = f"""Starting experiment {self.unique_id} 
         in well {self.well_number}
         with chemicals {chemicals_to_mix}."""
         self.send_mail(message, "openTron experiment starting", ["nis@dosan.dk"])
-
-        if well_number is not None:
-            self.well_number = well_number
-            self.metadata.loc[0, "well_number"] = well_number
 
         self.metadata.loc[0, "chemicals_to_mix"] = str(chemicals_to_mix)
         self.metadata.loc[0, "total_volume [ml]"] = self.well_volume
