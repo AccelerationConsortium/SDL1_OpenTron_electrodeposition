@@ -615,7 +615,7 @@ class Experiment:
             dc_data=dc_data,
             ac_data=ac_data,
             file_name=DATA_PATH
-            + "\\"
+            + "\\data\\"
             + str(self.unique_id)
             + " -3 OCV scan 1x 10mV s-1",
         )
@@ -639,7 +639,7 @@ class Experiment:
             dc_data=dc_data,
             ac_data=ac_data,
             file_name=DATA_PATH
-            + "\\"
+            + "\\data\\"
             + str(self.unique_id)
             + " -2 Cathodic scan 1x 10mV s-1",
         )
@@ -873,7 +873,7 @@ class Experiment:
                     # Save the data
                     filepath = (
                         DATA_PATH
-                        + "\\"
+                        + "\\data\\"
                         + str(self.unique_id)
                         + f" Ref CV{string_to_add}.csv"
                     )
@@ -901,7 +901,7 @@ class Experiment:
                     # Save the data
                     filepath = (
                         DATA_PATH
-                        + "\\"
+                        + "\\data\\"
                         + str(self.unique_id)
                         + f" Ref EIS{string_to_add}.csv"
                     )
@@ -1266,7 +1266,7 @@ class Experiment:
                 volume_left -= dispense_volume
 
                 # Update the volume of the chemical left
-                self.chemical_volumes_left[chemical] -= dispense_volume
+                self.chemical_volumes_left[chemical] -= dispense_volume / 1000
 
                 # Save the volumes of the chemicals left
                 self.save_chemical_volumes_left()
@@ -1538,7 +1538,7 @@ class Experiment:
             volume_left -= dispense_volume
 
             # Update chemical volumes left
-            self.chemical_volumes_left[chemical] -= dispense_volume
+            self.chemical_volumes_left[chemical] -= dispense_volume / 1000
 
             # Save the volumes left to file
             self.save_chemical_volumes_left()
