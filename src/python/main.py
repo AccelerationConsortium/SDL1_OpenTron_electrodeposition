@@ -5,7 +5,7 @@ from experiment import Experiment
 import time
 
 # Folder where data and log-file will be saved
-DATA_PATH = ""
+DATA_PATH = "\\data\\"
 NAME_OF_ARDUINO = "CH340"  # Arduino name on Windows for auto finding COM port
 chemicals_to_mix = [
     # {

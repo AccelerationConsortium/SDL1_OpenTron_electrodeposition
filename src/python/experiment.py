@@ -280,7 +280,7 @@ class Experiment:
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
         self.admiral.clear_data()
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 0 CP 200 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 0 CP 200 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
 
         ### 1 - Perform CV
@@ -297,7 +297,7 @@ class Experiment:
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 1 CV 25x 200mV s-1"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 1 CV 25x 200mV s-1"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -315,7 +315,7 @@ class Experiment:
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 2 CV 2x 10mV s-1"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 2 CV 2x 10mV s-1"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -334,7 +334,7 @@ class Experiment:
         self.admiral.run_experiment()
         ac_data, dc_data = self.admiral.get_data()
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 3 EIS"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 3 EIS"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         # Find ohmic resistance
         self.ohmic_resistance = self.find_ohmic_resistance(
@@ -366,7 +366,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 4 CP 100 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 4 CP 100 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -388,7 +388,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 5 CP 50 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 5 CP 50 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -410,7 +410,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 6 CP 20 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 6 CP 20 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -432,7 +432,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 7 CP 10 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 7 CP 10 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -466,7 +466,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 8 CP 5 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 8 CP 5 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -488,7 +488,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 9 CP 2 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 9 CP 2 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -510,7 +510,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 10 CP 1 mA cm-2"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 10 CP 1 mA cm-2"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -534,7 +534,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 11 CV 2x 10mV s-1"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 11 CV 2x 10mV s-1"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -558,7 +558,7 @@ class Experiment:
             ohmic_correction_factor=OHMIC_CORRECTION_FACTOR,
         )
         # Save data
-        filepath = DATA_PATH + "\\" + str(self.unique_id) + " 12 CV 2x 10mV s-1"
+        filepath = DATA_PATH + "\\data\\" + str(self.unique_id) + " 12 CV 2x 10mV s-1"
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
@@ -657,7 +657,10 @@ class Experiment:
         self.store_data_admiral(
             dc_data=dc_data,
             ac_data=ac_data,
-            file_name=DATA_PATH + "\\" + str(self.unique_id) + " -1 Electrodeposition",
+            file_name=DATA_PATH
+            + "\\data\\"
+            + str(self.unique_id)
+            + " -1 Electrodeposition",
         )
 
     def save_chemical_volumes_left(self):
