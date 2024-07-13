@@ -1,1 +1,1 @@
-{"Ni": 20.0, "Fe": 20.0, "Cr": 17.5, "Mn": 20.0, "Co": 17.5, "Zn": 20.0, "Cu": 20.0, "NH4OH": 20.0, "NaCi": 20.0, "KOH": 14, "Waste": 3402.0, "Flush_tool_H2O": 438.0, "Flush_tool_HCl": 447.0, "Cartridge_H2O": 402, "Cartridge_HCl": 426}
+{"Ni": 18.0, "Fe": 18.0, "Cr": 18, "Mn": 16.0, "Co": 15, "Zn": 18.0, "Cu": 18.0, "NH4OH": 16.0, "NaCi": 20.0, "KOH": 18, "Waste": 3102.0, "Flush_tool_H2O": 438.0, "Flush_tool_HCl": 447.0, "Cartridge_H2O": 300, "Cartridge_HCl": 426}

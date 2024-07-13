@@ -8,17 +8,17 @@ import time
 DATA_PATH = ""
 NAME_OF_ARDUINO = "CH340"  # Arduino name on Windows for auto finding COM port
 chemicals_to_mix = [
-    {
-        "Ni": 0,
-        "Fe": 0,
-        "Cr": 1,
-        "Mn": 0,
-        "Co": 0,
-        "Zn": 0,
-        "Cu": 0,
-        "NH4OH": 0,
-        "NaCi": 0,
-    },
+    # {
+    #     "Ni": 0,
+    #     "Fe": 0,
+    #     "Cr": 1,
+    #     "Mn": 0,
+    #     "Co": 0,
+    #     "Zn": 0,
+    #     "Cu": 0,
+    #     "NH4OH": 0,
+    #     "NaCi": 0,
+    # },
     {
         "Ni": 0,
         "Fe": 0,
@@ -67,7 +67,7 @@ logging.basicConfig(
 time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 
-### Priming of pumps
+## Priming of pumps
 # experiment = Experiment(
 #     well_volume=2.5,
 #     cleaning_station_volume=6,
@@ -75,7 +75,7 @@ time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 #     arduino_usb_name="CH340",
 # )
 # experiment.arduino.set_temperature(1, 35)
-# experiment.cleaning(8)
+# experiment.cleaning(1)
 
 
 logging.info("Sleep 600 seconds to heat up the well plate to 35C")
@@ -90,7 +90,8 @@ logging.info("Sleep 600 seconds to heat up the well plate to 35C")
 
 # experiment.__del__()
 
-for i in range(0, 4):
+
+for i in range(0, 3):
     logging.info(f"\n\n\nStarting experiment {i}")
     experiment = Experiment(
         well_volume=2.5,
