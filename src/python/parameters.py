@@ -13,7 +13,7 @@ peristaltic_pump_content = {
     "Flush_tool_H2O": 1,
     "Flush_tool_HCl": 2,
     "Cartridge_Drain": 3,
-    "Cartidge_H2O": 4,
+    "Cartridge_H2O": 4,
     "Cartridge_HCl": 5,
 }
 

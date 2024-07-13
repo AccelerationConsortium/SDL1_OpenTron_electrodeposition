@@ -3,6 +3,9 @@ import time
 from datetime import datetime
 import sys
 import json
+import smtplib
+from email.mime.text import MIMEText
+import json
 import os
 import pandas as pd
 from biologic import connect, BANDWIDTH, I_RANGE
@@ -29,6 +32,7 @@ from parameters import (
     sample_surface_area,
     current_at_sample,
     OHMIC_CORRECTION_FACTOR,
+    peristaltic_pump_content,
 )
 
 LOGGER = logging.getLogger(__name__)
@@ -105,6 +109,14 @@ class Experiment:
         self.well_number = self.load_well_number()
 
         self.save_metadata()
+
+        # Load the chemicals left from the last run
+        try:
+            with open("chemicals_left.txt", "r") as f:
+                self.chemical_volumes_left = json.load(f)
+        except FileNotFoundError:
+            LOGGER.error("Error: 'chemicals_left.txt' file not found.")
+            raise RuntimeError("Error: 'chemicals_left.txt' file not found.")
 
     def initiate_arduino(
         self,
@@ -550,6 +562,33 @@ class Experiment:
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
+    def send_mail(self, msg: str, title: str, receivers: list):
+        """Send an email to the specified receivers
+
+        Args:
+            msg (str): Message to send
+            title (str): Title of the email
+            receivers (list): List of receivers email addresses
+        """
+        smtp = smtplib.SMTP("smtp.simply.com", port=587)
+
+        sender = "robot@dosan.dk"
+
+        message = MIMEText(f"{msg}")
+        message["Subject"] = title
+        message["From"] = "robot@dosan.dk"
+        message["To"] = "Nis"
+
+        try:
+            smtp.ehlo()  # send the extended hello to our server
+            smtp.starttls()  # tell server we want to communicate with TLS encryption
+            smtp.login("robot@dosan.dk", "abc12345678")  # login to our email server
+            smtp.sendmail(sender, receivers, message.as_string())
+            smtp.quit()  # close the connection
+            logging.info("Successfully sent email")
+        except Exception:
+            logging.warning("Error: unable to send email")
+
     def perform_potentiostat_electrodeposition(self, seconds: int = 10):
         """Perform electrodeposition of the sample
 
@@ -585,7 +624,7 @@ class Experiment:
             startVoltage=0,  # XXX Can this be OCV somehow?
             firstVoltageLimit=0.5,
             secondVoltageLimit=-10,
-            endVoltage=0.5,  # XXX Can this be OCV somehow?
+            endVoltage=0.5,
             scanRate=0.1,
             samplingInterval=0.2,
             cycles=1,
@@ -620,6 +659,13 @@ class Experiment:
             ac_data=ac_data,
             file_name=DATA_PATH + "\\" + str(self.unique_id) + " -1 Electrodeposition",
         )
+
+    def save_chemical_volumes_left(self):
+        """Save the volumes of the chemicals left in the stock solutions"""
+        LOGGER.debug("Saving the volumes of the chemicals left")
+
+        with open("chemicals_left.txt", "w") as f:
+            json.dump(self.chemical_volumes_left, f)
 
     def perform_potentiostat_reference_measurement(self, string_to_add: str = ""):
         """Perform reference electrode measurement
@@ -810,7 +856,9 @@ class Experiment:
         )
 
         # Drain to avoid overflow
-        self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Flush_tool_Drain"], volume=1
+        )  # ml to dispense
 
         # Go a little deeper
         self.openTron.moveToWell(
@@ -825,7 +873,9 @@ class Experiment:
         )
 
         # Drain to avoid overflow
-        self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Flush_tool_Drain"], volume=1
+        )  # ml to dispense
 
         # Go a little deeper
         self.openTron.moveToWell(
@@ -839,7 +889,9 @@ class Experiment:
             intSpeed=50,  # mm/s
         )
         # Drain to avoid overflow
-        self.arduino.dispense_ml(pump=0, volume=1)  # ml to dispense
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Flush_tool_Drain"], volume=1
+        )  # ml to dispense
 
         # Go to deepest position
         self.openTron.moveToWell(
@@ -854,31 +906,70 @@ class Experiment:
         )
 
         # Drain
-        self.arduino.dispense_ml(pump=0, volume=1)
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Flush_tool_Drain"], volume=1
+        )
+        self.chemical_volumes_left["Waste"] -= self.well_volume
 
         # Flush with water
-        self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
+        )  # ml to dispense
+        self.chemical_volumes_left["Flush_tool_H2O"] -= 0.5
         self.arduino.set_ultrasound_on(1, 5)
-        self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
-        self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Flush_tool_Drain"], volume=2
+        )  # ml to dispense DRAIN
+        self.chemical_volumes_left["Waste"] -= 0.5
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
+        )  # ml to dispense
+        self.chemical_volumes_left["Flush_tool_H2O"] -= 0.5
         self.arduino.set_ultrasound_on(1, 5)
-        self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Flush_tool_Drain"], volume=2
+        )  # ml to dispense DRAIN
+        self.chemical_volumes_left["Waste"] -= 0.5
+
+        # Save the volumes of the chemicals left
+        self.save_chemical_volumes_left()
 
         if use_acid is True:
             # Flush with acid
-            self.arduino.dispense_ml(pump=2, volume=0.5)  # ml to dispense
+            self.arduino.dispense_ml(
+                pump=peristaltic_pump_content["Flush_tool_HCl"], volume=0.5
+            )  # ml to dispense
+            self.chemical_volumes_left["Flush_tool_HCl"] -= 0.5
             LOGGER.info(f"Sleeping for {sleep_time} seconds")
             time.sleep(sleep_time)  # Sleep to let the acid work
             self.arduino.set_ultrasound_on(1, 5)
-            self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+            self.arduino.dispense_ml(
+                pump=peristaltic_pump_content["Flush_tool_Drain"], volume=2
+            )  # ml to dispense DRAIN
+            self.chemical_volumes_left["Waste"] -= 0.5
 
             # Flush with water
-            self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+            self.arduino.dispense_ml(
+                pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
+            )  # ml to dispense
+            self.chemical_volumes_left["Flush_tool_H2O"] -= 0.5
             self.arduino.set_ultrasound_on(1, 5)
-            self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
-            self.arduino.dispense_ml(pump=1, volume=0.5)  # ml to dispense
+            self.arduino.dispense_ml(
+                pump=peristaltic_pump_content["Flush_tool_Drain"], volume=2
+            )  # ml to dispense DRAIN
+            self.chemical_volumes_left["Waste"] -= 0.5
+            self.arduino.dispense_ml(
+                pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
+            )  # ml to dispense
+            self.chemical_volumes_left["Flush_tool_H2O"] -= 0.5
             self.arduino.set_ultrasound_on(1, 5)
-            self.arduino.dispense_ml(pump=0, volume=2)  # ml to dispense DRAIN
+            self.arduino.dispense_ml(
+                pump=peristaltic_pump_content["Flush_tool_Drain"], volume=2
+            )  # ml to dispense DRAIN
+            self.chemical_volumes_left["Waste"] -= 0.5
+
+            # Save the volumes of the chemicals left
+            self.save_chemical_volumes_left()
 
         # Go straight up in the air
         self.openTron.moveToWell(
@@ -1044,6 +1135,12 @@ class Experiment:
                 )
                 volume_left -= dispense_volume
 
+                # Update the volume of the chemical left
+                self.chemical_volumes_left[chemical] -= dispense_volume
+
+                # Save the volumes of the chemicals left
+                self.save_chemical_volumes_left()
+
             # Go to pipette tip rack
             self.openTron.moveToWell(
                 strLabwareName=self.labware_pipette_tips,
@@ -1154,14 +1251,41 @@ class Experiment:
         )
 
         # Flush the electrode in the cleaning station/cartridge
-        self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
-        self.arduino.dispense_ml(pump=5, volume=self.cleaning_station_volume)
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_H2O"],
+            volume=self.cleaning_station_volume,
+        )
+        self.chemical_volumes_left["Cartridge_H2O"] -= self.cleaning_station_volume
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_Drain"],
+            volume=self.cleaning_station_volume + 1,
+        )
+        self.chemical_volumes_left["Waste"] -= self.cleaning_station_volume
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_HCl"],
+            volume=self.cleaning_station_volume,
+        )
+        self.chemical_volumes_left["Cartridge_HCl"] -= self.cleaning_station_volume
         self.arduino.set_ultrasound_on(0, 15)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
-        self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_Drain"],
+            volume=self.cleaning_station_volume + 1,
+        )
+        self.chemical_volumes_left["Waste"] -= self.cleaning_station_volume
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_H2O"],
+            volume=self.cleaning_station_volume,
+        )
+        self.chemical_volumes_left["Cartridge_H2O"] -= self.cleaning_station_volume
         self.arduino.set_ultrasound_on(0, 5)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_Drain"],
+            volume=self.cleaning_station_volume + 1,
+        )
+        self.chemical_volumes_left["Waste"] -= self.cleaning_station_volume
+
+        # Save the volumes of the chemicals left
+        self.save_chemical_volumes_left()
 
         # Move straight up
         self.openTron.moveToWell(
@@ -1282,6 +1406,12 @@ class Experiment:
                 fltOffsetZ=-10,
             )
             volume_left -= dispense_volume
+
+            # Update chemical volumes left
+            self.chemical_volumes_left[chemical] -= dispense_volume
+
+            # Save the volumes left to file
+            self.save_chemical_volumes_left()
 
             # Go up from well
             self.openTron.moveToWell(
@@ -1410,14 +1540,56 @@ class Experiment:
         )
 
         # Flush the electrode in the cleaning station/cartridge
-        self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
-        self.arduino.dispense_ml(pump=5, volume=self.cleaning_station_volume)
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_H2O"],
+            volume=self.cleaning_station_volume,
+        )
+        # Update chemical volumes left
+        self.chemical_volumes_left["Cartridge_H2O"] -= self.cleaning_station_volume
+
+        # Drain
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_Drain"],
+            volume=self.cleaning_station_volume + 1,
+        )
+        # Update chemical volumes left
+        self.chemical_volumes_left["Waste"] -= self.cleaning_station_volume
+
+        # Flush with HCl
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_HCl"],
+            volume=self.cleaning_station_volume,
+        )
+        self.chemical_volumes_left["Cartridge_HCl"] -= self.cleaning_station_volume
         self.arduino.set_ultrasound_on(0, 15)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
-        self.arduino.dispense_ml(pump=4, volume=self.cleaning_station_volume)
+
+        # Drain
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_Drain"],
+            volume=self.cleaning_station_volume + 1,
+        )
+        # Update chemical volumes left
+        self.chemical_volumes_left["Waste"] -= self.cleaning_station_volume
+
+        # Flush with water
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_H2O"],
+            volume=self.cleaning_station_volume,
+        )
+        # Update chemical volumes left
+        self.chemical_volumes_left["Cartridge_H2O"] -= self.cleaning_station_volume
         self.arduino.set_ultrasound_on(0, 5)
-        self.arduino.dispense_ml(pump=3, volume=self.cleaning_station_volume + 1)
+
+        # Drain
+        self.arduino.dispense_ml(
+            pump=peristaltic_pump_content["Cartridge_Drain"],
+            volume=self.cleaning_station_volume + 1,
+        )
+        # Update chemical volumes left
+        self.chemical_volumes_left["Waste"] -= self.cleaning_station_volume
+
+        # Save the volumes left to file
+        self.save_chemical_volumes_left()
 
         # Go straight up
         self.openTron.moveToWell(
@@ -1558,7 +1730,6 @@ class Experiment:
         else:
             self.metadata.to_csv("metadata.csv", index=False)
 
-    # XXX Write and implement this function
     def check_chemical_volumes(
         self,
         chemicals_to_mix: dict,
@@ -1570,9 +1741,13 @@ class Experiment:
 
         Args:
             chemicals_to_mix (dict): Form must be: {"chemical_name": volume}
+            dispense_ml_electrolyte (float): Volume of electrolyte to dispense in ml
+            electrolyte (str, optional): Electrolyte to dispense
+
         Raises:
             ValueError: If the total volume of chemicals to mix, electrolyte
             and cleaning solution is greater than the total volume of the well
+            FileNotFoundError: If the file 'chemicals_left.txt' is not found
         """
 
         list_of_chemicals = [
@@ -1633,43 +1808,36 @@ class Experiment:
         # Trigger to flip a warning further down in the code
         trigger_stop = False
 
-        import json
+        # Load the dictionary of chemicals in stock solutions
+        chemicals_left = self.chemical_volumes_left.copy()
 
-        try:
-            with open("chemicals_left.txt", "r") as f:
-                # Load the dictionary of chemicals in stock solutions
-                chemicals_left = json.load(f)
-                LOGGER.info(f"Chemicals left before experiment: {chemicals_left}")
+        LOGGER.info(f"Chemicals left before experiment: {chemicals_left}")
 
-                # Deduct each of the volumes listed in list_of_chemicals
-                # from chemicals_left.
-                for chemical in list_of_chemicals:
-                    for key, value in chemical.items():
-                        chemicals_left[key] -= value
-                        if chemicals_left[key] <= 0:
-                            trigger_stop = True
-                            LOGGER.warning(
-                                f"{key} will run out of stock solution. Please refill the stock solution."
-                            )
-                LOGGER.info(f"Chemicals left after experiment: {chemicals_left}")
-
-        except FileNotFoundError:
-            LOGGER.error("Error: 'chemicals_left.txt' file not found.")
-            raise RuntimeError("Error: 'chemicals_left.txt' file not found.")
+        # Deduct each of the volumes listed in list_of_chemicals
+        # from chemicals_left.
+        for chemical in list_of_chemicals:
+            for key, value in chemical.items():
+                chemicals_left[key] -= value
+                if chemicals_left[key] <= 0:
+                    trigger_stop = True
+                    LOGGER.warning(
+                        f"{key} will run out of stock solution. Please refill the stock solution."
+                    )
+        LOGGER.info(f"Chemicals left after experiment: {chemicals_left}")
 
         if trigger_stop:
             # Throw exception if any of the chemicals
             # will run out of stock solution
+            self.send_mail(
+                "openTron: No more chemicals",
+                "openTron missing stock solution",
+                ["nis@dosan.dk"],
+            )
             raise ValueError(
                 "One or more chemicals will run out of stock solution. Please refill the stock solution."
             )
         else:
             LOGGER.info("All chemicals have enough stock solution.")
-
-            # Save the updated dictionary of chemicals in stock
-            # solutions to "chemicals_left.txt"
-            with open("chemicals_left.txt", "w") as f:
-                json.dump(chemicals_left, f)
 
     def run_experiment(
         self,
@@ -1701,6 +1869,12 @@ class Experiment:
             dispense_ml_electrolyte=dispense_ml_electrolyte,
             electrolyte=electrolyte,
         )
+
+        # Send an email stating that the job i starting
+        message = f"""Starting experiment {self.unique_id} 
+        in well {self.well_number}
+        with chemicals {chemicals_to_mix}."""
+        self.send_mail(message, "openTron experiment starting", ["nis@dosan.dk"])
 
         if well_number is not None:
             self.well_number = well_number
@@ -1802,4 +1976,11 @@ class Experiment:
 
         # Save metadata
         self.save_metadata()
+
+        # Send an email stating that the job i done
+        message = f"""Finished experiment {self.unique_id} with success.
+        Overpotential is {self.metadata.loc[0, 'corrected_potential_at_10mAcm2 [V]']} V.
+        """
+        self.send_mail(message, "openTron experiment ended", ["nis@dosan.dk"])
+
         return self.metadata.loc[0, "corrected_potential_at_10mAcm2 [V]"]
