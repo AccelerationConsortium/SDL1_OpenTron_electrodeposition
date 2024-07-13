@@ -79,7 +79,7 @@ experiment.arduino.set_temperature(1, 35)
 
 
 logging.info("Sleep 600 seconds to heat up the well plate to 35C")
-time.sleep(600)
+# time.sleep(600)
 # experiment.arduino.dispense_ml(pump=1, volume=2)
 # experiment.arduino.dispense_ml(pump=2, volume=2)
 # experiment.arduino.dispense_ml(pump=3, volume=5)
@@ -91,7 +91,7 @@ time.sleep(600)
 experiment.__del__()
 
 
-for i in range(0, 3):
+for i in range(1, 3):
     logging.info(f"\n\n\nStarting experiment {i}")
     experiment = Experiment(
         well_volume=2.5,
