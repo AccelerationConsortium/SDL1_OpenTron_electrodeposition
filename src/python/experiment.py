@@ -809,7 +809,7 @@ class Experiment:
             "Performing CV on Biologic potentiostat for reference electrode correction"
         )
         Ei = CVStep(voltage=0, scan_rate=1, vs_initial=False)
-        E1 = CVStep(voltage=2, scan_rate=1, vs_initial=False)
+        E1 = CVStep(voltage=1.5, scan_rate=1, vs_initial=False)
         E2 = CVStep(voltage=-0.2, scan_rate=1, vs_initial=False)
         Ef = CVStep(voltage=0, scan_rate=1, vs_initial=False)
 
