@@ -103,7 +103,7 @@ def plot_eis_nyquist(df, x_col, y_col, title, x_label, y_label, file_name=None):
     plt.plot(min_x, min_y, "ro")
 
     if file_name:
-        plt.savefig(file_name + ".jpg")
+        plt.savefig("data/" + file_name + ".jpg")
     else:
         plt.show()
 
@@ -128,7 +128,7 @@ def plot_cv(
         plt.ylabel(y_label)
 
         if file_name:
-            plt.savefig(file_name + ".jpg")
+            plt.savefig("data/" + file_name + ".jpg")
         else:
             plt.show()
 
@@ -180,7 +180,7 @@ def plot_log_cv(
         plt.tight_layout()  # Adjust subplots to fit into the figure area
 
         if file_name:
-            plt.savefig(file_name + ".jpg")
+            plt.savefig("data/" + file_name + ".jpg")
         else:
             plt.show()
 
@@ -188,9 +188,8 @@ def plot_log_cv(
     except KeyError:
         print("There should be no KeyError, but there is...")
 
-
 # Loop through all .csv files in the folder and plot the Nyquist plot for each file containing "EIS" in the filename. Save plot under the same filename with .jpg extension.
-for file in os.listdir():
+for file in os.listdir(path="data/"):
     # If both "EIS" and ".csv" are in the filename, read the file and plot the Nyquist plot
     if ".csv" in file:
         file_name = file.split(".")[0]
@@ -198,7 +197,7 @@ for file in os.listdir():
 
         if "EIS" in file:
             data = pd.read_csv(
-                file,
+                "data/" + file,
                 sep=",",
                 header=0,
                 encoding="utf8",
@@ -225,7 +224,7 @@ for file in os.listdir():
 
         if "CV" in file:
             data = pd.read_csv(
-                file,
+                "data/" + file,
                 sep=",",
                 header=0,
                 encoding="utf8",
@@ -268,7 +267,7 @@ for file in os.listdir():
 
         if "Cathodic scan" in file:
             data = pd.read_csv(
-                file,
+                "data/" + file,
                 sep=",",
                 header=0,
                 encoding="utf8",
@@ -296,7 +295,7 @@ for file in os.listdir():
 
         if "Electrodeposition" in file or "CP" in file:
             data = pd.read_csv(
-                file,
+                "data/" + file,
                 sep=",",
                 header=0,
                 encoding="utf8",
