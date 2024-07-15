@@ -1,0 +1,712 @@
+2024-07-15 12:59:43,258 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 12:59:44,644 [INFO] Move successful.
+2024-07-15 12:59:44,644 [INFO] Dispensing 277 uL of NH4OH
+2024-07-15 12:59:44,644 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 12:59:47,970 [INFO] Dispense successful.
+2024-07-15 12:59:47,970 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H1
+2024-07-15 12:59:49,815 [INFO] Move successful.
+2024-07-15 12:59:49,815 [INFO] Dropping tip for NH4OH
+2024-07-15 12:59:49,815 [INFO] Dropping tip into labware: opentrons_96_tiprack_1000ul_1
+2024-07-15 12:59:54,721 [INFO] Tip dropped into labware: opentrons_96_tiprack_1000ul_1, well: H1
+2024-07-15 12:59:54,728 [INFO] Mixing NaCi with 277.77777777777777 uL to well B5
+2024-07-15 12:59:54,728 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H2
+2024-07-15 12:59:55,569 [INFO] Move successful.
+2024-07-15 12:59:55,569 [INFO] Picking up tip from labware: opentrons_96_tiprack_1000ul_1
+2024-07-15 13:00:02,614 [INFO] Tip picked up from labware: opentrons_96_tiprack_1000ul_1, well: H2
+2024-07-15 13:00:02,614 [INFO] Aspirating 277 uL of NaCi
+2024-07-15 13:00:02,614 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_7, well: B4
+2024-07-15 13:00:04,289 [INFO] Move successful.
+2024-07-15 13:00:04,289 [INFO] Aspirating from labware: nis_8_reservoir_25000ul_7, well: B4
+2024-07-15 13:00:06,277 [INFO] Aspiration successful.
+2024-07-15 13:00:06,277 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_7, well: B4
+2024-07-15 13:00:07,552 [INFO] Move successful.
+2024-07-15 13:00:07,552 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:00:08,913 [INFO] Move successful.
+2024-07-15 13:00:08,913 [INFO] Dispensing 277 uL of NaCi
+2024-07-15 13:00:08,913 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:00:12,274 [INFO] Dispense successful.
+2024-07-15 13:00:12,274 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H2
+2024-07-15 13:00:14,119 [INFO] Move successful.
+2024-07-15 13:00:14,119 [INFO] Dropping tip for NaCi
+2024-07-15 13:00:14,121 [INFO] Dropping tip into labware: opentrons_96_tiprack_1000ul_1
+2024-07-15 13:00:19,002 [INFO] Tip dropped into labware: opentrons_96_tiprack_1000ul_1, well: H2
+2024-07-15 13:00:19,002 [INFO] Stirring chemicals for 30 seconds.
+2024-07-15 13:00:19,002 [INFO] Turning on ultrasound for 30 seconds on cartridge 1.
+2024-07-15 13:00:19,002 [INFO] Switching relay 7 on for 30 seconds
+2024-07-15 13:00:49,022 [INFO] Sleeping for 300 seconds to let chemistry settle in.
+2024-07-15 13:05:49,027 [INFO] Initiating potentiostat on port COM5 with name Plus1894
+2024-07-15 13:05:50,125 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: A1
+2024-07-15 13:05:51,977 [INFO] Move successful.
+2024-07-15 13:05:51,979 [INFO] Picking up tip from labware: nistall_4_tiprack_1ul_10
+2024-07-15 13:05:58,876 [INFO] Tip picked up from labware: nistall_4_tiprack_1ul_10, well: A1
+2024-07-15 13:05:58,878 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:06:07,244 [INFO] Move successful.
+2024-07-15 13:06:07,246 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:06:07,758 [INFO] Move successful.
+2024-07-15 13:06:07,761 [INFO] Switching relay 8 on
+2024-07-15 13:06:11,579 [INFO] Potentiostat performing electrodeposition of the sample with 0.002827 A for 10 seconds
+2024-07-15 13:06:11,581 [INFO] Reading sample temperature sensor 1
+2024-07-15 13:06:11,582 [INFO] Waiting for arduino to respond
+2024-07-15 13:06:12,589 [INFO] Waiting for arduino to respond
+2024-07-15 13:06:13,591 [INFO] Temperature sensor: 34.88 C
+2024-07-15 13:06:13,594 [INFO] Making an OCV
+
+*** Preparing OCP experiment
+Uploading experiment
+Device is connected as: Plus1894
+Please use this name when loading the AdmiralWrapper.
+successful
+Setting potentiostat in start experiment modus
+successful
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:08:14,642 [INFO] Making a cathodic scan
+
+*** Preparing CV experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 6
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 5        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 4        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 3        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:11:50,653 [INFO] Performing electrodeposition
+
+*** Preparing CP experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:12:01,679 [INFO] Switching relay 8 off
+2024-07-15 13:12:04,836 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:12:05,805 [INFO] Move successful.
+2024-07-15 13:12:05,816 [INFO] Moving pipette to labware: nis_2_wellplate_30000ul_3, well: A2
+2024-07-15 13:12:10,968 [INFO] Move successful.
+2024-07-15 13:12:10,968 [INFO] Dispensing 6 ml from pump 4.
+2024-07-15 13:12:10,968 [INFO] Turning on pump 4 for 11.2 seconds.
+2024-07-15 13:12:10,968 [INFO] Switching relay 4 on for 11.2 seconds
+2024-07-15 13:12:22,945 [INFO] Dispensing 7 ml from pump 3.
+2024-07-15 13:12:22,945 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-15 13:12:22,945 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-15 13:12:40,041 [INFO] Dispensing 6 ml from pump 5.
+2024-07-15 13:12:40,041 [INFO] Turning on pump 5 for 11.1 seconds.
+2024-07-15 13:12:40,057 [INFO] Switching relay 5 on for 11.1 seconds
+2024-07-15 13:12:52,542 [INFO] Turning on ultrasound for 15 seconds on cartridge 0.
+2024-07-15 13:12:52,542 [INFO] Switching relay 6 on for 15 seconds
+2024-07-15 13:13:08,942 [INFO] Dispensing 7 ml from pump 3.
+2024-07-15 13:13:08,942 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-15 13:13:08,942 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-15 13:13:26,052 [INFO] Dispensing 6 ml from pump 4.
+2024-07-15 13:13:26,052 [INFO] Turning on pump 4 for 11.2 seconds.
+2024-07-15 13:13:26,052 [INFO] Switching relay 4 on for 11.2 seconds
+2024-07-15 13:13:38,636 [INFO] Turning on ultrasound for 5 seconds on cartridge 0.
+2024-07-15 13:13:38,651 [INFO] Switching relay 6 on for 5 seconds
+2024-07-15 13:13:45,044 [INFO] Dispensing 7 ml from pump 3.
+2024-07-15 13:13:45,044 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-15 13:13:45,044 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-15 13:14:02,139 [INFO] Moving pipette to labware: nis_2_wellplate_30000ul_3, well: A2
+2024-07-15 13:14:03,442 [INFO] Move successful.
+2024-07-15 13:14:03,442 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: A1
+2024-07-15 13:14:12,689 [INFO] Move successful.
+2024-07-15 13:14:12,689 [INFO] Dropping tip into labware: nistall_4_tiprack_1ul_10
+2024-07-15 13:14:17,568 [INFO] Tip dropped into labware: nistall_4_tiprack_1ul_10, well: A1
+2024-07-15 13:14:17,568 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H1
+2024-07-15 13:14:17,659 [INFO] Move successful.
+2024-07-15 13:14:17,659 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-15 13:14:19,816 [INFO] Move successful.
+2024-07-15 13:14:19,816 [INFO] Picking up tip from labware: nistall_4_tiprack_1ul_10
+2024-07-15 13:14:26,616 [INFO] Tip picked up from labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-15 13:14:26,616 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:14:34,762 [INFO] Move successful.
+2024-07-15 13:14:34,762 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:14:35,556 [INFO] Move successful.
+2024-07-15 13:14:35,572 [INFO] Dispensing 1 ml from pump 0.
+2024-07-15 13:14:35,572 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-15 13:14:35,572 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-15 13:14:39,751 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:14:40,145 [INFO] Move successful.
+2024-07-15 13:14:40,145 [INFO] Dispensing 1 ml from pump 0.
+2024-07-15 13:14:40,145 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-15 13:14:40,145 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-15 13:14:44,326 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:14:44,732 [INFO] Move successful.
+2024-07-15 13:14:44,732 [INFO] Dispensing 1 ml from pump 0.
+2024-07-15 13:14:44,732 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-15 13:14:44,732 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-15 13:14:48,848 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:14:49,114 [INFO] Move successful.
+2024-07-15 13:14:49,114 [INFO] Dispensing 1 ml from pump 0.
+2024-07-15 13:14:49,114 [INFO] Turning on pump 0 for 2.1 seconds.
+2024-07-15 13:14:49,114 [INFO] Switching relay 0 on for 2.1 seconds
+2024-07-15 13:14:53,298 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-15 13:14:53,298 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-15 13:14:53,298 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-15 13:14:57,466 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-15 13:14:57,466 [INFO] Switching relay 7 on for 5 seconds
+2024-07-15 13:15:02,625 [INFO] Dispensing 2 ml from pump 0.
+2024-07-15 13:15:02,625 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-15 13:15:02,634 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-15 13:15:08,228 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-15 13:15:08,229 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-15 13:15:08,229 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-15 13:15:12,428 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-15 13:15:12,428 [INFO] Switching relay 7 on for 5 seconds
+2024-07-15 13:15:18,506 [INFO] Dispensing 2 ml from pump 0.
+2024-07-15 13:15:18,506 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-15 13:15:18,506 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-15 13:15:24,105 [INFO] Dispensing 0.5 ml from pump 2.
+2024-07-15 13:15:24,114 [INFO] Turning on pump 2 for 1.0 seconds.
+2024-07-15 13:15:24,122 [INFO] Switching relay 2 on for 1.0 seconds
+2024-07-15 13:15:28,345 [INFO] Sleeping for 0.1 seconds
+2024-07-15 13:15:28,454 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-15 13:15:28,455 [INFO] Switching relay 7 on for 5 seconds
+2024-07-15 13:15:34,284 [INFO] Dispensing 2 ml from pump 0.
+2024-07-15 13:15:34,284 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-15 13:15:34,284 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-15 13:15:39,891 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-15 13:15:39,892 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-15 13:15:39,892 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-15 13:15:43,979 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-15 13:15:43,979 [INFO] Switching relay 7 on for 5 seconds
+2024-07-15 13:15:50,173 [INFO] Dispensing 2 ml from pump 0.
+2024-07-15 13:15:50,173 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-15 13:15:50,173 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-15 13:15:55,765 [INFO] Dispensing 0.5 ml from pump 1.
+2024-07-15 13:15:55,765 [INFO] Turning on pump 1 for 1.1 seconds.
+2024-07-15 13:15:55,765 [INFO] Switching relay 1 on for 1.1 seconds
+2024-07-15 13:15:59,963 [INFO] Turning on ultrasound for 5 seconds on cartridge 1.
+2024-07-15 13:15:59,963 [INFO] Switching relay 7 on for 5 seconds
+2024-07-15 13:16:06,045 [INFO] Dispensing 2 ml from pump 0.
+2024-07-15 13:16:06,045 [INFO] Turning on pump 0 for 4.2 seconds.
+2024-07-15 13:16:06,060 [INFO] Switching relay 0 on for 4.2 seconds
+2024-07-15 13:16:11,647 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:16:13,322 [INFO] Move successful.
+2024-07-15 13:16:13,322 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-15 13:16:13,407 [INFO] Move successful.
+2024-07-15 13:16:13,409 [INFO] Dropping tip into labware: nistall_4_tiprack_1ul_10
+2024-07-15 13:16:19,412 [INFO] Tip dropped into labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-15 13:16:19,412 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B1
+2024-07-15 13:16:21,576 [INFO] Move successful.
+2024-07-15 13:16:21,576 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H3
+2024-07-15 13:16:23,537 [INFO] Move successful.
+2024-07-15 13:16:23,537 [INFO] Picking up tip from labware: opentrons_96_tiprack_1000ul_1
+2024-07-15 13:16:30,292 [INFO] Tip picked up from labware: opentrons_96_tiprack_1000ul_1, well: H3
+2024-07-15 13:16:30,292 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-15 13:16:32,312 [INFO] Move successful.
+2024-07-15 13:16:32,312 [INFO] Aspirating from labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-15 13:16:36,965 [INFO] Aspiration successful.
+2024-07-15 13:16:36,965 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:16:38,956 [INFO] Move successful.
+2024-07-15 13:16:38,956 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:16:43,172 [INFO] Dispense successful.
+2024-07-15 13:16:43,175 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:16:43,492 [INFO] Move successful.
+2024-07-15 13:16:43,492 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-15 13:16:45,066 [INFO] Move successful.
+2024-07-15 13:16:45,066 [INFO] Aspirating from labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-15 13:16:49,721 [INFO] Aspiration successful.
+2024-07-15 13:16:49,721 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:16:51,728 [INFO] Move successful.
+2024-07-15 13:16:51,728 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:16:55,901 [INFO] Dispense successful.
+2024-07-15 13:16:55,904 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:16:56,222 [INFO] Move successful.
+2024-07-15 13:16:56,222 [INFO] Moving pipette to labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-15 13:16:57,777 [INFO] Move successful.
+2024-07-15 13:16:57,781 [INFO] Aspirating from labware: nis_8_reservoir_25000ul_11, well: B4
+2024-07-15 13:17:02,383 [INFO] Aspiration successful.
+2024-07-15 13:17:02,383 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:17:04,347 [INFO] Move successful.
+2024-07-15 13:17:04,347 [INFO] Dispensing into labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:17:08,543 [INFO] Dispense successful.
+2024-07-15 13:17:08,543 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:17:08,851 [INFO] Move successful.
+2024-07-15 13:17:08,851 [INFO] Moving pipette to labware: opentrons_96_tiprack_1000ul_1, well: H3
+2024-07-15 13:17:10,588 [INFO] Move successful.
+2024-07-15 13:17:10,590 [INFO] Dropping tip into labware: opentrons_96_tiprack_1000ul_1
+2024-07-15 13:17:15,487 [INFO] Tip dropped into labware: opentrons_96_tiprack_1000ul_1, well: H3
+2024-07-15 13:17:15,487 [INFO] Switching relay 8 off
+2024-07-15 13:17:19,658 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B2
+2024-07-15 13:17:21,403 [INFO] Move successful.
+2024-07-15 13:17:21,403 [INFO] Picking up tip from labware: nistall_4_tiprack_1ul_10
+2024-07-15 13:17:28,284 [INFO] Tip picked up from labware: nistall_4_tiprack_1ul_10, well: B2
+2024-07-15 13:17:28,284 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:17:34,977 [INFO] Move successful.
+2024-07-15 13:17:34,977 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 13:17:37,961 [INFO] Move successful.
+2024-07-15 13:17:37,961 [INFO] Reading sample temperature sensor 1
+2024-07-15 13:17:37,961 [INFO] Waiting for arduino to respond
+2024-07-15 13:17:38,988 [INFO] Waiting for arduino to respond
+2024-07-15 13:17:39,997 [INFO] Temperature sensor: 38.56 C
+2024-07-15 13:17:40,025 [INFO] Performing CV on Biologic potentiostat for reference electrode correction
+2024-07-15 13:17:40,026 [INFO] Trying to connect to the potentiostat: 1/5
+2024-07-15 13:17:40,033 [INFO] EcLib version: 6.5.4.1
+2024-07-15 13:17:40,033 [INFO] Connecting to USB0...
+2024-07-15 13:17:40,293 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-15 13:17:40,293 [INFO] Load firmware on channel(s): 1,2
+2024-07-15 13:17:44,739 [INFO] Testing device channels...
+2024-07-15 13:17:44,739 [INFO] Device connected.
+2024-07-15 13:17:44,739 [INFO] [9] board code = 19
+2024-07-15 13:17:44,739 [INFO] [9] board code = 19
+2024-07-15 13:17:44,753 [INFO] [650] board number: 78234
+2024-07-15 13:17:44,755 [INFO] [650] board number: 78137
+2024-07-15 13:17:44,933 [INFO] [650] initialisation done
+2024-07-15 13:17:44,933 [INFO] [650] initialisation done
+2024-07-15 13:17:44,999 [INFO] [650] kernel version: 5282
+2024-07-15 13:17:45,041 [INFO] [650] kernel version: 5282
+2024-07-15 13:17:45,041 [INFO] [650] released on (d/m/y): 12/8/2020
+2024-07-15 13:17:45,041 [INFO] [650] released on (d/m/y): 12/8/2020
+2024-07-15 13:17:45,051 [INFO] [650] xilinx version: a60d
+2024-07-15 13:17:45,053 [INFO] [650] xilinx version: a60d
+2024-07-15 13:17:45,056 [INFO] [650] make experiment begin...
+2024-07-15 13:17:45,058 [INFO] [650] make experiment begin...
+2024-07-15 13:17:45,062 [INFO] [757] make protocol ID = 0
+2024-07-15 13:17:45,064 [INFO] [757] make protocol ID = 0
+2024-07-15 13:17:45,066 [INFO] [757] make experiment done
+2024-07-15 13:17:45,069 [INFO] [757] make experiment done
+2024-07-15 13:17:45,072 [INFO] [757] start experiment
+2024-07-15 13:17:45,073 [INFO] [757] start experiment
+2024-07-15 13:17:45,076 [INFO] [757] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-15 13:17:45,076 [INFO] [757] run protocol #0 process #0, ID=0, timebase=0.00010
+2024-07-15 13:17:45,081 [INFO] [758] mode change from OCV to ISO
+2024-07-15 13:17:45,083 [INFO] [758] mode change from OCV to ISO
+2024-07-15 13:17:45,085 [INFO] [773] options changed from 0 to 15
+2024-07-15 13:17:45,088 [INFO] [773] options changed from 0 to 15
+2024-07-15 13:17:45,092 [INFO] [906] load new technique...
+2024-07-15 13:17:45,096 [INFO] [908] halt old experiment
+2024-07-15 13:17:45,099 [INFO] [908] IRQ overflow 0 times
+2024-07-15 13:17:45,101 [INFO] [909] max irq time 8.05 (us)
+2024-07-15 13:17:45,106 [INFO] [909] min irq time 6.59 (us)
+2024-07-15 13:17:45,109 [INFO] [909] make experiment begin...
+2024-07-15 13:17:45,111 [INFO] [992] make protocol ID = 103
+2024-07-15 13:17:45,115 [INFO] [1072] make protocol ID = 0
+2024-07-15 13:17:45,119 [INFO] [1073] make experiment done
+2024-07-15 13:17:45,122 [INFO] [1080] start experiment
+2024-07-15 13:17:45,125 [INFO] [1080] run protocol #0 process #0, ID=103, timebase=0.000050
+2024-07-15 13:17:45,128 [INFO] [1080] mode change from ISO to POT
+2024-07-15 13:19:03,124 [INFO] [79111] end protocol 0
+2024-07-15 13:19:03,124 [INFO] [79111] IRQ overflow 0 times
+2024-07-15 13:19:03,137 [INFO] [79111] max irq time 37.17 (us)
+2024-07-15 13:19:03,141 [INFO] [79111] min irq time 18.32 (us)
+2024-07-15 13:19:03,142 [INFO] [79111] start protocol 1
+2024-07-15 13:19:03,149 [INFO] [79111] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-15 13:19:03,151 [INFO] [79111] mode change from POT to ISO
+2024-07-15 13:19:05,103 [INFO] Performing EIS on Biologic potentiostat for reference electrode correction
+2024-07-15 13:19:05,378 [INFO] [81267] load new technique...
+2024-07-15 13:19:05,466 [INFO] [81275] load new technique...
+2024-07-15 13:19:05,486 [INFO] [81276] halt old experiment
+2024-07-15 13:19:05,495 [INFO] [81277] IRQ overflow 0 times
+2024-07-15 13:19:05,498 [INFO] [81277] max irq time 8.16 (us)
+2024-07-15 13:19:05,500 [INFO] [81277] min irq time 6.59 (us)
+2024-07-15 13:19:05,505 [INFO] [81277] make experiment begin...
+2024-07-15 13:19:05,508 [INFO] [81441] make protocol ID = 104
+2024-07-15 13:19:05,511 [INFO] [81522] make protocol ID = 0
+2024-07-15 13:19:05,515 [INFO] [81522] make experiment done
+2024-07-15 13:19:05,518 [INFO] [81526] start experiment
+2024-07-15 13:19:05,520 [INFO] [81526] run protocol #0 process #0, ID=104, timebase=0.000024
+2024-07-15 13:19:05,525 [INFO] [81527] mode change from ISO to POT
+2024-07-15 13:19:08,564 [INFO] [84560] max irq time 22.08 (us)
+2024-07-15 13:19:08,564 [INFO] [84560] min irq time 12.59 (us)
+2024-07-15 13:19:08,564 [INFO] [84560] next process 1
+2024-07-15 13:19:08,582 [INFO] [84560] run protocol #0 process #1, ID=104, timebase=0.000000
+2024-07-15 13:19:08,586 [INFO] [84560] mode change from POT to POT
+2024-07-15 13:19:14,704 [INFO] [90812] end protocol 0
+2024-07-15 13:19:14,704 [INFO] [90812] IRQ overflow 0 times
+2024-07-15 13:19:14,704 [INFO] [90812] max irq time 7.44 (us)
+2024-07-15 13:19:14,716 [INFO] [90812] min irq time 4.77 (us)
+2024-07-15 13:19:14,717 [INFO] [90812] start protocol 1
+2024-07-15 13:19:14,719 [INFO] [90812] run protocol #1 process #0, ID=0, timebase=0.00010
+2024-07-15 13:19:14,721 [INFO] [90812] mode change from POT to ISO
+2024-07-15 13:19:16,983 [INFO] Connection closed.
+2024-07-15 13:19:16,983 [INFO] Performing electrochemical test: 0 - Electrochemical activation
+
+*** Preparing CP experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:20:17,990 [INFO] Performing electrochemical test: 1 - Cyclic voltammetry
+
+*** Preparing CV experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 6
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 5        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 4        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 3        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:26:35,099 [INFO] Performing electrochemical test: 2 - Cyclic voltammetry
+
+*** Preparing CV experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 6        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 5
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 4        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 3        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 3
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 3
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 3
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:36:36,253 [INFO] Performing electrochemical test: 3 - Electrochemical impedance spectroscopy
+
+*** Preparing EIS experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 3
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Experiment completed on channel: 0
+Returning data
+No DC data available
+
+2024-07-15 13:37:34,796 [INFO] Finding ohmic resistance
+2024-07-15 13:37:34,796 [INFO] Ohmic resistance: 20.71
+2024-07-15 13:37:35,839 [INFO] Performing electrochemical test: 4 - Constant current at 100 mA/cm^2
+
+*** Preparing CP experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:38:45,846 [INFO] Correcting for ohmic resistance
+2024-07-15 13:38:46,878 [INFO] Performing electrochemical test: 5 - Constant current at 50 mA/cm^2
+
+*** Preparing CP experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:39:56,872 [INFO] Correcting for ohmic resistance
+2024-07-15 13:39:57,890 [INFO] Performing electrochemical test: 6 - Constant current at 20 mA/cm^2
+
+*** Preparing CP experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:41:07,907 [INFO] Correcting for ohmic resistance
+2024-07-15 13:41:08,941 [INFO] Performing electrochemical test: 7 - Constant current at 10 mA/cm^2
+
+*** Preparing CP experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:42:18,947 [INFO] Correcting for ohmic resistance
+2024-07-15 13:42:20,016 [INFO] Performing electrochemical test: 8 - Constant current at 5 mA/cm^2
+
+*** Preparing CP experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:43:30,028 [INFO] Correcting for ohmic resistance
+2024-07-15 13:43:31,030 [INFO] Performing electrochemical test: 9 - Constant current at 2 mA/cm^2
+
+*** Preparing CP experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:44:41,026 [INFO] Correcting for ohmic resistance
+2024-07-15 13:44:42,044 [INFO] Performing electrochemical test: 10 - Constant current at 1 mA/cm^2
+
+*** Preparing CP experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:45:52,070 [INFO] Correcting for ohmic resistance
+2024-07-15 13:45:53,091 [INFO] Performing electrochemical test: 11 - Cyclic voltammetry
+
+*** Preparing CV experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 6        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 5
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 4        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 3        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 13:55:53,257 [INFO] Correcting for ohmic resistance
+2024-07-15 13:55:54,277 [INFO] Performing electrochemical test: 11 - Cyclic voltammetry
+
+*** Preparing CV experiment
+Uploading experiment
+successful
+Setting potentiostat in start experiment modus
+successful
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 6
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 5        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 4        
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 3
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 1
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Plus1894 channel 0: The current limit for the current range has been exceeded. Current Range incremented to 2
+Experiment completed on channel: 0
+Returning data
+No AC data available
+
+2024-07-15 14:00:34,358 [INFO] Correcting for ohmic resistance
+2024-07-15 14:00:35,385 [INFO] Performing CV on Biologic potentiostat for reference electrode correction
+2024-07-15 14:00:35,385 [INFO] Trying to connect to the potentiostat: 1/5
+2024-07-15 14:00:35,400 [INFO] EcLib version: 6.5.4.1
+2024-07-15 14:00:35,400 [INFO] Connecting to USB0...
+2024-07-15 14:00:50,622 [ERROR] Error in potentiostat measurement: Cannot establish connection with the instrument
+2024-07-15 14:00:50,648 [INFO] Trying again in 120 seconds
+2024-07-15 14:02:50,670 [INFO] Trying to connect to the potentiostat: 2/5
+2024-07-15 14:02:50,670 [INFO] EcLib version: 6.5.4.1
+2024-07-15 14:02:50,670 [INFO] Connecting to USB0...
+2024-07-15 14:02:50,894 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-15 14:02:50,894 [INFO] Load firmware on channel(s): 1,2
+2024-07-15 14:03:01,868 [ERROR] Error in potentiostat measurement: Cannot load firmware into selected channel(s)
+2024-07-15 14:03:01,868 [INFO] Trying again in 120 seconds
+2024-07-15 14:05:01,899 [INFO] Trying to connect to the potentiostat: 3/5
+2024-07-15 14:05:01,899 [INFO] EcLib version: 6.5.4.1
+2024-07-15 14:05:01,899 [INFO] Connecting to USB0...
+2024-07-15 14:05:01,899 [INFO] Device info:
+VSP3E 32MB, CPU=9200, 2 channels, 8 slots
+Firmware: v11.52 2023/06/15
+1 connection, HTdisplay on
+2024-07-15 14:05:01,899 [INFO] Load firmware on channel(s): 1,2
+2024-07-15 14:05:16,962 [ERROR] Error in potentiostat measurement: Cannot allocate memory in the instrument
+2024-07-15 14:05:16,973 [INFO] Trying again in 120 seconds
+2024-07-15 14:07:16,995 [INFO] Trying to connect to the potentiostat: 4/5
+Exception ignored in: <function BioLogic.__del__ at 0x0000028BD10D35B0>
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\__init__.py", line 169, in __del__    
+    self.close()
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\__init__.py", line 204, in close      
+    if self.is_connected():
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\__init__.py", line 197, in is_connected
+    return self.api.TestConnection(self.id)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 89, in TestConnection       
+    error = self.BL_TestConnection(id_)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call        
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Communication failed with the instrument
+Exception ignored in: <function BioLogic.__del__ at 0x0000028BD10D35B0>
+Traceback (most recent call last):
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\__init__.py", line 169, in __del__    
+    self.close()
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\__init__.py", line 204, in close      
+    if self.is_connected():
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\biologic\__init__.py", line 197, in is_connected
+    return self.api.TestConnection(self.id)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 89, in TestConnection       
+    error = self.BL_TestConnection(id_)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 834, in guarded_call        
+    error.check(name,abort)
+  File "C:\Users\jaehs\anaconda3\envs\nis_opentron4\lib\site-packages\kbio\api.py", line 588, in check
+    raise exception
+kbio.api.KBIOError: Communication failed with the instrument
+2024-07-15 14:07:16,995 [INFO] EcLib version: 6.5.4.1
+2024-07-15 14:07:17,000 [INFO] Connecting to USB0...
+2024-07-15 14:07:17,000 [ERROR] Error in potentiostat measurement: Communication failed with the instrument
+2024-07-15 14:07:17,000 [INFO] Trying again in 120 seconds
+2024-07-15 14:09:17,002 [INFO] Trying to connect to the potentiostat: 5/5
+2024-07-15 14:09:17,003 [INFO] EcLib version: 6.5.4.1
+2024-07-15 14:09:17,003 [INFO] Connecting to USB0...
+2024-07-15 14:09:17,003 [ERROR] Error in potentiostat measurement: Communication failed with the instrument
+2024-07-15 14:09:17,003 [INFO] Trying again in 120 seconds
+2024-07-15 14:11:17,007 [INFO] Moving pipette to labware: nis_15_wellplate_3895ul_9, well: B5
+2024-07-15 14:11:17,988 [INFO] Move successful.
+2024-07-15 14:11:17,988 [INFO] Moving pipette to labware: nis_2_wellplate_30000ul_3, well: A2
+2024-07-15 14:11:22,070 [INFO] Move successful.
+2024-07-15 14:11:22,070 [INFO] Moving pipette to labware: nis_2_wellplate_30000ul_3, well: A2
+2024-07-15 14:11:27,554 [INFO] Move successful.
+2024-07-15 14:11:27,554 [INFO] Dispensing 6 ml from pump 4.
+2024-07-15 14:11:27,554 [INFO] Turning on pump 4 for 11.2 seconds.
+2024-07-15 14:11:27,554 [INFO] Switching relay 4 on for 11.2 seconds
+2024-07-15 14:11:40,130 [INFO] Dispensing 7 ml from pump 3.
+2024-07-15 14:11:40,145 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-15 14:11:40,145 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-15 14:11:57,234 [INFO] Dispensing 6 ml from pump 5.
+2024-07-15 14:11:57,234 [INFO] Turning on pump 5 for 11.1 seconds.
+2024-07-15 14:11:57,234 [INFO] Switching relay 5 on for 11.1 seconds
+2024-07-15 14:12:09,734 [INFO] Turning on ultrasound for 15 seconds on cartridge 0.
+2024-07-15 14:12:09,734 [INFO] Switching relay 6 on for 15 seconds
+2024-07-15 14:12:26,127 [INFO] Dispensing 7 ml from pump 3.
+2024-07-15 14:12:26,127 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-15 14:12:26,127 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-15 14:12:43,232 [INFO] Dispensing 6 ml from pump 4.
+2024-07-15 14:12:43,232 [INFO] Turning on pump 4 for 11.2 seconds.
+2024-07-15 14:12:43,232 [INFO] Switching relay 4 on for 11.2 seconds
+2024-07-15 14:12:55,826 [INFO] Turning on ultrasound for 5 seconds on cartridge 0.
+2024-07-15 14:12:55,826 [INFO] Switching relay 6 on for 5 seconds
+2024-07-15 14:13:02,231 [INFO] Dispensing 7 ml from pump 3.
+2024-07-15 14:13:02,231 [INFO] Turning on pump 3 for 15.7 seconds.
+2024-07-15 14:13:02,231 [INFO] Switching relay 3 on for 15.7 seconds
+2024-07-15 14:13:19,320 [INFO] Moving pipette to labware: nis_2_wellplate_30000ul_3, well: A2
+2024-07-15 14:13:20,585 [INFO] Move successful.
+2024-07-15 14:13:20,593 [INFO] Moving pipette to labware: nistall_4_tiprack_1ul_10, well: B2
+2024-07-15 14:13:20,685 [INFO] Move successful.
+2024-07-15 14:13:20,687 [INFO] Dropping tip into labware: nistall_4_tiprack_1ul_10

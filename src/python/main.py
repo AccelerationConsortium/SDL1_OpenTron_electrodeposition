@@ -87,8 +87,8 @@ logging.info("Sleep 600 seconds to heat up the well plate to 35C")
 # experiment.save_metadata()
 # experiment.__del__()
 # exit()
-tid = [2,10,30,60,90]
-for i in range(3, 4):
+# tid = [2,10,30,60,90]
+for i in range(0, 1):
     logging.info(f"\n\n\nStarting experiment {i}")
     experiment = Experiment(
         well_volume=2.5,
@@ -98,9 +98,9 @@ for i in range(3, 4):
     )
     experiment.arduino.set_temperature(1, 35)
     corrected_potential_10mA = experiment.run_experiment(
-        chemicals_to_mix=chemicals_to_mix[0],
+        chemicals_to_mix=chemicals_to_mix[i],
         dispense_ml_electrolyte=3,
-        electrodeposition_time=tid[i],
+        electrodeposition_time=10,
         electrodeposition_temperature=35,
         chemical_ultrasound_mixing_time=30,
         chemical_rest_time=300,
