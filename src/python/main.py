@@ -56,10 +56,39 @@ logging.info("Sleep 600 seconds to heat up the well plate to 35C")
 # experiment.arduino.dispense_ml(pump=4, volume=4)
 # experiment.arduino.dispense_ml(pump=3, volume=4)
 
-# experiment.__del__()
+# # Clean the well
+# experiment.cleaning(well_number=11, sleep_time=0.1)
 
+# # Dispense electrolyte
+# experiment.dispense_electrolyte(
+#     volume=3,
+#     chemical="KOH",
+#     well_number=11,
+# )
+
+# experiment.initiate_potentiostat_admiral()
+# # Perform electrochemical testing
+# experiment.perform_electrochemical_testing(well_number=11)
+
+# # Disconnect admiral potentiostat
+# experiment.close_potentiostat_admiral()
+
+# # Clean the well
+# experiment.cleaning(well_number=11, sleep_time=0, use_acid=False)
+
+# # Set timestamp_end of metadata
+# experiment.metadata.loc[0, "timestamp_end"] = datetime.now().strftime(
+#     "%Y-%m-%d %H:%M:%S"
+# )
+# # Set status of metadata
+# experiment.metadata.loc[0, "status_of_run"] = "success"
+
+# # Save metadata
+# experiment.save_metadata()
+# experiment.__del__()
+# exit()
 tid = [2,10,30,60,90]
-for i in range(0, 5):
+for i in range(3, 4):
     logging.info(f"\n\n\nStarting experiment {i}")
     experiment = Experiment(
         well_volume=2.5,
@@ -69,7 +98,7 @@ for i in range(0, 5):
     )
     experiment.arduino.set_temperature(1, 35)
     corrected_potential_10mA = experiment.run_experiment(
-        chemicals_to_mix=chemicals_to_mix[i],
+        chemicals_to_mix=chemicals_to_mix[0],
         dispense_ml_electrolyte=3,
         electrodeposition_time=tid[i],
         electrodeposition_temperature=35,

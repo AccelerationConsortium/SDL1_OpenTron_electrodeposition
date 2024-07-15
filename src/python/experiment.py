@@ -1577,7 +1577,7 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=tool_x_offset["OER_electrode"],
             fltOffsetY=tool_y_offset["OER_electrode"],
-            fltOffsetZ=10,
+            fltOffsetZ=50,
         )
         self.openTron.pickUpTip(
             strLabwareName=self.labware_tool_rack,
