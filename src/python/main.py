@@ -35,19 +35,19 @@ time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 
 ## Priming of pumps
-# experiment = Experiment(
-#     well_volume=2.5,
-#     cleaning_station_volume=6,
-#     openTron_IP="100.67.86.197",
-#     arduino_usb_name="CH340",
-# )
-# experiment.arduino.set_temperature(1, 35)
+experiment = Experiment(
+    well_volume=2.5,
+    cleaning_station_volume=6,
+    openTron_IP="100.67.86.197",
+    arduino_usb_name="CH340",
+)
+experiment.arduino.set_temperature(1, 35)
 # experiment.cleaning(3)
 # experiment.cleaning(4)
 
 
 logging.info("Sleep 600 seconds to heat up the well plate to 35C")
-# time.sleep(600)
+time.sleep(300)
 # experiment.arduino.dispense_ml(pump=1, volume=2)
 # experiment.arduino.dispense_ml(pump=2, volume=2)
 # experiment.arduino.dispense_ml(pump=3, volume=5)
@@ -85,30 +85,28 @@ logging.info("Sleep 600 seconds to heat up the well plate to 35C")
 
 # # Save metadata
 # experiment.save_metadata()
-# experiment.__del__()
-# exit()
+experiment.__del__()
+
 # tid = [2,10,30,60,90]
-for i in range(0, 1):
-    logging.info(f"\n\n\nStarting experiment {i}")
-    experiment = Experiment(
-        well_volume=2.5,
-        cleaning_station_volume=6,
-        openTron_IP="100.67.86.197",
-        arduino_usb_name="CH340",
-    )
-    experiment.arduino.set_temperature(1, 35)
-    corrected_potential_10mA = experiment.run_experiment(
-        chemicals_to_mix=chemicals_to_mix[i],
-        dispense_ml_electrolyte=3,
-        electrodeposition_time=10,
-        electrodeposition_temperature=35,
-        chemical_ultrasound_mixing_time=30,
-        chemical_rest_time=300,
-    )
-    experiment.arduino.set_temperature(1, 0)
-    experiment.__del__()
-    logging.info(f"Done with experiment {i}\n\n\n")
 
+logging.info(f"\n\n\nStarting experiment")
+experiment = Experiment(
+    well_volume=2.5,
+    cleaning_station_volume=6,
+    openTron_IP="100.67.86.197",
+    arduino_usb_name="CH340",
+)
+experiment.arduino.set_temperature(1, 35)
+corrected_potential_10mA = experiment.run_experiment(
+    chemicals_to_mix=chemicals_to_mix[0], # XXX Change this to match chemicals_to_mix
+    dispense_ml_electrolyte=3,
+    electrodeposition_time=2, # XXX Change this to 2, 10, 30, 60, 90
+    electrodeposition_temperature=35,
+    chemical_ultrasound_mixing_time=30,
+    chemical_rest_time=300,
+)
+experiment.arduino.set_temperature(1, 0)
+experiment.__del__()
+logging.info(f"Done with experiment \n\n\n")
 
-# Return potential at 10 mA/cm^2s
 print("Done with experiments\n")
