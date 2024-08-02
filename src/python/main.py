@@ -9,15 +9,15 @@ DATA_PATH = ""
 NAME_OF_ARDUINO = "CH340"  # Arduino name on Windows for auto finding COM port
 chemicals_to_mix = [
     {
-        "Ni": 1,
-        "Fe": 1,
-        "Cr": 1,
-        "Mn": 1,
-        "Co": 1,
-        "Zn": 1,
-        "Cu": 1,
-        "NH4OH": 1,
-        "NaCi": 1,
+        "Ni": 0.10,
+        "Fe": 0.10,
+        "Cr": 0.10,
+        "Mn": 0.10,
+        "Co": 0.10,
+        "Zn": 0.10,
+        "Cu": 0.10,
+        "NH4OH": 0.30,
+        "NaCi": 0,
     },
 ]
 
@@ -100,7 +100,7 @@ experiment.arduino.set_temperature(1, 35)
 corrected_potential_10mA = experiment.run_experiment(
     chemicals_to_mix=chemicals_to_mix[0], # XXX Change this to match chemicals_to_mix
     dispense_ml_electrolyte=3,
-    electrodeposition_time=90, # XXX Change this to 2, 10, 30, 60, 90
+    electrodeposition_time=60, # XXX Change this to 2, 10, 30, 60, 90
     electrodeposition_temperature=35,
     chemical_ultrasound_mixing_time=30,
     chemical_rest_time=300,
