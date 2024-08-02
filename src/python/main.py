@@ -100,7 +100,7 @@ experiment.arduino.set_temperature(1, 35)
 corrected_potential_10mA = experiment.run_experiment(
     chemicals_to_mix=chemicals_to_mix[0], # XXX Change this to match chemicals_to_mix
     dispense_ml_electrolyte=3,
-    electrodeposition_time=2, # XXX Change this to 2, 10, 30, 60, 90
+    electrodeposition_time=90, # XXX Change this to 2, 10, 30, 60, 90
     electrodeposition_temperature=35,
     chemical_ultrasound_mixing_time=30,
     chemical_rest_time=300,

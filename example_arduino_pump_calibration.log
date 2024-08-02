@@ -1,0 +1,34 @@
+2024-07-19 13:40:03,143 [INFO] List of USB ports:
+2024-07-19 13:40:03,144 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-07-19 13:40:03,145 [INFO] Arduino found on port: COM7
+2024-07-19 13:40:04,474 [INFO] Set temperature to 0 C
+2024-07-19 13:40:05,867 [INFO] Set temperature to 0 C
+2024-07-19 13:40:17,612 [INFO] Turning on pump 4 for 0.5 seconds.
+2024-07-19 13:40:17,613 [INFO] Switching relay 4 on for 0.5 seconds
+2024-07-19 13:41:43,746 [INFO] Turning on pump 4 for 1 seconds.
+2024-07-19 13:41:43,747 [INFO] Switching relay 4 on for 1 seconds
+2024-07-19 13:42:34,196 [INFO] Turning on pump 4 for 2 seconds.
+2024-07-19 13:42:34,205 [INFO] Switching relay 4 on for 2 seconds
+2024-07-19 13:43:28,704 [INFO] Turning on pump 4 for 5 seconds.
+2024-07-19 13:43:28,704 [INFO] Switching relay 4 on for 5 seconds
+2024-07-19 13:44:49,847 [INFO] Turning on pump 4 for 10 seconds.
+2024-07-19 13:44:49,849 [INFO] Switching relay 4 on for 10 seconds
+2024-07-19 13:48:35,867 [INFO] Turning on pump 4 for 15 seconds.
+2024-07-19 13:48:35,868 [INFO] Switching relay 4 on for 15 seconds
+2024-07-19 14:06:40,182 [INFO] List of USB ports:
+2024-07-19 14:06:40,182 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-07-19 14:06:40,184 [INFO] Arduino found on port: COM7
+2024-07-19 14:06:42,377 [INFO] Set temperature to 0 C
+2024-07-19 14:06:43,771 [INFO] Set temperature to 0 C
+2024-07-19 14:07:07,239 [INFO] Turning on pump 5 for 0.5 seconds.
+2024-07-19 14:07:07,240 [INFO] Switching relay 5 on for 0.5 seconds
+2024-07-19 14:07:51,821 [INFO] Turning on pump 5 for 1 seconds.
+2024-07-19 14:07:51,822 [INFO] Switching relay 5 on for 1 seconds
+2024-07-19 14:08:20,006 [INFO] Turning on pump 5 for 2 seconds.
+2024-07-19 14:08:20,008 [INFO] Switching relay 5 on for 2 seconds
+2024-07-19 14:08:52,713 [INFO] Turning on pump 5 for 5 seconds.
+2024-07-19 14:08:52,715 [INFO] Switching relay 5 on for 5 seconds
+2024-07-19 14:10:14,197 [INFO] Turning on pump 5 for 10 seconds.
+2024-07-19 14:10:14,198 [INFO] Switching relay 5 on for 10 seconds
+2024-07-19 14:12:03,278 [INFO] Turning on pump 5 for 15 seconds.
+2024-07-19 14:12:03,279 [INFO] Switching relay 5 on for 15 seconds

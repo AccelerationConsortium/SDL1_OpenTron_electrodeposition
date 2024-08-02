@@ -45,7 +45,7 @@ class Experiment:
     def __init__(
         self,
         well_volume: float = 3.0,
-        cleaning_station_volume: float = 6,
+        cleaning_station_volume: float = 6, # XXX Change this to real life number if pumps are calibrated
         openTron_IP: str = "100.67.86.197",
         openTron_pipette_name: str = "p1000_single_gen2",
         arduino_usb_name: str = "CH340",
@@ -1960,7 +1960,7 @@ class Experiment:
             self.send_mail(
                 "openTron: No more chemicals",
                 "openTron missing stock solution",
-                ["nis@dosan.dk"],
+                ["nis@dosan.dk", "eloise.besnier@mail.utoronto.ca"],
             )
             raise ValueError(
                 "One or more chemicals will run out of stock solution. Please refill the stock solution."
@@ -2007,7 +2007,7 @@ class Experiment:
         message = f"""Starting experiment {self.unique_id} 
         in well {self.well_number}
         with chemicals {chemicals_to_mix}."""
-        self.send_mail(message, "openTron experiment starting", ["nis@dosan.dk"])
+        self.send_mail(message, "openTron experiment starting", ["nis@dosan.dk", "eloise.besnier@mail.utoronto.ca"])
 
         self.metadata.loc[0, "chemicals_to_mix"] = str(chemicals_to_mix)
         self.metadata.loc[0, "total_volume [ml]"] = self.well_volume
@@ -2110,6 +2110,6 @@ class Experiment:
         message = f"""Finished experiment {self.unique_id} with success.
         Overpotential is {self.metadata.loc[0, 'corrected_potential_at_10mAcm2 [V]']} V.
         """
-        self.send_mail(message, "openTron experiment ended", ["nis@dosan.dk"])
+        self.send_mail(message, "openTron experiment ended", ["nis@dosan.dk", "eloise.besnier@mail.utoronto.ca"])
 
         return self.metadata.loc[0, "corrected_potential_at_10mAcm2 [V]"]
