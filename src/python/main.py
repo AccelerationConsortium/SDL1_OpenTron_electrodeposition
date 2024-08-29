@@ -9,15 +9,15 @@ DATA_PATH = ""
 NAME_OF_ARDUINO = "CH340"  # Arduino name on Windows for auto finding COM port
 chemicals_to_mix = [
     {
-        "Ni": 0.10,
-        "Fe": 0.10,
-        "Cr": 0.10,
-        "Mn": 0.10,
-        "Co": 0.10,
-        "Zn": 0.10,
-        "Cu": 0.10,
-        "NH4OH": 0.30,
-        "NaCi": 0,
+        "Ni": 0.11,
+        "Fe": 0.11,
+        "Cr": 0.11,
+        "Mn": 0.11,
+        "Co": 0.11,
+        "Zn": 0.11,
+        "Cu": 0.11,
+        "NH4OH": 0.10,
+        "NaCi": 0.10,
     },
 ]
 

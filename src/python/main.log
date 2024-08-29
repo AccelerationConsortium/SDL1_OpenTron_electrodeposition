@@ -1,0 +1,9 @@
+2024-08-13 11:57:15,418 [INFO] Initiating arduino with usb nam: CH340
+2024-08-13 11:57:15,458 [INFO] List of USB ports:
+2024-08-13 11:57:15,459 [INFO] COM7 - USB-SERIAL CH340 (COM7)
+2024-08-13 11:57:15,460 [INFO] COM5 - USB Serial Device (COM5)
+2024-08-13 11:57:15,461 [INFO] Arduino found on port: COM7
+2024-08-13 11:57:23,456 [INFO] New run created with ID: b732519b-25a5-4674-983a-9002b653a2ce
+2024-08-13 11:57:23,464 [INFO] Command URL: http://100.67.86.197:31950/runs/b732519b-25a5-4674-983a-9002b653a2ce/commands
+2024-08-13 11:57:23,465 [INFO] Loading pipette: p1000_single_gen2 on mount: right
+2024-08-13 11:57:25,665 [INFO] Pipette loaded with name: p1000_single_gen2 and ID: 7923c2e9-a9a0-4707-b699-1b6822ed10d7
