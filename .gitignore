@@ -6,3 +6,4 @@ build/
 .DS_Store
 *.code-workspace
 *.jpg
+plots_for_paper.py
