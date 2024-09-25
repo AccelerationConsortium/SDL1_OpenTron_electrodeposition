@@ -1,0 +1,12 @@
+﻿Sample no;Batch;Location;Vol. %;Agents;Deposited thickness [nm];Deposited Ni;Deposited Fe;Deposited Cr;Deposited Mn;Deposited Co;Deposited Zn;Deposited Cu;Deposition time [s];Deposition current [mA/cm2];Deposition temperature [C]
+226;Batch 5;A2;10;Na3C6H5O7;10;;;;;;;;10;10;35
+228;Batch 5;A3;20;Na3C6H5O7;9;;;;;;;;10;10;35
+230;Batch 5;A4;30;Na3C6H5O7;8;;;;;;;;10;10;35
+232;Batch 5;A5;40;Na3C6H5O7;7;;;;;;;;10;10;35
+234;Batch 5;B1;50;Na3C6H5O7;6;;;;;;;;10;10;35
+181;Batch 3;C2;10;NH4OH;5;;;;;;;;10;10;35
+183;Batch 3;C3;20;NH4OH;6;;;;;;;;10;10;35
+186;Batch 3;C4;30;NH4OH;7;;;;;;;;10;10;35
+236;Batch 5;B2;10;Na3C6H5O7 + NH4OH;10;;;;;;;;10;10;35
+240;Batch 5;B3;20;Na3C6H5O7 + NH4OH;15;;;;;;;;10;10;35
+244;Batch 5;B4;30;Na3C6H5O7 + NH4OH;12;;;;;;;;10;10;35
