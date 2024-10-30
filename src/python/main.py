@@ -3,6 +3,11 @@ from datetime import datetime
 import sys
 from experiment import Experiment
 import time
+from admiral import AdmiralSquidstatWrapper
+
+port = "COM5"
+instrument_name = "Plus1894"
+
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
@@ -33,6 +38,9 @@ logging.basicConfig(
 )
 time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
+# Initialize Admiral potentiostat
+logging.info(f"Initiating potentiostat on port {port} with name {instrument_name}")
+admiral = AdmiralSquidstatWrapper(port=port, instrument_name=instrument_name)
 
 ## Priming of pumps
 experiment = Experiment(
@@ -95,6 +103,7 @@ experiment = Experiment(
     cleaning_station_volume=6,
     openTron_IP="100.67.86.197",
     arduino_usb_name="CH340",
+    admiral=admiral,
 )
 experiment.arduino.set_temperature(1, 35)
 corrected_potential_10mA = experiment.run_experiment(
@@ -107,6 +116,10 @@ corrected_potential_10mA = experiment.run_experiment(
 )
 experiment.arduino.set_temperature(1, 0)
 experiment.__del__()
+
+logging.info("Closing admiral potentiostat connection")
+admiral.close_experiment()
+
 logging.info(f"Done with experiment \n\n\n")
 
 print("Done with experiments\n")

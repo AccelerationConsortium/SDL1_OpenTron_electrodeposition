@@ -14,8 +14,8 @@ from biologic.techniques.ocv import OCVTechnique, OCVParams
 from biologic.techniques.peis import PEISTechnique, PEISParams, SweepMode
 from biologic.techniques.cp import CPTechnique, CPParams, CPStep, Parameter
 from ardu import Arduino
-from admiral import AdmiralSquidstatWrapper
 from opentronsHTTPAPI_clientBuilder import opentronsClient
+from admiral import AdmiralSquidstatWrapper
 from parameters import (
     labware_paths,
     wells,
@@ -45,10 +45,11 @@ class Experiment:
     def __init__(
         self,
         well_volume: float = 3.0,
-        cleaning_station_volume: float = 6, # XXX Change this to real life number if pumps are calibrated
+        cleaning_station_volume: float = 6,  # XXX Change this to real life number if pumps are calibrated
         openTron_IP: str = "100.67.86.197",
         openTron_pipette_name: str = "p1000_single_gen2",
         arduino_usb_name: str = "CH340",
+        admiral=AdmiralSquidstatWrapper,
     ):
         self.cleaning_station_volume = cleaning_station_volume
         self.well_volume = well_volume
@@ -58,6 +59,8 @@ class Experiment:
         self.sample_surface_area = sample_surface_area
         self.deposition_current = current_at_sample
 
+        # Initiate Admiral potentiostat
+        self.admiral = admiral
         # Initiate the arduino
         self.initiate_arduino()
         # Initiate the openTron
@@ -207,22 +210,6 @@ class Experiment:
         with open(path, encoding="utf8") as f:
             return json.load(f)
 
-    def initiate_potentiostat_admiral(
-        self, port: str = "COM5", instrument_name: str = "Plus1894"
-    ):
-        """Initiate the potentiostat
-
-        Args:
-            port (str, optional): Port of the potentiostat. Defaults to "COM5".
-            instrument_name (str, optional): Name of the potentiostat. Defaults to "Plus1894".
-        """
-        LOGGER.info(
-            f"Initiating potentiostat on port {port} with name {instrument_name}"
-        )
-        self.admiral = AdmiralSquidstatWrapper(
-            port=port, instrument_name=instrument_name
-        )
-
     def correct_for_ohmic_resistance(
         self,
         df: pd.DataFrame,
@@ -265,11 +252,6 @@ class Experiment:
         if ac_data is not None:
             LOGGER.debug(f"Storing AC data in {file_name} ac_data.csv")
             ac_data.to_csv(file_name + " ac_data.csv", sep=",")
-
-    def close_potentiostat_admiral(self):
-        """Close the potentiostat"""
-        LOGGER.info("Closing admiral potentiostat connection")
-        self.admiral.close_experiment()
 
     def perform_potentiostat_measurements(self):
         ### 0 - Electrochemical Activation
@@ -2062,9 +2044,6 @@ class Experiment:
         )
         time.sleep(chemical_rest_time)
 
-        # Connect to admiral potentiostat
-        self.initiate_potentiostat_admiral()
-
         # Run recipe for electrodeposition
         self.perform_electrodeposition(
             well_number=self.well_number, electrodeposition_time=electrodeposition_time
@@ -2085,9 +2064,6 @@ class Experiment:
 
         # Perform electrochemical testing
         self.perform_electrochemical_testing(well_number=self.well_number)
-
-        # Disconnect admiral potentiostat
-        self.close_potentiostat_admiral()
 
         # Clean the well
         self.cleaning(well_number=self.well_number, sleep_time=0, use_acid=False)

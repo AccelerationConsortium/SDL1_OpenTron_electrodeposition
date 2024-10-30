@@ -1,6 +1,0 @@
-﻿Sample no.;Batch;Location;Material combination in equal ratios;Deposition time [s];Deposition temperature [C];Deposited thickness [nm]
-179;Batch 3;C1;Ni Fe Cr Mn Co Zn Cu NH4OH Na3C6H5O7;2;35;10
-177;Batch 3;B5;Ni Fe Cr Mn Co Zn Cu NH4OH Na3C6H5O7;10;35;20
-175;Batch 3;B4;Ni Fe Cr Mn Co Zn Cu NH4OH Na3C6H5O7;30;35;30
-173;Batch 3;B3;Ni Fe Cr Mn Co Zn Cu NH4OH Na3C6H5O7;60;35;40
-171;Batch 3;B2;Ni Fe Cr Mn Co Zn Cu NH4OH Na3C6H5O7;90;35;50

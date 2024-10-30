@@ -210,6 +210,7 @@ class AdmiralSquidstatWrapper:
         print(
             f"Device is connected as: {device_name} \nPlease use this name when loading the AdmiralWrapper."
         )
+        self.handler = self.tracker.getInstrumentHandler(device_name)
 
     def handle_experiment_stopped(self, channel):
         print("Experiment completed on channel: %d" % channel)
@@ -218,7 +219,6 @@ class AdmiralSquidstatWrapper:
     def connect_to_device(self, port, instrument_name="Plus1894"):
         self.tracker.newDeviceConnected.connect(self.on_device_connected)
         self.tracker.connectToDeviceOnComPort(port)
-        self.handler = self.tracker.getInstrumentHandler(instrument_name)
 
     def setup_data_handlers(self):
         self.handler.activeDCDataReady.connect(self.handle_dc_data)
