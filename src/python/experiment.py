@@ -522,8 +522,8 @@ class Experiment:
         self.store_data_admiral(dc_data=dc_data, ac_data=ac_data, file_name=filepath)
         self.admiral.clear_data()
 
-        ### 11 - Perform CV to reduce the surface again so that it looks nice and not rusty
-        LOGGER.info("Performing electrochemical test: 11 - Cyclic voltammetry")
+        ### 12 - Perform CV to reduce the surface again so that it looks nice and not rusty
+        LOGGER.info("Performing electrochemical test: 12 - Cyclic voltammetry")
         self.admiral.setup_cyclic_voltammetry(
             startVoltage=0.8,
             firstVoltageLimit=-0.2,
