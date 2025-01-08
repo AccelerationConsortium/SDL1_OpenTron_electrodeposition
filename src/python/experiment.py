@@ -1025,23 +1025,23 @@ class Experiment:
 
         # Flush with water
         self.arduino.dispense_ml(
-            pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
+            pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.75
         )  # ml to dispense
-        self.chemical_volumes_left["Flush_tool_H2O"] -= 0.5
+        self.chemical_volumes_left["Flush_tool_H2O"] -= 1
         self.arduino.set_ultrasound_on(1, 5)
         self.arduino.dispense_ml(
             pump=peristaltic_pump_content["Flush_tool_Drain"], volume=2
         )  # ml to dispense DRAIN
-        self.chemical_volumes_left["Waste"] -= 0.5
+        self.chemical_volumes_left["Waste"] -= 1
         self.arduino.dispense_ml(
-            pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
+            pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.75
         )  # ml to dispense
-        self.chemical_volumes_left["Flush_tool_H2O"] -= 0.5
+        self.chemical_volumes_left["Flush_tool_H2O"] -= 1
         self.arduino.set_ultrasound_on(1, 5)
         self.arduino.dispense_ml(
             pump=peristaltic_pump_content["Flush_tool_Drain"], volume=2
         )  # ml to dispense DRAIN
-        self.chemical_volumes_left["Waste"] -= 0.5
+        self.chemical_volumes_left["Waste"] -= 1
 
         # Save the volumes of the chemicals left
         self.save_chemical_volumes_left()
@@ -1049,36 +1049,36 @@ class Experiment:
         if use_acid is True:
             # Flush with acid
             self.arduino.dispense_ml(
-                pump=peristaltic_pump_content["Flush_tool_HCl"], volume=0.5
+                pump=peristaltic_pump_content["Flush_tool_HCl"], volume=0.75
             )  # ml to dispense
-            self.chemical_volumes_left["Flush_tool_HCl"] -= 0.5
+            self.chemical_volumes_left["Flush_tool_HCl"] -= 1
             LOGGER.info(f"Sleeping for {sleep_time} seconds")
             time.sleep(sleep_time)  # Sleep to let the acid work
             self.arduino.set_ultrasound_on(1, 5)
             self.arduino.dispense_ml(
                 pump=peristaltic_pump_content["Flush_tool_Drain"], volume=2
             )  # ml to dispense DRAIN
-            self.chemical_volumes_left["Waste"] -= 0.5
+            self.chemical_volumes_left["Waste"] -= 1
 
             # Flush with water
             self.arduino.dispense_ml(
-                pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
+                pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.75
             )  # ml to dispense
-            self.chemical_volumes_left["Flush_tool_H2O"] -= 0.5
+            self.chemical_volumes_left["Flush_tool_H2O"] -= 1
             self.arduino.set_ultrasound_on(1, 5)
             self.arduino.dispense_ml(
                 pump=peristaltic_pump_content["Flush_tool_Drain"], volume=2
             )  # ml to dispense DRAIN
-            self.chemical_volumes_left["Waste"] -= 0.5
+            self.chemical_volumes_left["Waste"] -= 1
             self.arduino.dispense_ml(
-                pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
+                pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.75
             )  # ml to dispense
-            self.chemical_volumes_left["Flush_tool_H2O"] -= 0.5
+            self.chemical_volumes_left["Flush_tool_H2O"] -= 1
             self.arduino.set_ultrasound_on(1, 5)
             self.arduino.dispense_ml(
                 pump=peristaltic_pump_content["Flush_tool_Drain"], volume=2
             )  # ml to dispense DRAIN
-            self.chemical_volumes_left["Waste"] -= 0.5
+            self.chemical_volumes_left["Waste"] -= 1
 
             # Save the volumes of the chemicals left
             self.save_chemical_volumes_left()
@@ -1135,6 +1135,8 @@ class Experiment:
     def normalize_volume(self, chemicals_to_mix: dict):
         # normalize the volume of each chemical dividing each volumes in the dict chemicals_to_mix with the sum of volumes in the dict so that the normalized sum  = 1
         sum_volume = sum(chemicals_to_mix.values())
+        if sum_volume == 0:
+            return chemicals_to_mix
         chemicals_to_mix = {k: v / sum_volume for k, v in chemicals_to_mix.items()}
         return chemicals_to_mix
 
@@ -1604,13 +1606,13 @@ class Experiment:
         self.save_metadata()
 
         # Perform reference electrode calibration
-        self.perform_potentiostat_reference_measurement(" before")
+        # self.perform_potentiostat_reference_measurement(" before")
 
         # Perform the actual electrochemical testing
         self.perform_potentiostat_measurements()
 
         # Perform reference electrode calibration
-        self.perform_potentiostat_reference_measurement(" after")
+        # self.perform_potentiostat_reference_measurement(" after")
 
         # Go straight up from the well
         self.openTron.moveToWell(
