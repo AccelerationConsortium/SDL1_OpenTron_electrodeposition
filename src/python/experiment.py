@@ -8,11 +8,11 @@ from email.mime.text import MIMEText
 import json
 import os
 import pandas as pd
-from biologic import connect, BANDWIDTH, I_RANGE
-from biologic.techniques.cv import CVTechnique, CVParams, CVStep
-from biologic.techniques.ocv import OCVTechnique, OCVParams
-from biologic.techniques.peis import PEISTechnique, PEISParams, SweepMode
-from biologic.techniques.cp import CPTechnique, CPParams, CPStep, Parameter
+# from biologic import connect, BANDWIDTH, I_RANGE
+# from biologic.techniques.cv import CVTechnique, CVParams, CVStep
+# from biologic.techniques.ocv import OCVTechnique, OCVParams
+# from biologic.techniques.peis import PEISTechnique, PEISParams, SweepMode
+# from biologic.techniques.cp import CPTechnique, CPParams, CPStep, Parameter
 from ardu import Arduino
 from opentronsHTTPAPI_clientBuilder import opentronsClient
 from admiral import AdmiralSquidstatWrapper
@@ -1025,7 +1025,7 @@ class Experiment:
 
         # Flush with water
         self.arduino.dispense_ml(
-            pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.75
+            pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
         )  # ml to dispense
         self.chemical_volumes_left["Flush_tool_H2O"] -= 1
         self.arduino.set_ultrasound_on(1, 5)
@@ -1034,7 +1034,7 @@ class Experiment:
         )  # ml to dispense DRAIN
         self.chemical_volumes_left["Waste"] -= 1
         self.arduino.dispense_ml(
-            pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.75
+            pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
         )  # ml to dispense
         self.chemical_volumes_left["Flush_tool_H2O"] -= 1
         self.arduino.set_ultrasound_on(1, 5)
@@ -1049,7 +1049,7 @@ class Experiment:
         if use_acid is True:
             # Flush with acid
             self.arduino.dispense_ml(
-                pump=peristaltic_pump_content["Flush_tool_HCl"], volume=0.75
+                pump=peristaltic_pump_content["Flush_tool_HCl"], volume=0.5
             )  # ml to dispense
             self.chemical_volumes_left["Flush_tool_HCl"] -= 1
             LOGGER.info(f"Sleeping for {sleep_time} seconds")
@@ -1062,7 +1062,7 @@ class Experiment:
 
             # Flush with water
             self.arduino.dispense_ml(
-                pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.75
+                pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
             )  # ml to dispense
             self.chemical_volumes_left["Flush_tool_H2O"] -= 1
             self.arduino.set_ultrasound_on(1, 5)
@@ -1071,7 +1071,7 @@ class Experiment:
             )  # ml to dispense DRAIN
             self.chemical_volumes_left["Waste"] -= 1
             self.arduino.dispense_ml(
-                pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.75
+                pump=peristaltic_pump_content["Flush_tool_H2O"], volume=0.5
             )  # ml to dispense
             self.chemical_volumes_left["Flush_tool_H2O"] -= 1
             self.arduino.set_ultrasound_on(1, 5)

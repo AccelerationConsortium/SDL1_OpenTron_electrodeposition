@@ -112,3 +112,9 @@
 2024-08-27 15:17:00,103 [INFO] Switching relay 0 on for 5 seconds
 2024-08-27 15:17:08,275 [INFO] Turning on pump 0 for 10 seconds.
 2024-08-27 15:17:08,275 [INFO] Switching relay 0 on for 10 seconds
+2025-01-10 13:42:55,567 [INFO] List of USB ports:
+2025-01-10 13:42:55,575 [INFO] COM6 - USB-SERIAL CH340 (COM6)
+2025-01-10 13:42:55,576 [INFO] Arduino found on port: COM6
+2025-01-10 13:44:56,732 [INFO] List of USB ports:
+2025-01-10 13:44:56,732 [INFO] COM6 - USB-SERIAL CH340 (COM6)
+2025-01-10 13:44:56,733 [INFO] Arduino found on port: COM6
