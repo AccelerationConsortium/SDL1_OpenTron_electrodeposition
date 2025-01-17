@@ -1570,7 +1570,7 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=tool_x_offset["OER_electrode"],
             fltOffsetY=tool_y_offset["OER_electrode"],
-            fltOffsetZ=tool_z_offset["OER_electrode"],
+            fltOffsetZ=0#tool_z_offset["OER_electrode"],
         )
 
         # Set the variable to indicate that the electrode is on the pipette
@@ -1595,7 +1595,7 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=0,
             fltOffsetY=0,
-            fltOffsetZ=-18,
+            fltOffsetZ=-28,
             intSpeed=10,  # mm/s
         )
 
@@ -1730,7 +1730,7 @@ class Experiment:
             strOffsetStart="bottom",
             fltOffsetX=tool_x_offset["OER_electrode"],
             fltOffsetY=tool_y_offset["OER_electrode"],
-            fltOffsetZ=tool_z_dropoff["OER_electrode"],
+            fltOffsetZ=5,#tool_z_dropoff["OER_electrode"],
             boolHomeAfter=False,
             boolAlternateDropLocation=False,
         )
