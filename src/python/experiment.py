@@ -887,7 +887,7 @@ class Experiment:
                         + str(self.unique_id)
                         + f" Ref EIS{string_to_add}.csv"
                     )
-                    LOGGER.debug(f"Saving data to {filepath}")
+                    OGGER.debug(f"Saving data to {filepath}")
                     df.to_csv(filepath)
 
                     # Break the loop
@@ -1435,6 +1435,7 @@ class Experiment:
             boolHomeAfter=False,
             boolAlternateDropLocation=False,
         )
+        self.openTron.homeRobot()
 
     def dispense_electrolyte(self, volume: float, chemical: str, well_number: int):
         volume = volume * 1000
@@ -1734,6 +1735,8 @@ class Experiment:
             boolHomeAfter=False,
             boolAlternateDropLocation=False,
         )
+
+        self.openTron.homeRobot()
 
         # Set the variable to indicate that the electrode is no more on the pipette
         self.electrode_is_on_pipette = False
