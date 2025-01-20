@@ -887,7 +887,7 @@ class Experiment:
                         + str(self.unique_id)
                         + f" Ref EIS{string_to_add}.csv"
                     )
-                    LOGGER.debug(f"Saving data to {filepath}")
+                    OGGER.debug(f"Saving data to {filepath}")
                     df.to_csv(filepath)
 
                     # Break the loop
@@ -1435,6 +1435,7 @@ class Experiment:
             boolHomeAfter=False,
             boolAlternateDropLocation=False,
         )
+        self.openTron.homeRobot()
 
     def dispense_electrolyte(self, volume: float, chemical: str, well_number: int):
         volume = volume * 1000
@@ -1570,7 +1571,7 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=tool_x_offset["OER_electrode"],
             fltOffsetY=tool_y_offset["OER_electrode"],
-            fltOffsetZ=tool_z_offset["OER_electrode"],
+            fltOffsetZ=0#tool_z_offset["OER_electrode"],
         )
 
         # Set the variable to indicate that the electrode is on the pipette
@@ -1595,7 +1596,7 @@ class Experiment:
             strOffsetStart="top",
             fltOffsetX=0,
             fltOffsetY=0,
-            fltOffsetZ=-18,
+            fltOffsetZ=-28,
             intSpeed=10,  # mm/s
         )
 
@@ -1730,10 +1731,12 @@ class Experiment:
             strOffsetStart="bottom",
             fltOffsetX=tool_x_offset["OER_electrode"],
             fltOffsetY=tool_y_offset["OER_electrode"],
-            fltOffsetZ=tool_z_dropoff["OER_electrode"],
+            fltOffsetZ=5,#tool_z_dropoff["OER_electrode"],
             boolHomeAfter=False,
             boolAlternateDropLocation=False,
         )
+
+        self.openTron.homeRobot()
 
         # Set the variable to indicate that the electrode is no more on the pipette
         self.electrode_is_on_pipette = False
