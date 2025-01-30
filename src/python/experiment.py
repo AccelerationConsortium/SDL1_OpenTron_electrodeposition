@@ -58,6 +58,7 @@ class Experiment:
         self.arduino_usb_name = arduino_usb_name
         self.sample_surface_area = sample_surface_area
         self.deposition_current = current_at_sample
+        self.electrode_is_on_pipette = False
 
         # Initiate Admiral potentiostat
         self.admiral = admiral
@@ -121,7 +122,7 @@ class Experiment:
             LOGGER.error("Error: 'chemicals_left.txt' file not found.")
             raise RuntimeError("Error: 'chemicals_left.txt' file not found.")
 
-        self.electrode_is_on_pipette = False
+        
 
     def initiate_arduino(
         self,
