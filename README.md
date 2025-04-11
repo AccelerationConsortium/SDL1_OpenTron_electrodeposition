@@ -1,47 +1,42 @@
 # SDL1_OpenTron_electrodeposition
-This is the repository for the work done by external PhD researcher, Nis Fisker-Bødker from the Danish Technical University (DTU).
-The software combines the use of an openTron OT2 and a Sparkfun Arduino to produce a facility for AI optimised electrodeposition of Oxygen Evolution Reaction (OER) catalyst for watersplitting in alkaline environment.
+This is the repository for the work done by external PhD researcher, Nis Fisker-Bødker from the Danish Technical University (DTU), while working at University of Toronto for the Acceleration Consortium.
+The software combines the use of an opentron OT2 and a Sparkfun Arduino Uno to produce a facility for AI optimised electrodeposition of Oxygen Evolution Reaction (OER) catalyst for watersplitting in alkaline environment.
 
 Please pay attention: Due to the Admiral Squidstat software, this will only work on a Windows X86_64 platform and not on Mac/Linux.
 
-# Installation of Pi Pico and Python environment
-Install miniconda on your computer.
-Create a mini python environment for the Pi Pico by opening a terminal and write:
+# Installation of Python environment
+Install miniconda on your computer. Create an invironment for your opentron:
 ````
-conda create -n micropython python=3
-conda activate micropython
-pip install thonny
+conda create -n opentron python=3
+conda activate opentron
 ````
-Now press the BOOTSEL button at the Pi Pico while you connect the USB cable to the computer.
-Release the button after a few seconds and go to the terminal:
-````
-thonny
-````
-This opens a new window.
+# Install Arduino IDE and test the connection to your Arduino
+Refer to Arduino documentation for this step.
+Remember to set the right address for the temperature sensors and the quad relays as found in the firmware in src/arduino/main.ino
+Cable everything as according to the schematics in the journal aticle "Democratizing self-driving lab platform for electrodeposition of catalyst and electrochemical validation".
 
-At the lower right corner of the window, please click and install MicroPython.
-Now chose the Pi Pico WH and newest stable release.
-Install the firmware and exit Thonny.
+Once the firmware from src/arduino/ has been uploaded to the Arduino, add a 10 micro farad capacitor between RESET and GND to avoid the PID regulation to reset itself all the time on the board.
 
-
-# 1: Install Admiral Squidstat Plus potentiostat
+# 1: Install requirement: Admiral Squidstat Plus potentiostat
 On a Windows X86_64/AMD64 machine install the Admiral Instrument Squidstat software. Afterwards download the Wheel file from here:
 https://github.com/Admiral-Instruments/AdmiralSquidstatAPI/tree/main/SquidstatLibrary/windows/pythonWrapper/Release
 
 There is already a working Squidstat Library in this repository which can be used. It is however not updated.
-In a terminal within the right python environment, run the command (adjust to your version):
+In a terminal within the right python environment and folder, run the command (adjust to your version):
 ````
 pip install SquidstatPyLibrary-1.8.0.5-py3-none-win_amd64.whl
 ````
-
-# 2: Install Biologic potentiostat
-Make sure you have EC-Lab installed on a Windows PC.
-In a terminal within the right environment run:
+# 2: Install requirement: opentron OT2 python wrapper
+In a terminal with the correct python environment and folder run:
 ````
-pip install biologic-0.4a1-py3-none-any.whl
+git clone https://github.com/AccelerationConsortium/SDL1_OpenTron_electrodeposition.git](https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git
+cd opentronsHTTPAPI_wrapper
+pip install -e .
 ````
 
 # 3: Install the SDL1_OpenTron_electrodeposition experiment
+This is what is contained in this particular git-repo.
+
 In a terminal with the correct python environment run:
 ````
 git clone https://github.com/AccelerationConsortium/SDL1_OpenTron_electrodeposition.git
@@ -56,7 +51,7 @@ python /src/python/main.py
 ````
 
 # 5: Individual examples
-Individual examples can be found in src/python/ where there are some simpler files testing the functionality of the openTron, Arduino, Admiral potentiostat and Biologic potentiostat. For any debugging start with these simple examples.
+Individual examples can be found in src/python/ where there are some simple files testing the functionality of the openTron, Arduino, Admiral potentiostat. For any debugging start with these simple examples.
 
 # Plotting of data via plot.py
 To export and plot the data from the Admiral and Biologic potentiostats run the src/python/plot.py file.
