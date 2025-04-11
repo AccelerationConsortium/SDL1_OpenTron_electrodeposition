@@ -4,6 +4,9 @@ The software combines the use of an opentron OT2 and a Sparkfun Arduino Uno to p
 
 Please pay attention: Due to the Admiral Squidstat software, this will only work on a Windows X86_64 platform and not on Mac/Linux.
 
+# 3D print and machine components
+All files used for 3D printing, cutting and ordering at www.hubs.com can be found in /3D_files/. Consider to read the journal article "Democratizing self-driving lab platform for electrodeposition of catalyst and electrochemical validation" to understand the content.
+
 # Installation of Python environment
 Install miniconda on your computer. Create an invironment for your opentron:
 ````
@@ -13,7 +16,8 @@ conda activate opentron
 # Install Arduino IDE and test the connection to your Arduino
 Refer to Arduino documentation for this step.
 Remember to set the right address for the temperature sensors and the quad relays as found in the firmware in src/arduino/main.ino
-Cable everything as according to the schematics in the journal aticle "Democratizing self-driving lab platform for electrodeposition of catalyst and electrochemical validation".
+Cable everything as according to the schematics in the journal aticle "Democratizing self-driving lab platform for electrodeposition of catalyst and electrochemical validation" and in the folder /manuals/Electric_diagram.pdf.
+A bill of materials can be found in /manuals/Canada Electrodeposition Bill of Materials (BOM).xlsx
 
 Once the firmware from src/arduino/ has been uploaded to the Arduino, add a 10 micro farad capacitor between RESET and GND to avoid the PID regulation to reset itself all the time on the board.
 
