@@ -33,7 +33,7 @@ pip install SquidstatPyLibrary-1.8.0.5-py3-none-win_amd64.whl
 # 2: Install requirement: opentron OT2 python wrapper
 In a terminal with the correct python environment and folder run:
 ````
-git clone https://github.com/AccelerationConsortium/SDL1_OpenTron_electrodeposition.git](https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git
+git clone https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git
 cd opentronsHTTPAPI_wrapper
 pip install -e .
 ````
