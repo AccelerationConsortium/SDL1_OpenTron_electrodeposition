@@ -4,9 +4,9 @@ import time
 import sys
 import json
 import os
-from ardu import Arduino
-from opentronsHTTPAPI_clientBuilder import opentronsClient
-from parameters import (
+from openTron_electrodeposition.ardu import Arduino
+from OpentronsHTTPAPIWrapper.opentronsHTTPAPI_clientBuilder import opentronsClient
+from openTron_electrodeposition.parameters import (
     labware_paths,
     wells,
     pipetteable_chemicals,

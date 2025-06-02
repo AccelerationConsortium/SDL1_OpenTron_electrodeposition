@@ -1,9 +1,8 @@
-from ardu import Arduino
+from openTron_electrodeposition.ardu import Arduino
 import logging
 from datetime import datetime
 import sys
-import time
-from parameters import (
+from openTron_electrodeposition.parameters import (
     pump_slope,
     pump_intercept,
 )

@@ -1,7 +1,7 @@
 import logging
 from datetime import datetime
 import sys
-from admiral import AdmiralSquidstatWrapper
+from openTron_electrodeposition.admiral import AdmiralSquidstatWrapper
 
 # Folder where data and log-file will be saved
 DATA_PATH = ""
