@@ -10,9 +10,21 @@ All files used for 3D printing, cutting and ordering at www.hubs.com can be foun
 # Installation of Python environment
 Install miniconda on your computer. Create an invironment for your opentron:
 ````
-conda create -n opentron python=3
+conda create -n opentron python=3.10.14
 conda activate opentron
 ````
+
+# 3: Install the SDL1_OpenTron_electrodeposition experiment
+This is what is contained in this particular git-repo.
+
+In a terminal with the correct python environment run:
+````
+git clone https://github.com/AccelerationConsortium/SDL1_OpenTron_electrodeposition.git
+cd SDL1_OpenTron_electrodeposition
+pip install -e .
+````
+
+
 # Install Arduino IDE and test the connection to your Arduino
 Refer to Arduino documentation for this step.
 Remember to set the right address for the temperature sensors and the quad relays as found in the firmware in src/arduino/main.ino
@@ -35,16 +47,6 @@ In a terminal with the correct python environment and folder run:
 ````
 git clone https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git
 cd opentronsHTTPAPI_wrapper
-pip install -e .
-````
-
-# 3: Install the SDL1_OpenTron_electrodeposition experiment
-This is what is contained in this particular git-repo.
-
-In a terminal with the correct python environment run:
-````
-git clone https://github.com/AccelerationConsortium/SDL1_OpenTron_electrodeposition.git
-cd SDL1_OpenTron_electrodeposition
 pip install -e .
 ````
 
