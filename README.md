@@ -58,7 +58,7 @@ A bill of materials can be found in /manuals/Canada Electrodeposition Bill of Ma
 Once the firmware from /src/arduino/ has been uploaded to the Arduino, add a 10 micro farad capacitor between RESET and GND to avoid the PID regulation to reset itself all the time on the board.
 
 
-# 4: Run the experiment
+# 5: Run the experiment
 Examples are provided in /examples to both test the Admiral potentiostat, the Arduino, the opentron and the workflow with all machinary.
 
 Run the experiment from the root of SDL1_OpenTron_electrodeposition/ by executing in an terminal:
@@ -69,7 +69,7 @@ python example/main.py
 Please pay attention to the experiment.py. In case you are building your own experiment and workflow, this is the file you must edit to change the workflow of the robot, measurements etc.
 
 
-# 5: Plotting of data via plot.py
+# 6: Plotting of data via plot.py
 Data (.csv and .jpeg plots) is placed in /data.
 If you for some reason need to replot everything run the data/plot.py file.
 ````
