@@ -1,5 +1,5 @@
-list_of_pump_relays = [0, 1, 2, 3, 4, 5]  # Pumps connected to which relays
-list_of_ultrasonic_relays = [6, 7]  # Ultrasonic connected to which relays
+list_of_pump_relays = [4, 5, 6, 7, 0, 1]  # Pumps connected to which relays
+list_of_ultrasonic_relays = [2, 3]  # Ultrasonic connected to which relays
 OHMIC_CORRECTION_FACTOR = 0.9
 sample_surface_area = 0.2827
 current_density = 0.010  # A/cm^2
@@ -22,6 +22,7 @@ labware_paths = {
     "nis_15_wellplate_3895ul": "src\opentron_labware\\nis_15_wellplate_3895ul.json",
     "nis_2_wellplate_30000ul": "src\opentron_labware\\nis_2_wellplate_30000ul.json",
     "nis_8_reservoir_25000ul": "src\opentron_labware\\nis_8_reservoir_25000ul.json",
+    "vwr_96_tiprack_1000ul": "src\opentron_labware\\vwr_96_tiprack_1000ul.json",
 }
 
 labware_tools = {

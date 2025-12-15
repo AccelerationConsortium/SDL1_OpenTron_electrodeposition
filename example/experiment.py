@@ -194,8 +194,10 @@ class Experiment:
             dicLabware=self.labware_cleaning_cartridge, intSlot=3
         )
         # Load pipette tip rack
-        self.labware_pipette_tips = self.openTron.loadLabware(
-            intSlot=1, strLabwareName="opentrons_96_tiprack_1000ul"
+        path = os.path.join(DATA_PATH, labware_paths["vwr_96_tiprack_1000ul"])
+        self.labware_pipette_tips = self.read_json(path)
+        self.labware_pipette_tips = self.openTron.loadCustomLabware(
+            dicLabware=self.labware_pipette_tips, intSlot=1
         )
 
     def read_json(self, path: str) -> dict:

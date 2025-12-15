@@ -122,8 +122,10 @@ labware_cleaning_cartridge = openTron.loadCustomLabware(
     dicLabware=labware_cleaning_cartridge, intSlot=3
 )
 # Load pipette tip rack
-labware_pipette_tips = openTron.loadLabware(
-    intSlot=1, strLabwareName="opentrons_96_tiprack_1000ul"
+path = os.path.join(DATA_PATH, labware_paths["vwr_96_tiprack_1000ul"])
+labware_pipette_tips = read_json(path)
+labware_pipette_tips = openTron.loadCustomLabware(
+    dicLabware=labware_pipette_tips, intSlot=1
 )
 openTron.addLabwareOffsets(
     strLabwareName=labware_pipette_tips, fltXOffset=0.5, fltYOffset=0.9, fltZOffset=-0.1
