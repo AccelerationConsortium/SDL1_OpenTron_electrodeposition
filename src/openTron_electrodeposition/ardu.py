@@ -77,7 +77,7 @@ class Arduino:
             baudrate=self.BAUD_RATE,
             timeout=self.CONNECTION_TIMEOUT,
         )
-        time.sleep(1)  # initialization loadtime needs to be > 2 seconds
+        time.sleep(3)  # initialization loadtime needs to be > 2 seconds
 
     def disconnect(self) -> None:
         """Disconnects from serial port of arduino"""
@@ -190,10 +190,10 @@ class Arduino:
         Args:
             pump (int): Pump number
         """
-        if pump not in self.list_of_pump_relays:
+        if pump < 0 or pump >= len(self.list_of_pump_relays):
             raise ValueError(
                 f"Pump number {pump} is out of range. "
-                f"Available pumps: {self.list_of_pump_relays}"
+                f"Available pumps: 0 to {len(self.list_of_pump_relays) - 1}"
             )
 
     def _check_ultrasonic_number(self, ultrasonic: int) -> None:
@@ -271,9 +271,12 @@ class Arduino:
         """
         self._check_pump_number(pump)
 
-        LOGGER.info(f"Turning on pump {pump} for {time} seconds.")
+        # Look up which relay corresponds to this pump
+        relay_num = self.list_of_pump_relays[pump]
 
-        self.set_relay_on_time(pump, time)
+        LOGGER.info(f"Turning on pump {pump} (relay {relay_num}) for {time} seconds.")
+
+        self.set_relay_on_time(relay_num, time)
 
     def dispense_ml(self, pump: int, volume: float):
         """Dispense the given volume in ml.
