@@ -7,3 +7,5 @@ build/
 *.code-workspace
 *.jpg
 plots_for_paper*
+.log
+example/main.log
