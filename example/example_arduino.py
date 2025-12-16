@@ -42,10 +42,10 @@ robot = Arduino(
 # Workflow
 ###############################################################################
 # Set temperature to 0 degrees for cartridge 0 # Array reactor
-robot.set_temperature(0, 35)
+robot.set_temperature(0, 0)
 
 # # Set temperature to 35 degrees for cartridge 1 # Flushing cartridge
-robot.set_temperature(1, 35)
+robot.set_temperature(1, 0)
 
 # # Set ultrasound on for cartridge 0 for 1 seconds
 # robot.set_ultrasound_on(0, 1)

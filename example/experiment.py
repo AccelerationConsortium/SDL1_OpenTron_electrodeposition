@@ -39,7 +39,7 @@ class Experiment:
         self,
         well_volume: float = 3.0,
         cleaning_station_volume: float = 6,  # XXX Change this to real life number if pumps are calibrated
-        openTron_IP: str = "100.67.86.197",
+        openTron_IP: str = "169.254.138.47",
         openTron_pipette_name: str = "p1000_single_gen2",
         arduino_usb_name: str = "CH340",
         admiral=AdmiralSquidstatWrapper,

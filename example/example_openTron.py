@@ -21,7 +21,7 @@ from openTron_electrodeposition.parameters import (
     pump_intercept,
 )
 
-OPENTRON_IP = "100.67.86.197"
+OPENTRON_IP = "169.254.138.47"
 ARDUINO_NAME = "CH340"  # Arduino name on Windows
 DATA_PATH = os.getcwd()
 OPENTRON_PIPETTE = "p1000_single_gen2"
