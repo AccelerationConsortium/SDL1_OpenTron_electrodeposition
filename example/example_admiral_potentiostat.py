@@ -18,7 +18,7 @@ logging.basicConfig(
 time_now = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
 
-my_experiment = AdmiralSquidstatWrapper(port="COM5", instrument_name="Plus1894")
+my_experiment = AdmiralSquidstatWrapper(port="/dev/ttyACM0", instrument_name="Plus2249")
 my_experiment.setup_EIS_potentiostatic(10000, 1000, 10, 0, 0.1, 1)
 ac_data, dc_data = my_experiment.get_data()
 my_experiment.close_experiment()

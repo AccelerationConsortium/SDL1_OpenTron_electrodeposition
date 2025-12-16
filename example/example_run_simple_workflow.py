@@ -37,7 +37,7 @@ chemicals_to_mix = [
 experiment = Experiment(
     well_volume=2.5,
     cleaning_station_volume=6,
-    openTron_IP="100.67.86.197",
+    openTron_IP="169.254.138.47",
 
 )
 

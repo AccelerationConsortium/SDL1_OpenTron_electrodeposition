@@ -1,0 +1,1795 @@
+2025-12-15 15:13:46,375 [INFO] List of USB ports:
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:13:46,375 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:13:46,376 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:13:46,383 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:13:49,385 [INFO] Set temperature to 35 C
+2025-12-15 15:13:50,158 [INFO] Set temperature to 35 C
+2025-12-15 15:13:50,158 [INFO] Temperature setpoints configured. Arduino is maintaining temperature.
+2025-12-15 15:13:50,158 [INFO] Script will run indefinitely. Press Ctrl+C to stop.
+2025-12-15 15:13:50,158 [INFO] You can also monitor temperature:
+2025-12-15 15:14:00,158 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:14:00,159 [INFO] Waiting for arduino to respond
+2025-12-15 15:14:01,160 [INFO] Waiting for arduino to respond
+2025-12-15 15:14:01,469 [INFO] 
+Stopping script. Arduino will continue to maintain temperature.
+2025-12-15 15:14:08,602 [INFO] List of USB ports:
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:14:08,602 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:14:08,603 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:14:08,610 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:14:11,612 [INFO] Set temperature to 0 C
+2025-12-15 15:14:12,385 [INFO] Set temperature to 0 C
+2025-12-15 15:14:12,386 [INFO] Temperature setpoints configured. Arduino is maintaining temperature.
+2025-12-15 15:14:12,386 [INFO] Script will run indefinitely. Press Ctrl+C to stop.
+2025-12-15 15:14:12,386 [INFO] You can also monitor temperature:
+2025-12-15 15:14:22,386 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:14:22,386 [INFO] Waiting for arduino to respond
+2025-12-15 15:14:23,386 [INFO] Waiting for arduino to respond
+2025-12-15 15:14:24,387 [INFO] Temperature sensor: 20.56 C
+2025-12-15 15:14:24,387 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:14:24,387 [INFO] Waiting for arduino to respond
+2025-12-15 15:14:25,556 [INFO] Temperature sensor: 20.81 C
+2025-12-15 15:14:25,556 [INFO] Cartridge 0: 20.6°C (setpoint: 35°C) | Cartridge 1: 20.8°C (setpoint: 0°C)
+2025-12-15 15:14:35,556 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:14:35,557 [INFO] Waiting for arduino to respond
+2025-12-15 15:14:38,827 [INFO] 
+Stopping script. Arduino will continue to maintain temperature.
+2025-12-15 15:14:46,104 [INFO] List of USB ports:
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:14:46,104 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:14:46,112 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:15:12,970 [INFO] List of USB ports:
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:15:12,970 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:15:12,977 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:15:54,522 [INFO] List of USB ports:
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:15:54,522 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:15:54,523 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:15:54,530 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:15:57,600 [INFO] Set temperature to 35 C
+2025-12-15 15:15:58,994 [INFO] Set temperature to 0 C
+2025-12-15 15:15:58,994 [INFO] Temperature setpoints configured. Arduino is maintaining temperature.
+2025-12-15 15:15:58,994 [INFO] Script will run indefinitely. Press Ctrl+C to stop.
+2025-12-15 15:15:58,994 [INFO] You can also monitor temperature:
+2025-12-15 15:16:08,995 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:16:10,137 [INFO] Temperature sensor: 20.69 C
+2025-12-15 15:16:10,137 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:16:10,139 [INFO] Waiting for arduino to respond
+2025-12-15 15:16:11,531 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:16:11,531 [INFO] Cartridge 0: 20.7°C (setpoint: 35°C) | Cartridge 1: 20.8°C (setpoint: 0°C)
+2025-12-15 15:16:21,532 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:16:21,533 [INFO] Waiting for arduino to respond
+2025-12-15 15:16:22,676 [INFO] Temperature sensor: 20.62 C
+2025-12-15 15:16:22,676 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:16:22,678 [INFO] Waiting for arduino to respond
+2025-12-15 15:16:24,070 [INFO] Temperature sensor: 20.81 C
+2025-12-15 15:16:24,070 [INFO] Cartridge 0: 20.6°C (setpoint: 35°C) | Cartridge 1: 20.8°C (setpoint: 0°C)
+2025-12-15 15:16:34,071 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:16:34,071 [INFO] Waiting for arduino to respond
+2025-12-15 15:16:35,215 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:16:35,216 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:16:35,217 [INFO] Waiting for arduino to respond
+2025-12-15 15:16:36,610 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:16:36,610 [INFO] Cartridge 0: 20.8°C (setpoint: 35°C) | Cartridge 1: 20.8°C (setpoint: 0°C)
+2025-12-15 15:16:46,618 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:16:46,619 [INFO] Waiting for arduino to respond
+2025-12-15 15:16:47,755 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:16:47,755 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:16:47,757 [INFO] Waiting for arduino to respond
+2025-12-15 15:16:49,149 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:16:49,150 [INFO] Cartridge 0: 20.8°C (setpoint: 35°C) | Cartridge 1: 20.8°C (setpoint: 0°C)
+2025-12-15 15:16:59,150 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:16:59,151 [INFO] Waiting for arduino to respond
+2025-12-15 15:17:00,295 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:17:00,295 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:17:00,297 [INFO] Waiting for arduino to respond
+2025-12-15 15:17:01,689 [INFO] Temperature sensor: 20.69 C
+2025-12-15 15:17:01,689 [INFO] Cartridge 0: 20.8°C (setpoint: 35°C) | Cartridge 1: 20.7°C (setpoint: 0°C)
+2025-12-15 15:17:11,689 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:17:11,690 [INFO] Waiting for arduino to respond
+2025-12-15 15:17:12,834 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:17:12,834 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:17:12,836 [INFO] Waiting for arduino to respond
+2025-12-15 15:17:14,228 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:17:14,229 [INFO] Cartridge 0: 20.8°C (setpoint: 35°C) | Cartridge 1: 20.8°C (setpoint: 0°C)
+2025-12-15 15:17:24,229 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:17:24,230 [INFO] Waiting for arduino to respond
+2025-12-15 15:17:25,373 [INFO] Temperature sensor: 20.81 C
+2025-12-15 15:17:25,373 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:17:25,375 [INFO] Waiting for arduino to respond
+2025-12-15 15:17:26,767 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:17:26,767 [INFO] Cartridge 0: 20.8°C (setpoint: 35°C) | Cartridge 1: 20.8°C (setpoint: 0°C)
+2025-12-15 15:17:36,767 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:17:36,768 [INFO] Waiting for arduino to respond
+2025-12-15 15:17:37,912 [INFO] Temperature sensor: 20.81 C
+2025-12-15 15:17:37,912 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:17:37,914 [INFO] Waiting for arduino to respond
+2025-12-15 15:17:39,306 [INFO] Temperature sensor: 20.81 C
+2025-12-15 15:17:39,307 [INFO] Cartridge 0: 20.8°C (setpoint: 35°C) | Cartridge 1: 20.8°C (setpoint: 0°C)
+2025-12-15 15:17:49,307 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:17:49,308 [INFO] Waiting for arduino to respond
+2025-12-15 15:17:50,452 [INFO] Temperature sensor: 20.87 C
+2025-12-15 15:17:50,452 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:17:50,454 [INFO] Waiting for arduino to respond
+2025-12-15 15:17:51,846 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:17:51,847 [INFO] Cartridge 0: 20.9°C (setpoint: 35°C) | Cartridge 1: 20.8°C (setpoint: 0°C)
+2025-12-15 15:18:01,847 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:18:01,848 [INFO] Waiting for arduino to respond
+2025-12-15 15:18:02,991 [INFO] Temperature sensor: 21.0 C
+2025-12-15 15:18:02,991 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:18:02,993 [INFO] Waiting for arduino to respond
+2025-12-15 15:18:04,385 [INFO] Temperature sensor: 20.69 C
+2025-12-15 15:18:04,386 [INFO] Cartridge 0: 21.0°C (setpoint: 35°C) | Cartridge 1: 20.7°C (setpoint: 0°C)
+2025-12-15 15:18:14,386 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:18:14,387 [INFO] Waiting for arduino to respond
+2025-12-15 15:18:15,531 [INFO] Temperature sensor: 21.19 C
+2025-12-15 15:18:15,531 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:18:15,533 [INFO] Waiting for arduino to respond
+2025-12-15 15:18:15,732 [INFO] 
+Stopping script. Arduino will continue to maintain temperature.
+2025-12-15 15:18:26,691 [INFO] List of USB ports:
+2025-12-15 15:18:26,691 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:18:26,691 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:18:26,691 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:18:26,691 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:18:26,691 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:18:26,691 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:18:26,692 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:18:26,699 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:18:29,767 [INFO] Set temperature to 35 C
+2025-12-15 15:18:31,160 [INFO] Set temperature to 0 C
+2025-12-15 15:18:31,160 [INFO] Temperature setpoints configured. Arduino is maintaining temperature.
+2025-12-15 15:18:31,160 [INFO] Script will run indefinitely. Press Ctrl+C to stop.
+2025-12-15 15:18:31,160 [INFO] You can also monitor temperature:
+2025-12-15 15:18:41,161 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:18:42,303 [INFO] Temperature sensor: 21.62 C
+2025-12-15 15:18:42,303 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:18:42,305 [INFO] Waiting for arduino to respond
+2025-12-15 15:18:43,697 [INFO] Temperature sensor: 20.75 C
+2025-12-15 15:18:43,698 [INFO] Cartridge 0: 21.6°C (setpoint: 35°C) | Cartridge 1: 20.8°C (setpoint: 0°C)
+2025-12-15 15:18:48,627 [INFO] 
+Stopping script. Arduino will continue to maintain temperature.
+2025-12-15 15:18:55,255 [INFO] List of USB ports:
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:18:55,256 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:18:55,257 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:18:55,265 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:18:58,337 [INFO] Set temperature to 0 C
+2025-12-15 15:18:59,729 [INFO] Set temperature to 0 C
+2025-12-15 15:18:59,729 [INFO] Temperature setpoints configured. Arduino is maintaining temperature.
+2025-12-15 15:18:59,729 [INFO] Script will run indefinitely. Press Ctrl+C to stop.
+2025-12-15 15:18:59,729 [INFO] You can also monitor temperature:
+2025-12-15 15:19:08,619 [INFO] 
+Stopping script. Arduino will continue to maintain temperature.
+2025-12-15 15:19:16,376 [INFO] List of USB ports:
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:19:16,376 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:19:16,377 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:19:16,385 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:19:19,452 [INFO] Set temperature to 0 C
+2025-12-15 15:19:20,849 [INFO] Set temperature to 35 C
+2025-12-15 15:19:20,849 [INFO] Temperature setpoints configured. Arduino is maintaining temperature.
+2025-12-15 15:19:20,849 [INFO] Script will run indefinitely. Press Ctrl+C to stop.
+2025-12-15 15:19:20,849 [INFO] You can also monitor temperature:
+2025-12-15 15:19:30,850 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:19:31,991 [INFO] Temperature sensor: 22.69 C
+2025-12-15 15:19:31,991 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:19:31,993 [INFO] Waiting for arduino to respond
+2025-12-15 15:19:33,385 [INFO] Temperature sensor: 20.69 C
+2025-12-15 15:19:33,386 [INFO] Cartridge 0: 22.7°C (setpoint: 35°C) | Cartridge 1: 20.7°C (setpoint: 0°C)
+2025-12-15 15:19:43,386 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:19:43,387 [INFO] Waiting for arduino to respond
+2025-12-15 15:19:44,530 [INFO] Temperature sensor: 23.06 C
+2025-12-15 15:19:44,530 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:19:44,532 [INFO] Waiting for arduino to respond
+2025-12-15 15:19:45,924 [INFO] Temperature sensor: 20.87 C
+2025-12-15 15:19:45,925 [INFO] Cartridge 0: 23.1°C (setpoint: 35°C) | Cartridge 1: 20.9°C (setpoint: 0°C)
+2025-12-15 15:19:55,925 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:19:55,926 [INFO] Waiting for arduino to respond
+2025-12-15 15:19:57,070 [INFO] Temperature sensor: 23.5 C
+2025-12-15 15:19:57,070 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:19:57,072 [INFO] Waiting for arduino to respond
+2025-12-15 15:19:58,464 [INFO] Temperature sensor: 21.25 C
+2025-12-15 15:19:58,464 [INFO] Cartridge 0: 23.5°C (setpoint: 35°C) | Cartridge 1: 21.2°C (setpoint: 0°C)
+2025-12-15 15:20:08,465 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:20:08,465 [INFO] Waiting for arduino to respond
+2025-12-15 15:20:09,609 [INFO] Temperature sensor: 23.87 C
+2025-12-15 15:20:09,609 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:20:09,611 [INFO] Waiting for arduino to respond
+2025-12-15 15:20:11,003 [INFO] Temperature sensor: 22.19 C
+2025-12-15 15:20:11,003 [INFO] Cartridge 0: 23.9°C (setpoint: 35°C) | Cartridge 1: 22.2°C (setpoint: 0°C)
+2025-12-15 15:20:21,004 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:20:21,005 [INFO] Waiting for arduino to respond
+2025-12-15 15:20:22,148 [INFO] Temperature sensor: 24.31 C
+2025-12-15 15:20:22,148 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:20:22,150 [INFO] Waiting for arduino to respond
+2025-12-15 15:20:23,542 [INFO] Temperature sensor: 23.25 C
+2025-12-15 15:20:23,543 [INFO] Cartridge 0: 24.3°C (setpoint: 35°C) | Cartridge 1: 23.2°C (setpoint: 0°C)
+2025-12-15 15:20:33,543 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:20:33,544 [INFO] Waiting for arduino to respond
+2025-12-15 15:20:34,688 [INFO] Temperature sensor: 24.62 C
+2025-12-15 15:20:34,688 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:20:34,690 [INFO] Waiting for arduino to respond
+2025-12-15 15:20:36,082 [INFO] Temperature sensor: 24.62 C
+2025-12-15 15:20:36,082 [INFO] Cartridge 0: 24.6°C (setpoint: 35°C) | Cartridge 1: 24.6°C (setpoint: 0°C)
+2025-12-15 15:20:46,083 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:20:46,083 [INFO] Waiting for arduino to respond
+2025-12-15 15:20:47,228 [INFO] Temperature sensor: 25.12 C
+2025-12-15 15:20:47,228 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:20:47,230 [INFO] Waiting for arduino to respond
+2025-12-15 15:20:48,622 [INFO] Temperature sensor: 26.12 C
+2025-12-15 15:20:48,623 [INFO] Cartridge 0: 25.1°C (setpoint: 35°C) | Cartridge 1: 26.1°C (setpoint: 0°C)
+2025-12-15 15:20:51,674 [INFO] 
+Stopping script. Arduino will continue to maintain temperature.
+2025-12-15 15:21:07,293 [INFO] List of USB ports:
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:21:07,293 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:21:07,294 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:21:07,301 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:21:10,372 [INFO] Set temperature to 35 C
+2025-12-15 15:21:11,766 [INFO] Set temperature to 35 C
+2025-12-15 15:21:11,767 [INFO] Temperature setpoints configured. Arduino is maintaining temperature.
+2025-12-15 15:21:11,767 [INFO] Script will run indefinitely. Press Ctrl+C to stop.
+2025-12-15 15:21:11,767 [INFO] You can also monitor temperature:
+2025-12-15 15:21:21,767 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:21:22,911 [INFO] Temperature sensor: 26.19 C
+2025-12-15 15:21:22,912 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:21:22,913 [INFO] Waiting for arduino to respond
+2025-12-15 15:21:24,306 [INFO] Temperature sensor: 30.19 C
+2025-12-15 15:21:24,306 [INFO] Cartridge 0: 26.2°C (setpoint: 35°C) | Cartridge 1: 30.2°C (setpoint: 0°C)
+2025-12-15 15:21:34,307 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:21:34,308 [INFO] Waiting for arduino to respond
+2025-12-15 15:21:35,453 [INFO] Temperature sensor: 26.62 C
+2025-12-15 15:21:35,453 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:21:35,455 [INFO] Waiting for arduino to respond
+2025-12-15 15:21:36,848 [INFO] Temperature sensor: 31.44 C
+2025-12-15 15:21:36,849 [INFO] Cartridge 0: 26.6°C (setpoint: 35°C) | Cartridge 1: 31.4°C (setpoint: 0°C)
+2025-12-15 15:21:46,849 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:21:46,850 [INFO] Waiting for arduino to respond
+2025-12-15 15:21:47,996 [INFO] Temperature sensor: 26.94 C
+2025-12-15 15:21:47,996 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:21:47,998 [INFO] Waiting for arduino to respond
+2025-12-15 15:21:49,391 [INFO] Temperature sensor: 32.56 C
+2025-12-15 15:21:49,391 [INFO] Cartridge 0: 26.9°C (setpoint: 35°C) | Cartridge 1: 32.6°C (setpoint: 0°C)
+2025-12-15 15:21:59,392 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:21:59,392 [INFO] Waiting for arduino to respond
+2025-12-15 15:22:00,538 [INFO] Temperature sensor: 27.19 C
+2025-12-15 15:22:00,538 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:22:00,540 [INFO] Waiting for arduino to respond
+2025-12-15 15:22:01,933 [INFO] Temperature sensor: 33.75 C
+2025-12-15 15:22:01,933 [INFO] Cartridge 0: 27.2°C (setpoint: 35°C) | Cartridge 1: 33.8°C (setpoint: 0°C)
+2025-12-15 15:22:11,933 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:22:11,934 [INFO] Waiting for arduino to respond
+2025-12-15 15:22:13,080 [INFO] Temperature sensor: 27.44 C
+2025-12-15 15:22:13,080 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:22:13,082 [INFO] Waiting for arduino to respond
+2025-12-15 15:22:14,475 [INFO] Temperature sensor: 34.94 C
+2025-12-15 15:22:14,475 [INFO] Cartridge 0: 27.4°C (setpoint: 35°C) | Cartridge 1: 34.9°C (setpoint: 0°C)
+2025-12-15 15:22:24,475 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:22:24,475 [INFO] Waiting for arduino to respond
+2025-12-15 15:22:25,621 [INFO] Temperature sensor: 27.87 C
+2025-12-15 15:22:25,622 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:22:25,624 [INFO] Waiting for arduino to respond
+2025-12-15 15:22:27,016 [INFO] Temperature sensor: 36.06 C
+2025-12-15 15:22:27,016 [INFO] Cartridge 0: 27.9°C (setpoint: 35°C) | Cartridge 1: 36.1°C (setpoint: 0°C)
+2025-12-15 15:22:37,017 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:22:37,018 [INFO] Waiting for arduino to respond
+2025-12-15 15:22:38,162 [INFO] Temperature sensor: 28.06 C
+2025-12-15 15:22:38,163 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:22:38,165 [INFO] Waiting for arduino to respond
+2025-12-15 15:22:39,556 [INFO] Temperature sensor: 37.13 C
+2025-12-15 15:22:39,556 [INFO] Cartridge 0: 28.1°C (setpoint: 35°C) | Cartridge 1: 37.1°C (setpoint: 0°C)
+2025-12-15 15:22:49,557 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:22:49,558 [INFO] Waiting for arduino to respond
+2025-12-15 15:22:50,702 [INFO] Temperature sensor: 28.44 C
+2025-12-15 15:22:50,702 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:22:50,704 [INFO] Waiting for arduino to respond
+2025-12-15 15:22:52,096 [INFO] Temperature sensor: 38.0 C
+2025-12-15 15:22:52,097 [INFO] Cartridge 0: 28.4°C (setpoint: 35°C) | Cartridge 1: 38.0°C (setpoint: 0°C)
+2025-12-15 15:23:02,097 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:23:02,098 [INFO] Waiting for arduino to respond
+2025-12-15 15:23:03,242 [INFO] Temperature sensor: 28.75 C
+2025-12-15 15:23:03,242 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:23:03,244 [INFO] Waiting for arduino to respond
+2025-12-15 15:23:04,636 [INFO] Temperature sensor: 38.75 C
+2025-12-15 15:23:04,637 [INFO] Cartridge 0: 28.8°C (setpoint: 35°C) | Cartridge 1: 38.8°C (setpoint: 0°C)
+2025-12-15 15:23:14,637 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:23:14,638 [INFO] Waiting for arduino to respond
+2025-12-15 15:23:15,781 [INFO] Temperature sensor: 29.06 C
+2025-12-15 15:23:15,781 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:23:15,783 [INFO] Waiting for arduino to respond
+2025-12-15 15:23:17,176 [INFO] Temperature sensor: 39.31 C
+2025-12-15 15:23:17,176 [INFO] Cartridge 0: 29.1°C (setpoint: 35°C) | Cartridge 1: 39.3°C (setpoint: 0°C)
+2025-12-15 15:23:27,176 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:23:27,177 [INFO] Waiting for arduino to respond
+2025-12-15 15:23:28,320 [INFO] Temperature sensor: 29.37 C
+2025-12-15 15:23:28,321 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:23:28,322 [INFO] Waiting for arduino to respond
+2025-12-15 15:23:29,714 [INFO] Temperature sensor: 39.81 C
+2025-12-15 15:23:29,715 [INFO] Cartridge 0: 29.4°C (setpoint: 35°C) | Cartridge 1: 39.8°C (setpoint: 0°C)
+2025-12-15 15:23:39,715 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:23:39,716 [INFO] Waiting for arduino to respond
+2025-12-15 15:23:40,859 [INFO] Temperature sensor: 29.81 C
+2025-12-15 15:23:40,860 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:23:40,862 [INFO] Waiting for arduino to respond
+2025-12-15 15:23:42,254 [INFO] Temperature sensor: 40.13 C
+2025-12-15 15:23:42,254 [INFO] Cartridge 0: 29.8°C (setpoint: 35°C) | Cartridge 1: 40.1°C (setpoint: 0°C)
+2025-12-15 15:23:52,254 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:23:52,255 [INFO] Waiting for arduino to respond
+2025-12-15 15:23:53,398 [INFO] Temperature sensor: 30.12 C
+2025-12-15 15:23:53,398 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:23:53,400 [INFO] Waiting for arduino to respond
+2025-12-15 15:23:54,792 [INFO] Temperature sensor: 40.25 C
+2025-12-15 15:23:54,793 [INFO] Cartridge 0: 30.1°C (setpoint: 35°C) | Cartridge 1: 40.2°C (setpoint: 0°C)
+2025-12-15 15:24:04,793 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:24:04,794 [INFO] Waiting for arduino to respond
+2025-12-15 15:24:05,938 [INFO] Temperature sensor: 30.5 C
+2025-12-15 15:24:05,938 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:24:05,940 [INFO] Waiting for arduino to respond
+2025-12-15 15:24:07,332 [INFO] Temperature sensor: 40.38 C
+2025-12-15 15:24:07,332 [INFO] Cartridge 0: 30.5°C (setpoint: 35°C) | Cartridge 1: 40.4°C (setpoint: 0°C)
+2025-12-15 15:24:17,333 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:24:17,334 [INFO] Waiting for arduino to respond
+2025-12-15 15:24:18,478 [INFO] Temperature sensor: 30.87 C
+2025-12-15 15:24:18,478 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:24:18,480 [INFO] Waiting for arduino to respond
+2025-12-15 15:24:19,872 [INFO] Temperature sensor: 40.38 C
+2025-12-15 15:24:19,872 [INFO] Cartridge 0: 30.9°C (setpoint: 35°C) | Cartridge 1: 40.4°C (setpoint: 0°C)
+2025-12-15 15:24:29,873 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:24:29,874 [INFO] Waiting for arduino to respond
+2025-12-15 15:24:31,018 [INFO] Temperature sensor: 31.31 C
+2025-12-15 15:24:31,018 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:24:31,020 [INFO] Waiting for arduino to respond
+2025-12-15 15:24:32,413 [INFO] Temperature sensor: 40.25 C
+2025-12-15 15:24:32,413 [INFO] Cartridge 0: 31.3°C (setpoint: 35°C) | Cartridge 1: 40.2°C (setpoint: 0°C)
+2025-12-15 15:24:42,413 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:24:42,414 [INFO] Waiting for arduino to respond
+2025-12-15 15:24:43,558 [INFO] Temperature sensor: 31.75 C
+2025-12-15 15:24:43,558 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:24:43,560 [INFO] Waiting for arduino to respond
+2025-12-15 15:24:44,952 [INFO] Temperature sensor: 40.25 C
+2025-12-15 15:24:44,952 [INFO] Cartridge 0: 31.8°C (setpoint: 35°C) | Cartridge 1: 40.2°C (setpoint: 0°C)
+2025-12-15 15:24:54,952 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:24:54,953 [INFO] Waiting for arduino to respond
+2025-12-15 15:24:56,097 [INFO] Temperature sensor: 32.13 C
+2025-12-15 15:24:56,097 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:24:56,099 [INFO] Waiting for arduino to respond
+2025-12-15 15:24:57,491 [INFO] Temperature sensor: 40.06 C
+2025-12-15 15:24:57,492 [INFO] Cartridge 0: 32.1°C (setpoint: 35°C) | Cartridge 1: 40.1°C (setpoint: 0°C)
+2025-12-15 15:25:07,492 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:25:07,493 [INFO] Waiting for arduino to respond
+2025-12-15 15:25:08,638 [INFO] Temperature sensor: 32.56 C
+2025-12-15 15:25:08,638 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:25:08,640 [INFO] Waiting for arduino to respond
+2025-12-15 15:25:10,032 [INFO] Temperature sensor: 39.88 C
+2025-12-15 15:25:10,032 [INFO] Cartridge 0: 32.6°C (setpoint: 35°C) | Cartridge 1: 39.9°C (setpoint: 0°C)
+2025-12-15 15:25:20,033 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:25:20,033 [INFO] Waiting for arduino to respond
+2025-12-15 15:25:21,177 [INFO] Temperature sensor: 33.06 C
+2025-12-15 15:25:21,177 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:25:21,179 [INFO] Waiting for arduino to respond
+2025-12-15 15:25:22,571 [INFO] Temperature sensor: 39.75 C
+2025-12-15 15:25:22,571 [INFO] Cartridge 0: 33.1°C (setpoint: 35°C) | Cartridge 1: 39.8°C (setpoint: 0°C)
+2025-12-15 15:25:32,571 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:25:32,572 [INFO] Waiting for arduino to respond
+2025-12-15 15:25:33,716 [INFO] Temperature sensor: 33.5 C
+2025-12-15 15:25:33,716 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:25:33,718 [INFO] Waiting for arduino to respond
+2025-12-15 15:25:35,110 [INFO] Temperature sensor: 39.63 C
+2025-12-15 15:25:35,110 [INFO] Cartridge 0: 33.5°C (setpoint: 35°C) | Cartridge 1: 39.6°C (setpoint: 0°C)
+2025-12-15 15:25:45,111 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:25:45,111 [INFO] Waiting for arduino to respond
+2025-12-15 15:25:46,255 [INFO] Temperature sensor: 33.94 C
+2025-12-15 15:25:46,255 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:25:46,257 [INFO] Waiting for arduino to respond
+2025-12-15 15:25:47,650 [INFO] Temperature sensor: 39.38 C
+2025-12-15 15:25:47,650 [INFO] Cartridge 0: 33.9°C (setpoint: 35°C) | Cartridge 1: 39.4°C (setpoint: 0°C)
+2025-12-15 15:25:57,650 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:25:57,651 [INFO] Waiting for arduino to respond
+2025-12-15 15:25:58,796 [INFO] Temperature sensor: 34.38 C
+2025-12-15 15:25:58,796 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:25:58,798 [INFO] Waiting for arduino to respond
+2025-12-15 15:26:00,190 [INFO] Temperature sensor: 39.13 C
+2025-12-15 15:26:00,190 [INFO] Cartridge 0: 34.4°C (setpoint: 35°C) | Cartridge 1: 39.1°C (setpoint: 0°C)
+2025-12-15 15:26:10,190 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:26:10,191 [INFO] Waiting for arduino to respond
+2025-12-15 15:26:11,336 [INFO] Temperature sensor: 34.88 C
+2025-12-15 15:26:11,336 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:26:11,338 [INFO] Waiting for arduino to respond
+2025-12-15 15:26:12,730 [INFO] Temperature sensor: 38.94 C
+2025-12-15 15:26:12,730 [INFO] Cartridge 0: 34.9°C (setpoint: 35°C) | Cartridge 1: 38.9°C (setpoint: 0°C)
+2025-12-15 15:26:22,730 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:26:22,730 [INFO] Waiting for arduino to respond
+2025-12-15 15:26:23,876 [INFO] Temperature sensor: 35.38 C
+2025-12-15 15:26:23,876 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:26:23,878 [INFO] Waiting for arduino to respond
+2025-12-15 15:26:25,270 [INFO] Temperature sensor: 38.69 C
+2025-12-15 15:26:25,270 [INFO] Cartridge 0: 35.4°C (setpoint: 35°C) | Cartridge 1: 38.7°C (setpoint: 0°C)
+2025-12-15 15:26:35,271 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:26:35,272 [INFO] Waiting for arduino to respond
+2025-12-15 15:26:36,416 [INFO] Temperature sensor: 35.94 C
+2025-12-15 15:26:36,417 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:26:36,418 [INFO] Waiting for arduino to respond
+2025-12-15 15:26:37,811 [INFO] Temperature sensor: 38.5 C
+2025-12-15 15:26:37,811 [INFO] Cartridge 0: 35.9°C (setpoint: 35°C) | Cartridge 1: 38.5°C (setpoint: 0°C)
+2025-12-15 15:26:47,811 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:26:47,812 [INFO] Waiting for arduino to respond
+2025-12-15 15:26:48,955 [INFO] Temperature sensor: 36.38 C
+2025-12-15 15:26:48,956 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:26:48,957 [INFO] Waiting for arduino to respond
+2025-12-15 15:26:50,350 [INFO] Temperature sensor: 38.25 C
+2025-12-15 15:26:50,350 [INFO] Cartridge 0: 36.4°C (setpoint: 35°C) | Cartridge 1: 38.2°C (setpoint: 0°C)
+2025-12-15 15:27:00,350 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:27:00,350 [INFO] Waiting for arduino to respond
+2025-12-15 15:27:01,494 [INFO] Temperature sensor: 36.81 C
+2025-12-15 15:27:01,494 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:27:01,497 [INFO] Waiting for arduino to respond
+2025-12-15 15:27:02,888 [INFO] Temperature sensor: 38.0 C
+2025-12-15 15:27:02,888 [INFO] Cartridge 0: 36.8°C (setpoint: 35°C) | Cartridge 1: 38.0°C (setpoint: 0°C)
+2025-12-15 15:27:12,889 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:27:12,890 [INFO] Waiting for arduino to respond
+2025-12-15 15:27:14,032 [INFO] Temperature sensor: 37.38 C
+2025-12-15 15:27:14,032 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:27:14,034 [INFO] Waiting for arduino to respond
+2025-12-15 15:27:15,426 [INFO] Temperature sensor: 37.81 C
+2025-12-15 15:27:15,426 [INFO] Cartridge 0: 37.4°C (setpoint: 35°C) | Cartridge 1: 37.8°C (setpoint: 0°C)
+2025-12-15 15:27:25,427 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:27:25,427 [INFO] Waiting for arduino to respond
+2025-12-15 15:27:26,570 [INFO] Temperature sensor: 37.75 C
+2025-12-15 15:27:26,570 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:27:26,572 [INFO] Waiting for arduino to respond
+2025-12-15 15:27:27,964 [INFO] Temperature sensor: 37.63 C
+2025-12-15 15:27:27,964 [INFO] Cartridge 0: 37.8°C (setpoint: 35°C) | Cartridge 1: 37.6°C (setpoint: 0°C)
+2025-12-15 15:27:37,965 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:27:37,965 [INFO] Waiting for arduino to respond
+2025-12-15 15:27:39,107 [INFO] Temperature sensor: 38.25 C
+2025-12-15 15:27:39,107 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:27:39,109 [INFO] Waiting for arduino to respond
+2025-12-15 15:27:40,501 [INFO] Temperature sensor: 37.44 C
+2025-12-15 15:27:40,501 [INFO] Cartridge 0: 38.2°C (setpoint: 35°C) | Cartridge 1: 37.4°C (setpoint: 0°C)
+2025-12-15 15:27:50,501 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:27:50,502 [INFO] Waiting for arduino to respond
+2025-12-15 15:27:51,644 [INFO] Temperature sensor: 38.63 C
+2025-12-15 15:27:51,645 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:27:51,647 [INFO] Waiting for arduino to respond
+2025-12-15 15:27:53,038 [INFO] Temperature sensor: 37.19 C
+2025-12-15 15:27:53,038 [INFO] Cartridge 0: 38.6°C (setpoint: 35°C) | Cartridge 1: 37.2°C (setpoint: 0°C)
+2025-12-15 15:28:03,039 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:28:03,039 [INFO] Waiting for arduino to respond
+2025-12-15 15:28:04,181 [INFO] Temperature sensor: 39.06 C
+2025-12-15 15:28:04,181 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:28:04,183 [INFO] Waiting for arduino to respond
+2025-12-15 15:28:05,575 [INFO] Temperature sensor: 37.0 C
+2025-12-15 15:28:05,575 [INFO] Cartridge 0: 39.1°C (setpoint: 35°C) | Cartridge 1: 37.0°C (setpoint: 0°C)
+2025-12-15 15:28:15,576 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:28:15,577 [INFO] Waiting for arduino to respond
+2025-12-15 15:28:16,719 [INFO] Temperature sensor: 39.56 C
+2025-12-15 15:28:16,719 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:28:16,721 [INFO] Waiting for arduino to respond
+2025-12-15 15:28:18,113 [INFO] Temperature sensor: 36.81 C
+2025-12-15 15:28:18,114 [INFO] Cartridge 0: 39.6°C (setpoint: 35°C) | Cartridge 1: 36.8°C (setpoint: 0°C)
+2025-12-15 15:28:28,114 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:28:28,115 [INFO] Waiting for arduino to respond
+2025-12-15 15:28:29,258 [INFO] Temperature sensor: 39.88 C
+2025-12-15 15:28:29,258 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:28:29,260 [INFO] Waiting for arduino to respond
+2025-12-15 15:28:30,652 [INFO] Temperature sensor: 36.63 C
+2025-12-15 15:28:30,653 [INFO] Cartridge 0: 39.9°C (setpoint: 35°C) | Cartridge 1: 36.6°C (setpoint: 0°C)
+2025-12-15 15:28:40,653 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:28:40,654 [INFO] Waiting for arduino to respond
+2025-12-15 15:28:41,797 [INFO] Temperature sensor: 40.31 C
+2025-12-15 15:28:41,797 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:28:41,799 [INFO] Waiting for arduino to respond
+2025-12-15 15:28:43,191 [INFO] Temperature sensor: 36.38 C
+2025-12-15 15:28:43,192 [INFO] Cartridge 0: 40.3°C (setpoint: 35°C) | Cartridge 1: 36.4°C (setpoint: 0°C)
+2025-12-15 15:28:53,192 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:28:53,193 [INFO] Waiting for arduino to respond
+2025-12-15 15:28:54,335 [INFO] Temperature sensor: 40.56 C
+2025-12-15 15:28:54,335 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:28:54,337 [INFO] Waiting for arduino to respond
+2025-12-15 15:28:55,729 [INFO] Temperature sensor: 36.19 C
+2025-12-15 15:28:55,729 [INFO] Cartridge 0: 40.6°C (setpoint: 35°C) | Cartridge 1: 36.2°C (setpoint: 0°C)
+2025-12-15 15:29:05,729 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:29:05,730 [INFO] Waiting for arduino to respond
+2025-12-15 15:29:06,873 [INFO] Temperature sensor: 41.0 C
+2025-12-15 15:29:06,874 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:29:06,875 [INFO] Waiting for arduino to respond
+2025-12-15 15:29:08,267 [INFO] Temperature sensor: 36.0 C
+2025-12-15 15:29:08,267 [INFO] Cartridge 0: 41.0°C (setpoint: 35°C) | Cartridge 1: 36.0°C (setpoint: 0°C)
+2025-12-15 15:29:18,267 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:29:18,268 [INFO] Waiting for arduino to respond
+2025-12-15 15:29:19,411 [INFO] Temperature sensor: 41.31 C
+2025-12-15 15:29:19,411 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:29:19,413 [INFO] Waiting for arduino to respond
+2025-12-15 15:29:20,805 [INFO] Temperature sensor: 35.81 C
+2025-12-15 15:29:20,806 [INFO] Cartridge 0: 41.3°C (setpoint: 35°C) | Cartridge 1: 35.8°C (setpoint: 0°C)
+2025-12-15 15:29:30,806 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:29:30,807 [INFO] Waiting for arduino to respond
+2025-12-15 15:29:31,950 [INFO] Temperature sensor: 41.56 C
+2025-12-15 15:29:31,950 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:29:31,952 [INFO] Waiting for arduino to respond
+2025-12-15 15:29:33,344 [INFO] Temperature sensor: 35.69 C
+2025-12-15 15:29:33,344 [INFO] Cartridge 0: 41.6°C (setpoint: 35°C) | Cartridge 1: 35.7°C (setpoint: 0°C)
+2025-12-15 15:29:43,344 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:29:43,345 [INFO] Waiting for arduino to respond
+2025-12-15 15:29:44,488 [INFO] Temperature sensor: 41.88 C
+2025-12-15 15:29:44,488 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:29:44,490 [INFO] Waiting for arduino to respond
+2025-12-15 15:29:45,882 [INFO] Temperature sensor: 35.5 C
+2025-12-15 15:29:45,883 [INFO] Cartridge 0: 41.9°C (setpoint: 35°C) | Cartridge 1: 35.5°C (setpoint: 0°C)
+2025-12-15 15:29:55,883 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:29:55,884 [INFO] Waiting for arduino to respond
+2025-12-15 15:29:57,026 [INFO] Temperature sensor: 42.19 C
+2025-12-15 15:29:57,026 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:29:57,028 [INFO] Waiting for arduino to respond
+2025-12-15 15:29:58,420 [INFO] Temperature sensor: 35.38 C
+2025-12-15 15:29:58,420 [INFO] Cartridge 0: 42.2°C (setpoint: 35°C) | Cartridge 1: 35.4°C (setpoint: 0°C)
+2025-12-15 15:30:08,420 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:30:08,421 [INFO] Waiting for arduino to respond
+2025-12-15 15:30:09,565 [INFO] Temperature sensor: 42.38 C
+2025-12-15 15:30:09,565 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:30:09,567 [INFO] Waiting for arduino to respond
+2025-12-15 15:30:10,958 [INFO] Temperature sensor: 35.19 C
+2025-12-15 15:30:10,959 [INFO] Cartridge 0: 42.4°C (setpoint: 35°C) | Cartridge 1: 35.2°C (setpoint: 0°C)
+2025-12-15 15:30:20,959 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:30:20,960 [INFO] Waiting for arduino to respond
+2025-12-15 15:30:22,103 [INFO] Temperature sensor: 42.63 C
+2025-12-15 15:30:22,103 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:30:22,105 [INFO] Waiting for arduino to respond
+2025-12-15 15:30:23,497 [INFO] Temperature sensor: 35.0 C
+2025-12-15 15:30:23,497 [INFO] Cartridge 0: 42.6°C (setpoint: 35°C) | Cartridge 1: 35.0°C (setpoint: 0°C)
+2025-12-15 15:30:33,498 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:30:33,498 [INFO] Waiting for arduino to respond
+2025-12-15 15:30:34,641 [INFO] Temperature sensor: 42.88 C
+2025-12-15 15:30:34,641 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:30:34,643 [INFO] Waiting for arduino to respond
+2025-12-15 15:30:36,035 [INFO] Temperature sensor: 34.81 C
+2025-12-15 15:30:36,036 [INFO] Cartridge 0: 42.9°C (setpoint: 35°C) | Cartridge 1: 34.8°C (setpoint: 0°C)
+2025-12-15 15:30:46,036 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:30:46,036 [INFO] Waiting for arduino to respond
+2025-12-15 15:30:47,179 [INFO] Temperature sensor: 43.0 C
+2025-12-15 15:30:47,180 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:30:47,182 [INFO] Waiting for arduino to respond
+2025-12-15 15:30:48,573 [INFO] Temperature sensor: 34.69 C
+2025-12-15 15:30:48,573 [INFO] Cartridge 0: 43.0°C (setpoint: 35°C) | Cartridge 1: 34.7°C (setpoint: 0°C)
+2025-12-15 15:30:58,574 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:30:58,574 [INFO] Waiting for arduino to respond
+2025-12-15 15:30:59,717 [INFO] Temperature sensor: 43.19 C
+2025-12-15 15:30:59,717 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:30:59,719 [INFO] Waiting for arduino to respond
+2025-12-15 15:31:01,111 [INFO] Temperature sensor: 34.56 C
+2025-12-15 15:31:01,112 [INFO] Cartridge 0: 43.2°C (setpoint: 35°C) | Cartridge 1: 34.6°C (setpoint: 0°C)
+2025-12-15 15:31:11,112 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:31:11,113 [INFO] Waiting for arduino to respond
+2025-12-15 15:31:12,255 [INFO] Temperature sensor: 43.38 C
+2025-12-15 15:31:12,255 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:31:12,257 [INFO] Waiting for arduino to respond
+2025-12-15 15:31:13,649 [INFO] Temperature sensor: 34.44 C
+2025-12-15 15:31:13,649 [INFO] Cartridge 0: 43.4°C (setpoint: 35°C) | Cartridge 1: 34.4°C (setpoint: 0°C)
+2025-12-15 15:31:23,649 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:31:23,650 [INFO] Waiting for arduino to respond
+2025-12-15 15:31:24,793 [INFO] Temperature sensor: 43.56 C
+2025-12-15 15:31:24,793 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:31:24,795 [INFO] Waiting for arduino to respond
+2025-12-15 15:31:26,187 [INFO] Temperature sensor: 34.19 C
+2025-12-15 15:31:26,187 [INFO] Cartridge 0: 43.6°C (setpoint: 35°C) | Cartridge 1: 34.2°C (setpoint: 0°C)
+2025-12-15 15:31:36,188 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:31:36,188 [INFO] Waiting for arduino to respond
+2025-12-15 15:31:37,332 [INFO] Temperature sensor: 43.75 C
+2025-12-15 15:31:37,332 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:31:37,334 [INFO] Waiting for arduino to respond
+2025-12-15 15:31:38,726 [INFO] Temperature sensor: 34.13 C
+2025-12-15 15:31:38,726 [INFO] Cartridge 0: 43.8°C (setpoint: 35°C) | Cartridge 1: 34.1°C (setpoint: 0°C)
+2025-12-15 15:31:48,726 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:31:48,727 [INFO] Waiting for arduino to respond
+2025-12-15 15:31:49,870 [INFO] Temperature sensor: 43.81 C
+2025-12-15 15:31:49,870 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:31:49,872 [INFO] Waiting for arduino to respond
+2025-12-15 15:31:51,264 [INFO] Temperature sensor: 33.88 C
+2025-12-15 15:31:51,264 [INFO] Cartridge 0: 43.8°C (setpoint: 35°C) | Cartridge 1: 33.9°C (setpoint: 0°C)
+2025-12-15 15:32:01,264 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:32:01,265 [INFO] Waiting for arduino to respond
+2025-12-15 15:32:02,408 [INFO] Temperature sensor: 43.88 C
+2025-12-15 15:32:02,408 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:32:02,410 [INFO] Waiting for arduino to respond
+2025-12-15 15:32:03,801 [INFO] Temperature sensor: 33.81 C
+2025-12-15 15:32:03,802 [INFO] Cartridge 0: 43.9°C (setpoint: 35°C) | Cartridge 1: 33.8°C (setpoint: 0°C)
+2025-12-15 15:32:13,802 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:32:13,802 [INFO] Waiting for arduino to respond
+2025-12-15 15:32:14,946 [INFO] Temperature sensor: 44.0 C
+2025-12-15 15:32:14,946 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:32:14,948 [INFO] Waiting for arduino to respond
+2025-12-15 15:32:16,340 [INFO] Temperature sensor: 33.75 C
+2025-12-15 15:32:16,340 [INFO] Cartridge 0: 44.0°C (setpoint: 35°C) | Cartridge 1: 33.8°C (setpoint: 0°C)
+2025-12-15 15:32:26,340 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:32:26,341 [INFO] Waiting for arduino to respond
+2025-12-15 15:32:27,484 [INFO] Temperature sensor: 44.13 C
+2025-12-15 15:32:27,484 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:32:27,486 [INFO] Waiting for arduino to respond
+2025-12-15 15:32:28,877 [INFO] Temperature sensor: 33.56 C
+2025-12-15 15:32:28,878 [INFO] Cartridge 0: 44.1°C (setpoint: 35°C) | Cartridge 1: 33.6°C (setpoint: 0°C)
+2025-12-15 15:32:38,878 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:32:38,879 [INFO] Waiting for arduino to respond
+2025-12-15 15:32:40,022 [INFO] Temperature sensor: 44.19 C
+2025-12-15 15:32:40,022 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:32:40,024 [INFO] Waiting for arduino to respond
+2025-12-15 15:32:41,416 [INFO] Temperature sensor: 33.44 C
+2025-12-15 15:32:41,416 [INFO] Cartridge 0: 44.2°C (setpoint: 35°C) | Cartridge 1: 33.4°C (setpoint: 0°C)
+2025-12-15 15:32:51,416 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:32:51,416 [INFO] Waiting for arduino to respond
+2025-12-15 15:32:52,560 [INFO] Temperature sensor: 44.25 C
+2025-12-15 15:32:52,560 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:32:52,562 [INFO] Waiting for arduino to respond
+2025-12-15 15:32:53,954 [INFO] Temperature sensor: 33.25 C
+2025-12-15 15:32:53,954 [INFO] Cartridge 0: 44.2°C (setpoint: 35°C) | Cartridge 1: 33.2°C (setpoint: 0°C)
+2025-12-15 15:33:03,954 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:33:03,955 [INFO] Waiting for arduino to respond
+2025-12-15 15:33:05,098 [INFO] Temperature sensor: 44.31 C
+2025-12-15 15:33:05,098 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:33:05,100 [INFO] Waiting for arduino to respond
+2025-12-15 15:33:06,492 [INFO] Temperature sensor: 33.19 C
+2025-12-15 15:33:06,492 [INFO] Cartridge 0: 44.3°C (setpoint: 35°C) | Cartridge 1: 33.2°C (setpoint: 0°C)
+2025-12-15 15:33:16,492 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:33:16,494 [INFO] Waiting for arduino to respond
+2025-12-15 15:33:17,637 [INFO] Temperature sensor: 44.44 C
+2025-12-15 15:33:17,638 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:33:17,640 [INFO] Waiting for arduino to respond
+2025-12-15 15:33:19,032 [INFO] Temperature sensor: 33.06 C
+2025-12-15 15:33:19,032 [INFO] Cartridge 0: 44.4°C (setpoint: 35°C) | Cartridge 1: 33.1°C (setpoint: 0°C)
+2025-12-15 15:33:29,032 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:33:29,033 [INFO] Waiting for arduino to respond
+2025-12-15 15:33:30,178 [INFO] Temperature sensor: 44.44 C
+2025-12-15 15:33:30,179 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:33:30,180 [INFO] Waiting for arduino to respond
+2025-12-15 15:33:31,572 [INFO] Temperature sensor: 33.13 C
+2025-12-15 15:33:31,572 [INFO] Cartridge 0: 44.4°C (setpoint: 35°C) | Cartridge 1: 33.1°C (setpoint: 0°C)
+2025-12-15 15:33:41,572 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:33:41,573 [INFO] Waiting for arduino to respond
+2025-12-15 15:33:42,718 [INFO] Temperature sensor: 44.5 C
+2025-12-15 15:33:42,718 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:33:42,720 [INFO] Waiting for arduino to respond
+2025-12-15 15:33:44,112 [INFO] Temperature sensor: 33.25 C
+2025-12-15 15:33:44,113 [INFO] Cartridge 0: 44.5°C (setpoint: 35°C) | Cartridge 1: 33.2°C (setpoint: 0°C)
+2025-12-15 15:33:54,113 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:33:54,114 [INFO] Waiting for arduino to respond
+2025-12-15 15:33:55,258 [INFO] Temperature sensor: 44.5 C
+2025-12-15 15:33:55,259 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:33:55,261 [INFO] Waiting for arduino to respond
+2025-12-15 15:33:56,652 [INFO] Temperature sensor: 33.69 C
+2025-12-15 15:33:56,653 [INFO] Cartridge 0: 44.5°C (setpoint: 35°C) | Cartridge 1: 33.7°C (setpoint: 0°C)
+2025-12-15 15:34:06,653 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:34:06,653 [INFO] Waiting for arduino to respond
+2025-12-15 15:34:07,798 [INFO] Temperature sensor: 44.5 C
+2025-12-15 15:34:07,798 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:34:07,800 [INFO] Waiting for arduino to respond
+2025-12-15 15:34:09,192 [INFO] Temperature sensor: 34.31 C
+2025-12-15 15:34:09,192 [INFO] Cartridge 0: 44.5°C (setpoint: 35°C) | Cartridge 1: 34.3°C (setpoint: 0°C)
+2025-12-15 15:34:19,193 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:34:19,193 [INFO] Waiting for arduino to respond
+2025-12-15 15:34:20,339 [INFO] Temperature sensor: 44.56 C
+2025-12-15 15:34:20,339 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:34:20,341 [INFO] Waiting for arduino to respond
+2025-12-15 15:34:21,733 [INFO] Temperature sensor: 35.0 C
+2025-12-15 15:34:21,733 [INFO] Cartridge 0: 44.6°C (setpoint: 35°C) | Cartridge 1: 35.0°C (setpoint: 0°C)
+2025-12-15 15:34:31,733 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:34:31,734 [INFO] Waiting for arduino to respond
+2025-12-15 15:34:32,878 [INFO] Temperature sensor: 44.5 C
+2025-12-15 15:34:32,879 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:34:32,881 [INFO] Waiting for arduino to respond
+2025-12-15 15:34:34,272 [INFO] Temperature sensor: 35.75 C
+2025-12-15 15:34:34,273 [INFO] Cartridge 0: 44.5°C (setpoint: 35°C) | Cartridge 1: 35.8°C (setpoint: 0°C)
+2025-12-15 15:34:44,273 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:34:44,274 [INFO] Waiting for arduino to respond
+2025-12-15 15:34:45,419 [INFO] Temperature sensor: 44.63 C
+2025-12-15 15:34:45,419 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:34:45,421 [INFO] Waiting for arduino to respond
+2025-12-15 15:34:46,813 [INFO] Temperature sensor: 36.63 C
+2025-12-15 15:34:46,813 [INFO] Cartridge 0: 44.6°C (setpoint: 35°C) | Cartridge 1: 36.6°C (setpoint: 0°C)
+2025-12-15 15:34:56,813 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:34:56,814 [INFO] Waiting for arduino to respond
+2025-12-15 15:34:57,957 [INFO] Temperature sensor: 44.63 C
+2025-12-15 15:34:57,958 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:34:57,959 [INFO] Waiting for arduino to respond
+2025-12-15 15:34:59,351 [INFO] Temperature sensor: 37.56 C
+2025-12-15 15:34:59,351 [INFO] Cartridge 0: 44.6°C (setpoint: 35°C) | Cartridge 1: 37.6°C (setpoint: 0°C)
+2025-12-15 15:35:09,352 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:35:09,353 [INFO] Waiting for arduino to respond
+2025-12-15 15:35:10,495 [INFO] Temperature sensor: 44.63 C
+2025-12-15 15:35:10,495 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:35:10,497 [INFO] Waiting for arduino to respond
+2025-12-15 15:35:11,888 [INFO] Temperature sensor: 38.44 C
+2025-12-15 15:35:11,888 [INFO] Cartridge 0: 44.6°C (setpoint: 35°C) | Cartridge 1: 38.4°C (setpoint: 0°C)
+2025-12-15 15:35:21,889 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:35:21,889 [INFO] Waiting for arduino to respond
+2025-12-15 15:35:23,031 [INFO] Temperature sensor: 44.63 C
+2025-12-15 15:35:23,031 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:35:23,033 [INFO] Waiting for arduino to respond
+2025-12-15 15:35:24,424 [INFO] Temperature sensor: 39.31 C
+2025-12-15 15:35:24,425 [INFO] Cartridge 0: 44.6°C (setpoint: 35°C) | Cartridge 1: 39.3°C (setpoint: 0°C)
+2025-12-15 15:35:34,425 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:35:34,426 [INFO] Waiting for arduino to respond
+2025-12-15 15:35:35,568 [INFO] Temperature sensor: 44.69 C
+2025-12-15 15:35:35,568 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:35:35,570 [INFO] Waiting for arduino to respond
+2025-12-15 15:35:36,962 [INFO] Temperature sensor: 40.0 C
+2025-12-15 15:35:36,962 [INFO] Cartridge 0: 44.7°C (setpoint: 35°C) | Cartridge 1: 40.0°C (setpoint: 0°C)
+2025-12-15 15:35:46,963 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:35:46,963 [INFO] Waiting for arduino to respond
+2025-12-15 15:35:48,105 [INFO] Temperature sensor: 44.56 C
+2025-12-15 15:35:48,105 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:35:48,107 [INFO] Waiting for arduino to respond
+2025-12-15 15:35:49,499 [INFO] Temperature sensor: 40.63 C
+2025-12-15 15:35:49,499 [INFO] Cartridge 0: 44.6°C (setpoint: 35°C) | Cartridge 1: 40.6°C (setpoint: 0°C)
+2025-12-15 15:35:59,499 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:35:59,500 [INFO] Waiting for arduino to respond
+2025-12-15 15:36:00,641 [INFO] Temperature sensor: 44.56 C
+2025-12-15 15:36:00,642 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:36:00,644 [INFO] Waiting for arduino to respond
+2025-12-15 15:36:02,035 [INFO] Temperature sensor: 41.0 C
+2025-12-15 15:36:02,035 [INFO] Cartridge 0: 44.6°C (setpoint: 35°C) | Cartridge 1: 41.0°C (setpoint: 0°C)
+2025-12-15 15:36:12,036 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:36:12,036 [INFO] Waiting for arduino to respond
+2025-12-15 15:36:13,178 [INFO] Temperature sensor: 44.63 C
+2025-12-15 15:36:13,178 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:36:13,180 [INFO] Waiting for arduino to respond
+2025-12-15 15:36:14,571 [INFO] Temperature sensor: 41.25 C
+2025-12-15 15:36:14,572 [INFO] Cartridge 0: 44.6°C (setpoint: 35°C) | Cartridge 1: 41.2°C (setpoint: 0°C)
+2025-12-15 15:36:24,572 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:36:24,573 [INFO] Waiting for arduino to respond
+2025-12-15 15:36:25,714 [INFO] Temperature sensor: 44.56 C
+2025-12-15 15:36:25,715 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:36:25,717 [INFO] Waiting for arduino to respond
+2025-12-15 15:36:27,108 [INFO] Temperature sensor: 41.38 C
+2025-12-15 15:36:27,108 [INFO] Cartridge 0: 44.6°C (setpoint: 35°C) | Cartridge 1: 41.4°C (setpoint: 0°C)
+2025-12-15 15:36:37,109 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:36:37,109 [INFO] Waiting for arduino to respond
+2025-12-15 15:36:38,251 [INFO] Temperature sensor: 44.63 C
+2025-12-15 15:36:38,251 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:36:38,253 [INFO] Waiting for arduino to respond
+2025-12-15 15:36:39,645 [INFO] Temperature sensor: 41.44 C
+2025-12-15 15:36:39,646 [INFO] Cartridge 0: 44.6°C (setpoint: 35°C) | Cartridge 1: 41.4°C (setpoint: 0°C)
+2025-12-15 15:36:49,646 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:36:49,647 [INFO] Waiting for arduino to respond
+2025-12-15 15:36:50,788 [INFO] Temperature sensor: 44.5 C
+2025-12-15 15:36:50,788 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:36:50,790 [INFO] Waiting for arduino to respond
+2025-12-15 15:36:52,181 [INFO] Temperature sensor: 41.44 C
+2025-12-15 15:36:52,181 [INFO] Cartridge 0: 44.5°C (setpoint: 35°C) | Cartridge 1: 41.4°C (setpoint: 0°C)
+2025-12-15 15:37:02,182 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:37:02,183 [INFO] Waiting for arduino to respond
+2025-12-15 15:37:03,324 [INFO] Temperature sensor: 44.5 C
+2025-12-15 15:37:03,324 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:37:03,326 [INFO] Waiting for arduino to respond
+2025-12-15 15:37:04,718 [INFO] Temperature sensor: 41.38 C
+2025-12-15 15:37:04,718 [INFO] Cartridge 0: 44.5°C (setpoint: 35°C) | Cartridge 1: 41.4°C (setpoint: 0°C)
+2025-12-15 15:37:14,718 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:37:14,719 [INFO] Waiting for arduino to respond
+2025-12-15 15:37:15,861 [INFO] Temperature sensor: 44.5 C
+2025-12-15 15:37:15,862 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:37:15,864 [INFO] Waiting for arduino to respond
+2025-12-15 15:37:17,256 [INFO] Temperature sensor: 41.31 C
+2025-12-15 15:37:17,256 [INFO] Cartridge 0: 44.5°C (setpoint: 35°C) | Cartridge 1: 41.3°C (setpoint: 0°C)
+2025-12-15 15:37:27,256 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:37:27,257 [INFO] Waiting for arduino to respond
+2025-12-15 15:37:28,399 [INFO] Temperature sensor: 44.5 C
+2025-12-15 15:37:28,399 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:37:28,401 [INFO] Waiting for arduino to respond
+2025-12-15 15:37:29,793 [INFO] Temperature sensor: 41.19 C
+2025-12-15 15:37:29,793 [INFO] Cartridge 0: 44.5°C (setpoint: 35°C) | Cartridge 1: 41.2°C (setpoint: 0°C)
+2025-12-15 15:37:39,793 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:37:39,794 [INFO] Waiting for arduino to respond
+2025-12-15 15:37:40,935 [INFO] Temperature sensor: 44.5 C
+2025-12-15 15:37:40,935 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:37:40,937 [INFO] Waiting for arduino to respond
+2025-12-15 15:37:42,329 [INFO] Temperature sensor: 41.13 C
+2025-12-15 15:37:42,329 [INFO] Cartridge 0: 44.5°C (setpoint: 35°C) | Cartridge 1: 41.1°C (setpoint: 0°C)
+2025-12-15 15:37:52,330 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:37:52,330 [INFO] Waiting for arduino to respond
+2025-12-15 15:37:53,472 [INFO] Temperature sensor: 44.38 C
+2025-12-15 15:37:53,472 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:37:53,474 [INFO] Waiting for arduino to respond
+2025-12-15 15:37:54,866 [INFO] Temperature sensor: 40.88 C
+2025-12-15 15:37:54,866 [INFO] Cartridge 0: 44.4°C (setpoint: 35°C) | Cartridge 1: 40.9°C (setpoint: 0°C)
+2025-12-15 15:38:04,867 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:38:04,867 [INFO] Waiting for arduino to respond
+2025-12-15 15:38:06,008 [INFO] Temperature sensor: 44.44 C
+2025-12-15 15:38:06,008 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:38:06,010 [INFO] Waiting for arduino to respond
+2025-12-15 15:38:07,402 [INFO] Temperature sensor: 40.81 C
+2025-12-15 15:38:07,402 [INFO] Cartridge 0: 44.4°C (setpoint: 35°C) | Cartridge 1: 40.8°C (setpoint: 0°C)
+2025-12-15 15:38:17,402 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:38:17,402 [INFO] Waiting for arduino to respond
+2025-12-15 15:38:18,545 [INFO] Temperature sensor: 44.38 C
+2025-12-15 15:38:18,546 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:38:18,547 [INFO] Waiting for arduino to respond
+2025-12-15 15:38:19,939 [INFO] Temperature sensor: 40.56 C
+2025-12-15 15:38:19,939 [INFO] Cartridge 0: 44.4°C (setpoint: 35°C) | Cartridge 1: 40.6°C (setpoint: 0°C)
+2025-12-15 15:38:29,940 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:38:29,941 [INFO] Waiting for arduino to respond
+2025-12-15 15:38:31,081 [INFO] Temperature sensor: 44.31 C
+2025-12-15 15:38:31,082 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:38:31,084 [INFO] Waiting for arduino to respond
+2025-12-15 15:38:32,475 [INFO] Temperature sensor: 40.44 C
+2025-12-15 15:38:32,476 [INFO] Cartridge 0: 44.3°C (setpoint: 35°C) | Cartridge 1: 40.4°C (setpoint: 0°C)
+2025-12-15 15:38:42,476 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:38:42,477 [INFO] Waiting for arduino to respond
+2025-12-15 15:38:43,618 [INFO] Temperature sensor: 44.31 C
+2025-12-15 15:38:43,618 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:38:43,620 [INFO] Waiting for arduino to respond
+2025-12-15 15:38:45,012 [INFO] Temperature sensor: 40.25 C
+2025-12-15 15:38:45,013 [INFO] Cartridge 0: 44.3°C (setpoint: 35°C) | Cartridge 1: 40.2°C (setpoint: 0°C)
+2025-12-15 15:38:55,013 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:38:55,014 [INFO] Waiting for arduino to respond
+2025-12-15 15:38:56,155 [INFO] Temperature sensor: 44.31 C
+2025-12-15 15:38:56,155 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:38:56,157 [INFO] Waiting for arduino to respond
+2025-12-15 15:38:57,549 [INFO] Temperature sensor: 40.0 C
+2025-12-15 15:38:57,549 [INFO] Cartridge 0: 44.3°C (setpoint: 35°C) | Cartridge 1: 40.0°C (setpoint: 0°C)
+2025-12-15 15:39:07,550 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:39:07,550 [INFO] Waiting for arduino to respond
+2025-12-15 15:39:08,692 [INFO] Temperature sensor: 44.19 C
+2025-12-15 15:39:08,692 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:39:08,694 [INFO] Waiting for arduino to respond
+2025-12-15 15:39:10,086 [INFO] Temperature sensor: 39.81 C
+2025-12-15 15:39:10,086 [INFO] Cartridge 0: 44.2°C (setpoint: 35°C) | Cartridge 1: 39.8°C (setpoint: 0°C)
+2025-12-15 15:39:20,086 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:39:20,087 [INFO] Waiting for arduino to respond
+2025-12-15 15:39:21,229 [INFO] Temperature sensor: 44.13 C
+2025-12-15 15:39:21,229 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:39:21,231 [INFO] Waiting for arduino to respond
+2025-12-15 15:39:22,623 [INFO] Temperature sensor: 39.63 C
+2025-12-15 15:39:22,623 [INFO] Cartridge 0: 44.1°C (setpoint: 35°C) | Cartridge 1: 39.6°C (setpoint: 0°C)
+2025-12-15 15:39:32,623 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:39:32,624 [INFO] Waiting for arduino to respond
+2025-12-15 15:39:33,766 [INFO] Temperature sensor: 44.19 C
+2025-12-15 15:39:33,766 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:39:33,767 [INFO] Waiting for arduino to respond
+2025-12-15 15:39:35,159 [INFO] Temperature sensor: 39.5 C
+2025-12-15 15:39:35,160 [INFO] Cartridge 0: 44.2°C (setpoint: 35°C) | Cartridge 1: 39.5°C (setpoint: 0°C)
+2025-12-15 15:39:45,160 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:39:45,160 [INFO] Waiting for arduino to respond
+2025-12-15 15:39:46,302 [INFO] Temperature sensor: 44.13 C
+2025-12-15 15:39:46,302 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:39:46,304 [INFO] Waiting for arduino to respond
+2025-12-15 15:39:47,695 [INFO] Temperature sensor: 39.25 C
+2025-12-15 15:39:47,696 [INFO] Cartridge 0: 44.1°C (setpoint: 35°C) | Cartridge 1: 39.2°C (setpoint: 0°C)
+2025-12-15 15:39:57,696 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:39:57,697 [INFO] Waiting for arduino to respond
+2025-12-15 15:39:58,838 [INFO] Temperature sensor: 44.0 C
+2025-12-15 15:39:58,838 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:39:58,840 [INFO] Waiting for arduino to respond
+2025-12-15 15:40:00,231 [INFO] Temperature sensor: 39.13 C
+2025-12-15 15:40:00,231 [INFO] Cartridge 0: 44.0°C (setpoint: 35°C) | Cartridge 1: 39.1°C (setpoint: 0°C)
+2025-12-15 15:40:10,232 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:40:10,232 [INFO] Waiting for arduino to respond
+2025-12-15 15:40:11,375 [INFO] Temperature sensor: 44.0 C
+2025-12-15 15:40:11,375 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:40:11,377 [INFO] Waiting for arduino to respond
+2025-12-15 15:40:12,769 [INFO] Temperature sensor: 38.94 C
+2025-12-15 15:40:12,769 [INFO] Cartridge 0: 44.0°C (setpoint: 35°C) | Cartridge 1: 38.9°C (setpoint: 0°C)
+2025-12-15 15:40:22,769 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:40:22,770 [INFO] Waiting for arduino to respond
+2025-12-15 15:40:23,911 [INFO] Temperature sensor: 43.94 C
+2025-12-15 15:40:23,911 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:40:23,913 [INFO] Waiting for arduino to respond
+2025-12-15 15:40:25,305 [INFO] Temperature sensor: 38.75 C
+2025-12-15 15:40:25,305 [INFO] Cartridge 0: 43.9°C (setpoint: 35°C) | Cartridge 1: 38.8°C (setpoint: 0°C)
+2025-12-15 15:40:35,305 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:40:35,306 [INFO] Waiting for arduino to respond
+2025-12-15 15:40:36,448 [INFO] Temperature sensor: 43.88 C
+2025-12-15 15:40:36,448 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:40:36,450 [INFO] Waiting for arduino to respond
+2025-12-15 15:40:37,841 [INFO] Temperature sensor: 38.56 C
+2025-12-15 15:40:37,842 [INFO] Cartridge 0: 43.9°C (setpoint: 35°C) | Cartridge 1: 38.6°C (setpoint: 0°C)
+2025-12-15 15:40:47,842 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:40:47,843 [INFO] Waiting for arduino to respond
+2025-12-15 15:40:48,985 [INFO] Temperature sensor: 43.81 C
+2025-12-15 15:40:48,985 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:40:48,987 [INFO] Waiting for arduino to respond
+2025-12-15 15:40:50,378 [INFO] Temperature sensor: 38.44 C
+2025-12-15 15:40:50,379 [INFO] Cartridge 0: 43.8°C (setpoint: 35°C) | Cartridge 1: 38.4°C (setpoint: 0°C)
+2025-12-15 15:41:00,379 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:41:00,380 [INFO] Waiting for arduino to respond
+2025-12-15 15:41:01,522 [INFO] Temperature sensor: 43.75 C
+2025-12-15 15:41:01,522 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:41:01,524 [INFO] Waiting for arduino to respond
+2025-12-15 15:41:02,916 [INFO] Temperature sensor: 38.19 C
+2025-12-15 15:41:02,916 [INFO] Cartridge 0: 43.8°C (setpoint: 35°C) | Cartridge 1: 38.2°C (setpoint: 0°C)
+2025-12-15 15:41:12,917 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:41:12,917 [INFO] Waiting for arduino to respond
+2025-12-15 15:41:14,059 [INFO] Temperature sensor: 43.75 C
+2025-12-15 15:41:14,059 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:41:14,061 [INFO] Waiting for arduino to respond
+2025-12-15 15:41:15,453 [INFO] Temperature sensor: 38.06 C
+2025-12-15 15:41:15,453 [INFO] Cartridge 0: 43.8°C (setpoint: 35°C) | Cartridge 1: 38.1°C (setpoint: 0°C)
+2025-12-15 15:41:25,453 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:41:25,454 [INFO] Waiting for arduino to respond
+2025-12-15 15:41:26,595 [INFO] Temperature sensor: 43.75 C
+2025-12-15 15:41:26,596 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:41:26,598 [INFO] Waiting for arduino to respond
+2025-12-15 15:41:27,989 [INFO] Temperature sensor: 37.81 C
+2025-12-15 15:41:27,989 [INFO] Cartridge 0: 43.8°C (setpoint: 35°C) | Cartridge 1: 37.8°C (setpoint: 0°C)
+2025-12-15 15:41:37,990 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:41:37,990 [INFO] Waiting for arduino to respond
+2025-12-15 15:41:39,131 [INFO] Temperature sensor: 43.69 C
+2025-12-15 15:41:39,132 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:41:39,134 [INFO] Waiting for arduino to respond
+2025-12-15 15:41:40,525 [INFO] Temperature sensor: 37.75 C
+2025-12-15 15:41:40,525 [INFO] Cartridge 0: 43.7°C (setpoint: 35°C) | Cartridge 1: 37.8°C (setpoint: 0°C)
+2025-12-15 15:41:50,526 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:41:50,526 [INFO] Waiting for arduino to respond
+2025-12-15 15:41:51,668 [INFO] Temperature sensor: 43.56 C
+2025-12-15 15:41:51,668 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:41:51,670 [INFO] Waiting for arduino to respond
+2025-12-15 15:41:53,062 [INFO] Temperature sensor: 37.56 C
+2025-12-15 15:41:53,062 [INFO] Cartridge 0: 43.6°C (setpoint: 35°C) | Cartridge 1: 37.6°C (setpoint: 0°C)
+2025-12-15 15:42:03,062 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:42:03,063 [INFO] Waiting for arduino to respond
+2025-12-15 15:42:04,204 [INFO] Temperature sensor: 43.5 C
+2025-12-15 15:42:04,205 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:42:04,206 [INFO] Waiting for arduino to respond
+2025-12-15 15:42:05,598 [INFO] Temperature sensor: 37.38 C
+2025-12-15 15:42:05,598 [INFO] Cartridge 0: 43.5°C (setpoint: 35°C) | Cartridge 1: 37.4°C (setpoint: 0°C)
+2025-12-15 15:42:15,599 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:42:15,600 [INFO] Waiting for arduino to respond
+2025-12-15 15:42:16,741 [INFO] Temperature sensor: 43.5 C
+2025-12-15 15:42:16,741 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:42:16,743 [INFO] Waiting for arduino to respond
+2025-12-15 15:42:18,134 [INFO] Temperature sensor: 37.31 C
+2025-12-15 15:42:18,135 [INFO] Cartridge 0: 43.5°C (setpoint: 35°C) | Cartridge 1: 37.3°C (setpoint: 0°C)
+2025-12-15 15:42:28,135 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:42:28,136 [INFO] Waiting for arduino to respond
+2025-12-15 15:42:29,277 [INFO] Temperature sensor: 43.38 C
+2025-12-15 15:42:29,278 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:42:29,280 [INFO] Waiting for arduino to respond
+2025-12-15 15:42:30,671 [INFO] Temperature sensor: 37.19 C
+2025-12-15 15:42:30,672 [INFO] Cartridge 0: 43.4°C (setpoint: 35°C) | Cartridge 1: 37.2°C (setpoint: 0°C)
+2025-12-15 15:42:40,672 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:42:40,673 [INFO] Waiting for arduino to respond
+2025-12-15 15:42:41,816 [INFO] Temperature sensor: 43.31 C
+2025-12-15 15:42:41,816 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:42:41,818 [INFO] Waiting for arduino to respond
+2025-12-15 15:42:43,210 [INFO] Temperature sensor: 37.0 C
+2025-12-15 15:42:43,210 [INFO] Cartridge 0: 43.3°C (setpoint: 35°C) | Cartridge 1: 37.0°C (setpoint: 0°C)
+2025-12-15 15:42:53,210 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:42:53,211 [INFO] Waiting for arduino to respond
+2025-12-15 15:42:54,355 [INFO] Temperature sensor: 43.31 C
+2025-12-15 15:42:54,355 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:42:54,357 [INFO] Waiting for arduino to respond
+2025-12-15 15:42:55,749 [INFO] Temperature sensor: 36.88 C
+2025-12-15 15:42:55,749 [INFO] Cartridge 0: 43.3°C (setpoint: 35°C) | Cartridge 1: 36.9°C (setpoint: 0°C)
+2025-12-15 15:43:05,750 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:43:05,750 [INFO] Waiting for arduino to respond
+2025-12-15 15:43:06,894 [INFO] Temperature sensor: 43.19 C
+2025-12-15 15:43:06,895 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:43:06,896 [INFO] Waiting for arduino to respond
+2025-12-15 15:43:08,288 [INFO] Temperature sensor: 36.88 C
+2025-12-15 15:43:08,289 [INFO] Cartridge 0: 43.2°C (setpoint: 35°C) | Cartridge 1: 36.9°C (setpoint: 0°C)
+2025-12-15 15:43:18,289 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:43:18,290 [INFO] Waiting for arduino to respond
+2025-12-15 15:43:19,433 [INFO] Temperature sensor: 43.13 C
+2025-12-15 15:43:19,434 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:43:19,436 [INFO] Waiting for arduino to respond
+2025-12-15 15:43:20,827 [INFO] Temperature sensor: 37.0 C
+2025-12-15 15:43:20,831 [INFO] Cartridge 0: 43.1°C (setpoint: 35°C) | Cartridge 1: 37.0°C (setpoint: 0°C)
+2025-12-15 15:43:30,832 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:43:30,833 [INFO] Waiting for arduino to respond
+2025-12-15 15:43:31,971 [INFO] Temperature sensor: 43.13 C
+2025-12-15 15:43:31,971 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:43:31,973 [INFO] Waiting for arduino to respond
+2025-12-15 15:43:33,364 [INFO] Temperature sensor: 37.38 C
+2025-12-15 15:43:33,365 [INFO] Cartridge 0: 43.1°C (setpoint: 35°C) | Cartridge 1: 37.4°C (setpoint: 0°C)
+2025-12-15 15:43:43,365 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:43:43,366 [INFO] Waiting for arduino to respond
+2025-12-15 15:43:44,508 [INFO] Temperature sensor: 43.06 C
+2025-12-15 15:43:44,508 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:43:44,510 [INFO] Waiting for arduino to respond
+2025-12-15 15:43:45,902 [INFO] Temperature sensor: 37.81 C
+2025-12-15 15:43:45,902 [INFO] Cartridge 0: 43.1°C (setpoint: 35°C) | Cartridge 1: 37.8°C (setpoint: 0°C)
+2025-12-15 15:43:55,902 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:43:55,903 [INFO] Waiting for arduino to respond
+2025-12-15 15:43:57,045 [INFO] Temperature sensor: 42.94 C
+2025-12-15 15:43:57,045 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:43:57,047 [INFO] Waiting for arduino to respond
+2025-12-15 15:43:58,439 [INFO] Temperature sensor: 38.31 C
+2025-12-15 15:43:58,439 [INFO] Cartridge 0: 42.9°C (setpoint: 35°C) | Cartridge 1: 38.3°C (setpoint: 0°C)
+2025-12-15 15:44:08,440 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:44:08,440 [INFO] Waiting for arduino to respond
+2025-12-15 15:44:09,581 [INFO] Temperature sensor: 43.0 C
+2025-12-15 15:44:09,582 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:44:09,584 [INFO] Waiting for arduino to respond
+2025-12-15 15:44:10,975 [INFO] Temperature sensor: 38.75 C
+2025-12-15 15:44:10,976 [INFO] Cartridge 0: 43.0°C (setpoint: 35°C) | Cartridge 1: 38.8°C (setpoint: 0°C)
+2025-12-15 15:44:20,976 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:44:20,977 [INFO] Waiting for arduino to respond
+2025-12-15 15:44:22,118 [INFO] Temperature sensor: 42.88 C
+2025-12-15 15:44:22,119 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:44:22,120 [INFO] Waiting for arduino to respond
+2025-12-15 15:44:23,512 [INFO] Temperature sensor: 39.0 C
+2025-12-15 15:44:23,513 [INFO] Cartridge 0: 42.9°C (setpoint: 35°C) | Cartridge 1: 39.0°C (setpoint: 0°C)
+2025-12-15 15:44:33,513 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:44:33,514 [INFO] Waiting for arduino to respond
+2025-12-15 15:44:34,655 [INFO] Temperature sensor: 42.81 C
+2025-12-15 15:44:34,655 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:44:34,657 [INFO] Waiting for arduino to respond
+2025-12-15 15:44:36,049 [INFO] Temperature sensor: 39.19 C
+2025-12-15 15:44:36,049 [INFO] Cartridge 0: 42.8°C (setpoint: 35°C) | Cartridge 1: 39.2°C (setpoint: 0°C)
+2025-12-15 15:44:46,049 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:44:46,050 [INFO] Waiting for arduino to respond
+2025-12-15 15:44:47,192 [INFO] Temperature sensor: 42.75 C
+2025-12-15 15:44:47,193 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:44:47,194 [INFO] Waiting for arduino to respond
+2025-12-15 15:44:48,586 [INFO] Temperature sensor: 39.19 C
+2025-12-15 15:44:48,586 [INFO] Cartridge 0: 42.8°C (setpoint: 35°C) | Cartridge 1: 39.2°C (setpoint: 0°C)
+2025-12-15 15:44:58,587 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:44:58,587 [INFO] Waiting for arduino to respond
+2025-12-15 15:44:59,730 [INFO] Temperature sensor: 42.69 C
+2025-12-15 15:44:59,730 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:44:59,732 [INFO] Waiting for arduino to respond
+2025-12-15 15:45:01,123 [INFO] Temperature sensor: 39.25 C
+2025-12-15 15:45:01,124 [INFO] Cartridge 0: 42.7°C (setpoint: 35°C) | Cartridge 1: 39.2°C (setpoint: 0°C)
+2025-12-15 15:45:11,124 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:45:11,125 [INFO] Waiting for arduino to respond
+2025-12-15 15:45:12,266 [INFO] Temperature sensor: 42.63 C
+2025-12-15 15:45:12,267 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:45:12,269 [INFO] Waiting for arduino to respond
+2025-12-15 15:45:13,660 [INFO] Temperature sensor: 39.19 C
+2025-12-15 15:45:13,660 [INFO] Cartridge 0: 42.6°C (setpoint: 35°C) | Cartridge 1: 39.2°C (setpoint: 0°C)
+2025-12-15 15:45:23,661 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:45:23,661 [INFO] Waiting for arduino to respond
+2025-12-15 15:45:24,804 [INFO] Temperature sensor: 42.56 C
+2025-12-15 15:45:24,804 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:45:24,806 [INFO] Waiting for arduino to respond
+2025-12-15 15:45:26,197 [INFO] Temperature sensor: 39.19 C
+2025-12-15 15:45:26,197 [INFO] Cartridge 0: 42.6°C (setpoint: 35°C) | Cartridge 1: 39.2°C (setpoint: 0°C)
+2025-12-15 15:45:36,198 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:45:36,198 [INFO] Waiting for arduino to respond
+2025-12-15 15:45:37,341 [INFO] Temperature sensor: 42.5 C
+2025-12-15 15:45:37,341 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:45:37,343 [INFO] Waiting for arduino to respond
+2025-12-15 15:45:38,735 [INFO] Temperature sensor: 39.13 C
+2025-12-15 15:45:38,735 [INFO] Cartridge 0: 42.5°C (setpoint: 35°C) | Cartridge 1: 39.1°C (setpoint: 0°C)
+2025-12-15 15:45:48,736 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:45:48,736 [INFO] Waiting for arduino to respond
+2025-12-15 15:45:49,878 [INFO] Temperature sensor: 42.38 C
+2025-12-15 15:45:49,879 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:45:49,880 [INFO] Waiting for arduino to respond
+2025-12-15 15:45:51,272 [INFO] Temperature sensor: 39.0 C
+2025-12-15 15:45:51,273 [INFO] Cartridge 0: 42.4°C (setpoint: 35°C) | Cartridge 1: 39.0°C (setpoint: 0°C)
+2025-12-15 15:46:01,273 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:46:01,274 [INFO] Waiting for arduino to respond
+2025-12-15 15:46:02,415 [INFO] Temperature sensor: 42.31 C
+2025-12-15 15:46:02,415 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:46:02,417 [INFO] Waiting for arduino to respond
+2025-12-15 15:46:03,808 [INFO] Temperature sensor: 38.94 C
+2025-12-15 15:46:03,809 [INFO] Cartridge 0: 42.3°C (setpoint: 35°C) | Cartridge 1: 38.9°C (setpoint: 0°C)
+2025-12-15 15:46:13,809 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:46:13,810 [INFO] Waiting for arduino to respond
+2025-12-15 15:46:14,952 [INFO] Temperature sensor: 42.31 C
+2025-12-15 15:46:14,952 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:46:14,954 [INFO] Waiting for arduino to respond
+2025-12-15 15:46:16,345 [INFO] Temperature sensor: 38.75 C
+2025-12-15 15:46:16,346 [INFO] Cartridge 0: 42.3°C (setpoint: 35°C) | Cartridge 1: 38.8°C (setpoint: 0°C)
+2025-12-15 15:46:26,346 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:46:26,347 [INFO] Waiting for arduino to respond
+2025-12-15 15:46:27,488 [INFO] Temperature sensor: 42.19 C
+2025-12-15 15:46:27,488 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:46:27,490 [INFO] Waiting for arduino to respond
+2025-12-15 15:46:28,883 [INFO] Temperature sensor: 38.63 C
+2025-12-15 15:46:28,883 [INFO] Cartridge 0: 42.2°C (setpoint: 35°C) | Cartridge 1: 38.6°C (setpoint: 0°C)
+2025-12-15 15:46:38,883 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:46:38,884 [INFO] Waiting for arduino to respond
+2025-12-15 15:46:40,024 [INFO] Temperature sensor: 42.13 C
+2025-12-15 15:46:40,025 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:46:40,027 [INFO] Waiting for arduino to respond
+2025-12-15 15:46:41,419 [INFO] Temperature sensor: 38.56 C
+2025-12-15 15:46:41,419 [INFO] Cartridge 0: 42.1°C (setpoint: 35°C) | Cartridge 1: 38.6°C (setpoint: 0°C)
+2025-12-15 15:46:51,419 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:46:51,420 [INFO] Waiting for arduino to respond
+2025-12-15 15:46:52,562 [INFO] Temperature sensor: 42.06 C
+2025-12-15 15:46:52,562 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:46:52,564 [INFO] Waiting for arduino to respond
+2025-12-15 15:46:53,955 [INFO] Temperature sensor: 38.38 C
+2025-12-15 15:46:53,956 [INFO] Cartridge 0: 42.1°C (setpoint: 35°C) | Cartridge 1: 38.4°C (setpoint: 0°C)
+2025-12-15 15:47:03,956 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:47:03,957 [INFO] Waiting for arduino to respond
+2025-12-15 15:47:05,099 [INFO] Temperature sensor: 42.0 C
+2025-12-15 15:47:05,099 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:47:05,101 [INFO] Waiting for arduino to respond
+2025-12-15 15:47:06,493 [INFO] Temperature sensor: 38.25 C
+2025-12-15 15:47:06,493 [INFO] Cartridge 0: 42.0°C (setpoint: 35°C) | Cartridge 1: 38.2°C (setpoint: 0°C)
+2025-12-15 15:47:16,493 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:47:16,494 [INFO] Waiting for arduino to respond
+2025-12-15 15:47:17,635 [INFO] Temperature sensor: 41.94 C
+2025-12-15 15:47:17,635 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:47:17,637 [INFO] Waiting for arduino to respond
+2025-12-15 15:47:19,029 [INFO] Temperature sensor: 38.06 C
+2025-12-15 15:47:19,030 [INFO] Cartridge 0: 41.9°C (setpoint: 35°C) | Cartridge 1: 38.1°C (setpoint: 0°C)
+2025-12-15 15:47:29,030 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:47:29,031 [INFO] Waiting for arduino to respond
+2025-12-15 15:47:30,172 [INFO] Temperature sensor: 41.94 C
+2025-12-15 15:47:30,172 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:47:30,174 [INFO] Waiting for arduino to respond
+2025-12-15 15:47:31,565 [INFO] Temperature sensor: 37.94 C
+2025-12-15 15:47:31,566 [INFO] Cartridge 0: 41.9°C (setpoint: 35°C) | Cartridge 1: 37.9°C (setpoint: 0°C)
+2025-12-15 15:47:41,566 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:47:41,567 [INFO] Waiting for arduino to respond
+2025-12-15 15:47:42,708 [INFO] Temperature sensor: 41.88 C
+2025-12-15 15:47:42,708 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:47:42,710 [INFO] Waiting for arduino to respond
+2025-12-15 15:47:44,102 [INFO] Temperature sensor: 37.81 C
+2025-12-15 15:47:44,102 [INFO] Cartridge 0: 41.9°C (setpoint: 35°C) | Cartridge 1: 37.8°C (setpoint: 0°C)
+2025-12-15 15:47:54,102 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:47:54,103 [INFO] Waiting for arduino to respond
+2025-12-15 15:47:55,245 [INFO] Temperature sensor: 41.75 C
+2025-12-15 15:47:55,245 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:47:55,247 [INFO] Waiting for arduino to respond
+2025-12-15 15:47:56,639 [INFO] Temperature sensor: 37.69 C
+2025-12-15 15:47:56,639 [INFO] Cartridge 0: 41.8°C (setpoint: 35°C) | Cartridge 1: 37.7°C (setpoint: 0°C)
+2025-12-15 15:48:06,639 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:48:06,640 [INFO] Waiting for arduino to respond
+2025-12-15 15:48:07,781 [INFO] Temperature sensor: 41.63 C
+2025-12-15 15:48:07,781 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:48:07,783 [INFO] Waiting for arduino to respond
+2025-12-15 15:48:09,175 [INFO] Temperature sensor: 37.56 C
+2025-12-15 15:48:09,175 [INFO] Cartridge 0: 41.6°C (setpoint: 35°C) | Cartridge 1: 37.6°C (setpoint: 0°C)
+2025-12-15 15:48:19,175 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:48:19,176 [INFO] Waiting for arduino to respond
+2025-12-15 15:48:20,319 [INFO] Temperature sensor: 41.56 C
+2025-12-15 15:48:20,319 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:48:20,321 [INFO] Waiting for arduino to respond
+2025-12-15 15:48:21,712 [INFO] Temperature sensor: 37.38 C
+2025-12-15 15:48:21,713 [INFO] Cartridge 0: 41.6°C (setpoint: 35°C) | Cartridge 1: 37.4°C (setpoint: 0°C)
+2025-12-15 15:48:31,713 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:48:31,714 [INFO] Waiting for arduino to respond
+2025-12-15 15:48:32,857 [INFO] Temperature sensor: 41.56 C
+2025-12-15 15:48:32,857 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:48:32,859 [INFO] Waiting for arduino to respond
+2025-12-15 15:48:34,250 [INFO] Temperature sensor: 37.19 C
+2025-12-15 15:48:34,251 [INFO] Cartridge 0: 41.6°C (setpoint: 35°C) | Cartridge 1: 37.2°C (setpoint: 0°C)
+2025-12-15 15:48:44,251 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:48:44,252 [INFO] Waiting for arduino to respond
+2025-12-15 15:48:45,393 [INFO] Temperature sensor: 41.44 C
+2025-12-15 15:48:45,393 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:48:45,395 [INFO] Waiting for arduino to respond
+2025-12-15 15:48:46,787 [INFO] Temperature sensor: 37.13 C
+2025-12-15 15:48:46,788 [INFO] Cartridge 0: 41.4°C (setpoint: 35°C) | Cartridge 1: 37.1°C (setpoint: 0°C)
+2025-12-15 15:48:56,788 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:48:56,789 [INFO] Waiting for arduino to respond
+2025-12-15 15:48:57,930 [INFO] Temperature sensor: 41.38 C
+2025-12-15 15:48:57,930 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:48:57,932 [INFO] Waiting for arduino to respond
+2025-12-15 15:48:59,324 [INFO] Temperature sensor: 37.0 C
+2025-12-15 15:48:59,324 [INFO] Cartridge 0: 41.4°C (setpoint: 35°C) | Cartridge 1: 37.0°C (setpoint: 0°C)
+2025-12-15 15:49:09,325 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:49:09,325 [INFO] Waiting for arduino to respond
+2025-12-15 15:49:10,469 [INFO] Temperature sensor: 41.31 C
+2025-12-15 15:49:10,469 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:49:10,471 [INFO] Waiting for arduino to respond
+2025-12-15 15:49:11,863 [INFO] Temperature sensor: 36.81 C
+2025-12-15 15:49:11,863 [INFO] Cartridge 0: 41.3°C (setpoint: 35°C) | Cartridge 1: 36.8°C (setpoint: 0°C)
+2025-12-15 15:49:21,863 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:49:21,864 [INFO] Waiting for arduino to respond
+2025-12-15 15:49:23,007 [INFO] Temperature sensor: 41.25 C
+2025-12-15 15:49:23,007 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:49:23,009 [INFO] Waiting for arduino to respond
+2025-12-15 15:49:24,401 [INFO] Temperature sensor: 36.75 C
+2025-12-15 15:49:24,401 [INFO] Cartridge 0: 41.2°C (setpoint: 35°C) | Cartridge 1: 36.8°C (setpoint: 0°C)
+2025-12-15 15:49:34,402 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:49:34,402 [INFO] Waiting for arduino to respond
+2025-12-15 15:49:35,545 [INFO] Temperature sensor: 41.19 C
+2025-12-15 15:49:35,545 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:49:35,547 [INFO] Waiting for arduino to respond
+2025-12-15 15:49:36,939 [INFO] Temperature sensor: 36.69 C
+2025-12-15 15:49:36,939 [INFO] Cartridge 0: 41.2°C (setpoint: 35°C) | Cartridge 1: 36.7°C (setpoint: 0°C)
+2025-12-15 15:49:46,939 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:49:46,940 [INFO] Waiting for arduino to respond
+2025-12-15 15:49:48,083 [INFO] Temperature sensor: 41.13 C
+2025-12-15 15:49:48,083 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:49:48,085 [INFO] Waiting for arduino to respond
+2025-12-15 15:49:49,477 [INFO] Temperature sensor: 36.75 C
+2025-12-15 15:49:49,477 [INFO] Cartridge 0: 41.1°C (setpoint: 35°C) | Cartridge 1: 36.8°C (setpoint: 0°C)
+2025-12-15 15:49:59,477 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:49:59,478 [INFO] Waiting for arduino to respond
+2025-12-15 15:50:00,621 [INFO] Temperature sensor: 41.06 C
+2025-12-15 15:50:00,621 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:50:00,623 [INFO] Waiting for arduino to respond
+2025-12-15 15:50:02,015 [INFO] Temperature sensor: 36.75 C
+2025-12-15 15:50:02,015 [INFO] Cartridge 0: 41.1°C (setpoint: 35°C) | Cartridge 1: 36.8°C (setpoint: 0°C)
+2025-12-15 15:50:12,015 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:50:12,016 [INFO] Waiting for arduino to respond
+2025-12-15 15:50:13,159 [INFO] Temperature sensor: 41.0 C
+2025-12-15 15:50:13,159 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:50:13,161 [INFO] Waiting for arduino to respond
+2025-12-15 15:50:14,554 [INFO] Temperature sensor: 36.63 C
+2025-12-15 15:50:14,554 [INFO] Cartridge 0: 41.0°C (setpoint: 35°C) | Cartridge 1: 36.6°C (setpoint: 0°C)
+2025-12-15 15:50:24,554 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:50:24,555 [INFO] Waiting for arduino to respond
+2025-12-15 15:50:25,698 [INFO] Temperature sensor: 40.94 C
+2025-12-15 15:50:25,698 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:50:25,700 [INFO] Waiting for arduino to respond
+2025-12-15 15:50:27,092 [INFO] Temperature sensor: 36.63 C
+2025-12-15 15:50:27,092 [INFO] Cartridge 0: 40.9°C (setpoint: 35°C) | Cartridge 1: 36.6°C (setpoint: 0°C)
+2025-12-15 15:50:37,093 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:50:37,094 [INFO] Waiting for arduino to respond
+2025-12-15 15:50:38,236 [INFO] Temperature sensor: 40.81 C
+2025-12-15 15:50:38,236 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:50:38,238 [INFO] Waiting for arduino to respond
+2025-12-15 15:50:39,630 [INFO] Temperature sensor: 36.5 C
+2025-12-15 15:50:39,631 [INFO] Cartridge 0: 40.8°C (setpoint: 35°C) | Cartridge 1: 36.5°C (setpoint: 0°C)
+2025-12-15 15:50:49,631 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:50:49,632 [INFO] Waiting for arduino to respond
+2025-12-15 15:50:50,774 [INFO] Temperature sensor: 40.81 C
+2025-12-15 15:50:50,774 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:50:50,776 [INFO] Waiting for arduino to respond
+2025-12-15 15:50:52,169 [INFO] Temperature sensor: 36.38 C
+2025-12-15 15:50:52,169 [INFO] Cartridge 0: 40.8°C (setpoint: 35°C) | Cartridge 1: 36.4°C (setpoint: 0°C)
+2025-12-15 15:51:02,169 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:51:02,170 [INFO] Waiting for arduino to respond
+2025-12-15 15:51:03,312 [INFO] Temperature sensor: 40.69 C
+2025-12-15 15:51:03,313 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:51:03,314 [INFO] Waiting for arduino to respond
+2025-12-15 15:51:04,707 [INFO] Temperature sensor: 36.31 C
+2025-12-15 15:51:04,707 [INFO] Cartridge 0: 40.7°C (setpoint: 35°C) | Cartridge 1: 36.3°C (setpoint: 0°C)
+2025-12-15 15:51:14,708 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:51:14,708 [INFO] Waiting for arduino to respond
+2025-12-15 15:51:15,851 [INFO] Temperature sensor: 40.63 C
+2025-12-15 15:51:15,852 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:51:15,853 [INFO] Waiting for arduino to respond
+2025-12-15 15:51:17,246 [INFO] Temperature sensor: 36.25 C
+2025-12-15 15:51:17,246 [INFO] Cartridge 0: 40.6°C (setpoint: 35°C) | Cartridge 1: 36.2°C (setpoint: 0°C)
+2025-12-15 15:51:27,246 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:51:27,247 [INFO] Waiting for arduino to respond
+2025-12-15 15:51:28,389 [INFO] Temperature sensor: 40.5 C
+2025-12-15 15:51:28,390 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:51:28,391 [INFO] Waiting for arduino to respond
+2025-12-15 15:51:29,784 [INFO] Temperature sensor: 36.13 C
+2025-12-15 15:51:29,784 [INFO] Cartridge 0: 40.5°C (setpoint: 35°C) | Cartridge 1: 36.1°C (setpoint: 0°C)
+2025-12-15 15:51:39,784 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:51:39,785 [INFO] Waiting for arduino to respond
+2025-12-15 15:51:40,928 [INFO] Temperature sensor: 40.5 C
+2025-12-15 15:51:40,928 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:51:40,930 [INFO] Waiting for arduino to respond
+2025-12-15 15:51:42,322 [INFO] Temperature sensor: 36.06 C
+2025-12-15 15:51:42,322 [INFO] Cartridge 0: 40.5°C (setpoint: 35°C) | Cartridge 1: 36.1°C (setpoint: 0°C)
+2025-12-15 15:51:52,323 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:51:52,324 [INFO] Waiting for arduino to respond
+2025-12-15 15:51:53,466 [INFO] Temperature sensor: 40.38 C
+2025-12-15 15:51:53,466 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:51:53,468 [INFO] Waiting for arduino to respond
+2025-12-15 15:51:54,860 [INFO] Temperature sensor: 35.94 C
+2025-12-15 15:51:54,861 [INFO] Cartridge 0: 40.4°C (setpoint: 35°C) | Cartridge 1: 35.9°C (setpoint: 0°C)
+2025-12-15 15:52:04,861 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:52:04,861 [INFO] Waiting for arduino to respond
+2025-12-15 15:52:06,004 [INFO] Temperature sensor: 40.31 C
+2025-12-15 15:52:06,005 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:52:06,006 [INFO] Waiting for arduino to respond
+2025-12-15 15:52:07,398 [INFO] Temperature sensor: 35.88 C
+2025-12-15 15:52:07,398 [INFO] Cartridge 0: 40.3°C (setpoint: 35°C) | Cartridge 1: 35.9°C (setpoint: 0°C)
+2025-12-15 15:52:17,399 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:52:17,400 [INFO] Waiting for arduino to respond
+2025-12-15 15:52:18,543 [INFO] Temperature sensor: 40.31 C
+2025-12-15 15:52:18,543 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:52:18,545 [INFO] Waiting for arduino to respond
+2025-12-15 15:52:19,936 [INFO] Temperature sensor: 35.69 C
+2025-12-15 15:52:19,936 [INFO] Cartridge 0: 40.3°C (setpoint: 35°C) | Cartridge 1: 35.7°C (setpoint: 0°C)
+2025-12-15 15:52:29,937 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:52:29,937 [INFO] Waiting for arduino to respond
+2025-12-15 15:52:31,081 [INFO] Temperature sensor: 40.19 C
+2025-12-15 15:52:31,081 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:52:31,083 [INFO] Waiting for arduino to respond
+2025-12-15 15:52:32,475 [INFO] Temperature sensor: 35.63 C
+2025-12-15 15:52:32,475 [INFO] Cartridge 0: 40.2°C (setpoint: 35°C) | Cartridge 1: 35.6°C (setpoint: 0°C)
+2025-12-15 15:52:42,475 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:52:42,476 [INFO] Waiting for arduino to respond
+2025-12-15 15:52:43,619 [INFO] Temperature sensor: 40.13 C
+2025-12-15 15:52:43,619 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:52:43,621 [INFO] Waiting for arduino to respond
+2025-12-15 15:52:45,013 [INFO] Temperature sensor: 35.5 C
+2025-12-15 15:52:45,013 [INFO] Cartridge 0: 40.1°C (setpoint: 35°C) | Cartridge 1: 35.5°C (setpoint: 0°C)
+2025-12-15 15:52:55,014 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:52:55,015 [INFO] Waiting for arduino to respond
+2025-12-15 15:52:56,157 [INFO] Temperature sensor: 40.0 C
+2025-12-15 15:52:56,157 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:52:56,159 [INFO] Waiting for arduino to respond
+2025-12-15 15:52:57,551 [INFO] Temperature sensor: 35.44 C
+2025-12-15 15:52:57,551 [INFO] Cartridge 0: 40.0°C (setpoint: 35°C) | Cartridge 1: 35.4°C (setpoint: 0°C)
+2025-12-15 15:53:07,551 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:53:07,551 [INFO] Waiting for arduino to respond
+2025-12-15 15:53:08,696 [INFO] Temperature sensor: 40.0 C
+2025-12-15 15:53:08,696 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:53:08,698 [INFO] Waiting for arduino to respond
+2025-12-15 15:53:10,090 [INFO] Temperature sensor: 35.31 C
+2025-12-15 15:53:10,090 [INFO] Cartridge 0: 40.0°C (setpoint: 35°C) | Cartridge 1: 35.3°C (setpoint: 0°C)
+2025-12-15 15:53:20,091 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:53:20,092 [INFO] Waiting for arduino to respond
+2025-12-15 15:53:21,236 [INFO] Temperature sensor: 39.94 C
+2025-12-15 15:53:21,236 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:53:21,238 [INFO] Waiting for arduino to respond
+2025-12-15 15:53:22,630 [INFO] Temperature sensor: 35.19 C
+2025-12-15 15:53:22,630 [INFO] Cartridge 0: 39.9°C (setpoint: 35°C) | Cartridge 1: 35.2°C (setpoint: 0°C)
+2025-12-15 15:53:32,630 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:53:32,631 [INFO] Waiting for arduino to respond
+2025-12-15 15:53:33,774 [INFO] Temperature sensor: 39.88 C
+2025-12-15 15:53:33,774 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:53:33,776 [INFO] Waiting for arduino to respond
+2025-12-15 15:53:35,168 [INFO] Temperature sensor: 35.06 C
+2025-12-15 15:53:35,168 [INFO] Cartridge 0: 39.9°C (setpoint: 35°C) | Cartridge 1: 35.1°C (setpoint: 0°C)
+2025-12-15 15:53:45,168 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:53:45,169 [INFO] Waiting for arduino to respond
+2025-12-15 15:53:46,312 [INFO] Temperature sensor: 39.75 C
+2025-12-15 15:53:46,312 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:53:46,314 [INFO] Waiting for arduino to respond
+2025-12-15 15:53:47,706 [INFO] Temperature sensor: 35.0 C
+2025-12-15 15:53:47,706 [INFO] Cartridge 0: 39.8°C (setpoint: 35°C) | Cartridge 1: 35.0°C (setpoint: 0°C)
+2025-12-15 15:53:57,706 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:53:57,707 [INFO] Waiting for arduino to respond
+2025-12-15 15:53:58,850 [INFO] Temperature sensor: 39.75 C
+2025-12-15 15:53:58,851 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:53:58,853 [INFO] Waiting for arduino to respond
+2025-12-15 15:54:00,245 [INFO] Temperature sensor: 34.88 C
+2025-12-15 15:54:00,245 [INFO] Cartridge 0: 39.8°C (setpoint: 35°C) | Cartridge 1: 34.9°C (setpoint: 0°C)
+2025-12-15 15:54:10,245 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:54:10,246 [INFO] Waiting for arduino to respond
+2025-12-15 15:54:11,388 [INFO] Temperature sensor: 39.69 C
+2025-12-15 15:54:11,389 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:54:11,390 [INFO] Waiting for arduino to respond
+2025-12-15 15:54:12,783 [INFO] Temperature sensor: 34.81 C
+2025-12-15 15:54:12,783 [INFO] Cartridge 0: 39.7°C (setpoint: 35°C) | Cartridge 1: 34.8°C (setpoint: 0°C)
+2025-12-15 15:54:22,792 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:54:22,792 [INFO] Waiting for arduino to respond
+2025-12-15 15:54:23,927 [INFO] Temperature sensor: 39.56 C
+2025-12-15 15:54:23,927 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:54:23,929 [INFO] Waiting for arduino to respond
+2025-12-15 15:54:25,321 [INFO] Temperature sensor: 34.63 C
+2025-12-15 15:54:25,322 [INFO] Cartridge 0: 39.6°C (setpoint: 35°C) | Cartridge 1: 34.6°C (setpoint: 0°C)
+2025-12-15 15:54:35,322 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:54:35,323 [INFO] Waiting for arduino to respond
+2025-12-15 15:54:36,466 [INFO] Temperature sensor: 39.5 C
+2025-12-15 15:54:36,466 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:54:36,468 [INFO] Waiting for arduino to respond
+2025-12-15 15:54:37,860 [INFO] Temperature sensor: 34.56 C
+2025-12-15 15:54:37,860 [INFO] Cartridge 0: 39.5°C (setpoint: 35°C) | Cartridge 1: 34.6°C (setpoint: 0°C)
+2025-12-15 15:54:47,861 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:54:47,861 [INFO] Waiting for arduino to respond
+2025-12-15 15:54:49,003 [INFO] Temperature sensor: 39.38 C
+2025-12-15 15:54:49,003 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:54:49,005 [INFO] Waiting for arduino to respond
+2025-12-15 15:54:50,397 [INFO] Temperature sensor: 34.44 C
+2025-12-15 15:54:50,398 [INFO] Cartridge 0: 39.4°C (setpoint: 35°C) | Cartridge 1: 34.4°C (setpoint: 0°C)
+2025-12-15 15:55:00,398 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:55:00,399 [INFO] Waiting for arduino to respond
+2025-12-15 15:55:01,542 [INFO] Temperature sensor: 39.31 C
+2025-12-15 15:55:01,542 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:55:01,544 [INFO] Waiting for arduino to respond
+2025-12-15 15:55:02,936 [INFO] Temperature sensor: 34.5 C
+2025-12-15 15:55:02,936 [INFO] Cartridge 0: 39.3°C (setpoint: 35°C) | Cartridge 1: 34.5°C (setpoint: 0°C)
+2025-12-15 15:55:12,937 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:55:12,937 [INFO] Waiting for arduino to respond
+2025-12-15 15:55:14,080 [INFO] Temperature sensor: 39.31 C
+2025-12-15 15:55:14,080 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:55:14,082 [INFO] Waiting for arduino to respond
+2025-12-15 15:55:15,474 [INFO] Temperature sensor: 34.25 C
+2025-12-15 15:55:15,475 [INFO] Cartridge 0: 39.3°C (setpoint: 35°C) | Cartridge 1: 34.2°C (setpoint: 0°C)
+2025-12-15 15:55:25,475 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:55:25,476 [INFO] Waiting for arduino to respond
+2025-12-15 15:55:26,618 [INFO] Temperature sensor: 39.13 C
+2025-12-15 15:55:26,619 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:55:26,621 [INFO] Waiting for arduino to respond
+2025-12-15 15:55:28,012 [INFO] Temperature sensor: 34.31 C
+2025-12-15 15:55:28,012 [INFO] Cartridge 0: 39.1°C (setpoint: 35°C) | Cartridge 1: 34.3°C (setpoint: 0°C)
+2025-12-15 15:55:38,013 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:55:38,013 [INFO] Waiting for arduino to respond
+2025-12-15 15:55:39,157 [INFO] Temperature sensor: 39.13 C
+2025-12-15 15:55:39,157 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:55:39,159 [INFO] Waiting for arduino to respond
+2025-12-15 15:55:40,551 [INFO] Temperature sensor: 34.06 C
+2025-12-15 15:55:40,551 [INFO] Cartridge 0: 39.1°C (setpoint: 35°C) | Cartridge 1: 34.1°C (setpoint: 0°C)
+2025-12-15 15:55:50,552 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:55:50,552 [INFO] Waiting for arduino to respond
+2025-12-15 15:55:51,694 [INFO] Temperature sensor: 39.13 C
+2025-12-15 15:55:51,694 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:55:51,696 [INFO] Waiting for arduino to respond
+2025-12-15 15:55:53,088 [INFO] Temperature sensor: 34.06 C
+2025-12-15 15:55:53,088 [INFO] Cartridge 0: 39.1°C (setpoint: 35°C) | Cartridge 1: 34.1°C (setpoint: 0°C)
+2025-12-15 15:56:03,089 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:56:03,089 [INFO] Waiting for arduino to respond
+2025-12-15 15:56:04,232 [INFO] Temperature sensor: 38.94 C
+2025-12-15 15:56:04,232 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:56:04,234 [INFO] Waiting for arduino to respond
+2025-12-15 15:56:05,626 [INFO] Temperature sensor: 33.94 C
+2025-12-15 15:56:05,626 [INFO] Cartridge 0: 38.9°C (setpoint: 35°C) | Cartridge 1: 33.9°C (setpoint: 0°C)
+2025-12-15 15:56:15,634 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:56:15,635 [INFO] Waiting for arduino to respond
+2025-12-15 15:56:16,770 [INFO] Temperature sensor: 38.94 C
+2025-12-15 15:56:16,771 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:56:16,772 [INFO] Waiting for arduino to respond
+2025-12-15 15:56:18,164 [INFO] Temperature sensor: 33.81 C
+2025-12-15 15:56:18,165 [INFO] Cartridge 0: 38.9°C (setpoint: 35°C) | Cartridge 1: 33.8°C (setpoint: 0°C)
+2025-12-15 15:56:18,938 [INFO] 
+Stopping script. Arduino will continue to maintain temperature.
+2025-12-15 15:56:22,830 [INFO] List of USB ports:
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:56:22,830 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:56:22,831 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:56:22,831 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:56:22,838 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:56:25,906 [INFO] Set temperature to 35 C
+2025-12-15 15:56:27,298 [INFO] Set temperature to 35 C
+2025-12-15 15:56:27,299 [INFO] Temperature setpoints configured. Arduino is maintaining temperature.
+2025-12-15 15:56:27,299 [INFO] Script will run indefinitely. Press Ctrl+C to stop.
+2025-12-15 15:56:27,299 [INFO] You can also monitor temperature:
+2025-12-15 15:56:37,299 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:56:38,441 [INFO] Temperature sensor: 38.81 C
+2025-12-15 15:56:38,441 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:56:38,443 [INFO] Waiting for arduino to respond
+2025-12-15 15:56:39,836 [INFO] Temperature sensor: 33.75 C
+2025-12-15 15:56:39,836 [INFO] Cartridge 0: 38.8°C (setpoint: 35°C) | Cartridge 1: 33.8°C (setpoint: 0°C)
+2025-12-15 15:56:49,836 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:56:49,837 [INFO] Waiting for arduino to respond
+2025-12-15 15:56:50,980 [INFO] Temperature sensor: 38.69 C
+2025-12-15 15:56:50,980 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:56:50,982 [INFO] Waiting for arduino to respond
+2025-12-15 15:56:52,374 [INFO] Temperature sensor: 33.69 C
+2025-12-15 15:56:52,375 [INFO] Cartridge 0: 38.7°C (setpoint: 35°C) | Cartridge 1: 33.7°C (setpoint: 0°C)
+2025-12-15 15:57:02,375 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:57:02,376 [INFO] Waiting for arduino to respond
+2025-12-15 15:57:03,519 [INFO] Temperature sensor: 38.63 C
+2025-12-15 15:57:03,519 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:57:03,521 [INFO] Waiting for arduino to respond
+2025-12-15 15:57:04,913 [INFO] Temperature sensor: 33.63 C
+2025-12-15 15:57:04,914 [INFO] Cartridge 0: 38.6°C (setpoint: 35°C) | Cartridge 1: 33.6°C (setpoint: 0°C)
+2025-12-15 15:57:14,914 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:57:14,915 [INFO] Waiting for arduino to respond
+2025-12-15 15:57:16,058 [INFO] Temperature sensor: 38.63 C
+2025-12-15 15:57:16,059 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:57:16,060 [INFO] Waiting for arduino to respond
+2025-12-15 15:57:17,453 [INFO] Temperature sensor: 33.88 C
+2025-12-15 15:57:17,453 [INFO] Cartridge 0: 38.6°C (setpoint: 35°C) | Cartridge 1: 33.9°C (setpoint: 0°C)
+2025-12-15 15:57:25,859 [INFO] 
+Stopping script. Arduino will continue to maintain temperature.
+2025-12-15 15:57:33,024 [INFO] List of USB ports:
+2025-12-15 15:57:33,024 [INFO] /dev/ttyS4 - n/a
+2025-12-15 15:57:33,024 [INFO] /dev/ttyS31 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS30 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS29 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS28 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS27 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS26 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS25 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS24 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS23 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS22 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS21 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS20 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS19 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS18 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS17 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS16 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS15 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS14 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS13 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS12 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS11 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS10 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS9 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS8 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS7 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS6 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS5 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS3 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS2 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS1 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyS0 - n/a
+2025-12-15 15:57:33,025 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-15 15:57:33,033 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-15 15:57:36,103 [INFO] Set temperature to 0 C
+2025-12-15 15:57:37,499 [INFO] Set temperature to 0 C
+2025-12-15 15:57:37,500 [INFO] Temperature setpoints configured. Arduino is maintaining temperature.
+2025-12-15 15:57:37,500 [INFO] Script will run indefinitely. Press Ctrl+C to stop.
+2025-12-15 15:57:37,500 [INFO] You can also monitor temperature:
+2025-12-15 15:57:47,500 [INFO] Reading sample temperature sensor 0
+2025-12-15 15:57:48,640 [INFO] Temperature sensor: 38.44 C
+2025-12-15 15:57:48,640 [INFO] Reading sample temperature sensor 1
+2025-12-15 15:57:48,642 [INFO] Waiting for arduino to respond
+2025-12-15 15:57:49,156 [INFO] 
+Stopping script. Arduino will continue to maintain temperature.

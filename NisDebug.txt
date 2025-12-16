@@ -1,0 +1,189 @@
+(base) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition/example$ conda activate opentron
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition/example$ ls
+example_admiral_potentiostat.py  example_arduino_pump_calibration.py  example_arduino.py  example_openTron.py  example_run_simple_workflow.py  experiment.py  main.log  main.py
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition/example$ cd ..
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ pip install -e .
+Obtaining file:///home/nisfi/git/SDL1_OpenTron_electrodeposition
+  Installing build dependencies ... error
+  error: subprocess-exited-with-error
+  
+  × installing build dependencies did not run successfully.
+  │ exit code: 1
+  ╰─> [7 lines of output]
+      WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))': /simple/setuptools/
+      WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))': /simple/setuptools/
+      WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))': /simple/setuptools/
+      WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))': /simple/setuptools/
+      WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))': /simple/setuptools/
+      ERROR: Could not find a version that satisfies the requirement setuptools>=40.8.0 (from versions: none)
+      ERROR: No matching distribution found for setuptools>=40.8.0
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+ERROR: Failed to build 'file:///home/nisfi/git/SDL1_OpenTron_electrodeposition' when installing build dependencies
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ pip install -e .
+Obtaining file:///home/nisfi/git/SDL1_OpenTron_electrodeposition
+  Installing build dependencies ... done
+  Checking if build backend supports build_editable ... done
+  Getting requirements to build editable ... done
+  Preparing editable metadata (pyproject.toml) ... done
+Requirement already satisfied: numpy==1.26.2 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from openTron_electrodeposition==0.0.2) (1.26.2)
+Requirement already satisfied: pandas==2.1 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from openTron_electrodeposition==0.0.2) (2.1.0)
+Requirement already satisfied: pyserial in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from openTron_electrodeposition==0.0.2) (3.5)
+Collecting opentronshttpapiwrapper@ git+https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git#egg=opentronshttpapiwrapper (from openTron_electrodeposition==0.0.2)
+  Cloning https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git to /tmp/pip-install-zbx038kr/opentronshttpapiwrapper_abcc6287b7ac44bda7cd217b3ca0c466
+  Running command git clone --filter=blob:none --quiet https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git /tmp/pip-install-zbx038kr/opentronshttpapiwrapper_abcc6287b7ac44bda7cd217b3ca0c466
+  Resolved https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git to commit 4f24791a416c875cc461371762ed3bc10ae2bb0d
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Requirement already satisfied: plotly in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from openTron_electrodeposition==0.0.2) (6.5.0)
+Requirement already satisfied: requests in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from opentronshttpapiwrapper@ git+https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git#egg=opentronshttpapiwrapper->openTron_electrodeposition==0.0.2) (2.32.5)
+Requirement already satisfied: python-dateutil>=2.8.2 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from pandas==2.1->openTron_electrodeposition==0.0.2) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from pandas==2.1->openTron_electrodeposition==0.0.2) (2025.2)
+Requirement already satisfied: tzdata>=2022.1 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from pandas==2.1->openTron_electrodeposition==0.0.2) (2025.3)
+Requirement already satisfied: six>=1.5 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from python-dateutil>=2.8.2->pandas==2.1->openTron_electrodeposition==0.0.2) (1.17.0)
+Requirement already satisfied: narwhals>=1.15.1 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from plotly->openTron_electrodeposition==0.0.2) (2.13.0)
+Requirement already satisfied: packaging in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from plotly->openTron_electrodeposition==0.0.2) (25.0)
+Requirement already satisfied: charset_normalizer<4,>=2 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from requests->opentronshttpapiwrapper@ git+https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git#egg=opentronshttpapiwrapper->openTron_electrodeposition==0.0.2) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from requests->opentronshttpapiwrapper@ git+https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git#egg=opentronshttpapiwrapper->openTron_electrodeposition==0.0.2) (3.11)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from requests->opentronshttpapiwrapper@ git+https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git#egg=opentronshttpapiwrapper->openTron_electrodeposition==0.0.2) (2.6.2)
+Requirement already satisfied: certifi>=2017.4.17 in /home/nisfi/miniconda3/envs/opentron/lib/python3.11/site-packages (from requests->opentronshttpapiwrapper@ git+https://github.com/dpersaud/opentronsHTTPAPI_wrapper.git#egg=opentronshttpapiwrapper->openTron_electrodeposition==0.0.2) (2025.11.12)
+Building wheels for collected packages: openTron_electrodeposition
+  Building editable for openTron_electrodeposition (pyproject.toml) ... done
+  Created wheel for openTron_electrodeposition: filename=opentron_electrodeposition-0.0.2-0.editable-py3-none-any.whl size=2599 sha256=f21efb969de2c442e8786b210881c5139ac99c22481657e83fdef6d2c8c168a5
+  Stored in directory: /tmp/pip-ephem-wheel-cache-1onp8mp6/wheels/0d/bc/89/7e1bde0e4495ee301e88017919e1bc0e6d028cf673e577edd5
+Successfully built openTron_electrodeposition
+Installing collected packages: openTron_electrodeposition
+  Attempting uninstall: openTron_electrodeposition
+    Found existing installation: openTron_electrodeposition 0.0.2
+    Uninstalling openTron_electrodeposition-0.0.2:
+      Successfully uninstalled openTron_electrodeposition-0.0.2
+Successfully installed openTron_electrodeposition-0.0.2
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ pip install src/SquidstatPyLibrary-1.8.0.5-py3-none-win_amd64.whl
+ERROR: SquidstatPyLibrary-1.8.0.5-py3-none-win_amd64.whl is not a supported wheel on this platform.
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ ls
+3D_files  chemicals_left.txt  data  example  last_processed_well.txt  LICENSE  manuals  metadata.csv  README.md  setup.cfg  setup.py  src  uid_run_number.txt
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ pip install src/SquidstatPyLibrary-1.
+SquidstatPyLibrary-1.10.3.0-py3-none-manylinux2014_x86_64.whl  SquidstatPyLibrary-1.8.0.5-py3-none-win_amd64.whl
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ pip install ./src/SquidstatPyLibrary-1.10.3.0-py3-none-manylinux2014_x86_64.whl
+Processing ./src/SquidstatPyLibrary-1.10.3.0-py3-none-manylinux2014_x86_64.whl
+Collecting PySide6@ https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.7.3-cp39-abi3-manylinux_2_28_x86_64.whl (from squidstatpylibrary==1.10.3.0)
+  Downloading https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.7.3-cp39-abi3-manylinux_2_28_x86_64.whl (532 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 532.7/532.7 kB 3.7 MB/s  0:00:00
+Collecting PySide6-Addons@ https://download.qt.io/official_releases/QtForPython/pyside6-addons/PySide6_Addons-6.7.3-cp39-abi3-manylinux_2_28_x86_64.whl (from squidstatpylibrary==1.10.3.0)
+  Downloading https://download.qt.io/official_releases/QtForPython/pyside6-addons/PySide6_Addons-6.7.3-cp39-abi3-manylinux_2_28_x86_64.whl (138.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 138.3/138.3 MB 4.7 MB/s  0:00:29
+Collecting PySide6-Essentials@ https://download.qt.io/official_releases/QtForPython/pyside6-essentials/PySide6_Essentials-6.7.3-cp39-abi3-manylinux_2_28_x86_64.whl (from squidstatpylibrary==1.10.3.0)
+  Downloading https://download.qt.io/official_releases/QtForPython/pyside6-essentials/PySide6_Essentials-6.7.3-cp39-abi3-manylinux_2_28_x86_64.whl (90.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.4/90.4 MB 6.9 MB/s  0:00:13
+Collecting shiboken6@ https://download.qt.io/official_releases/QtForPython/shiboken6/shiboken6-6.7.3-cp39-abi3-manylinux_2_28_x86_64.whl (from squidstatpylibrary==1.10.3.0)
+  Downloading https://download.qt.io/official_releases/QtForPython/shiboken6/shiboken6-6.7.3-cp39-abi3-manylinux_2_28_x86_64.whl (189 kB)
+Collecting shiboken6-generator@ https://download.qt.io/official_releases/QtForPython/shiboken6-generator/shiboken6_generator-6.7.3-cp39-abi3-manylinux_2_28_x86_64.whl (from squidstatpylibrary==1.10.3.0)
+  Downloading https://download.qt.io/official_releases/QtForPython/shiboken6-generator/shiboken6_generator-6.7.3-cp39-abi3-manylinux_2_28_x86_64.whl (42.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.1/42.1 MB 5.8 MB/s  0:00:07
+Installing collected packages: shiboken6, shiboken6-generator, PySide6-Essentials, PySide6-Addons, PySide6, squidstatpylibrary
+Successfully installed PySide6-6.7.3 PySide6-Addons-6.7.3 PySide6-Essentials-6.7.3 shiboken6-6.7.3 shiboken6-generator-6.7.3 squidstatpylibrary-1.10.3.0
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ ls -t
+src  example  uid_run_number.txt  manuals  metadata.csv  setup.cfg  setup.py  last_processed_well.txt  chemicals_left.txt  data  LICENSE  README.md  3D_files
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ lsusb -t
+/:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/16p, 480M
+    |__ Port 001: Dev 021, If 0, Class=Human Interface Device, Driver=usbhid, 1.5M
+    |__ Port 003: Dev 010, If 0, Class=Hub, Driver=hub/4p, 480M
+        |__ Port 001: Dev 011, If 0, Class=Vendor Specific Class, Driver=ch341, 12M
+        |__ Port 002: Dev 022, If 0, Class=Communications, Driver=cdc_acm, 12M
+        |__ Port 002: Dev 022, If 1, Class=CDC Data, Driver=cdc_acm, 12M
+        |__ Port 003: Dev 012, If 0, Class=Hub, Driver=hub/4p, 480M
+        |__ Port 004: Dev 013, If 0, Class=Hub, Driver=hub/4p, 480M
+    |__ Port 006: Dev 015, If 0, Class=Hub, Driver=hub/4p, 480M
+        |__ Port 001: Dev 016, If 0, Class=Hub, Driver=hub/5p, 480M
+            |__ Port 004: Dev 020, If 0, Class=Human Interface Device, Driver=usbhid, 1.5M
+            |__ Port 004: Dev 020, If 1, Class=Human Interface Device, Driver=usbhid, 1.5M
+            |__ Port 005: Dev 018, If 0, Class=Human Interface Device, Driver=usbhid, 480M
+        |__ Port 002: Dev 019, If 0, Class=Vendor Specific Class, Driver=r8152, 480M
+        |__ Port 004: Dev 017, If 0, Class=Human Interface Device, Driver=usbhid, 480M
+    |__ Port 014: Dev 006, If 0, Class=Wireless, Driver=btusb, 12M
+    |__ Port 014: Dev 006, If 1, Class=Wireless, Driver=btusb, 12M
+/:  Bus 002.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/9p, 20000M/x2
+    |__ Port 002: Dev 002, If 0, Class=Vendor Specific Class, Driver=r8152, 5000M
+    |__ Port 006: Dev 003, If 0, Class=Hub, Driver=hub/4p, 5000M
+        |__ Port 003: Dev 004, If 0, Class=Hub, Driver=hub/4p, 5000M
+        |__ Port 004: Dev 005, If 0, Class=Hub, Driver=hub/4p, 5000M
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ lsusb
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 006: ID 8087:0033 Intel Corp. AX211 Bluetooth
+Bus 001 Device 010: ID 2109:2824 VIA Labs, Inc. USB2.0 Hub             
+Bus 001 Device 011: ID 1a86:7523 QinHeng Electronics CH340 serial converter
+Bus 001 Device 012: ID 2109:2824 VIA Labs, Inc. USB2.0 Hub             
+Bus 001 Device 013: ID 2109:2824 VIA Labs, Inc. USB2.0 Hub             
+Bus 001 Device 015: ID 03f0:0bb9 HP, Inc USB2.1 Hub
+Bus 001 Device 016: ID 03f0:0cb9 HP, Inc USB2.1 Hub
+Bus 001 Device 017: ID 05e3:0102 Genesys Logic, Inc. USB_HID_DEVICE
+Bus 001 Device 018: ID 05e3:0102 Genesys Logic, Inc. USB_HID_DEVICE
+Bus 001 Device 019: ID 0bda:8153 Realtek Semiconductor Corp. RTL8153 Gigabit Ethernet Adapter
+Bus 001 Device 020: ID 03f0:034a HP, Inc Elite Keyboard
+Bus 001 Device 021: ID 17ef:608d Lenovo Optical Mouse
+Bus 001 Device 022: ID 04d8:000a Microchip Technology, Inc. CDC RS-232 Emulation Demo
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 002: ID 0bda:8153 Realtek Semiconductor Corp. RTL8153 Gigabit Ethernet Adapter
+Bus 002 Device 003: ID 2109:0824 VIA Labs, Inc. USB3.1 Hub             
+Bus 002 Device 004: ID 2109:0824 VIA Labs, Inc. USB3.1 Hub             
+Bus 002 Device 005: ID 2109:0824 VIA Labs, Inc. USB3.1 Hub             
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ lsusb -s BUS:DEV -v
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ ls -l /sys/bus/usb/devices/
+total 0
+lrwxrwxrwx 1 root root 0 Dec 15 15:58 1-0:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-0:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 12:14 1-1 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-1
+lrwxrwxrwx 1 root root 0 Dec 16 12:14 1-1:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-1/1-1:1.0
+lrwxrwxrwx 1 root root 0 Dec 15 15:58 1-14 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-14
+lrwxrwxrwx 1 root root 0 Dec 15 15:58 1-14:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-14/1-14:1.0
+lrwxrwxrwx 1 root root 0 Dec 15 15:58 1-14:1.1 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-14/1-14:1.1
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 1-3 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 1-3.1 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.1
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 1-3:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 1-3.1:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.1/1-3.1:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 12:23 1-3.2 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.2
+lrwxrwxrwx 1 root root 0 Dec 16 12:23 1-3.2:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.2/1-3.2:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 12:23 1-3.2:1.1 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.2/1-3.2:1.1
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 1-3.3 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.3
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 1-3.3:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.3/1-3.3:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 1-3.4 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.4
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 1-3.4:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.4/1-3.4:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.1 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.1
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.1:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.1/1-6.1:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.1.4 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.1/1-6.1.4
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.1.4:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.1/1-6.1.4/1-6.1.4:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.1.4:1.1 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.1/1-6.1.4/1-6.1.4:1.1
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.1.5 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.1/1-6.1.5
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.1.5:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.1/1-6.1.5/1-6.1.5:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.2 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.2
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.2:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.2/1-6.2:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.4 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.4
+lrwxrwxrwx 1 root root 0 Dec 16 12:13 1-6.4:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6.4/1-6.4:1.0
+lrwxrwxrwx 1 root root 0 Dec 15 15:58 2-0:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb2/2-0:1.0
+lrwxrwxrwx 1 root root 0 Dec 15 15:58 2-2 -> ../../../devices/pci0000:00/0000:00:14.0/usb2/2-2
+lrwxrwxrwx 1 root root 0 Dec 15 15:58 2-2:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb2/2-2/2-2:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 2-6 -> ../../../devices/pci0000:00/0000:00:14.0/usb2/2-6
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 2-6:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb2/2-6/2-6:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 2-6.3 -> ../../../devices/pci0000:00/0000:00:14.0/usb2/2-6/2-6.3
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 2-6.3:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb2/2-6/2-6.3/2-6.3:1.0
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 2-6.4 -> ../../../devices/pci0000:00/0000:00:14.0/usb2/2-6/2-6.4
+lrwxrwxrwx 1 root root 0 Dec 16 11:43 2-6.4:1.0 -> ../../../devices/pci0000:00/0000:00:14.0/usb2/2-6/2-6.4/2-6.4:1.0
+lrwxrwxrwx 1 root root 0 Dec 15 15:58 usb1 -> ../../../devices/pci0000:00/0000:00:14.0/usb1
+lrwxrwxrwx 1 root root 0 Dec 15 15:58 usb2 -> ../../../devices/pci0000:00/0000:00:14.0/usb2
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ ls -l /dev/ttyUSB* /dev/ttyACM*
+crw-rw----+ 1 root dialout 166, 0 Dec 16 12:31 /dev/ttyACM0
+crw-rw----+ 1 root dialout 188, 0 Dec 16 11:43 /dev/ttyUSB0
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ ^C
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition$ cd ./example/
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition/example$ ls
+example_admiral_potentiostat.py  example_arduino_pump_calibration.py  example_arduino.py  example_openTron.py  example_run_simple_workflow.py  experiment.py  main.log  main.py
+(opentron) nisfi@opentron:~/git/SDL1_OpenTron_electrodeposition/example$ python ./example_admiral_potentiostat.py
+Traceback (most recent call last):
+  File "/home/nisfi/git/SDL1_OpenTron_electrodeposition/example/./example_admiral_potentiostat.py", line 4, in <module>
+    from openTron_electrodeposition.admiral import AdmiralSquidstatWrapper
+  File "/home/nisfi/git/SDL1_OpenTron_electrodeposition/src/openTron_electrodeposition/admiral.py", line 6, in <module>
+    from PySide2.QtWidgets import QApplication
+ModuleNotFoundError: No module named 'PySide2'
