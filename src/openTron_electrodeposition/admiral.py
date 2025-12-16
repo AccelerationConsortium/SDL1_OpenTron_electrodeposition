@@ -3,7 +3,10 @@
 # Author: Nis Fisker-Bødker
 # Date: 18-06-2024
 
-from PySide2.QtWidgets import QApplication
+try:
+    from PySide6.QtWidgets import QApplication
+except ImportError:
+    from PySide2.QtWidgets import QApplication
 from SquidstatPyLibrary import (
     AisDeviceTracker,
     AisExperiment,
@@ -24,6 +27,7 @@ from SquidstatPyLibrary import (
 import pandas as pd
 import time
 import warnings
+import sys
 
 # Suppress FutureWarning messages from Pandas
 warnings.simplefilter(action="ignore", category=FutureWarning)
@@ -37,8 +41,14 @@ class AdmiralSquidstatWrapper:
             port (str, optional): The COM port to which the potentiostat is connected. Defaults to "COM5".
             instrument_name (str, optional): The name of the instrument. Defaults to "Plus1894".
         """
-
-        self.app = QApplication()
+        # Check if QApplication already exists, if not create one
+        try:
+            self.app = QApplication.instance()
+            if self.app is None:
+                self.app = QApplication(sys.argv)
+        except Exception:
+            # Fallback if instance() doesn't work
+            self.app = QApplication(sys.argv)
         self.tracker = AisDeviceTracker.Instance()
         self.handler = None
         self.channel = 0
@@ -76,9 +86,11 @@ class AdmiralSquidstatWrapper:
     def __del__(self):
         """Close the experiment on the potentiostat and release the Qt application. Remember to call get_data() before calling this function to retrieve the data."""
         try:
-            self.app.shutdown()
+            # PySide6 doesn't have shutdown(), only quit()
+            if hasattr(self.app, 'shutdown'):
+                self.app.shutdown()
         except Exception:
-            print("Error: Could not shutdown() the QApplication.")
+            pass  # shutdown() may not exist in PySide6
         try:
             self.app.quit()
         except Exception:
@@ -245,7 +257,12 @@ class AdmiralSquidstatWrapper:
         for instance using setup_potentiostaticEIS() or setup_CV().
 
         """
-        self.app.exec_()
+        # PySide6 uses exec() instead of exec_()
+        try:
+            self.app.exec()
+        except AttributeError:
+            # Fallback for PySide2
+            self.app.exec_()
 
     def close_experiment(self):
         """Close the experiment on the potentiostat and release the Qt application.
