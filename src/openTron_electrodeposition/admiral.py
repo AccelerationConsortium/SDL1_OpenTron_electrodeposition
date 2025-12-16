@@ -34,12 +34,12 @@ warnings.simplefilter(action="ignore", category=FutureWarning)
 
 
 class AdmiralSquidstatWrapper:
-    def __init__(self, port="COM5", instrument_name="Plus1894"):
+    def __init__(self, port="/dev/ttyACM0", instrument_name="Plus2249"):
         """Initialize the AdmiralWrapper class. This class is used to interface with the Admiral potentiostat.
 
         Args:
-            port (str, optional): The COM port to which the potentiostat is connected. Defaults to "COM5".
-            instrument_name (str, optional): The name of the instrument. Defaults to "Plus1894".
+            port (str, optional): The COM port to which the potentiostat is connected. Defaults to "COM5" on Windows and "/dev/ttyACM0" on Linux.
+            instrument_name (str, optional): The name of the instrument. Defaults to "Plus2249".
         """
         # Check if QApplication already exists, if not create one
         try:

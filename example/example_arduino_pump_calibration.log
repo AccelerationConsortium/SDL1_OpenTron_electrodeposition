@@ -1,0 +1,674 @@
+2025-12-16 13:28:06,520 [INFO] List of USB ports:
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:28:06,520 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:28:06,521 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:28:06,521 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:28:06,521 [ERROR] No Arduino found
+2025-12-16 13:28:37,874 [INFO] List of USB ports:
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:28:37,874 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:28:37,874 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:28:37,882 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:28:40,949 [INFO] Set temperature to 0 C
+2025-12-16 13:28:42,342 [INFO] Set temperature to 0 C
+2025-12-16 13:29:13,913 [INFO] Turning on pump 1 (relay 1) for 0.5 seconds.
+2025-12-16 13:29:13,914 [INFO] Switching relay 1 on for 0.5 seconds
+2025-12-16 13:29:15,441 [INFO] Turning on pump 1 (relay 1) for 1 seconds.
+2025-12-16 13:29:15,441 [INFO] Switching relay 1 on for 1 seconds
+2025-12-16 13:29:20,017 [INFO] Turning on pump 1 (relay 1) for 2 seconds.
+2025-12-16 13:29:20,017 [INFO] Switching relay 1 on for 2 seconds
+2025-12-16 13:29:25,273 [INFO] Turning on pump 1 (relay 1) for 5 seconds.
+2025-12-16 13:29:25,274 [INFO] Switching relay 1 on for 5 seconds
+2025-12-16 13:29:48,946 [INFO] Turning on pump 1 (relay 1) for 10 seconds.
+2025-12-16 13:29:48,946 [INFO] Switching relay 1 on for 10 seconds
+2025-12-16 13:30:35,194 [INFO] Turning on pump 1 (relay 1) for 15 seconds.
+2025-12-16 13:30:35,194 [INFO] Switching relay 1 on for 15 seconds
+2025-12-16 13:32:26,926 [INFO] List of USB ports:
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:32:26,926 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:32:26,927 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:32:26,927 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:32:26,927 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:32:26,927 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:32:26,927 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:32:26,927 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:32:26,927 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:32:26,927 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:32:26,927 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:32:26,927 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:32:26,927 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:32:26,934 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:32:30,002 [INFO] Set temperature to 0 C
+2025-12-16 13:32:31,395 [INFO] Set temperature to 0 C
+2025-12-16 13:35:09,157 [INFO] List of USB ports:
+2025-12-16 13:35:09,157 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:35:09,158 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:35:09,158 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:35:09,166 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:35:12,233 [INFO] Set temperature to 0 C
+2025-12-16 13:35:13,626 [INFO] Set temperature to 0 C
+2025-12-16 13:35:17,793 [INFO] Turning on pump 0 (relay 0) for 10 seconds.
+2025-12-16 13:35:17,794 [INFO] Switching relay 0 on for 10 seconds
+2025-12-16 13:37:33,229 [INFO] List of USB ports:
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:37:33,229 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:37:33,229 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:37:33,237 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:37:36,304 [INFO] Set temperature to 0 C
+2025-12-16 13:37:37,697 [INFO] Set temperature to 0 C
+2025-12-16 13:37:39,679 [INFO] Turning on pump 0 (relay 0) for 10 seconds.
+2025-12-16 13:37:39,679 [INFO] Switching relay 0 on for 10 seconds
+2025-12-16 13:37:56,483 [INFO] List of USB ports:
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:37:56,483 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:37:56,484 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:37:56,484 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:37:56,491 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:37:59,559 [INFO] Set temperature to 0 C
+2025-12-16 13:38:00,953 [INFO] Set temperature to 0 C
+2025-12-16 13:38:06,056 [INFO] Turning on pump 1 (relay 1) for 10 seconds.
+2025-12-16 13:38:06,057 [INFO] Switching relay 1 on for 10 seconds
+2025-12-16 13:38:30,930 [INFO] List of USB ports:
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:38:30,931 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:38:30,931 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:38:30,939 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:38:34,006 [INFO] Set temperature to 0 C
+2025-12-16 13:38:35,399 [INFO] Set temperature to 0 C
+2025-12-16 13:38:39,297 [INFO] Turning on pump 1 (relay 1) for 15 seconds.
+2025-12-16 13:38:39,297 [INFO] Switching relay 1 on for 15 seconds
+2025-12-16 13:39:15,077 [INFO] List of USB ports:
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:39:15,077 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:39:15,077 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:39:15,085 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:39:18,153 [INFO] Set temperature to 0 C
+2025-12-16 13:39:19,546 [INFO] Set temperature to 0 C
+2025-12-16 13:39:48,193 [INFO] Turning on pump 2 (relay 2) for 15 seconds.
+2025-12-16 13:39:48,193 [INFO] Switching relay 2 on for 15 seconds
+2025-12-16 13:40:30,110 [INFO] List of USB ports:
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:40:30,110 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:40:30,110 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:40:30,118 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:40:33,185 [INFO] Set temperature to 0 C
+2025-12-16 13:40:34,578 [INFO] Set temperature to 0 C
+2025-12-16 13:40:44,385 [INFO] Turning on pump 3 (relay 3) for 15 seconds.
+2025-12-16 13:40:44,385 [INFO] Switching relay 3 on for 15 seconds
+2025-12-16 13:41:04,349 [INFO] List of USB ports:
+2025-12-16 13:41:04,349 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:41:04,350 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:41:04,350 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:41:04,358 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:41:07,425 [INFO] Set temperature to 0 C
+2025-12-16 13:41:08,818 [INFO] Set temperature to 0 C
+2025-12-16 13:42:42,480 [INFO] List of USB ports:
+2025-12-16 13:42:42,480 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:42:42,480 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:42:42,480 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:42:42,481 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:42:42,481 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:42:42,489 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:42:50,519 [INFO] List of USB ports:
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:42:50,519 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:42:50,520 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:42:50,520 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:42:50,527 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:43:10,765 [INFO] List of USB ports:
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:43:10,766 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:43:10,766 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:43:10,774 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:43:13,841 [INFO] Set temperature to 0 C
+2025-12-16 13:43:15,234 [INFO] Set temperature to 0 C
+2025-12-16 13:43:25,561 [INFO] Turning on pump 4 (relay 4) for 15 seconds.
+2025-12-16 13:43:25,561 [INFO] Switching relay 4 on for 15 seconds
+2025-12-16 13:43:52,796 [INFO] List of USB ports:
+2025-12-16 13:43:52,796 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:43:52,796 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:43:52,796 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:43:52,797 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:43:52,797 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:43:52,805 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:43:55,873 [INFO] Set temperature to 0 C
+2025-12-16 13:43:57,266 [INFO] Set temperature to 0 C
+2025-12-16 13:44:21,240 [INFO] Turning on pump 5 (relay 5) for 15 seconds.
+2025-12-16 13:44:21,241 [INFO] Switching relay 5 on for 15 seconds
+2025-12-16 13:45:57,077 [INFO] List of USB ports:
+2025-12-16 13:45:57,077 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:45:57,085 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:45:57,086 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:45:57,086 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:45:57,093 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:46:00,161 [INFO] Set temperature to 0 C
+2025-12-16 13:46:01,554 [INFO] Set temperature to 0 C
+2025-12-16 13:46:04,825 [INFO] Turning on pump 4 (relay 6) for 15 seconds.
+2025-12-16 13:46:04,825 [INFO] Switching relay 6 on for 15 seconds
+2025-12-16 13:46:45,669 [INFO] List of USB ports:
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:46:45,669 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:46:45,669 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:46:45,677 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:46:48,745 [INFO] Set temperature to 0 C
+2025-12-16 13:46:50,138 [INFO] Set temperature to 0 C
+2025-12-16 13:47:01,918 [INFO] Turning on pump 5 (relay 7) for 15 seconds.
+2025-12-16 13:47:01,918 [INFO] Switching relay 7 on for 15 seconds
+2025-12-16 13:47:48,488 [INFO] List of USB ports:
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS4 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS31 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS30 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS29 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS28 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS27 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS26 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS25 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS24 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS23 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS22 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS21 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS20 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS19 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS18 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS17 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS16 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS15 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS14 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS13 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS12 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS11 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS10 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS9 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS8 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS7 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS6 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS5 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS3 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS2 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS1 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyS0 - n/a
+2025-12-16 13:47:48,488 [INFO] /dev/ttyUSB0 - USB Serial
+2025-12-16 13:47:48,488 [INFO] /dev/ttyACM0 - Squidstat
+2025-12-16 13:47:48,496 [INFO] Arduino found on port: /dev/ttyUSB0
+2025-12-16 13:47:51,563 [INFO] Set temperature to 0 C
+2025-12-16 13:47:52,957 [INFO] Set temperature to 0 C
+2025-12-16 13:48:02,080 [INFO] Turning on pump 5 (relay 7) for 15 seconds.
+2025-12-16 13:48:02,080 [INFO] Switching relay 7 on for 15 seconds

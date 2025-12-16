@@ -10,7 +10,7 @@ from openTron_electrodeposition.parameters import (
 # Folder where data and log-file will be saved
 DATA_PATH = ""
 # ARDUINO_NAME = "CH340"  # Arduino name on Windows
-ARDUINO_NAME = "USB Serial"  # Arduino name on Mac
+ARDUINO_NAME = "USB Serial"  # Arduino name on Linux
 
 # Initialize logging
 logging.basicConfig(
@@ -30,8 +30,8 @@ robot = Arduino(
         0,
         1,
     ],  # List of cartridges, where len(list) = number of cartridges
-    list_of_pump_relays=[0, 1, 2, 3, 4, 5],  # Pumps connected to which relays
-    list_of_ultrasonic_relays=[6, 7],  # Ultrasonic connected to which relays
+    list_of_pump_relays=[4, 5, 6, 7, 0, 1],  # Pumps connected to which relays
+    list_of_ultrasonic_relays=[2, 3],  # Ultrasonic connected to which relays
     pump_slope=pump_slope,  # dict of pump slopes: a in y = ax + b
     pump_intercept=pump_intercept,  # dict of pump intercepts: b in y = ax + b
 )

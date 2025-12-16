@@ -22,7 +22,7 @@ from openTron_electrodeposition.parameters import (
 )
 
 OPENTRON_IP = "169.254.138.47"
-ARDUINO_NAME = "CH340"  # Arduino name on Windows
+ARDUINO_NAME = "USB Serial"  # Arduino name on Linux
 DATA_PATH = os.getcwd()
 OPENTRON_PIPETTE = "p1000_single_gen2"
 path = os.path.join(DATA_PATH, "src", "opentron_labware", "nis_4_tiprack_1ul.json")
@@ -57,8 +57,8 @@ robot = Arduino(
         0,
         1,
     ],  # List of cartridges, where len(list) = number of cartridges
-    list_of_pump_relays=[0, 1, 2, 3, 4, 5],  # Pumps connected to which relays
-    list_of_ultrasonic_relays=[6, 7],  # Ultrasonic connected to which relays
+    list_of_pump_relays=[4, 5, 6, 7, 0, 1],  # Pumps connected to which relays
+    list_of_ultrasonic_relays=[2, 3],  # Ultrasonic connected to which relays
     pump_slope=pump_slope,  # dict of pump slopes: a in y = ax + b
     pump_intercept=pump_intercept,  # dict of pump intercepts: b in y = ax + b
 )

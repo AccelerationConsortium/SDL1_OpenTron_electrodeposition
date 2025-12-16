@@ -41,7 +41,7 @@ class Experiment:
         cleaning_station_volume: float = 6,  # XXX Change this to real life number if pumps are calibrated
         openTron_IP: str = "169.254.138.47",
         openTron_pipette_name: str = "p1000_single_gen2",
-        arduino_usb_name: str = "CH340",
+        arduino_usb_name: str = "USB Serial",
         admiral=AdmiralSquidstatWrapper,
     ):
         self.cleaning_station_volume = cleaning_station_volume

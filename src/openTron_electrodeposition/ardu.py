@@ -11,7 +11,7 @@ class Arduino:
 
     def __init__(
         self,
-        arduino_search_string: str = "CH340",
+        arduino_search_string: str = "USB Serial", # On Windows it is "CH340"
         list_of_cartridges: list = [0, 1],
         list_of_pump_relays: list = [0, 1, 2, 3, 4, 5],
         list_of_ultrasonic_relays: list = [6, 7],
@@ -39,7 +39,7 @@ class Arduino:
 
         Args:
             arduino_search_string (str, optional): _description_. Defaults to
-                "CH340".
+                "CH340" on Windows and "USB Serial" on Linux.
             list_of_cartridges (list, optional): List of cartridge numbers.
                 Defaults to [0, 1].
             list_of_pump_relays (list, optional): List of pump relay numbers.
