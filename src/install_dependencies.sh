@@ -36,7 +36,24 @@ check_status
 
 # Install required dependencies
 echo "Installing required dependencies..."
+# Build tools and OpenGL libraries
 sudo apt-get install -y build-essential libgl1-mesa-dev libxcb-cursor0
+check_status
+
+# PySide6/Qt6 system dependencies
+echo "Installing PySide6/Qt6 system dependencies..."
+sudo apt-get install -y \
+    libegl1 \
+    libopengl0 \
+    libxcb-icccm4 \
+    libxcb-image0 \
+    libxcb-keysyms1 \
+    libxcb-randr0 \
+    libxcb-render-util0 \
+    libxcb-xinerama0 \
+    libxcb-xinput0 \
+    libxkbcommon-x11-0 \
+    libxkbcommon0
 check_status
 
 # Completion message
