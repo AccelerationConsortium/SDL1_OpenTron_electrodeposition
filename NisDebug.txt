@@ -187,3 +187,12 @@ Traceback (most recent call last):
   File "/home/nisfi/git/SDL1_OpenTron_electrodeposition/src/openTron_electrodeposition/admiral.py", line 6, in <module>
     from PySide2.QtWidgets import QApplication
 ModuleNotFoundError: No module named 'PySide2'
+
+
+python ./example_admiral_potentiostat.py
+Warning: PySide2 is installed, but this application is designed for PySide6. Ensure PySide6 is used for compatibility.
+QSocketNotifier: Can only be used with threads started with QThread
+QEventLoop: Cannot be used without QApplication
+QEventLoop: Cannot be used without QApplication
+QObject::startTimer: Timers can only be used with threads started with QThread
+QEventLoop: Cannot be used without QApplication
